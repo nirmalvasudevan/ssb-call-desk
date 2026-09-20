@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SSB Call Desk</title>
 <meta name="theme-color" content="#13236B">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +17,7 @@
 :root{
   --ground:#F3F4F9; --surface:#FFFFFF; --sunk:#EAECF4; --ink:#141B33; --muted:#5A6280; --line:#DDE1EC;
   --navy:#13236B; --navy-ink:#FFFFFF; --link:#1E3AA8; --saffron:#C9660E; --saffron-soft:#FCEBD9;
-  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6;
+  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6; --icon:#1E3AA8; --saffron-btn:#C25F0C;
   --font-body:"Hind",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --font-display:"Martel",Georgia,"Times New Roman",serif;
 }
@@ -21,49 +25,60 @@
   :root:not([data-theme="light"]){
     --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
     --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F;
+    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
   --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F;
+  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{background:var(--ground);margin:0}
 body{color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
 a{color:var(--link)}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
 
-.top{background:var(--navy);color:var(--navy-ink);padding:14px 16px 0}
+.top{background:var(--navy);color:var(--navy-ink);padding:12px 16px 10px}
 .top-inner,.wrap{max-width:720px;margin:0 auto}
-.brand{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand h1{font-family:var(--font-display);font-weight:800;font-size:22px;line-height:1.2;margin:0;letter-spacing:.01em}
-.brand a{color:var(--navy-ink);font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;opacity:.92}
-.sub{font-size:13px;opacity:.78;margin:2px 0 12px}
+.brand{display:flex;align-items:center;gap:10px}
+.bt{flex:1;min-width:0}
+.logo{flex:none;width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.85)}
+.brand h1{font-family:var(--font-display);font-weight:800;font-size:20px;line-height:1.15;margin:0;letter-spacing:.01em}
+.call{flex:none;display:flex;align-items:center;gap:6px;color:var(--navy-ink);font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;background:rgba(255,255,255,.12);border-radius:999px;padding:7px 12px}
+.sub{font-size:13px;opacity:.78;margin:1px 0 0}
 
-.searchbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy);padding:0 16px 12px}
+.searchbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy);padding:2px 16px 12px;box-shadow:0 6px 12px -8px rgba(0,0,0,.35)}
 .search{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:12px;padding:0 6px 0 12px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .search svg{flex:none;color:var(--muted)}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;font-size:17px;padding:12px 0;outline:none}
 .search input::placeholder{color:var(--muted)}
 .clear{border:0;background:var(--sunk);border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer}
 
-.wrap{padding-inline:16px;padding-block:16px 48px;display:flex;flex-direction:column;gap:22px}
+.wrap{padding-inline:16px;padding-block:16px 110px;display:flex;flex-direction:column;gap:22px}
 .label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 
-.glance{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 14px}
+.glance{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:2px 14px}
+.gr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.gr:last-child{border-bottom:0}
+.gr span{flex:none;color:var(--muted);font-size:14px}
+.gr b{font-weight:600;font-size:15px;text-align:right;font-variant-numeric:tabular-nums}
 .glance dl{margin:0;display:grid;grid-template-columns:auto 1fr;column-gap:14px}
-.glance dt,.glance dd{padding:9px 0;border-bottom:1px solid var(--line);margin:0}
-.glance dt{color:var(--muted);font-size:14px}
+.glance dt,.glance dd{padding:8px 0;border-bottom:1px solid var(--line);margin:0}
+.glance dt{color:var(--muted);font-size:14px;white-space:nowrap}
 .glance dd{font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;text-align:right}
 .glance dt:nth-last-of-type(1),.glance dd:last-of-type{border-bottom:0}
 
 .cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.cat{display:flex;flex-direction:column;gap:2px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;min-height:92px}
+.cat{position:relative;display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;min-height:92px}
 .cat:active{background:var(--sunk)}
 .cat b{font-size:16px;font-weight:600;line-height:1.25}
+.ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--sunk);color:var(--navy);margin-bottom:6px}
+.cat.pgm .ic{background:rgba(255,255,255,.14);color:#FFC98F}
+.cat.agent .ic{background:rgba(201,102,14,.14);color:var(--saffron)}
+.ic{color:var(--icon)}
 .cat span{font-size:13px;color:var(--muted);line-height:1.35}
 .cat i{font-style:normal;font-size:12px;color:var(--saffron);font-weight:600;margin-top:auto;padding-top:6px}
 .cat.agent{background:var(--saffron-soft);border-color:transparent}
@@ -111,16 +126,19 @@ table.nw td{white-space:nowrap}
 mark{background:var(--hl);color:inherit;border-radius:3px;padding:0 1px}
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:18px;color:var(--muted)}
 .foot{font-size:13px;color:var(--muted);line-height:1.5}
-.cat.pgm{background:var(--navy);color:var(--navy-ink);border-color:transparent;grid-column:1/-1;min-height:0}
+.cat.pgm{background:var(--navy);color:var(--navy-ink);border-color:transparent;grid-column:1/-1;min-height:0;display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center}
+.cat.pgm .ic{grid-row:1/4;margin:0;width:44px;height:44px}
+.cat.pgm b{font-size:17px}
 .cat.pgm span{color:inherit;opacity:.82}
 .cat.pgm i{color:#FFC98F}
-.filters{display:flex;flex-wrap:wrap;gap:8px}
-.fchip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
+.filters{display:flex;gap:8px;overflow-x:auto;margin-inline:-16px;padding:2px 16px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.fchip{flex:none;white-space:nowrap;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
 .fchip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
 .stamp{font-size:13px;color:var(--muted);margin:-10px 0 0}
 .stamp.old{color:var(--warn);font-weight:600}
 .month{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 -12px}
-.dt{flex:none;width:54px;text-align:center;border-radius:10px;background:var(--sunk);padding:7px 0 6px;line-height:1.1}
+.dt{flex:none;width:50px;text-align:center;border-radius:10px;background:var(--sunk);padding:7px 0 6px;line-height:1.1}
 .dt b{display:block;font-size:19px;font-variant-numeric:tabular-nums}
 .dt small{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .pmeta{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:2px}
@@ -132,27 +150,85 @@ mark{background:var(--hl);color:inherit;border-radius:3px;padding:0 1px}
 .subhead{font-family:var(--font-display);font-size:17px;margin:4px 0 -8px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:10px;font-weight:600;font-size:15px;z-index:20}
 @media (min-width:640px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:380px){.cat span{display:none}.cat{min-height:0}}
+.cs{display:none}
+@media (max-width:520px){.cn{display:none}.cs{display:inline}}
+@media (display-mode: standalone){.hint{display:none}}
+
+/* ---- Log call ---- */
+.logbtn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--saffron-btn);color:#fff;font-weight:600;font-size:16px;padding:13px 20px;box-shadow:0 6px 18px rgba(0,0,0,.28);cursor:pointer}
+.logbtn .q-n{background:#fff;color:var(--saffron-btn);border-radius:999px;font-size:12px;min-width:20px;padding:1px 6px;text-align:center}
+dialog.logdlg{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:92vh;border-radius:18px 18px 0 0;background:var(--surface);color:var(--ink)}
+dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
+.lg{display:flex;flex-direction:column;gap:12px;padding:16px 16px 0}
+.lg-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lg-head h2{font-family:var(--font-display);font-size:19px;margin:0}
+.x{border:0;background:var(--sunk);border-radius:10px;width:38px;height:38px;font-size:18px;cursor:pointer}
+.lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 -6px}
+.lbl small{text-transform:none;letter-spacing:0;font-weight:400}
+.who{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sunk);border-radius:12px;padding:10px 12px;font-size:15px}
+.who button{border:0;background:transparent;color:var(--link);font-weight:600;font-size:14px;cursor:pointer}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lg input,.lg select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+.rchips{display:flex;flex-wrap:wrap;gap:6px}
+.rchip{border:1px solid var(--line);background:var(--ground);border-radius:10px;padding:7px 11px;font-size:14.5px;cursor:pointer;text-align:left}
+.rchip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.rchip .sg{display:block;font-size:11px;font-weight:600;color:var(--saffron);letter-spacing:.04em;text-transform:uppercase}
+.rchip[aria-pressed="true"] .sg{color:#FFC98F}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg button{border:1px solid var(--line);background:var(--ground);border-radius:10px;padding:9px 4px;white-space:nowrap;font-size:14px;font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.lg .err{color:var(--warn);font-weight:600;font-size:14px;margin:0}
+.sent{padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+.sent-p{margin:0;color:var(--muted);font-size:15px}
+.wa-preview{margin:0;white-space:pre-wrap;font:inherit;font-size:14.5px;background:var(--sunk);border-radius:12px;padding:12px}
+.wa{display:flex;align-items:center;justify-content:center;gap:8px;background:#1FA855;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-radius:12px;padding:14px}
+.skip{border:0;background:transparent;color:var(--muted);font-size:15px;padding:8px;cursor:pointer}
+.save{position:sticky;bottom:0;margin:0 -16px;border-radius:0;box-shadow:0 -6px 14px -8px rgba(0,0,0,.3);padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;border:0;background:var(--saffron-btn);color:#fff;font-weight:600;font-size:17px;padding:14px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <header class="top">
   <div class="top-inner">
     <div class="brand">
-      <h1>SSB Call Desk</h1>
-      <a href="tel:08047103311">080-4710 3311</a>
+      <img class="logo" src="logo.jpg" alt=""><div class="bt"><h1>SSB Call Desk</h1><p class="sub">Sadhguru Sannidhi Bengaluru</p></div>
+      <a class="call" href="tel:08047103311" aria-label="Call main line 080-4710 3311"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="cn">080-4710 3311</span><span class="cs">Call</span></a>
     </div>
-    <p class="sub">Sadhguru Sannidhi Bengaluru · caller answers at a glance</p>
   </div>
 </header>
 <div class="searchbar">
   <label class="search" for="q">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input id="q" type="search" placeholder="Search: bus, sarpa seva, refund, shop…" autocomplete="off" enterkeyhint="search" aria-label="Search the knowledge base">
+    <input id="q" type="search" placeholder="Search: bus, refund, shoonya…" autocomplete="off" enterkeyhint="search" aria-label="Search the knowledge base">
     <button class="clear" id="clear" type="button" hidden>Clear</button>
   </label>
 </div>
 <main class="wrap" id="app"></main>
 <div class="toast" id="toast" hidden></div>
+<button type="button" class="logbtn" id="logbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Log call<span class="q-n" id="qn" hidden></span></button>
+<dialog class="logdlg" id="logdlg" aria-labelledby="lg-title">
+  <form class="lg" id="logform" novalidate>
+    <div class="lg-head"><h2 id="lg-title">Log this call</h2><button type="button" class="x" data-close aria-label="Close">✕</button></div>
+    <div id="lg-who"></div>
+    <p class="lbl">Reason</p>
+    <div class="rchips" id="lg-reasons"></div>
+    <p class="lbl">Outcome</p>
+    <div class="seg" id="lg-outcome"></div>
+    <label class="lbl" for="lg-caller">Caller number <small>(optional)</small></label>
+    <input id="lg-caller" type="tel" inputmode="tel" autocomplete="off" placeholder="e.g. 98450 12345">
+    <label class="lbl" for="lg-note">Note <small>(optional)</small></label>
+    <input id="lg-note" type="text" maxlength="200" autocomplete="off" placeholder="e.g. wants callback about Shoonya dates">
+    <p class="err" id="lg-err" hidden></p>
+    <button type="submit" class="save">Save call</button>
+  </form>
+  <div class="lg sent" id="lg-sent" hidden>
+    <div class="lg-head"><h2>Saved ✓</h2><button type="button" class="x" data-close aria-label="Close">✕</button></div>
+    <p class="sent-p">This call needs attention. Send it to the follow-up WhatsApp group so the team can act on it.</p>
+    <pre class="wa-preview" id="wa-preview"></pre>
+    <a class="wa" id="wa-send" href="#" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>Send to WhatsApp group</a>
+    <button type="button" class="skip" data-close>Skip</button>
+  </div>
+</dialog>
 
 <script>
 /* ============ KNOWLEDGE BASE ============
@@ -548,7 +624,7 @@ const KB=[
  k:"faq doc document sheet reference source website"}
 ];
 
-const GLANCE=[["Open","6 AM – 8 PM daily"],["Naga Arati","6:20 AM, 12:20 & 6:20 PM"],["Divya Darshanam","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Main line","080-4710 3311"]];
+const GLANCE=[["Open","6 AM – 8 PM daily"],["Naga Arati","6:20 AM · 12:20 · 6:20 PM"],["Divya Darshanam","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Main line","080-4710 3311"]];
 
 /* ============ APP ============ */
 const $=s=>document.querySelector(s), app=$("#app"), input=$("#q"), clearBtn=$("#clear");
@@ -693,17 +769,31 @@ async function loadPrograms(){try{const r=await fetch("programs.json?t="+Date.no
   if(j&&Array.isArray(j.programs)&&(!PDATA.updated||j.updated>PDATA.updated)){PDATA=j;pIndex();route()}}catch(e){}}
 pIndex();
 
+const ICON={
+ pgm:'<rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M7.5 13.5h3M7.5 17h3M13.5 13.5h3"/>',
+ visit:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+ travel:'<rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16M8 17v3M16 17v3"/><circle cx="8" cy="13.5" r="1"/><circle cx="16" cy="13.5" r="1"/>',
+ rituals:'<path d="M12 2.5c2.8 3.4 4.8 5.6 4.8 8.6a4.8 4.8 0 0 1-9.6 0c0-1.7.8-2.9 1.9-3.9.2 1.7 1 2.7 2 2.9-.3-2.6.3-4.9.9-7.6z"/><path d="M5 21h14M8 18h8"/>',
+ programs:'<circle cx="12" cy="4.5" r="2"/><path d="M12 7v6M5 10.5l7 2.5 7-2.5M8 21l4-8 4 8M5 21h14"/>',
+ ie:'<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5M15.5 17.5l1.5 1.5 3-3"/>',
+ vol:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+ shop:'<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+ contacts:'<path d="M20 15.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3.5 6.2 2 2 0 0 1 5.5 4h3a2 2 0 0 1 2 1.6l.5 2.6a2 2 0 0 1-.6 1.8l-1.3 1.3a13 13 0 0 0 5.6 5.6l1.3-1.3a2 2 0 0 1 1.8-.6l2.6.5a2 2 0 0 1 1.6 2z"/>',
+ iyc:'<path d="M2.5 20 9 9l4 6.5L16 11l5.5 9z"/><circle cx="17.5" cy="5" r="1.8"/>',
+ agent:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/>'
+};
+const icon=id=>`<span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[id]||""}</svg></span>`;
 function renderHome(){
   const recent=store.get("ssb-recent",[]).map(id=>KB.find(k=>k.id===id)).filter(Boolean);
   const up=pUpcoming(),openN=up.filter(p=>!p.closed).length,nextSSB=up.find(p=>p.ssb&&!p.closed);
   const g=GLANCE.slice();if(nextSSB)g.splice(5,0,["Next at SSB",pName(nextSSB).replace(/\s*\(English\)/,"")+", "+pDate(nextSSB)]);
-  const tile=c=>c.pgm?`<button type="button" class="cat pgm" data-cat="pgm"><b>Upcoming programs</b><span>Karnataka & Sadhguru Sannidhi — dates, venues, fees, registration links</span><i>${up.length} programs · ${openN} open${PDATA.updated?" · updated "+new Date(PDATA.updated).getDate()+" "+MON[new Date(PDATA.updated).getMonth()]:""}</i></button>`
-    :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}"><b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id).length} answers</i></button>`;
+  const tile=c=>c.pgm?`<button type="button" class="cat pgm" data-cat="pgm">${icon("pgm")}<b>Upcoming programs</b><span>Karnataka & Sadhguru Sannidhi — dates, venues, fees, registration links</span><i>${up.length} programs · ${openN} open${PDATA.updated?" · updated "+new Date(PDATA.updated).getDate()+" "+MON[new Date(PDATA.updated).getMonth()]:""}</i></button>`
+    :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}">${icon(c.id)}<b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id).length} answers</i></button>`;
   app.innerHTML=`
-  <section><p class="label">At a glance</p><div class="glance"><dl>${g.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div></section>
+  <section><p class="label">At a glance</p><div class="glance">${g.map(([k,v])=>`<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div></section>
   <section><p class="label">Topics</p><div class="cats">${CATS.map(tile).join("")}</div></section>
   ${recent.length?`<section><p class="label">Recently opened</p><div class="recent">${recent.map(r=>`<button type="button" class="chip" data-goto="${r.id}">${esc(r.q)}</button>`).join("")}</div></section>`:""}
-  <p class="foot">Tip: on Android Chrome, tap ⋮ → “Add to Home screen” to keep this one tap away. Items marked <b>Check</b> need confirming with the team.</p>`;
+  <p class="foot hint">Tip: on Android Chrome, tap ⋮ → “Add to Home screen” to keep this one tap away. Items marked <b>Check</b> need confirming with the team.</p>`;
 }
 function renderCat(id,openId){
   if(id==="pgm"){renderPrograms();return}
@@ -742,14 +832,14 @@ async function copy(text,msg){
 
 app.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
-  if(b.dataset.cat){location.hash="#c/"+b.dataset.cat;window.scrollTo(0,0);return}
+  if(b.dataset.cat){const c=CATS.find(x=>x.id===b.dataset.cat);noteTopic(b.dataset.cat,"",c&&c.name);location.hash="#c/"+b.dataset.cat;window.scrollTo(0,0);return}
   if(b.hasAttribute("data-home")){input.value="";if(location.hash)location.hash="";else route();window.scrollTo(0,0);return}
   if(b.dataset.goto){const it=KB.find(k=>k.id===b.dataset.goto);remember(it.id);location.hash="#c/"+it.cat+"/"+it.id;return}
   if(b.dataset.toggle){
     const item=b.parentElement,open=!item.classList.contains("open");
     item.classList.toggle("open",open);b.setAttribute("aria-expanded",open);
     const tpl=item.querySelector("template");if(tpl&&open){item.insertAdjacentHTML("beforeend",tpl.innerHTML);tpl.remove()}
-    if(open&&KB.some(k=>k.id===b.dataset.toggle))remember(b.dataset.toggle);return;
+    if(open){const it=KB.find(k=>k.id===b.dataset.toggle);if(it){remember(it.id);noteTopic(it.cat,it.id,it.q)}else if(b.dataset.toggle[0]==="p"){const p=pUpcoming().find(x=>"p"+x.id===b.dataset.toggle);noteTopic("pgm","",p?pName(p)+" "+pDate(p):"Program")}}return;
   }
   if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.area=v;renderPrograms();return}
   if(b.dataset.pcopy){const p=pUpcoming().find(x=>x.id===b.dataset.pcopy);if(p)copy(pText(p),"Program details copied");return}
@@ -762,5 +852,59 @@ clearBtn.addEventListener("click",()=>{input.value="";route();input.focus()});
 window.addEventListener("hashchange",route);
 route();
 loadPrograms();
+/* ============ LOG CALL (sends to the Google Sheet) ============ */
+const LOG_URL="https://script.google.com/macros/s/AKfycbzmu0H1y6451cZc7zqA3JlrUdHWlMa-3I-DIy8nXBVG2u9kVuwdiGOGDCwnFWTjwHih/exec";
+const REASONS=["Visit & timings","Directions / travel","Rituals & offerings","Program dates & registration","Program info (SSB)","Inner Engineering / online","Refund / cancellation","Volunteering","Isha Life shop","Donation","Centre contact","Isha Yoga Center (IYC)","Complaint / feedback","Other"];
+const LINES=["SSB – General","SSBP – Programs","SSBWE – Weekend","JN – Programs","JN – Isha Shoppe","Outside Bangalore","Other"];
+const OUTCOMES=["Answered","Needs follow-up","Transferred"];
+const CAT2REASON={visit:"Visit & timings",travel:"Directions / travel",rituals:"Rituals & offerings",pgm:"Program dates & registration",programs:"Program info (SSB)",ie:"Inner Engineering / online",vol:"Volunteering",shop:"Isha Life shop",contacts:"Centre contact",iyc:"Isha Yoga Center (IYC)"};
+const ID2REASON={refund:"Refund / cancellation",rereg:"Refund / cancellation",donate:"Donation",mahakshetra:"Donation",pgmreg:"Program dates & registration"};
+let lastTopic=null; // {reason, label, at}
+function noteTopic(cat,id,label){const r=ID2REASON[id]||CAT2REASON[cat];if(r)lastTopic={reason:r,label:label||"",at:Date.now()}}
+const lg={reason:"",outcome:"Answered",editWho:false};
+function me(){return store.get("ssb-agent",{name:"",line:""})}
+function qGet(){return store.get("ssb-logq",[])}
+function qSet(q){store.set("ssb-logq",q);qBadge()}
+function qBadge(){const n=qGet().length,el=$("#qn");el.hidden=!n;el.textContent=n}
+function renderWho(){const a=me(),box=$("#lg-who");
+  if(a.name&&a.line&&!lg.editWho){box.innerHTML=`<div class="who"><span><b>${esc(a.name)}</b> · ${esc(a.line)}</span><button type="button" data-editwho>Change</button></div>`;return}
+  box.innerHTML=`<div class="row2"><input id="lg-name" type="text" autocomplete="name" placeholder="Your name" value="${esc(a.name)}" aria-label="Your name"><select id="lg-line" aria-label="Your line"><option value="">Your line…</option>${LINES.map(l=>`<option${l===a.line?" selected":""}>${esc(l)}</option>`).join("")}</select></div>`}
+function renderReasons(){const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
+  $("#lg-reasons").innerHTML=REASONS.map(r=>`<button type="button" class="rchip" data-reason="${esc(r)}" aria-pressed="${r===lg.reason}">${r===sug?'<span class="sg">Suggested</span>':""}${esc(r)}</button>`).join("");
+  $("#lg-outcome").innerHTML=OUTCOMES.map(o=>`<button type="button" data-outcome="${o}" aria-pressed="${o===lg.outcome}">${o==="Needs follow-up"?"Follow-up":o}</button>`).join("")}
+function waText(en){const t=new Date(en.time),head=en.outcome==="Transferred"?"↪️ *Call transferred*":"🔁 *Follow-up needed*";
+  return [head,"Reason: "+en.reason,en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"","Line: "+en.line+" · Agent: "+en.agent,`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
+function showSent(en){const txt=waText(en);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
+function openLog(){$("#logform").hidden=false;$("#lg-sent").hidden=true;const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
+  lg.reason=sug;lg.outcome="Answered";lg.editWho=false;$("#lg-caller").value="";$("#lg-note").value="";$("#lg-err").hidden=true;
+  renderWho();renderReasons();const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
+function closeLog(){const d=$("#logdlg");if(d.close)d.close();else d.removeAttribute("open")}
+let sending=false;
+async function flushLog(){if(!LOG_URL||sending)return;const q=qGet();if(!q.length)return;sending=true;
+  try{await fetch(LOG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({items:q})});
+    const sent=new Set(q.map(x=>x.id));qSet(qGet().filter(x=>!sent.has(x.id)))}catch(e){}
+  sending=false}
+$("#logbtn").addEventListener("click",openLog);
+$("#wa-send").addEventListener("click",()=>setTimeout(closeLog,400));
+$("#logdlg").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(e.target.id==="logdlg"){closeLog();return}if(!b)return;
+  if(b.hasAttribute("data-close")){closeLog();return}
+  if(b.hasAttribute("data-editwho")){lg.editWho=true;renderWho();return}
+  if(b.dataset.reason){lg.reason=b.dataset.reason;renderReasons();return}
+  if(b.dataset.outcome){lg.outcome=b.dataset.outcome;renderReasons();return}});
+$("#logform").addEventListener("submit",e=>{e.preventDefault();
+  const err=$("#lg-err"),a=me();
+  if($("#lg-name")){a.name=$("#lg-name").value.trim();a.line=$("#lg-line").value}
+  const miss=!a.name?"your name":!a.line?"your line":!lg.reason?"a reason":"";
+  if(miss){err.textContent="Please choose "+miss+".";err.hidden=false;return}
+  store.set("ssb-agent",a);
+  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reason:lg.reason,outcome:lg.outcome,caller:$("#lg-caller").value.trim(),note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
+  qSet(qGet().concat(entry));lastTopic=null;
+  if(entry.outcome!=="Answered")showSent(entry);else closeLog();
+  if(LOG_URL&&navigator.onLine){toast("Call logged");flushLog()}else toast(LOG_URL?"Saved on phone — will send when online":"Saved on this phone (sheet not connected yet)")});
+window.addEventListener("online",flushLog);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)flushLog()});
+qBadge();flushLog();
+
 if("serviceWorker" in navigator&&location.protocol==="https:"){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
