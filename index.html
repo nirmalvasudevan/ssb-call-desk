@@ -165,6 +165,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .lg-head h2{font-family:var(--font-display);font-size:19px;margin:0}
 .x{border:0;background:var(--sunk);border-radius:10px;width:38px;height:38px;font-size:18px;cursor:pointer}
 .lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 -6px}
+.fu{display:flex;flex-direction:column;gap:12px}
 .req{color:#D93025;font-size:15px;letter-spacing:0}
 .lg input.bad{border-color:#D93025;box-shadow:0 0 0 1px #D93025}
 .lbl small{text-transform:none;letter-spacing:0;font-weight:400}
@@ -177,7 +178,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .rchip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
 .rchip .sg{display:block;font-size:11px;font-weight:600;color:var(--saffron);letter-spacing:.04em;text-transform:uppercase}
 .rchip[aria-pressed="true"] .sg{color:#FFC98F}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .seg button{border:1px solid var(--line);background:var(--ground);border-radius:10px;padding:9px 4px;white-space:nowrap;font-size:14px;font-weight:600;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
 .lg .err{color:var(--warn);font-weight:600;font-size:14px;margin:0}
@@ -215,10 +216,12 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
     <div class="rchips" id="lg-reasons"></div>
     <p class="lbl">Outcome</p>
     <div class="seg" id="lg-outcome"></div>
+    <div class="fu" id="lg-fu" hidden>
     <label class="lbl" for="lg-caller">Caller number <span class="req" aria-hidden="true">*</span></label>
     <input id="lg-caller" required aria-required="true" type="tel" inputmode="tel" autocomplete="off" placeholder="e.g. 98450 12345">
     <label class="lbl" for="lg-note">Note <span class="req" aria-hidden="true">*</span></label>
     <input id="lg-note" required aria-required="true" type="text" maxlength="200" autocomplete="off" placeholder="e.g. wants callback about Shoonya dates">
+    </div>
     <p class="err" id="lg-err" hidden></p>
     <button type="submit" class="save">Save call</button>
   </form>
@@ -857,7 +860,7 @@ loadPrograms();
 const LOG_URL="https://script.google.com/macros/s/AKfycbzmu0H1y6451cZc7zqA3JlrUdHWlMa-3I-DIy8nXBVG2u9kVuwdiGOGDCwnFWTjwHih/exec";
 const REASONS=["Visit & timings","Directions / travel","Rituals & offerings","Program dates & registration","Program info (SSB)","Inner Engineering / online","Refund / cancellation","Volunteering","Isha Life shop","Donation","Centre contact","Isha Yoga Center (IYC)","Complaint / feedback","Other"];
 const LINES=["SSB – General","SSBP – Programs","SSBWE – Weekend","JN – Programs","JN – Isha Shoppe","Outside Bangalore","Other"];
-const OUTCOMES=["Answered","Needs follow-up","Transferred"];
+const OUTCOMES=["Answered","Needs follow-up"];
 const CAT2REASON={visit:"Visit & timings",travel:"Directions / travel",rituals:"Rituals & offerings",pgm:"Program dates & registration",programs:"Program info (SSB)",ie:"Inner Engineering / online",vol:"Volunteering",shop:"Isha Life shop",contacts:"Centre contact",iyc:"Isha Yoga Center (IYC)"};
 const ID2REASON={refund:"Refund / cancellation",rereg:"Refund / cancellation",donate:"Donation",mahakshetra:"Donation",pgmreg:"Program dates & registration"};
 let lastTopic=null; // {reason, label, at}
@@ -872,8 +875,9 @@ function renderWho(){const a=me(),box=$("#lg-who");
   box.innerHTML=`<div class="row2"><input id="lg-name" type="text" autocomplete="name" placeholder="Your name" value="${esc(a.name)}" aria-label="Your name"><select id="lg-line" aria-label="Your line"><option value="">Your line…</option>${LINES.map(l=>`<option${l===a.line?" selected":""}>${esc(l)}</option>`).join("")}</select></div>`}
 function renderReasons(){const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
   $("#lg-reasons").innerHTML=REASONS.map(r=>`<button type="button" class="rchip" data-reason="${esc(r)}" aria-pressed="${r===lg.reason}">${r===sug?'<span class="sg">Suggested</span>':""}${esc(r)}</button>`).join("");
+  $("#lg-fu").hidden=lg.outcome!=="Needs follow-up";
   $("#lg-outcome").innerHTML=OUTCOMES.map(o=>`<button type="button" data-outcome="${o}" aria-pressed="${o===lg.outcome}">${o==="Needs follow-up"?"Follow-up":o}</button>`).join("")}
-function waText(en){const t=new Date(en.time),head=en.outcome==="Transferred"?"↪️ *Call transferred*":"🔁 *Follow-up needed*";
+function waText(en){const t=new Date(en.time),head="🔁 *Follow-up needed*";
   return [head,"Reason: "+en.reason,en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
 function showSent(en){const txt=waText(en);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
 function openLog(){$("#logform").hidden=false;$("#lg-sent").hidden=true;const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
@@ -895,11 +899,11 @@ $("#logdlg").addEventListener("click",e=>{
   if(b.dataset.outcome){lg.outcome=b.dataset.outcome;renderReasons();return}});
 $("#logform").addEventListener("submit",e=>{e.preventDefault();
   const err=$("#lg-err"),a={name:"",line:""};
-  const cEl=$("#lg-caller"),nEl=$("#lg-note"),digits=cEl.value.replace(/\D/g,"");
-  cEl.classList.toggle("bad",digits.length<10);nEl.classList.toggle("bad",!nEl.value.trim());
-  const miss=!lg.reason?"Please choose a reason.":digits.length<10?"Please enter the caller's number (at least 10 digits).":!nEl.value.trim()?"Please add a short note.":"";
+  const fu=lg.outcome==="Needs follow-up",cEl=$("#lg-caller"),nEl=$("#lg-note"),digits=cEl.value.replace(/\D/g,"");
+  cEl.classList.toggle("bad",fu&&digits.length<10);nEl.classList.toggle("bad",fu&&!nEl.value.trim());
+  const miss=!lg.reason?"Please choose a reason.":fu&&digits.length<10?"Please enter the caller's number (at least 10 digits).":fu&&!nEl.value.trim()?"Please add a short note.":"";
   if(miss){err.textContent=miss;err.hidden=false;(digits.length<10?cEl:nEl).focus();return}
-  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reason:lg.reason,outcome:lg.outcome,caller:$("#lg-caller").value.trim(),note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
+  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reason:lg.reason,outcome:lg.outcome,caller:lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"",note:lg.outcome==="Needs follow-up"?$("#lg-note").value.trim():"",topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
   qSet(qGet().concat(entry));lastTopic=null;
   if(entry.outcome!=="Answered")showSent(entry);else closeLog();
   if(LOG_URL&&navigator.onLine){toast("Call logged");flushLog()}else toast(LOG_URL?"Saved on phone — will send when online":"Saved on this phone (sheet not connected yet)")});
