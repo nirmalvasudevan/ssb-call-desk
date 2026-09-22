@@ -1,32 +1,7 @@
 {
- "updated": "2026-09-21T01:18:16.458Z",
+ "updated": "2026-09-22T01:41:14.534Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204405",
-   "name": "Yogasanas",
-   "start": "2026-09-21 06:00:00",
-   "end": "2026-09-25 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleswaram, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=21621-yogasanas-english-malleswaram-21-25-sep-2026-21621",
-   "lang": "english"
-  },
-  {
-   "id": "1204720",
-   "name": "Surya Kriya",
-   "start": "2026-09-21 06:30:00",
-   "end": "2026-09-24 08:30:00",
-   "time": "6:30AM - 8:30AM",
-   "venue": "HSR Studio",
-   "area": "HSR Layout, Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=21895-surya-kriya-english-hsr-layout-21-24-sept-2026-21895",
-   "lang": "english",
-   "closed": true
-  },
   {
    "id": "1204671",
    "name": "Inner Engineering 7 days",
@@ -89,6 +64,18 @@
    "lang": "english"
   },
   {
+   "id": "1205306",
+   "name": "Yogasanas Beginner (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Sep 26-27, 2026",
+   "start": "2026-09-26 07:30:00",
+   "end": "2026-09-27 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=22351-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-sep-26-27-2026-22351",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1205079",
    "name": "Eye Care Yoga & Shanmukhi Mudra",
    "start": "2026-09-26 08:00:00",
@@ -99,6 +86,18 @@
    "fee": "3000",
    "url": "https://online.sadhguru.org/event-register?event=22195-eye-care-yoga-shanmukhi-mudra-english-marathahalli-26-27-sept-2026-22195",
    "lang": "english"
+  },
+  {
+   "id": "1205304",
+   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Sep 27, 2026",
+   "start": "2026-09-27 08:00:00",
+   "end": "2026-09-27 09:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1500",
+   "url": "https://online.sadhguru.org/event-register?event=22353-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-sep-27-2026-22353",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1204910",
@@ -139,7 +138,7 @@
   },
   {
    "id": "1204912",
-   "name": "Isha Janani",
+   "name": "Janani - Online (Oct 2-7), In person (Oct 9-11)",
    "start": "2026-10-02 17:00:00",
    "end": "2026-10-11 14:00:00",
    "time": "5:00PM - 2:00PM",
@@ -151,7 +150,7 @@
   },
   {
    "id": "1204928",
-   "name": "Isha Janani",
+   "name": "Janani - Online (Oct 2-7), In person (Oct 23-25)",
    "start": "2026-10-02 17:00:00",
    "end": "2026-10-25 14:00:00",
    "time": "5:00PM - 2:00PM",
