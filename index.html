@@ -128,6 +128,7 @@ table.nw td{white-space:nowrap}
 mark{background:var(--hl);color:inherit;border-radius:3px;padding:0 1px}
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:18px;color:var(--muted)}
 .foot{font-size:13px;color:var(--muted);line-height:1.5}
+.gate{display:flex;flex-direction:column;gap:14px}
 .cat.pgm{background:var(--navy);color:var(--navy-ink);border-color:transparent;grid-column:1/-1;min-height:0;display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center}
 .cat.pgm .ic{grid-row:1/4;margin:0;width:44px;height:44px}
 .cat.pgm b{font-size:17px}
@@ -904,8 +905,19 @@ function renderSearch(q){
   `<div class="empty">Nothing found for “${esc(q)}”. Try one simple word — e.g. <b>bus</b>, <b>refund</b>, <b>seva</b>, <b>shop</b> — or check the <a href="https://tinyurl.com/SSBFAQ" target="_blank" rel="noopener">FAQ doc</a>.</div>`}`;
 }
 
+function renderGate(){
+  app.innerHTML=`<section class="gate">
+    <p class="label">Welcome</p>
+    <div class="card">
+      <h3 style="font-family:var(--font-display);font-size:18px;margin:0 0 6px">Sign in to start</h3>
+      <p class="foot" style="margin:0 0 12px">Use the mobile number and PIN your admin gave you. You'll stay signed in on this phone, so this is a one-time step.</p>
+      <button type="button" class="save" style="position:static;margin:0;border-radius:12px;padding:13px 18px;width:100%" data-signin>Sign in</button>
+    </div>
+    <p class="foot">Trouble signing in? Ask the admin to check your row in the Users sheet.</p>
+  </section>`}
 function route(){
   const q=input.value.trim();clearBtn.hidden=!q;
+  if(LOG_URL&&!signedIn()){renderGate();qBadge();return}
   if(q){renderSearch(q);return}
   const m=location.hash.match(/^#c\/([\w-]+)(?:\/([\w-]+))?/);
   if(m)renderCat(m[1],m[2]);else renderHome();
@@ -1040,7 +1052,7 @@ function openSignIn(next){afterSignIn=next||null;$("#si-err").hidden=true;$("#si
   const s=session();if(s&&s.user)$("#si-mob").value=s.user.mobile||"";
   const d=$("#signdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
 function closeSignIn(){const d=$("#signdlg");if(d.close)d.close();else d.removeAttribute("open")}
-function signOut(){store.set("ssb-session",null);pushLogout();PEND=[];store.set("ssb-pending",[]);qBadge();toast("Signed out");route()}
+function signOut(){store.set("ssb-session",null);CONTENT=null;store.set("ssb-content",null);pushLogout();PEND=[];store.set("ssb-pending",[]);qBadge();toast("Signed out");route()}
 $("#signdlg").addEventListener("click",e=>{const b=e.target.closest("button");
   if(e.target.id==="signdlg"){closeSignIn();return}
   if(b&&b.hasAttribute("data-sclose"))closeSignIn()});
@@ -1052,7 +1064,7 @@ $("#signform").addEventListener("submit",async e=>{e.preventDefault();
   try{const r=await fetch(`${LOG_URL}?action=login&mobile=${encodeURIComponent(mob)}&pin=${encodeURIComponent(pin)}`,{cache:"no-store"});
     const j=await r.json();
     if(j&&j.ok){store.set("ssb-session",{token:j.token,user:j.user});closeSignIn();toast("Signed in as "+j.user.name);
-      loadContent();loadPending();initPush();pushIdentify();
+      loadContent();loadPending();initPush();pushIdentify();qBadge();
       const n=afterSignIn;afterSignIn=null;if(n)n();else route()}
     else{err.textContent=(j&&j.error)||"Could not sign in.";err.hidden=false}}
   catch(e){err.textContent="No internet — try again when you're online.";err.hidden=false}
@@ -1164,7 +1176,8 @@ const lg={reasons:[],outcome:"Answered",centre:""};
 function me(){return store.get("ssb-agent",{name:"",line:""})}
 function qGet(){return store.get("ssb-logq",[])}
 function qSet(q){store.set("ssb-logq",q);qBadge()}
-function qBadge(){const n=qGet().length+PEND.length,el=$("#qn");el.hidden=!n;el.textContent=n}
+function qBadge(){const n=qGet().length+PEND.length,el=$("#qn");el.hidden=!n;el.textContent=n;
+  const fb=$("#logbtn");if(fb)fb.hidden=!!(LOG_URL&&!signedIn())}
 function renderWho(){const a=me(),box=$("#lg-who");
   if(a.name&&a.line&&!lg.editWho){box.innerHTML=`<div class="who"><span><b>${esc(a.name)}</b> · ${esc(a.line)}</span><button type="button" data-editwho>Change</button></div>`;return}
   box.innerHTML=`<div class="row2"><input id="lg-name" type="text" autocomplete="name" placeholder="Your name" value="${esc(a.name)}" aria-label="Your name"><select id="lg-line" aria-label="Your line"><option value="">Your line…</option>${LINES.map(l=>`<option${l===a.line?" selected":""}>${esc(l)}</option>`).join("")}</select></div>`}
@@ -1192,7 +1205,7 @@ async function flushLog(){if(!LOG_URL||sending)return;const q=qGet();if(!q.lengt
   try{await fetch(LOG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({items:q})});
     const sent=new Set(q.map(x=>x.id));qSet(qGet().filter(x=>!sent.has(x.id)))}catch(e){}
   sending=false}
-$("#logbtn").addEventListener("click",()=>{if(!signedIn()&&LOG_URL){openSignIn(openLog);return}openLog()});
+$("#logbtn").addEventListener("click",()=>openLog());
 $("#wa-send").addEventListener("click",()=>setTimeout(closeLog,400));
 $("#shdlg").addEventListener("click",e=>{const b=e.target.closest("button");
   if(e.target.id==="shdlg"){closeShare();return}
@@ -1228,6 +1241,7 @@ $("#logform").addEventListener("submit",e=>{e.preventDefault();
 window.addEventListener("online",flushLog);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)flushLog()});
 PEND=store.get("ssb-pending",[]);bootContent();route();qBadge();flushLog();
+if(LOG_URL&&!signedIn())setTimeout(()=>openSignIn(()=>{route();loadContent();loadPending()}),350);
 if(signedIn()){loadContent();loadPending();initPush()}
 setInterval(()=>{if(!document.hidden&&signedIn()){loadPending()}},120000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&signedIn()){loadPending();loadContent()}});
