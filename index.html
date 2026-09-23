@@ -230,8 +230,34 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .crow:last-child{border-bottom:0}
 .crow small{display:block;color:var(--muted);font-size:13px}
 .crow a{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:7px 14px;font-size:14px}
+.cswitch{gap:8px}
 .whoami{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted)}
 .whoami button{border:0;background:transparent;color:var(--link);font-weight:600;cursor:pointer;font-size:14px}
+.seg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.seg button{flex:1;border:0;background:none;padding:11px 6px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink)}
+.rate{display:flex;align-items:baseline;gap:8px;margin:0 0 8px}
+.rate b{font-size:30px;font-variant-numeric:tabular-nums;line-height:1}
+.rate span{font-size:13px;color:var(--muted)}
+.track{height:10px;border-radius:999px;background:var(--sunk);overflow:hidden}
+.track i{display:block;height:100%;border-radius:999px;background:var(--ok)}
+.track i.low{background:var(--warn-bar)}
+.gt{width:100%;border-collapse:collapse;font-size:14px}
+.gt th{text-align:right;font-size:12px;color:var(--muted);font-weight:600;padding:0 0 6px}
+.gt th:first-child{text-align:left}
+.gt td{padding:9px 0;border-top:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+.gt td:first-child{text-align:left;font-weight:600}
+.gt td small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.gt .hi{color:var(--warn);font-weight:600}
+.mbars{display:flex;align-items:flex-end;gap:2px;height:110px}
+.mbars .mc{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;height:100%;min-width:0}
+.mbars i,.mbars em{display:block;border-radius:2px 2px 0 0;min-height:1px}
+.mbars i{background:var(--bar)}
+.mbars em{background:var(--warn-bar)}
+.scroller{overflow-x:auto;margin-inline:-14px;padding-inline:14px}
+.dstamp{font-size:13px;color:var(--muted);margin:0;display:flex;align-items:center;gap:8px}
+.dstamp input{border:1px solid var(--line);background:var(--surface);color:inherit;border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -866,6 +892,14 @@ const ICON={
  rep:'<path d="M3 20h18"/><rect x="5" y="11" width="3.5" height="6" rx="1"/><rect x="10.2" y="7" width="3.5" height="10" rx="1"/><rect x="15.4" y="13" width="3.5" height="4" rx="1"/>'
 };
 const icon=id=>`<span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[id]||""}</svg></span>`;
+/* Two or three centres of their own: show them as one row, so it is one tap either way. */
+function centreSwitch(){
+  if(!CENTRES.length)return "";
+  const mine=viewCentre(),L=pickList();
+  if(L.length>1&&L.length<=3)
+    return `<div class="rchips cswitch">${L.map(c=>`<button type="button" class="rchip" data-setview="${esc(c.code)}" aria-pressed="${!!mine&&mine.code===c.code}">${esc(c.name.replace(/,.*$/,""))}</button>`).join("")}</div>`;
+  return `<div class="sel"><span>${mine?`<b>${esc(mine.name)}</b>`:"No centre set"}</span>${canPickCentre()?`<button type="button" data-pickcentre>Change \u25BE</button>`:""}</div>`;
+}
 function renderHome(){
   const recent=store.get("ssb-recent",[]).map(id=>KB.find(k=>k.id===id)).filter(Boolean);
   const up=pUpcoming(),openN=up.filter(p=>!p.closed).length,nextSSB=up.find(p=>p.ssb&&!p.closed);
@@ -877,7 +911,7 @@ function renderHome(){
     :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}">${icon(c.icon||c.id)}<b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id&&k.own!==false).length} answers</i></button>`;
   app.innerHTML=`
   ${pend?`<div class="alert"><span>${pend} call${pend>1?"s":""} waiting to be logged</span><button type="button" data-cat="pending">Log ${pend>1?"them":"it"}</button></div>`:""}
-  ${CENTRES.length?`<div class="sel"><span>${mine?`<b>${esc(mine.name)}</b>`:"No centre set"}</span>${canPickCentre()?`<button type="button" data-pickcentre>Change ▾</button>`:""}</div>`:""}
+  ${centreSwitch()}
   <section><p class="label">${mine?esc(mine.name)+" — at a glance":"At a glance"}</p><div class="glance">${g.map(([k,v])=>`<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div></section>
   <section><p class="label">Topics</p><div class="cats">${CATS.map(tile).join("")}</div></section>
   ${recent.length?`<section><p class="label">Recently opened</p><div class="recent">${recent.map(r=>`<button type="button" class="chip" data-goto="${r.id}">${esc(r.q)}</button>`).join("")}</div></section>`:""}
@@ -886,7 +920,7 @@ function renderHome(){
 function renderCat(id,openId){
   if(id==="pgm"){pf.centre=(viewCentre()||{}).code||"ALL";pf.open=false;renderPrograms();return}
   if(id==="pending"){renderPending();loadPending();return}
-  if(id==="rep"){renderReports();if(signedIn()&&!repBusy)loadReport();return}
+  if(id==="rep"){renderReports();repLoad();return}
   const c=CATS.find(x=>x.id===id);if(!c){renderHome();return}
   const items=KB.filter(k=>k.cat===id);
   app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>${esc(c.name)}</h2></div>
@@ -947,7 +981,11 @@ app.addEventListener("click",e=>{
   if(b.dataset.logcall){const c=PEND.find(x=>x.sid===b.dataset.logcall);if(c){detected={sid:c.sid,caller:c.caller,at:c.at};openLog(true)}return}
   if(b.dataset.range){repRange=b.dataset.range;loadReport();return}
   if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
-  if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();loadReport()});return}
+  if(b.dataset.reptab){repTab=b.dataset.reptab;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
+  if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
+  if(b.dataset.repdate){repDate=b.dataset.repdate;loadDaily();return}
+  if(b.dataset.repmonth){repMonth=b.dataset.repmonth;loadMonthly();return}
+  if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();repLoad()});return}
   if(b.hasAttribute("data-signout")){signOut();return}
   if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.centre=v;renderPrograms();return}
   if(b.dataset.pcopy){const p=pUpcoming().find(x=>x.id===b.dataset.pcopy);if(p)copy(pText(p),"Program details copied");return}
@@ -969,11 +1007,22 @@ const GRPICON=[[/time|timing|visit/i,"visit"],[/reach|travel|direction|getting/i
 const slug=s=>norm(s).replace(/ /g,"-").slice(0,28)||"other";
 function grpIcon(name){for(const[re,k]of GRPICON)if(re.test(name))return k;return "contacts"}
 function centreByCode(c){return CENTRES.find(x=>x.code===String(c||"").toUpperCase())}
-function myCentre(){const s=signedIn();if(!s||!s.user)return CENTRES[0]||null;
-  const t=String(s.user.centre||"").trim();
-  return CENTRES.find(x=>x.code===t.toUpperCase())||CENTRES.find(x=>norm(x.name)===norm(t))||null}
-function viewCentre(){return centreByCode(VIEW)||myCentre()||CENTRES[0]||null}
-function canPickCentre(){const s=signedIn();return !!s&&(s.user.role==="admin"||s.user.role==="supervisor"||!myCentre())}
+/* "Centre / line" in the Users tab may list more than one, comma separated: SSB, JN */
+function centreTokens(){const s=signedIn();return s&&s.user?String(s.user.centre||"").split(",").map(x=>x.trim()).filter(Boolean):[]}
+function allCentres(){const t=centreTokens();return !t.length||/^all$/i.test(t[0])}
+function myCentres(){return centreTokens()
+  .map(t=>CENTRES.find(x=>x.code===t.toUpperCase())||CENTRES.find(x=>norm(x.name)===norm(t)))
+  .filter(Boolean)}
+function myCentre(){return myCentres()[0]||null}
+/* the centres this person may switch the front page to */
+function pickList(){const s=signedIn();if(!s)return CENTRES;
+  if(s.user.role==="admin"||allCentres())return CENTRES;
+  const m=myCentres();return m.length?m:CENTRES}
+function viewCentre(){const ok=pickList(),v=centreByCode(VIEW);
+  if(v&&ok.some(c=>c.code===v.code))return v;
+  return myCentre()||ok[0]||CENTRES[0]||null}
+function canPickCentre(){const s=signedIn();if(!s)return false;
+  return s.user.role==="admin"||allCentres()||pickList().length>1||!myCentre()}
 function normRow(it,code,own){
   const tb=it.table&&it.table.length>1?{head:it.table[0],rows:it.table.slice(1)}:null;
   return {id:it.id,cat:slug(it.group),grp:it.group,centre:code,own:own,q:it.q,say:it.say,body:it.body,table:tb,
@@ -1004,7 +1053,7 @@ function bootContent(){const c=store.get("ssb-content",null);
 
 
 function pickCentre(){
-  const list=CENTRES.map(c=>`<button type="button" class="rchip" data-setview="${esc(c.code)}" aria-pressed="${(viewCentre()||{}).code===c.code}">${esc(c.name)}</button>`).join("");
+  const list=pickList().map(c=>`<button type="button" class="rchip" data-setview="${esc(c.code)}" aria-pressed="${(viewCentre()||{}).code===c.code}">${esc(c.name)}</button>`).join("");
   app.insertAdjacentHTML("afterbegin",`<div class="card" id="cpick"><p class="label">Show which centre?</p><div class="rchips">${list}</div></div>`);
   const el=$("#cpick");el.scrollIntoView({block:"start"})}
 
@@ -1070,14 +1119,34 @@ $("#signform").addEventListener("submit",async e=>{e.preventDefault();
   catch(e){err.textContent="No internet — try again when you're online.";err.hidden=false}
   go.disabled=false;go.textContent="Sign in"});
 
+let repTab=store.get("ssb-reptab","daily"),repScope="",repDate="",repMonth="";
 let repRange="today",repMine=false,repData=null,repBusy=false;
+let dayData=null,dayBusy=false,monData=null,monBusy=false;
 const RANGES=[["today","Today"],["yesterday","Yesterday"],["7d","Last 7 days"],["month","This month"],["lastmonth","Last month"]];
+const DASHBOARD="https://ishakarnataka.pages.dev";
+
+function repAsk(qs){const s=signedIn();if(!s||!LOG_URL)return Promise.resolve(null);
+  return fetch(`${LOG_URL}?token=${encodeURIComponent(s.token)}&${qs}`,{cache:"no-store"}).then(r=>r.json()).catch(()=>null)}
+function repBounce(j){if(j&&j.error&&/sign in/i.test(j.error))store.set("ssb-session",null)}
+function repLoad(){const s=signedIn();if(!s)return;
+  if(s.user&&s.user.role==="agent")repTab="log";
+  if(repTab==="daily"&&!dayBusy)loadDaily();
+  else if(repTab==="monthly"&&!monBusy)loadMonthly();
+  else if(repTab==="log"&&!repBusy)loadReport()}
+
+async function loadDaily(){dayBusy=true;renderReports();
+  const j=await repAsk(`action=daily&date=${encodeURIComponent(repDate)}&scope=${encodeURIComponent(repScope||"all")}`);
+  if(j&&j.ok){dayData=j;if(j.day)repDate=j.day.date}else{dayData=null;repBounce(j)}
+  dayBusy=false;renderReports()}
+async function loadMonthly(){monBusy=true;renderReports();
+  const j=await repAsk(`action=monthly&month=${encodeURIComponent(repMonth)}&scope=${encodeURIComponent(repScope||"all")}`);
+  if(j&&j.ok){monData=j;if(j.month)repMonth=j.month.month}else{monData=null;repBounce(j)}
+  monBusy=false;renderReports()}
 async function loadReport(){const s=signedIn();if(!s||!LOG_URL)return;repBusy=true;renderReports();
-  try{const r=await fetch(`${LOG_URL}?action=report&token=${encodeURIComponent(s.token)}&range=${repRange}${repMine?"&mine=1":""}`,{cache:"no-store"});
-    const j=await r.json();
-    if(j&&j.ok)repData=j;else{repData=null;if(j&&/sign in/i.test(j.error||"")){store.set("ssb-session",null)}}}
-  catch(e){repData=null}
+  const j=await repAsk(`action=report&range=${repRange}${repMine?"&mine=1":""}`);
+  if(j&&j.ok)repData=j;else{repData=null;repBounce(j)}
   repBusy=false;renderReports()}
+
 function bars(hours){
   const from=6,to=22,slice=hours.slice(from,to+1),max=Math.max(1,...slice.map(h=>h.received));
   const col=h=>{const ok=Math.max(0,h.received-h.missed),hm=h.missed;
@@ -1091,32 +1160,119 @@ function rank(list,total){if(!list.length)return `<p class="foot">Nothing yet.</
   return `<div class="rank">${list.slice(0,10).map(x=>`<div class="r"><span>${esc(x.name)}</span><b>${x.count}</b><span class="bar"><i style="width:${x.count/max*100}%"></i></span></div>`).join("")}</div>`}
 function callRow(c,extra){const t=c.at?new Date(c.at):null;
   return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"—"))}</b><small>${t?`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`:""}${extra?" · "+esc(extra):""}</small></div>${c.caller?`<a href="tel:${esc(String(c.caller).replace(/\D/g,""))}">Call</a>`:""}</div>`}
+
+function rateCard(pct,answered,reached){
+  const low=pct<85;
+  return `<div class="card"><h3>Answer rate</h3>
+    <p class="rate"><b style="${low?"color:var(--warn)":"color:var(--ok)"}">${pct}%</b><span>${answered} answered of ${reached} that reached a phone</span></p>
+    <div class="track"><i class="${low?"low":""}" style="width:${Math.min(100,pct)}%"></i></div></div>`}
+function scopeChips(list){if(!list||!list.length)return "";
+  return `<div class="filters"><button type="button" class="fchip" data-repscope="" aria-pressed="${!repScope}">All centres</button>${list.map(c=>`<button type="button" class="fchip" data-repscope="${esc(c)}" aria-pressed="${repScope===c}">${esc(c)}</button>`).join("")}</div>`}
+function dayLabel(d){const t=new Date(d+"T00:00:00"),n=new Date();n.setHours(0,0,0,0);
+  const diff=Math.round((n-t)/864e5);
+  if(diff===0)return "Today";if(diff===1)return "Yesterday";
+  return `${DAYN[t.getDay()]} ${t.getDate()} ${MON[t.getMonth()]}`}
+function monthLabel(m){const p=m.split("-");return `${MONL[+p[1]-1]} ${p[0]}`}
+function notConnected(){return `<div class="empty">The Exotel reports aren't linked yet.<br><br>An admin needs to add <b>SUPABASE_URL</b> and <b>SUPABASE_KEY</b> in the call-log script's settings. Until then, <b>App log</b> still works.</div>`}
+
+function dailyBody(){
+  if(dayBusy&&!dayData)return `<div class="empty">Loading…</div>`;
+  if(!dayData)return `<div class="empty">Couldn't load the daily report. Check your internet and try again.</div>`;
+  if(dayData.notset)return notConnected();
+  if(dayData.blocked)return `<div class="empty">These are the centre-wide Exotel figures — supervisors and admins only. Your own calls are under <b>App log</b>.</div>`;
+  const days=dayData.days||[];
+  if(!days.length)return `<div class="empty">No days uploaded yet. Add an Exotel report on the dashboard and it will show up here.</div>`;
+  const d=dayData.day;
+  const chips=`<div class="filters">${days.slice(0,10).map(x=>`<button type="button" class="fchip" data-repdate="${x}" aria-pressed="${repDate===x}">${dayLabel(x)}</button>`).join("")}</div>`;
+  const older=days.length>10?`<p class="dstamp">Older days: <input type="date" id="repdatepick" value="${esc(repDate)}" min="${esc(days[days.length-1])}" max="${esc(days[0])}"></p>`:"";
+  if(!d)return chips+older+`<div class="empty">Nothing for that day.</div>`;
+  const reached=d.answered+d.missed;
+  return `${chips}${older}
+  <div class="kpis">
+    <div class="kpi"><b>${d.total}</b><span>Calls in</span></div>
+    <div class="kpi good"><b>${d.answered}</b><span>Answered</span></div>
+    <div class="kpi bad"><b>${d.missed}</b><span>Missed</span></div>
+    <div class="kpi"><b>${d.hangups}</b><span>Hung up in the menu</span></div>
+  </div>
+  ${rateCard(d.answerRate,d.answered,reached)}
+  ${d.groups.length?`<div class="card"><h3>By team</h3><table class="gt"><thead><tr><th>Team</th><th>Ans</th><th>Missed</th><th>Miss %</th></tr></thead><tbody>
+    ${d.groups.map(g=>`<tr><td>${esc(g.name)}</td><td>${g.answered}</td><td>${g.missed}</td><td class="${g.missRate>=20?"hi":""}">${g.missRate}%</td></tr>`).join("")}
+  </tbody></table></div>`:""}
+  <div class="card"><h3>Calls by hour</h3>${bars(d.hours)}</div>
+  ${d.loose?`<div class="card"><h3>Not attached to a team</h3><p class="foot">${d.loose} call${d.loose===1?"":"s"} on shared numbers where the caller chose nothing, or came in outside working hours.</p></div>`:""}
+  <p class="foot">Same figures as the Call Desk Daily dashboard, from the Exotel report an admin uploads. Full detail and the ring-back lists: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
+
+function monthlyBody(){
+  if(monBusy&&!monData)return `<div class="empty">Loading…</div>`;
+  if(!monData)return `<div class="empty">Couldn't load the monthly report. Check your internet and try again.</div>`;
+  if(monData.notset)return notConnected();
+  if(monData.blocked)return `<div class="empty">These are the centre-wide Exotel figures — supervisors and admins only. Your own calls are under <b>App log</b>.</div>`;
+  const months=monData.months||[];
+  if(!months.length)return `<div class="empty">No monthly report yet. An admin adds it once a month on the dashboard.</div>`;
+  const m=monData.month;
+  const chips=`<div class="filters">${months.slice(0,12).map(x=>`<button type="button" class="fchip" data-repmonth="${x}" aria-pressed="${repMonth===x}">${monthLabel(x)}</button>`).join("")}</div>`;
+  if(!m||!m.hasCalls)return chips+`<div class="empty">Nothing for that month.</div>`;
+  const s=m.stats,reached=s.c+s.m;
+  const dmax=Math.max(1,...m.days.map(x=>x.calls));
+  const dbars=`<div class="mbars" role="img" aria-label="Calls each day">${m.days.map(x=>`<div class="mc" title="${x.d} — ${x.calls} calls, ${x.missed} missed"><em style="height:${x.missed/dmax*100}%"></em><i style="height:${Math.max(0,x.calls-x.missed)/dmax*100}%"></i></div>`).join("")}</div>
+    <div class="xaxis">${m.days.map(x=>`<span>${x.d%5===0?x.d:""}</span>`).join("")}</div>`;
+  return `${chips}
+  <div class="kpis">
+    <div class="kpi"><b>${s.n}</b><span>Calls in</span></div>
+    <div class="kpi good"><b>${s.c}</b><span>Answered</span></div>
+    <div class="kpi bad"><b>${s.m}</b><span>Missed</span></div>
+    <div class="kpi"><b>${s.u}</b><span>Different callers</span></div>
+  </div>
+  ${rateCard(m.answerRate,s.c,reached)}
+  ${s.lost?`<div class="kpis"><div class="kpi bad"><b>${s.lost}</b><span>Never got through all month</span></div><div class="kpi bad"><b>${s.lost3}</b><span>Tried 3 times or more</span></div></div>`:""}
+  <div class="card"><h3>Day by day</h3><div class="legend"><span><i style="background:var(--bar)"></i>Answered</span><span><i style="background:var(--warn-bar)"></i>Missed</span></div>${dbars}</div>
+  <div class="card"><h3>Calls by hour</h3>${bars(m.hours)}</div>
+  ${m.agents.length?`<div class="card"><h3>Volunteers (${m.agents.length})</h3><table class="gt"><thead><tr><th>Name</th><th>Calls</th><th>Missed</th><th>On</th></tr></thead><tbody>
+    ${m.agents.map(a=>`<tr><td>${esc(a.name)}<small>${a.mins||0} min${a.aht?` · ${a.aht} min average`:""}</small></td><td>${a.inc||0}</td><td class="${(a.inc&&a.miss/a.inc>=.2)?"hi":""}">${a.miss||0}</td><td>${a.on||0}%</td></tr>`).join("")}
+  </tbody></table></div>`:""}
+  <p class="foot">From the monthly Exotel reports an admin uploads. Full detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
+
+function logBody(u){
+  if(repBusy&&!repData)return `<div class="empty">Loading…</div>`;
+  if(!repData)return `<div class="empty">Couldn't load the app log. Check your internet and try again.</div>`;
+  const k=repData.kpi;
+  return `<div class="filters">${RANGES.map(([k2,l])=>`<button type="button" class="fchip" data-range="${k2}" aria-pressed="${repRange===k2}">${l}</button>`).join("")}${u.role!=="agent"?`<button type="button" class="fchip" data-repmine aria-pressed="${repMine}">My calls only</button>`:""}</div>
+  <div class="kpis">
+    <div class="kpi"><b>${k.received}</b><span>Calls to this app</span></div>
+    <div class="kpi"><b>${k.logged}</b><span>Logged</span></div>
+    <div class="kpi bad"><b>${k.missed}</b><span>Missed</span></div>
+    ${k.spam?`<div class="kpi"><b>${k.spam}</b><span>Spam / wrong number</span></div>`:""}
+    ${k.followups?`<div class="kpi"><b>${k.followups}</b><span>Follow-ups</span></div>`:""}
+  </div>
+  <div class="card"><h3>Why people called <span class="cbadge">a call can have more than one</span></h3>${rank(repData.reasons)}</div>
+  ${repData.agents.length?`<div class="card"><h3>By agent</h3>${rank(repData.agents)}</div>`:""}
+  ${repData.centres.length>1?`<div class="card"><h3>By centre / line</h3>${rank(repData.centres)}</div>`:""}
+  <div class="card"><h3>Calls by hour</h3>${bars(repData.hours)}</div>
+  ${repData.missedVisible===false?"":`<div class="card"><h3>Missed calls to ring back (${repData.missedList.length})</h3>${repData.missedList.length?`<div class="clist">${repData.missedList.map(c=>callRow(c)).join("")}</div>`:`<p class="foot">None — every call was answered.</p>`}</div>`}
+  <div class="card"><h3>Open follow-ups (${repData.followList.length})</h3>${repData.followList.length?`<div class="clist">${repData.followList.map(c=>callRow(c,[c.reason,c.note,c.agent].filter(Boolean).join(" · "))).join("")}</div>`:`<p class="foot">No follow-ups pending.</p>`}</div>
+  <p class="foot">${u.role==="agent"?"Your own calls, as you logged them. Calls nobody answered are chased by your supervisor.":"What agents logged in the app, plus the calls Exotel sent to their phones. The Daily and Monthly tabs are the full Exotel picture."}</p>`}
+
 function renderReports(){
   const s=signedIn();
   if(!s){app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
     <div class="empty">Sign in to see call reports.<br><br><button type="button" class="save" style="position:static;margin:0;border-radius:12px;padding:12px 18px" data-signin>Sign in</button></div>`;return}
-  const u=(repData&&repData.user)||s.user,k=repData?repData.kpi:null;
-  const roleLine=u.role==="admin"?"All centres":u.role==="supervisor"?("Centre: "+(u.centre||"—")):"Your own calls";
+  const u=(repData&&repData.user)||s.user;
+  const full=u.role!=="agent";
+  if(!full)repTab="log";
+  const roleLine=repTab==="log"?(u.role==="admin"?"All centres":u.role==="supervisor"?("Centre: "+(u.centre||"—")):"Your own calls")
+    :(u.role==="admin"?(repScope?("Centre: "+repScope):"All centres"):("Centre: "+(u.centre||"—")));
+  const scopes=(repTab==="daily"?(dayData&&dayData.scopes):repTab==="monthly"?(monData&&monData.scopes):null)||[];
   app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
   <div class="whoami"><span>${esc(u.name)} · ${esc(roleLine)}</span><button type="button" data-signout>Sign out</button></div>
-  <div class="filters">${RANGES.map(([k2,l])=>`<button type="button" class="fchip" data-range="${k2}" aria-pressed="${repRange===k2}">${l}</button>`).join("")}${u.role!=="agent"?`<button type="button" class="fchip" data-repmine aria-pressed="${repMine}">My calls only</button>`:""}</div>
-  ${repBusy?`<div class="empty">Loading…</div>`:!repData?`<div class="empty">Couldn't load reports. Check your internet and try again.</div>`:`
-  <div class="kpis">
-    <div class="kpi"><b>${k.received}</b><span>Calls received</span></div>
-    <div class="kpi good"><b>${k.answered}</b><span>Answered</span></div>
-    <div class="kpi bad"><b>${k.missed}</b><span>Missed</span></div>
-    <div class="kpi"><b>${k.logged}</b><span>Logged in app</span></div>
-    ${k.spam?`<div class="kpi"><b>${k.spam}</b><span>Spam / wrong number</span></div>`:""}
-    ${k.followups?`<div class="kpi"><b>${k.followups}</b><span>Follow-ups</span></div>`:""}
-  </div>
-  <div class="card"><h3>Calls by hour</h3>${bars(repData.hours)}</div>
-  ${repData.days.length>1?`<div class="card"><h3>Day by day</h3><div class="clist">${repData.days.slice(-31).reverse().map(d=>{const dt=new Date(d.d+"T00:00:00");return `<div class="crow"><div><b>${DAYN[dt.getDay()]} ${dt.getDate()} ${MON[dt.getMonth()]}</b><small>${d.logged} logged</small></div><div style="text-align:right"><b>${d.received}</b><small>${d.missed} missed</small></div></div>`}).join("")}</div></div>`:""}
-  <div class="card"><h3>Reason mentions <span class="cbadge">a call can have more than one</span></h3>${rank(repData.reasons)}</div>
-  ${repData.agents.length?`<div class="card"><h3>By agent</h3>${rank(repData.agents)}</div>`:""}
-  ${repData.centres.length>1?`<div class="card"><h3>By centre / line</h3>${rank(repData.centres)}</div>`:""}
-  ${repData.numbersVisible===false?`<div class="card"><h3>Missed calls</h3><p class="foot">${repData.kpi.missed} missed in this period. Caller numbers aren't shown for supervisors — ask the admin for the ring-back list.</p></div>`:`<div class="card"><h3>Missed calls to ring back (${repData.missedList.length})</h3>${repData.missedList.length?`<div class="clist">${repData.missedList.map(c=>callRow(c)).join("")}</div>`:`<p class="foot">None — every call was answered.</p>`}</div>`}
-  <div class="card"><h3>Open follow-ups (${repData.followList.length})</h3>${repData.followList.length?`<div class="clist">${repData.followList.map(c=>callRow(c,[c.reason,c.note,c.agent].filter(Boolean).join(" · "))).join("")}</div>`:`<p class="foot">No follow-ups pending.</p>`}</div>
-  <p class="foot">Missed calls come from Exotel; logged calls come from the app. Numbers update as calls come in.</p>`}`}
+  ${full?`<div class="seg">
+    <button type="button" data-reptab="daily" aria-pressed="${repTab==="daily"}">Daily</button>
+    <button type="button" data-reptab="monthly" aria-pressed="${repTab==="monthly"}">Monthly</button>
+    <button type="button" data-reptab="log" aria-pressed="${repTab==="log"}">App log</button>
+  </div>`:""}
+  ${repTab!=="log"?scopeChips(scopes):""}
+  ${repTab==="daily"?dailyBody():repTab==="monthly"?monthlyBody():logBody(u)}`;
+  const pick=$("#repdatepick");
+  if(pick)pick.addEventListener("change",()=>{if(pick.value){repDate=pick.value;loadDaily()}})}
 
 
 /* ============ SHARE WITH THE CALLER ============ */
@@ -1218,7 +1374,7 @@ $("#logdlg").addEventListener("click",e=>{
   const b=e.target.closest("button");if(e.target.id==="logdlg"){closeLog();return}if(!b)return;
   if(b.hasAttribute("data-close")){closeLog();return}
   if(b.hasAttribute("data-editwho")){lg.editWho=true;renderWho();return}
-  if(b.hasAttribute("data-lgcentre")){const i=CENTRES.findIndex(c=>c.code===lg.centre);lg.centre=CENTRES[(i+1)%CENTRES.length].code;renderCentreLine();return}
+  if(b.hasAttribute("data-lgcentre")){const L=pickList();if(L.length){const i=L.findIndex(c=>c.code===lg.centre);lg.centre=L[(i+1)%L.length].code}renderCentreLine();return}
   if(b.dataset.reason){const r=b.dataset.reason,i=lg.reasons.indexOf(r);
     if(i>=0)lg.reasons.splice(i,1);
     else if(r===SPAM)lg.reasons=[SPAM];
