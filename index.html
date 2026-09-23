@@ -231,6 +231,10 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .crow small{display:block;color:var(--muted);font-size:13px}
 .crow a{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:7px 14px;font-size:14px}
 .cswitch{gap:8px}
+.shsug{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;width:100%;margin-top:8px;text-align:left;border:1px dashed var(--line);background:var(--sunk);color:inherit;border-radius:12px;padding:9px 12px;font:inherit;cursor:pointer}
+.shsug span{grid-column:1;font-size:12.5px;color:var(--muted)}
+.shsug b{grid-column:1;font-size:16px;font-variant-numeric:tabular-nums}
+.shsug i{grid-column:2;grid-row:1/3;font-style:normal;font-weight:600;color:var(--link)}
 .whoami{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted)}
 .whoami button{border:0;background:transparent;color:var(--link);font-weight:600;cursor:pointer;font-size:14px}
 .seg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
@@ -1364,8 +1368,16 @@ function renderReports(){
 
 /* ============ SHARE WITH THE CALLER ============ */
 let shareTarget=null;
-function shareNumber(){if(detected&&detected.caller)return digits10(detected.caller);
-  const p=PEND[0];return p&&p.caller?digits10(p.caller):""}
+/* With one Passthru (after the call), Exotel only tells us about calls that have ended.
+   So nothing is filled in by itself: mid-call, the last ended call may be the previous caller.
+   The most recent ended call is offered as a suggestion the volunteer taps. */
+function shareSuggest(){const c=[];
+  if(detected&&detected.caller)c.push({caller:detected.caller,at:detected.at});
+  (PEND||[]).forEach(p=>{if(p&&p.caller)c.push({caller:p.caller,at:p.at})});
+  const fresh=c.filter(x=>x.at&&Date.now()-new Date(x.at).getTime()<30*60e3)
+    .sort((a,b)=>new Date(b.at)-new Date(a.at))[0];
+  return fresh?{to:digits10(fresh.caller),at:fresh.at}:null}
+function agoText(at){const m=Math.max(0,Math.round((Date.now()-new Date(at).getTime())/60e3));return m<1?"just now":m===1?"1 min ago":m+" min ago"}
 function digits10(v){const d=String(v||"").replace(/\D/g,"");return d.length>10?d.slice(-10):d}
 function shareTextFor(kind,data){
   const c=viewCentre(),sign=`\n— Isha Yoga support${c?", "+c.name.replace(/,.*$/,""):""}${c&&c.phone?"\n"+fmtNum(c.phone):""}`;
@@ -1377,10 +1389,11 @@ function shareTextFor(kind,data){
   const p=data;
   return ["Namaskaram 🙏","Here are the program details:","",pName(p),`${pDate(p)} · ${pTime(p)}`,pWhere(p),pFee(p)?"Fee "+pFee(p):"",
     p.closed?"Registration is closed for this batch.":("Register: "+(p.url||pPage(p)))].filter(Boolean).join("\n")+sign}
-function openShare(kind,data){shareTarget={text:shareTextFor(kind,data),to:shareNumber()};renderShare()}
+function openShare(kind,data){shareTarget={text:shareTextFor(kind,data),to:"",suggest:shareSuggest()};renderShare()}
 function renderShare(){const t=shareTarget;if(!t)return;
   $("#sh-to").innerHTML=t.to?`<div class="sel"><span>To <b>${esc(fmtNum(t.to))}</b></span><button type="button" data-shedit>Change</button></div>`
-    :`<div class="numrow"><input id="sh-num" type="tel" inputmode="tel" placeholder="Caller's number" aria-label="Caller's number"><button type="button" class="setnum" data-shset>Use</button></div>`;
+    :`<div class="numrow"><input id="sh-num" type="tel" inputmode="tel" placeholder="Caller's number" aria-label="Caller's number"><button type="button" class="setnum" data-shset>Use</button></div>
+      ${t.suggest?`<button type="button" class="shsug" data-shuse><span>Your last call · ended ${esc(agoText(t.suggest.at))}</span><b>${esc(fmtNum(t.suggest.to))}</b><i>Use</i></button>`:""}`;
   $("#sh-text").textContent=t.text;
   const link=t.to?`https://wa.me/91${t.to}?text=${encodeURIComponent(t.text)}`:`https://wa.me/?text=${encodeURIComponent(t.text)}`;
   $("#sh-wa").href=link;
@@ -1455,6 +1468,7 @@ $("#shdlg").addEventListener("click",e=>{const b=e.target.closest("button");
   if(!b)return;
   if(b.hasAttribute("data-shclose")){closeShare();return}
   if(b.hasAttribute("data-shedit")){shareTarget.to="";renderShare();return}
+  if(b.hasAttribute("data-shuse")){if(shareTarget.suggest){shareTarget.to=shareTarget.suggest.to;renderShare()}return}
   if(b.hasAttribute("data-shset")){const v=digits10($("#sh-num").value);if(v.length>=10){shareTarget.to=v;renderShare()}return}});
 $("#sh-wa").addEventListener("click",()=>setTimeout(closeShare,400));
 $("#logdlg").addEventListener("click",e=>{
