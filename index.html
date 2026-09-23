@@ -1136,11 +1136,11 @@ function repLoad(){const s=signedIn();if(!s)return;
 
 async function loadDaily(){dayBusy=true;renderReports();
   const j=await repAsk(`action=daily&date=${encodeURIComponent(repDate)}&scope=${encodeURIComponent(repScope||"all")}`);
-  if(j&&j.ok){dayData=j;if(j.day)repDate=j.day.date}else{dayData=null;repBounce(j)}
+  if(j&&j.ok){dayData=j;if(j.day)repDate=j.day.date}else{dayData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
   dayBusy=false;renderReports()}
 async function loadMonthly(){monBusy=true;renderReports();
   const j=await repAsk(`action=monthly&month=${encodeURIComponent(repMonth)}&scope=${encodeURIComponent(repScope||"all")}`);
-  if(j&&j.ok){monData=j;if(j.month)repMonth=j.month.month}else{monData=null;repBounce(j)}
+  if(j&&j.ok){monData=j;if(j.month)repMonth=j.month.month}else{monData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
   monBusy=false;renderReports()}
 async function loadReport(){const s=signedIn();if(!s||!LOG_URL)return;repBusy=true;renderReports();
   const j=await repAsk(`action=report&range=${repRange}${repMine?"&mine=1":""}`);
@@ -1173,11 +1173,14 @@ function dayLabel(d){const t=new Date(d+"T00:00:00"),n=new Date();n.setHours(0,0
   if(diff===0)return "Today";if(diff===1)return "Yesterday";
   return `${DAYN[t.getDay()]} ${t.getDate()} ${MON[t.getMonth()]}`}
 function monthLabel(m){const p=m.split("-");return `${MONL[+p[1]-1]} ${p[0]}`}
+function failCard(msg){const m=String(msg).replace(/^Error:\s*/,"");
+  return `<div class="empty"><b>The reports didn't load.</b><br><br>${esc(m)}<br><br><span class="foot">Admin: open the call-log script and run <b>testSupabase</b> — it says exactly what's wrong.</span></div>`}
 function notConnected(){return `<div class="empty">The Exotel reports aren't linked yet.<br><br>An admin needs to add <b>SUPABASE_URL</b> and <b>SUPABASE_KEY</b> in the call-log script's settings. Until then, <b>App log</b> still works.</div>`}
 
 function dailyBody(){
   if(dayBusy&&!dayData)return `<div class="empty">Loading…</div>`;
-  if(!dayData)return `<div class="empty">Couldn't load the daily report. Check your internet and try again.</div>`;
+  if(dayData&&dayData.failed)return failCard(dayData.failed);
+  if(!dayData)return `<div class="empty">Couldn't reach the server. Check your internet and try again.</div>`;
   if(dayData.notset)return notConnected();
   if(dayData.blocked)return `<div class="empty">These are the centre-wide Exotel figures — supervisors and admins only. Your own calls are under <b>App log</b>.</div>`;
   const days=dayData.days||[];
@@ -1204,7 +1207,8 @@ function dailyBody(){
 
 function monthlyBody(){
   if(monBusy&&!monData)return `<div class="empty">Loading…</div>`;
-  if(!monData)return `<div class="empty">Couldn't load the monthly report. Check your internet and try again.</div>`;
+  if(monData&&monData.failed)return failCard(monData.failed);
+  if(!monData)return `<div class="empty">Couldn't reach the server. Check your internet and try again.</div>`;
   if(monData.notset)return notConnected();
   if(monData.blocked)return `<div class="empty">These are the centre-wide Exotel figures — supervisors and admins only. Your own calls are under <b>App log</b>.</div>`;
   const months=monData.months||[];
