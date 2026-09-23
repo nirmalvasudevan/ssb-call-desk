@@ -256,6 +256,31 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .mbars i{background:var(--bar)}
 .mbars em{background:var(--warn-bar)}
 .scroller{overflow-x:auto;margin-inline:-14px;padding-inline:14px}
+.tgh{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 8px}
+.tgh:first-of-type{margin-top:0}
+.tboxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tbox{border:1px solid var(--line);border-radius:12px;padding:11px 12px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+.tbox .tn{font-size:14px;line-height:1.3}
+.tbox .tr{display:flex;align-items:baseline;gap:6px}
+.tbox .tv{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.tbox .tl{font-size:12px;color:var(--muted)}
+.tbox .track{height:7px}
+.tstats{display:flex;flex-direction:column;gap:1px;font-size:12.5px;color:var(--muted)}
+.tstats b{color:var(--ink);font-variant-numeric:tabular-nums}
+.tstats .hi b{color:var(--warn)}
+.cbhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.cbhead h3{margin:0}
+.cbcopy{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--link);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cbgrid{display:flex;flex-direction:column;gap:12px}
+.cb{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cbh{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--sunk)}
+.cbh b{flex:1;min-width:0;font-size:14px}
+.cb ul,.cbplain{list-style:none;margin:0;padding:0 12px}
+.cb li,.cbplain li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.cb li:last-child,.cbplain li:last-child{border-bottom:0}
+.cb li small,.cbplain li small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35}
+.tel{color:var(--ink);font-weight:600;text-decoration:none;font-variant-numeric:tabular-nums}
+.callnow{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:6px 13px;font-size:13.5px}
 .dstamp{font-size:13px;color:var(--muted);margin:0;display:flex;align-items:center;gap:8px}
 .dstamp input{border:1px solid var(--line);background:var(--surface);color:inherit;border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -983,7 +1008,9 @@ app.addEventListener("click",e=>{
   if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
   if(b.dataset.reptab){repTab=b.dataset.reptab;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
   if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
-  if(b.dataset.repdate){repDate=b.dataset.repdate;loadDaily();return}
+  if(b.dataset.repdate){repDate=b.dataset.repdate;cbTeam="all";loadDaily();return}
+  if(b.dataset.cbteam){cbTeam=b.dataset.cbteam;renderReports();return}
+  if(b.dataset.cbcopy){const t=cbCopyText(b.dataset.cbcopy);if(t)copy(t,"Copied — paste it into WhatsApp");return}
   if(b.dataset.repmonth){repMonth=b.dataset.repmonth;loadMonthly();return}
   if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();repLoad()});return}
   if(b.hasAttribute("data-signout")){signOut();return}
@@ -1177,6 +1204,63 @@ function failCard(msg){const m=String(msg).replace(/^Error:\s*/,"");
   return `<div class="empty"><b>The reports didn't load.</b><br><br>${esc(m)}<br><br><span class="foot">Admin: open the call-log script and run <b>testSupabase</b> — it says exactly what's wrong.</span></div>`}
 function notConnected(){return `<div class="empty">The Exotel reports aren't linked yet.<br><br>An admin needs to add <b>SUPABASE_URL</b> and <b>SUPABASE_KEY</b> in the call-log script's settings. Until then, <b>App log</b> still works.</div>`}
 
+/* ---- team boxes: one per Exotel group, grouped under their centre (JN = Program queries + Isha Life) ---- */
+function teamBoxes(groups){
+  if(!groups||!groups.length)return "";
+  const by={};groups.forEach(g=>{const c=g.centre||"Other";(by[c]=by[c]||[]).push(g)});
+  const cs=Object.keys(by);
+  return `<div class="card"><h3>By team</h3>${cs.map(c=>`${cs.length>1||by[c].length>1?`<p class="tgh">${esc(centreLabel(c))}</p>`:""}<div class="tboxes">${by[c].map(teamBox).join("")}</div>`).join("")}</div>`}
+function teamBox(g){const low=g.reached&&g.rate<85;
+  return `<div class="tbox"><b class="tn">${esc(g.name)}</b>
+    <div class="tr"><span class="tv" style="color:${g.reached?(low?"var(--warn)":"var(--ok)"):"var(--muted)"}">${g.reached?g.rate+"%":"—"}</span><span class="tl">answered</span></div>
+    <div class="track"><i class="${low?"low":""}" style="width:${g.reached?Math.min(100,g.rate):0}%"></i></div>
+    <div class="tstats"><span><b>${g.answered}</b> answered</span><span class="${g.missed?"hi":""}"><b>${g.missed}</b> missed</span><span><b>${g.hangups}</b> hung up in menu</span></div></div>`}
+function centreLabel(code){const c=(typeof centreByCode==="function")&&centreByCode(code);return c?c.name.replace(/,.*$/,"")+" ("+code+")":code}
+
+/* ---- callers to ring back, the same list and rules as the Call Desk Daily dashboard ---- */
+let cbTeam="all";
+function tenDigits(n){const d=String(n||"").replace(/\D/g,"");return d.length>10?d.slice(-10):d}
+function cbMeta(f){const m=["last "+f.last],why=[];
+  if(f.missed)why.push("missed"+(f.missed>1?" "+f.missed+"×":""));
+  if(f.hung)why.push("hung up in IVR"+(f.hung>1?" "+f.hung+"×":""));
+  if(why.length)m.push(why.join(" + "));
+  if(f.elsewhere)m.push("reached "+f.elsewhere+" instead");
+  if(f.opt)m.push("option "+f.opt);
+  if(f.agent)m.push("rang "+f.agent);
+  return m.join(" · ")}
+function cbRow(f){const d=tenDigits(f.num);
+  return `<li><div><a class="tel" href="tel:${esc(d)}">${esc(d.length===10?d.slice(0,5)+" "+d.slice(5):f.num)}</a><small>${esc(cbMeta(f))}</small></div><a class="callnow" href="tel:${esc(d)}">Call</a></li>`}
+function callbackSection(d){
+  if(!d.detail)return `<div class="card"><h3>Missed callers to call back</h3><p class="foot">Phone numbers are kept for the latest 60 days; this day shows totals only.</p></div>`;
+  const L=d.callbacks||[],O=d.outOfHours||[];
+  const teams={};L.forEach(f=>{(teams[f.team]=teams[f.team]||{name:f.name,rows:[]}).rows.push(f)});
+  const keys=Object.keys(teams);
+  if(cbTeam!=="all"&&!teams[cbTeam])cbTeam="all";
+  const K=d.cbSkip||{},sk=[];
+  if(K.sameDay)sk.push(K.sameDay+" who got through later that day");
+  if(K.laterDay)sk.push(K.laterDay+" who got through on a later day");
+  if(K.talked)sk.push(K.talked+" who spoke to an agent for 10s or more");
+  if(K.short)sk.push(K.short+" who hung up within 5 seconds");
+  let h=`<div class="card"><div class="cbhead"><h3>Missed callers to call back <span class="cbadge">${L.length}</span></h3>${L.length?`<button type="button" class="cbcopy" data-cbcopy="all">Copy all</button>`:""}</div>
+    <p class="foot" style="margin:0 0 10px">Missed calls and IVR hang-ups, 9am–9pm, from callers who never got through.${sk.length?" Left off: "+esc(sk.join(" · "))+".":""}</p>`;
+  if(!L.length)h+=`<p class="foot">${d.missed?"Every missed caller got through later. Nothing to chase.":"No missed calls this day."}</p>`;
+  else{
+    if(keys.length>1)h+=`<div class="filters" style="margin-bottom:12px"><button type="button" class="fchip" data-cbteam="all" aria-pressed="${cbTeam==="all"}">All · ${L.length}</button>${keys.map(k=>`<button type="button" class="fchip" data-cbteam="${esc(k)}" aria-pressed="${cbTeam===k}">${esc(teams[k].name)} · ${teams[k].rows.length}</button>`).join("")}</div>`;
+    h+=`<div class="cbgrid">${keys.filter(k=>cbTeam==="all"||cbTeam===k).map(k=>`<article class="cb"><div class="cbh"><b>${esc(teams[k].name)}</b><span class="cbadge">${teams[k].rows.length}</span><button type="button" class="cbcopy" data-cbcopy="${esc(k)}">Copy list</button></div><ul>${teams[k].rows.map(cbRow).join("")}</ul></article>`).join("")}</div>`}
+  h+=`</div>`;
+  if(O.length)h+=`<div class="card"><div class="cbhead"><h3>Outside working hours <span class="cbadge">${O.length}</span></h3><button type="button" class="cbcopy" data-cbcopy="_ooh">Copy numbers</button></div>
+    <p class="foot" style="margin:0 0 10px">Called before 9am or after 9pm and never got through that day.</p>
+    <ul class="cbplain">${O.map(o=>cbRow({num:o.num,last:o.first,missed:0,hung:0})).join("")}</ul></div>`;
+  return h}
+function cbCopyText(which){const d=dayData&&dayData.day;if(!d)return "";
+  const when=dayLabel(d.date)+" ("+d.date+")";
+  if(which==="_ooh")return "Out-of-hours callers to call back — "+when+"\n"+(d.outOfHours||[]).map(o=>o.num+"  (called "+o.first+")").join("\n");
+  const rows=(d.callbacks||[]).filter(f=>which==="all"||f.team===which);
+  const line=f=>f.num+"  (last "+f.last+(f.attempts>1?", tried "+f.attempts+"x":"")+")";
+  if(which!=="all")return "Callbacks — "+rows[0].name+" — "+when+"\n"+rows.map(line).join("\n");
+  const by={};rows.forEach(f=>{(by[f.name]=by[f.name]||[]).push(f)});
+  return "Callbacks — "+when+"\n"+Object.keys(by).map(n=>"\n"+n+"\n"+by[n].map(line).join("\n")).join("\n")}
+
 function dailyBody(){
   if(dayBusy&&!dayData)return `<div class="empty">Loading…</div>`;
   if(dayData&&dayData.failed)return failCard(dayData.failed);
@@ -1198,12 +1282,11 @@ function dailyBody(){
     <div class="kpi"><b>${d.hangups}</b><span>Hung up in the menu</span></div>
   </div>
   ${rateCard(d.answerRate,d.answered,reached)}
-  ${d.groups.length?`<div class="card"><h3>By team</h3><table class="gt"><thead><tr><th>Team</th><th>Ans</th><th>Missed</th><th>Miss %</th></tr></thead><tbody>
-    ${d.groups.map(g=>`<tr><td>${esc(g.name)}</td><td>${g.answered}</td><td>${g.missed}</td><td class="${g.missRate>=20?"hi":""}">${g.missRate}%</td></tr>`).join("")}
-  </tbody></table></div>`:""}
+  ${teamBoxes(d.groups)}
+  ${callbackSection(d)}
   <div class="card"><h3>Calls by hour</h3>${bars(d.hours)}</div>
   ${d.loose?`<div class="card"><h3>Not attached to a team</h3><p class="foot">${d.loose} call${d.loose===1?"":"s"} on shared numbers where the caller chose nothing, or came in outside working hours.</p></div>`:""}
-  <p class="foot">Same figures as the Call Desk Daily dashboard, from the Exotel report an admin uploads. Full detail and the ring-back lists: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
+  <p class="foot">Same figures and the same call-back rules as the Call Desk Daily dashboard, from the Exotel report an admin uploads. Uploads and call-by-call detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
 
 function monthlyBody(){
   if(monBusy&&!monData)return `<div class="empty">Loading…</div>`;

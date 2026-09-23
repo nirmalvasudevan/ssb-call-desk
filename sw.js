@@ -1,5 +1,5 @@
 // Offline support: serve the last good copy when the network is weak.
-const CACHE = "ssb-desk-v16";
+const CACHE = "ssb-desk-v17";
 const CORE = ["./", "./index.html", "./programs.json", "./manifest.webmanifest", "./icon-v4-192.png", "./icon-v4-512.png", "./logo-v3.jpg"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
