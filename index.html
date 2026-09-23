@@ -7,9 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SSB Desk">
-<link rel="manifest" href="manifest.webmanifest?v=3">
-<link rel="icon" href="icon-v3-192.png">
-<link rel="apple-touch-icon" href="icon-v3-192.png">
+<link rel="manifest" href="manifest.webmanifest?v=4">
+<link rel="icon" href="icon-v4-192.png">
+<link rel="apple-touch-icon" href="icon-v4-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600&family=Martel:wght@700;800&display=swap">
@@ -17,7 +17,7 @@
 :root{
   --ground:#F3F4F9; --surface:#FFFFFF; --sunk:#EAECF4; --ink:#141B33; --muted:#5A6280; --line:#DDE1EC;
   --navy:#13236B; --navy-ink:#FFFFFF; --link:#1E3AA8; --saffron:#C9660E; --saffron-soft:#FCEBD9;
-  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6; --icon:#1E3AA8; --saffron-btn:#C25F0C;
+  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6; --icon:#1E3AA8; --saffron-btn:#C25F0C; --bar:#2C4BB8; --warn-bar:#D9731C;
   --font-body:"Hind",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --font-display:"Martel",Georgia,"Times New Roman",serif;
 }
@@ -25,13 +25,13 @@
   :root:not([data-theme="light"]){
     --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
     --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F;
+    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
   --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F;
+  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -122,6 +122,8 @@ table.nw td{white-space:nowrap}
 .act a b{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .act a span{color:var(--link);font-weight:600;overflow-wrap:anywhere}
 .act button{border:0;border-left:1px solid var(--line);background:var(--sunk);padding:0 14px;cursor:pointer;font-size:14px;font-weight:600}
+.acts2{display:flex;gap:8px;flex-wrap:wrap}
+.copyall.share{border-color:#1FA855;color:#1FA855}
 .copyall{align-self:flex-start;border:1px solid var(--line);background:transparent;border-radius:10px;padding:7px 12px;cursor:pointer;font-size:14px;font-weight:600}
 mark{background:var(--hl);color:inherit;border-radius:3px;padding:0 1px}
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:18px;color:var(--muted)}
@@ -168,8 +170,18 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .fu{display:flex;flex-direction:column;gap:12px}
 .req{color:#D93025;font-size:15px;letter-spacing:0}
 .lg input.bad{border-color:#D93025;box-shadow:0 0 0 1px #D93025}
+#lg-noteopt{text-transform:none;letter-spacing:0;font-weight:400}
 .lbl small{text-transform:none;letter-spacing:0;font-weight:400}
 .who{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sunk);border-radius:12px;padding:10px 12px;font-size:15px}
+.alert{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14.5px;font-weight:600}
+.alert button{border:0;background:var(--warn);color:#fff;border-radius:9px;padding:7px 12px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.sel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sel button{border:0;background:transparent;color:var(--link);font-weight:600;font:inherit;font-size:14px;cursor:pointer}
+.cbadge{font-size:11px;font-weight:600;border-radius:999px;padding:1px 7px;background:var(--sunk);color:var(--muted);margin-left:6px}
+.numrow{display:grid;grid-template-columns:1fr auto;gap:8px}
+.hintline{margin:0;font-size:13px;color:var(--muted)}
+.setnum{border:0;border-radius:10px;background:var(--navy);color:var(--navy-ink);font-weight:600;padding:0 16px;cursor:pointer}
+.det{background:var(--ok-bg);color:var(--ok)}
 .who button{border:0;background:transparent;color:var(--link);font-weight:600;font-size:14px;cursor:pointer}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .lg input,.lg select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
@@ -186,15 +198,46 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .sent-p{margin:0;color:var(--muted);font-size:15px}
 .wa-preview{margin:0;white-space:pre-wrap;font:inherit;font-size:14.5px;background:var(--sunk);border-radius:12px;padding:12px}
 .wa{display:flex;align-items:center;justify-content:center;gap:8px;background:#1FA855;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-radius:12px;padding:14px}
-.skip{border:0;background:transparent;color:var(--muted);font-size:15px;padding:8px;cursor:pointer}
+.skip{border:0;background:transparent;color:var(--muted);font-size:15px;padding:8px 8px calc(14px + env(safe-area-inset-bottom,0px));cursor:pointer;display:block}
 .save{position:sticky;bottom:0;margin:0 -16px;border-radius:0;box-shadow:0 -6px 14px -8px rgba(0,0,0,.3);padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;border:0;background:var(--saffron-btn);color:#fff;font-weight:600;font-size:17px;padding:14px;cursor:pointer}
+
+/* ---- reports ---- */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.kpi b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi span{font-size:13px;color:var(--muted)}
+.kpi.bad b{color:var(--warn)}
+.kpi.good b{color:var(--ok)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card h3{font-family:var(--font-display);font-size:16px;margin:0 0 10px}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--muted);margin:0 0 10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:baseline}
+.chart{display:flex;align-items:flex-end;gap:3px;height:130px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;height:100%}
+.col .b1,.col .b2{border-radius:4px 4px 0 0;min-height:2px}
+.col .b1{background:var(--bar)}
+.col .b2{background:var(--warn-bar);border-radius:4px 4px 0 0}
+.xaxis{display:flex;gap:3px;margin-top:6px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.xaxis span{flex:1;text-align:center}
+.rank{display:flex;flex-direction:column;gap:8px}
+.rank .r{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;font-size:15px}
+.rank .bar{grid-column:1/-1;height:8px;border-radius:999px;background:var(--sunk);overflow:hidden}
+.rank .bar i{display:block;height:100%;background:var(--bar);border-radius:999px}
+.rank b{font-variant-numeric:tabular-nums}
+.clist{display:flex;flex-direction:column;gap:0}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.crow:last-child{border-bottom:0}
+.crow small{display:block;color:var(--muted);font-size:13px}
+.crow a{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:7px 14px;font-size:14px}
+.whoami{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted)}
+.whoami button{border:0;background:transparent;color:var(--link);font-weight:600;cursor:pointer;font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <header class="top">
   <div class="top-inner">
     <div class="brand">
-      <img class="logo" src="logo-v2.jpg" alt=""><div class="bt"><h1>SSB Call Desk</h1><p class="sub">Sadhguru Sannidhi Bengaluru</p></div>
+      <img class="logo" src="logo-v3.jpg" alt=""><div class="bt"><h1>SSB Call Desk</h1><p class="sub">Sadhguru Sannidhi Bengaluru</p></div>
       <a class="call" href="tel:08047103311" aria-label="Call main line 080-4710 3311"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="cn">080-4710 3311</span><span class="cs">Call</span></a>
     </div>
   </div>
@@ -209,9 +252,33 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 <main class="wrap" id="app"></main>
 <div class="toast" id="toast" hidden></div>
 <button type="button" class="logbtn" id="logbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Log call<span class="q-n" id="qn" hidden></span></button>
+<dialog class="logdlg" id="shdlg" aria-labelledby="sh-title">
+  <div class="lg">
+    <div class="lg-head"><h2 id="sh-title">Share with the caller</h2><button type="button" class="x" data-shclose aria-label="Close">✕</button></div>
+    <div id="sh-to"></div>
+    <p class="lbl">Message</p>
+    <pre class="wa-preview" id="sh-text"></pre>
+    <a class="wa" id="sh-wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+    <a class="skip" id="sh-sms" href="#" style="text-align:center;text-decoration:none">Send as SMS instead</a>
+  </div>
+</dialog>
+<dialog class="logdlg" id="signdlg" aria-labelledby="si-title">
+  <form class="lg" id="signform" novalidate>
+    <div class="lg-head"><h2 id="si-title">Sign in</h2><button type="button" class="x" data-sclose aria-label="Close">✕</button></div>
+    <p class="hintline">Use the mobile number and PIN your admin added for you.</p>
+    <label class="lbl" for="si-mob">Mobile number</label>
+    <input id="si-mob" type="tel" inputmode="tel" autocomplete="tel" placeholder="98450 12345">
+    <label class="lbl" for="si-pin">PIN</label>
+    <input id="si-pin" type="password" inputmode="numeric" autocomplete="current-password" placeholder="••••">
+    <p class="err" id="si-err" hidden></p>
+    <button type="submit" class="save" id="si-go">Sign in</button>
+  </form>
+</dialog>
 <dialog class="logdlg" id="logdlg" aria-labelledby="lg-title">
   <form class="lg" id="logform" novalidate>
     <div class="lg-head"><h2 id="lg-title">Log this call</h2><button type="button" class="x" data-close aria-label="Close">✕</button></div>
+    <div id="lg-mine"></div>
+    <div id="lg-centre" hidden></div>
     <p class="lbl">Reason</p>
     <div class="rchips" id="lg-reasons"></div>
     <p class="lbl">Outcome</p>
@@ -219,9 +286,9 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
     <div class="fu" id="lg-fu" hidden>
     <label class="lbl" for="lg-caller">Caller number <span class="req" aria-hidden="true">*</span></label>
     <input id="lg-caller" required aria-required="true" type="tel" inputmode="tel" autocomplete="off" placeholder="e.g. 98450 12345">
-    <label class="lbl" for="lg-note">Note <span class="req" aria-hidden="true">*</span></label>
-    <input id="lg-note" required aria-required="true" type="text" maxlength="200" autocomplete="off" placeholder="e.g. wants callback about Shoonya dates">
     </div>
+    <label class="lbl" for="lg-note">Note <span id="lg-noteopt">(optional)</span><span id="lg-notereq" class="req" aria-hidden="true" hidden>*</span></label>
+    <input id="lg-note" type="text" maxlength="200" autocomplete="off" placeholder="Anything worth recording">
     <p class="err" id="lg-err" hidden></p>
     <button type="submit" class="save">Save call</button>
   </form>
@@ -240,7 +307,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
    body (details; lines starting "- " become bullets), acts (tap actions),
    table, flag (needs verification), k (extra search words). */
 const PROGRAMS_SNAPSHOT={"updated":"2026-09-20T10:24:32.994Z","source":"https://isha.sadhguru.org/in/en/program-finder","programs":[{"id":"1204728","name":"Bhuta Shuddhi","start":"2026-09-20 10:30:00","end":"2026-09-20 12:30:00","time":"10:30AM - 12:30PM","venue":"Green Valley English High School","area":"Bannerghatta Road, Bengaluru","fee":"3800","url":"https://online.sadhguru.org/event-register?event=21909-bhuta-shuddhi-english-bannerghatta-road-20-sep-2026-21909","lang":"english"},{"id":"1204729","name":"Jala Neti","start":"2026-09-20 13:00:00","end":"2026-09-20 14:00:00","time":"1:00PM - 2:00PM","venue":"Green Valley English High School","area":"Bannerghatta Road, Bengaluru","fee":"2200","url":"https://online.sadhguru.org/event-register?event=21540-jala-neti-english-bannerghatta-road-20-sept-2026-21540","lang":"english"},{"id":"1204404","name":"Bhuta Shuddi","start":"2026-09-20 15:00:00","end":"2026-09-20 17:00:00","time":"3:00PM - 5:00PM","venue":"Isha Place Malleswaram","area":"Malleswaram, Bengaluru","fee":"3800","url":"https://online.sadhguru.org/event-register?event=21619-bhuta-shuddhi-english-malleswaram-20-sep-2026-21619","lang":"english","closed":true},{"id":"1204405","name":"Yogasanas","start":"2026-09-21 06:00:00","end":"2026-09-25 09:00:00","time":"6:00AM - 9:00AM","venue":"Isha Place Malleswaram","area":"Malleswaram, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=21621-yogasanas-english-malleswaram-21-25-sep-2026-21621","lang":"english"},{"id":"1204720","name":"Surya Kriya","start":"2026-09-21 06:30:00","end":"2026-09-24 08:30:00","time":"6:30AM - 8:30AM","venue":"HSR Studio","area":"HSR Layout, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=21895-surya-kriya-english-hsr-layout-21-24-sept-2026-21895","lang":"english"},{"id":"1204671","name":"Inner Engineering 7 days","start":"2026-09-23 06:00:00","end":"2026-09-29 21:00:00","time":"6:00AM - 9:00PM","venue":"Yoga Suraksha Studio","area":"Hubballi","fee":"2500","url":"https://online.sadhguru.org/event-register?event=21857-inner-engineering-7-days-kannada-hubballi-23-29-sep-2026-21857","lang":"kannada"},{"id":"1204907","name":"Yogasanas","start":"2026-09-23 06:00:00","end":"2026-09-27 09:00:00","time":"6:00AM - 9:00AM","venue":"Mahajana Alumni Association Hall","area":"Mysuru, Mysuru","fee":"3000","url":"https://online.sadhguru.org/event-register?event=22051-yogasanas-english-mysuru-23-27-sept-2026-22051","lang":"english"},{"id":"1204908","name":"Surya Kriya","start":"2026-09-23 06:30:00","end":"2026-09-26 08:30:00","time":"6:30AM - 8:30AM","venue":"Classical Hatha Yoga Kendra","area":"Hebbal, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=22031-surya-kriya-english-hebbal-23-26-sept-2026-22031","lang":"english"},{"id":"1204909","name":"Yogasanas","start":"2026-09-23 18:00:00","end":"2026-09-27 21:00:00","time":"6:00PM - 9:00PM","venue":"Classical Hatha Yoga Kendra","area":"Hebbal, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22032-yogasanas-english-hebbal-23-27-sept-2026-22032","lang":"english","closed":true},{"id":"1204721","name":"Angamardana","start":"2026-09-25 06:30:00","end":"2026-09-29 08:45:00","time":"6:30AM - 8:45AM","venue":"HSR Studio","area":"HSR Layout, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=21896-angamardana-english-hsr-layout-25-29-sept-2026-21896","lang":"english"},{"id":"1205079","name":"Eye Care Yoga & Shanmukhi Mudra","start":"2026-09-26 08:00:00","end":"2026-09-27 09:30:00","time":"8:00AM - 9:30AM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"3000","url":"https://online.sadhguru.org/event-register?event=22195-eye-care-yoga-shanmukhi-mudra-english-marathahalli-26-27-sept-2026-22195","lang":"english"},{"id":"1204910","name":"Bhuta Shuddhi","start":"2026-09-27 17:00:00","end":"2026-09-27 18:30:00","time":"5:00PM - 6:30PM","venue":"Mahajana Alumni Association Hall","area":"Mysuru, Mysuru","fee":"3800","url":"https://online.sadhguru.org/event-register?event=22054-bhuta-shuddhi-english-mysuru-27-sep-2026-22054","lang":"english"},{"id":"1204911","name":"Yogasanas","start":"2026-09-28 18:00:00","end":"2026-10-02 21:00:00","time":"6:00PM - 9:00PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22023-yogasanas-english-marathahalli-28-sep-02-oct-2026-22023","lang":"english"},{"id":"1205151","name":"Bhava Spandana, Ladies (English) Sadhguru Sannidhi Bengaluru Sep 29 - Oct 2, 2026","start":"2026-09-29 14:00:00","end":"2026-10-02 18:00:00","venue":"Sadhguru Sannidhi","area":"Sadhguru Sannidhi, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=22082-bhava-spandana-ladies-english-sadhguru-sannidhi-bengaluru-sep-29-oct-2-2026-22082","lang":"english","gender":"ladies","ssb":true},{"id":"1204912","name":"Isha Janani","start":"2026-10-02 17:00:00","end":"2026-10-11 14:00:00","time":"5:00PM - 2:00PM","venue":"Isha Place - Jayanagar","area":"Jayanagar, Bengaluru","fee":"7000","url":"https://online.sadhguru.org/event-register?event=22036-isha-janani-program-english-jayanagar-2-7-oct-online-9-11-oct-in-person-22036","lang":"english"},{"id":"1204928","name":"Isha Janani","start":"2026-10-02 17:00:00","end":"2026-10-25 14:00:00","time":"5:00PM - 2:00PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"7000","url":"https://online.sadhguru.org/event-register?event=22059-isha-janani-program-english-marathahalli-2-7-oct-online-23-25-oct-in-person-2026-22059","lang":"english"},{"id":"1205081","name":"Bhuta Shuddhi","start":"2026-10-04 17:00:00","end":"2026-10-04 19:00:00","time":"5:00PM - 7:00PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"3800","url":"https://online.sadhguru.org/event-register?event=22176-bhuta-shuddhi-english-marathahalli-4-oct-2026-22176","lang":"english"},{"id":"1204913","name":"Inner Engineering 7 Days","start":"2026-10-07 06:00:00","end":"2026-10-13 21:00:00","time":"6:00AM - 9:00PM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"3500","url":"https://online.sadhguru.org/event-register?event=22034-inner-engineering-7-days-kannada-malleshwaram-07-13-oct-2026-22034","lang":"kannada"},{"id":"1204914","name":"Inner Engineering 4 days","start":"2026-10-08 06:00:00","end":"2026-10-11 18:00:00","time":"6:00AM - 6:00PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=22033-inner-engineering-4-days-english-marathahalli-08-11-oct-2026-22033","lang":"english"},{"id":"1205082","name":"Yogasanas","start":"2026-10-10 06:00:00","end":"2026-10-14 09:00:00","time":"6:00AM - 9:00AM","venue":"Amruthavarshini Yoga Studio","area":"Kanakapura Road, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22178-yogasanas-english-kanakapura-road-10-14-october-2026-22178","lang":"english"},{"id":"1205067","name":"Yogasanas Sadhana","start":"2026-10-10 06:00:00","end":"2026-10-10 09:45:00","time":"6:00AM - 9:45AM","venue":"Isha Place - Jayanagar","area":"Jayanagar, Bengaluru","fee":"750","url":"https://online.sadhguru.org/event-register?event=22168-yogasanas-sadhana-english-jayanagar-10-oct-2026-22168","lang":"english"},{"id":"1205232","name":"Surya Kriya Weekend","start":"2026-10-10 07:00:00","end":"2026-10-11 19:30:00","time":"7:00AM - 7:30PM","venue":"Isha Place Vijayanagar","area":"Vijayanagar, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=22291-surya-kriya-weekend-english-vijayanagar-10-11-oct-2026-22291","lang":"english"},{"id":"1205116","name":"Angamardana","start":"2026-10-12 18:30:00","end":"2026-10-16 20:45:00","time":"6:30PM - 8:45PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22177-angamardana-english-marathahalli-12-16-oct-2026-22177","lang":"english"},{"id":"1205019","name":"Inner Engineering 4 days","start":"2026-10-15 06:00:00","end":"2026-10-18 18:00:00","time":"6:00AM - 6:00PM","venue":"Isha Place Vijayanagar","area":"Vijayanagar, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=22109-inner-engineering-4-days-english-vijayanagar-15-18-oct-2026-22109","lang":"english"},{"id":"1204058","name":"Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 15 - 18, 2026","start":"2026-10-15 10:00:00","end":"2026-10-18 18:00:00","venue":"Sadhguru Sannidhi","area":"Sadhguru Sannidhi, Bengaluru","fee":"5500","url":"https://online.sadhguru.org/event-register?event=21442-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-15-18-2026-21442","lang":"english","closed":true,"ssb":true},{"id":"1205233","name":"Surya Kriya Weekend","start":"2026-10-17 07:00:00","end":"2026-10-18 19:30:00","time":"7:00AM - 7:30PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=22289-surya-kriya-weekend-english-marathahalli-17-18-oct-2026-22289","lang":"english"},{"id":"1205123","name":"Yogasanas","start":"2026-10-19 06:00:00","end":"2026-10-23 09:00:00","time":"6:00AM - 9:00AM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22190-yogasanas-english-malleshwaram-19-23-oct-2026-22190","lang":"english"},{"id":"1205185","name":"Hatha Yoga for Children","start":"2026-10-19 17:30:00","end":"2026-10-23 19:30:00","time":"5:30PM - 7:30PM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"3000","url":"https://online.sadhguru.org/event-register?event=22245-hatha-yoga-for-children-english-malleshwaram-19-23-oct-2026-22245","lang":"english"},{"id":"1205135","name":"Yogasanas","start":"2026-10-20 06:00:00","end":"2026-10-24 09:00:00","time":"6:00AM - 9:00AM","venue":"HSR Studio","area":"HSR Layout, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22202-yogasanas-english-hsr-layout-20-24-oct-2026-22202","lang":"english"},{"id":"1204915","name":"Yogasanas","start":"2026-10-21 06:00:00","end":"2026-10-25 09:00:00","time":"6:00AM - 9:00AM","venue":"Isha Place - Jayanagar","area":"Jayanagar, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22052-yogasanas-english-jayanagar-21-25-oct-2026-22052","lang":"english"},{"id":"1204916","name":"Angamardana","start":"2026-10-21 18:30:00","end":"2026-10-25 20:45:00","time":"6:30PM - 8:45PM","venue":"Isha Place - Jayanagar","area":"Jayanagar, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22056-angamardana-english-jayanagar-21-25-oct-2026-22056","lang":"english"},{"id":"1204210","name":"Inner Engineering 4 Days","start":"2026-10-22 06:00:00","end":"2026-10-25 18:30:00","time":"6:00AM - 6:30PM","venue":"Mahajana Alumni Association Hall","area":"Mysuru, Mysuru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=21497-inner-engineering-4-days-english-mysuru-22-25-oct-2026-21497","lang":"english"},{"id":"1204059","name":"Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 22 - 25, 2026","start":"2026-10-22 10:00:00","end":"2026-10-25 18:00:00","venue":"Sadhguru Sannidhi","area":"Sadhguru Sannidhi, Bengaluru","fee":"5500","url":"https://online.sadhguru.org/event-register?event=21443-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-22-25-2026-21443","lang":"english","closed":true,"ssb":true},{"id":"1204850","name":"Guru Pooja","start":"2026-10-23 08:00:00","end":"2026-10-25 19:00:00","time":"8:00AM - 7:00PM","venue":"Isha Place Vijayanagar","area":"Vijayanagar, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22012-guru-pooja-english-vijayanagar-23-25-oct-2026-22012","lang":"english"},{"id":"1205247","name":"Yogasanas","start":"2026-10-23 17:00:00","end":"2026-10-25 20:30:00","time":"5:00PM - 8:30PM","venue":"Gnana Jyothi International School","area":"Budigere Cross, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22296-yogasanas-english-budigere-cross-23-25-oct-2026-22296","lang":"english"},{"id":"1205125","name":"Surya Kriya Weekend","start":"2026-10-24 07:00:00","end":"2026-10-25 19:30:00","time":"7:00AM - 7:30PM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=22201-surya-kriya-weekend-english-malleshwaram-24-25-oct-2026-22201","lang":"english"},{"id":"1205126","name":"Bhuta Shuddhi","start":"2026-10-24 15:00:00","end":"2026-10-24 17:00:00","time":"3:00PM - 5:00PM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"3800","url":"https://online.sadhguru.org/event-register?event=22191-bhuta-shuddhi-english-malleshwaram-24-oct-2026-22191","lang":"english"},{"id":"1205127","name":"Shanmukhi Mudra","start":"2026-10-24 17:30:00","end":"2026-10-24 19:00:00","time":"5:30PM - 7:00PM","venue":"Amruthavarshini Yoga Studio","area":"Kanakapura Road, Bengaluru","fee":"1200","url":"https://online.sadhguru.org/event-register?event=22198-shanmukhi-mudra-english-kanakapura-road-24-oct-2026-22198","lang":"english"},{"id":"1205136","name":"Angamardana","start":"2026-10-25 06:30:00","end":"2026-10-29 08:45:00","time":"6:30AM - 8:45AM","venue":"HSR Studio","area":"HSR Layout, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22203-angamardana-english-hsr-layout-25-29-oct-2026-22203","lang":"english"},{"id":"1205137","name":"Shanmukhi Mudra","start":"2026-10-25 10:00:00","end":"2026-10-25 11:30:00","time":"10:00AM - 11:30AM","venue":"Isha Place Malleswaram","area":"Malleshwaram, Bengaluru","fee":"1200","url":"https://online.sadhguru.org/event-register?event=22200-shanmukhi-mudra-english-malleshwaram-25-oct-2026-22200","lang":"english"},{"id":"1205241","name":"Yogasanas","start":"2026-10-26 06:00:00","end":"2026-10-30 09:00:00","time":"6:00AM - 9:00AM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22290-yogasanas-english-marathahalli-26-30-oct-2026-22290","lang":"english"},{"id":"1205242","name":"Yogasanas","start":"2026-10-26 06:00:00","end":"2026-10-30 09:00:00","time":"6:00AM - 9:00AM","venue":"Isha Place Vijayanagar","area":"Vijayanagar, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22292-yogasanas-english-vijayanagar-26-30-oct-2026-22292","lang":"english"},{"id":"1205243","name":"Angamardana","start":"2026-10-26 18:30:00","end":"2026-10-30 20:45:00","time":"6:30PM - 8:45PM","venue":"Isha Place Vijayanagar","area":"Vijayanagar, Bengaluru","fee":"4000","url":"https://online.sadhguru.org/event-register?event=22293-angamardana-english-vijayanagar-26-30-oct-2026-22293","lang":"english"},{"id":"1205028","name":"Inner Engineering 7 days","start":"2026-10-28 06:00:00","end":"2026-11-03 21:00:00","time":"6:00AM - 9:00PM","venue":"Mother Theresa B.Ed College","area":"Kalaburagi, Kalaburagi","fee":"2500","url":"https://online.sadhguru.org/event-register?event=22113-inner-engineering-7-days-kannada-kalaburagi-28-oct-to-03-nov-2026-22113","lang":"kannada"},{"id":"1204206","name":"Inner Engineering 4 Days","start":"2026-10-29 06:00:00","end":"2026-11-01 18:30:00","time":"6:00AM - 6:30PM","venue":"Alumni Association Hall","area":"Hebbal, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=21498-inner-engineering-4-days-english-hebbal-29-oct-1-nov-2026-21498","lang":"english"},{"id":"1204652","name":"Inner Engineering 4 Days","start":"2026-10-29 06:00:00","end":"2026-11-01 18:30:00","time":"6:00AM - 6:30PM","venue":"Amruthavarshini Yoga Studio","area":"Kanakapura Road, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=21801-inner-engineering-4-days-english-kanakapura-road-29-oct-1-nov-2026-21801","lang":"english"},{"id":"1204851","name":"Inner Engineering 4 days","start":"2026-10-29 06:00:00","end":"2026-11-01 18:00:00","time":"6:00AM - 6:00PM","venue":"Incture Technologies Bengaluru","area":"Electronic City, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=22011-inner-engineering-4-days-english-electronic-city-29-oct-01-nov-2026-22011","lang":"english"},{"id":"1205154","name":"Inner Engineering 4 Days","start":"2026-10-29 06:00:00","end":"2026-11-01 18:00:00","time":"6:00AM - 6:00PM","venue":"Isha Place - Jayanagar","area":"Jayanagar, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=22230-inner-engineering-4-days-english-jayanagar-29-oct-1-nov-2026-22230","lang":"english"},{"id":"1204087","name":"Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 29 - Nov 1, 2026","start":"2026-10-29 10:00:00","end":"2026-11-01 18:00:00","venue":"Sadhguru Sannidhi","area":"Sadhguru Sannidhi, Bengaluru","fee":"5500","url":"https://online.sadhguru.org/event-register?event=21466-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-29-nov-1-2026-21466","lang":"english","closed":true,"ssb":true},{"id":"1205155","name":"Surya Kriya","start":"2026-10-30 06:30:00","end":"2026-11-02 08:30:00","time":"6:30AM - 8:30AM","venue":"HSR Studio","area":"HSR Layout, Bengaluru","fee":"3300","url":"https://online.sadhguru.org/event-register?event=22205-surya-kriya-english-hsr-layout-30-oct-02-nov-2026-22205","lang":"english"},{"id":"1204207","name":"Inner Engineering 4 Days","start":"2026-11-12 06:00:00","end":"2026-11-15 18:30:00","time":"6:00AM - 6:30PM","venue":"Isha Place Marathahalli","area":"Marathahalli, Bengaluru","fee":"5000","url":"https://online.sadhguru.org/event-register?event=21496-inner-engineering-4-days-english-marathahalli-12-15-nov-2026-21496","lang":"english"}]};
-const CATS=[
+const BASE_CATS=[
  {id:"pgm",name:"Upcoming programs",hint:"",pgm:true},
  {id:"visit",name:"Visiting & timings",hint:"What's there, darshan, arati, food, rules"},
  {id:"travel",name:"Getting there",hint:"Directions, KSRTC buses, car pool, hotels"},
@@ -251,10 +318,11 @@ const CATS=[
  {id:"shop",name:"Isha Life shop",hint:"SSB shoppe, Bangalore stores, orders"},
  {id:"contacts",name:"Centres & contacts",hint:"Karnataka centres, WhatsApp, donations"},
  {id:"iyc",name:"Isha Yoga Center & more",hint:"Coimbatore, cottages, health, Samskriti"},
+ {id:"rep",name:"Reports",hint:"Calls, missed, follow-ups — daily & monthly",rep:true},
  {id:"agent",name:"For agents",hint:"Missed-call SMS, FAQ docs",agent:true}
 ];
 const T=(l,v)=>({t:"tel",l,v}), M=(l,v)=>({t:"mail",l,v}), U=(l,v)=>({t:"url",l,v});
-const KB=[
+const BASE_KB=[
 /* ---------- VISITING ---------- */
 {id:"what",cat:"visit",q:"What is there at Sadhguru Sannidhi?",
  say:"The Naga Shrine, the 112-ft Adiyogi and the Yogeshwara Linga are open to all visitors.",
@@ -628,22 +696,24 @@ const KB=[
  k:"faq doc document sheet reference source website"}
 ];
 
-const GLANCE=[["Open","6 AM – 8 PM daily"],["Naga Arati","6:20 AM · 12:20 · 6:20 PM"],["Divya Darshanam","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Main line","080-4710 3311"]];
+let CATS=BASE_CATS, KB=BASE_KB, GLANCE_BASE=[["Open","6 AM – 8 PM daily"],["Naga Arati","6:20 AM · 12:20 · 6:20 PM"],["Divya Darshanam","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Main line","080-4710 3311"]];
+let GLANCE=GLANCE_BASE;
 
 /* ============ APP ============ */
 const $=s=>document.querySelector(s), app=$("#app"), input=$("#q"), clearBtn=$("#clear");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s).toLowerCase().replace(/<[^>]+>/g," ").normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9₹]+/g," ").trim();
-const catName=id=>CATS.find(c=>c.id===id).name;
+const catName=id=>{const c=CATS.find(c=>c.id===id);return c?c.name:id};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
-KB.forEach(it=>{
+function reindex(){KB.forEach(it=>{
   const tbl=it.table?it.table.rows.flat().join(" ")+" "+it.table.head.join(" "):"";
   const acts=(it.acts||[]).map(a=>a.l+" "+a.v).join(" ");
   it._q=norm(it.q); it._k=norm((it.k||"")+" "+catName(it.cat));
   it._b=norm((it.say||"")+" "+(it.body||"")+" "+tbl+" "+acts);
   it._w=[...new Set((it._q+" "+it._k+" "+it._b).split(" "))];
-});
+})}
+reindex();
 
 function lev(a,b){if(Math.abs(a.length-b.length)>1)return 2;const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,i)=>i);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
 function tokHits(tok,it){
@@ -658,7 +728,7 @@ function search(q){
   let toks=norm(q).split(" ").filter(t=>t&&!STOP.has(t));
   if(!toks.length)toks=norm(q).split(" ").filter(Boolean);
   if(!toks.length)return {res:[],loose:false};
-  const scored=KB.map(it=>{let sum=0,hit=0;for(const t of toks){const h=tokHits(t,it);if(h){hit++;sum+=h}}return{it,sum,hit}});
+  const scored=KB.map(it=>{let sum=0,hit=0;for(const t of toks){const h=tokHits(t,it);if(h){hit++;sum+=h}}if(sum&&it.own!==false)sum+=4;return{it,sum,hit}});
   let res=scored.filter(x=>x.hit===toks.length).sort((a,b)=>b.sum-a.sum);
   if(res.length)return{res:res.map(x=>x.it),loose:false};
   res=scored.filter(x=>x.hit>0).sort((a,b)=>b.hit-a.hit||b.sum-a.sum).slice(0,12);
@@ -705,7 +775,7 @@ function itemHTML(it,opts={}){
   if(it.table)a+=`<div class="tbl"><table${it.table.nw?' class="nw"':""}><thead><tr>${it.table.head.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}</tr></thead><tbody>${it.table.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   if(it.body)a+=`<div class="body">${renderBody(it.body)}</div>`;
   if(it.acts&&it.acts.length)a+=`<div class="acts">${it.acts.map((x,i)=>`<div class="act"><a href="${esc(actHref(x))}" ${x.t==="url"?'target="_blank" rel="noopener"':""}><b>${esc(x.l)}</b><span>${esc(actShow(x))}</span></a><button type="button" data-copy="${esc(it.id)}:${i}" aria-label="Copy ${esc(x.l)}">Copy</button></div>`).join("")}</div>`;
-  a+=`<button type="button" class="copyall" data-copyall="${esc(it.id)}">${it.copy?"Copy SMS text":"Copy full answer"}</button></div>`;
+  a+=`<div class="acts2"><button type="button" class="copyall" data-copyall="${esc(it.id)}">${it.copy?"Copy SMS text":"Copy answer"}</button><button type="button" class="copyall share" data-share="${esc(it.id)}">Share on WhatsApp</button></div></div>`;
   return `<div class="item${opts.open?" open":""}" id="it-${esc(it.id)}">
     <button type="button" class="q" aria-expanded="${opts.open?"true":"false"}" data-toggle="${esc(it.id)}">
       <span class="t">${opts.showCat?`<span class="c">${esc(catName(it.cat))}</span>`:""}${hl(it.q,toks)}<span class="s">${hl(it.say||"",toks)}</span></span>${chev}
@@ -715,7 +785,7 @@ function itemHTML(it,opts={}){
 
 /* ============ UPCOMING PROGRAMS (live from Isha's program feed) ============ */
 let PDATA=PROGRAMS_SNAPSHOT||{updated:null,programs:[]};
-const pf={area:"all",open:false};
+const pf={centre:"ALL",open:false};
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MONL=["January","February","March","April","May","June","July","August","September","October","November","December"];
 const DAY=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -748,24 +818,31 @@ function progHTML(p,toks,open){
   const body=`<div class="a">
     <div class="say"><small>Tell the caller</small>${esc(n)}: ${esc(pDate(p))}, ${esc(pTime(p))} at ${esc(pWhere(p))}.${pFee(p)?" Fee "+esc(pFee(p))+".":""}${p.closed?" Registration is closed.":""}</div>
     <div class="acts">${acts.map((x,i)=>`<div class="act"><a href="${esc(x.v)}" target="_blank" rel="noopener"><b>${esc(x.l)}</b><span>${esc(x.v.replace(/^https?:\/\//,"").slice(0,60))}${x.v.length>68?"…":""}</span></a><button type="button" data-plink="${esc(p.id)}:${i}">Copy</button></div>`).join("")}</div>
-    <button type="button" class="copyall" data-pcopy="${esc(p.id)}">Copy details for WhatsApp</button></div>`;
+    <div class="acts2"><button type="button" class="copyall" data-pcopy="${esc(p.id)}">Copy details</button><button type="button" class="copyall share" data-pshare="${esc(p.id)}">Share on WhatsApp</button></div></div>`;
   return `<div class="item${open?" open":""}" id="it-p${esc(p.id)}">
    <button type="button" class="q" aria-expanded="${open?"true":"false"}" data-toggle="p${esc(p.id)}">
     <span class="dt"><b>${a.getDate()}</b><small>${MON[a.getMonth()]}</small></span>
     <span class="t">${hl(n,toks)}<span class="pmeta">${esc(pDate(p))} · ${esc(pTime(p))}</span><span class="pmeta">${hl(pWhere(p),toks)}</span><span class="pills">${pills}</span></span>${chev}
    </button>${open?body:`<template>${body}</template>`}</div>`}
+function pMatches(p,c){if(!c)return true;
+  if(c.code==="SSB"&&p.ssb)return true;
+  const hay=[p.name,p.venue,p.area].join(" ");
+  return (c.match||[]).some(w=>w&&hay.toLowerCase().indexOf(w.toLowerCase())>=0)}
 function pFiltered(){return pUpcoming().filter(p=>{
   if(pf.open&&p.closed)return false;
-  const blr=/bengaluru|bangalore/i.test(p.area||"");
-  if(pf.area==="ssb")return !!p.ssb; if(pf.area==="blr")return blr&&!p.ssb; if(pf.area==="out")return !blr&&!p.ssb; return true})}
+  if(pf.centre==="ALL")return true;
+  if(pf.centre==="OUT")return !/bengaluru|bangalore/i.test(p.area||"")&&!p.ssb;
+  return pMatches(p,centreByCode(pf.centre))})}
 function renderPrograms(){
-  const list=pFiltered(),chip=(k,v,l)=>`<button type="button" class="fchip" data-pf="${k}:${v}" aria-pressed="${String(k==="open"?pf.open:pf.area===v)}">${l}</button>`;
+  const list=pFiltered(),chip=(k,v,l)=>`<button type="button" class="fchip" data-pf="${k}:${v}" aria-pressed="${String(k==="open"?pf.open:pf.centre===v)}">${l}</button>`;
+  const mine=viewCentre();
+  const centreChips=(CENTRES.length?CENTRES:[]).map(c=>chip("centre",c.code,esc(c.name.replace(/,.*$/,""))+(mine&&c.code===mine.code?" · yours":""))).join("");
   let groups="",cur="";
   for(const p of list){const a=pd(p.start),m=MONL[a.getMonth()]+" "+a.getFullYear();if(m!==cur){if(cur)groups+="</div>";groups+=`<p class="month">${m}</p><div class="list">`;cur=m}groups+=progHTML(p)}
   if(cur)groups+="</div>";
   app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Upcoming programs</h2></div>
   ${pStamp()}
-  <div class="filters">${chip("area","all","All Karnataka")}${chip("area","ssb","Sadhguru Sannidhi")}${chip("area","blr","Bengaluru centres")}${chip("area","out","Outside Bengaluru")}${chip("open","1","Open only")}</div>
+  <div class="filters">${centreChips}${chip("centre","ALL","All Karnataka")}${chip("centre","OUT","Outside Bengaluru")}${chip("open","1","Open only")}</div>
   ${list.length?groups:`<div class="empty">No programs match these filters.</div>`}
   <p class="foot">Online and all-India programs: <a href="https://isha.sadhguru.org/in/en/program-finder" target="_blank" rel="noopener">program finder</a>. Inner Engineering Online: 79771 02000.</p>`}
 function pSearch(toks){if(!toks.length)return[];return pUpcoming().filter(p=>toks.every(t=>p._t.includes(t)))}
@@ -784,23 +861,31 @@ const ICON={
  shop:'<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
  contacts:'<path d="M20 15.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3.5 6.2 2 2 0 0 1 5.5 4h3a2 2 0 0 1 2 1.6l.5 2.6a2 2 0 0 1-.6 1.8l-1.3 1.3a13 13 0 0 0 5.6 5.6l1.3-1.3a2 2 0 0 1 1.8-.6l2.6.5a2 2 0 0 1 1.6 2z"/>',
  iyc:'<path d="M2.5 20 9 9l4 6.5L16 11l5.5 9z"/><circle cx="17.5" cy="5" r="1.8"/>',
- agent:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/>'
+ agent:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/>',
+ rep:'<path d="M3 20h18"/><rect x="5" y="11" width="3.5" height="6" rx="1"/><rect x="10.2" y="7" width="3.5" height="10" rx="1"/><rect x="15.4" y="13" width="3.5" height="4" rx="1"/>'
 };
 const icon=id=>`<span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[id]||""}</svg></span>`;
 function renderHome(){
   const recent=store.get("ssb-recent",[]).map(id=>KB.find(k=>k.id===id)).filter(Boolean);
   const up=pUpcoming(),openN=up.filter(p=>!p.closed).length,nextSSB=up.find(p=>p.ssb&&!p.closed);
   const g=GLANCE.slice();if(nextSSB)g.splice(5,0,["Next at SSB",pName(nextSSB).replace(/\s*\(English\)/,"")+", "+pDate(nextSSB)]);
-  const tile=c=>c.pgm?`<button type="button" class="cat pgm" data-cat="pgm">${icon("pgm")}<b>Upcoming programs</b><span>Karnataka & Sadhguru Sannidhi — dates, venues, fees, registration links</span><i>${up.length} programs · ${openN} open${PDATA.updated?" · updated "+new Date(PDATA.updated).getDate()+" "+MON[new Date(PDATA.updated).getMonth()]:""}</i></button>`
-    :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}">${icon(c.id)}<b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id).length} answers</i></button>`;
+  const mine=viewCentre();
+  const pend=pendCount();
+  const tile=c=>c.rep?`<button type="button" class="cat" data-cat="rep">${icon("rep")}<b>Reports</b><span>${esc(c.hint)}</span><i>${signedIn()?(signedIn().user.role==="admin"?"all centres":signedIn().user.role==="supervisor"?"your centre":"your calls"):"sign in"}</i></button>`
+    :c.pgm?`<button type="button" class="cat pgm" data-cat="pgm">${icon("pgm")}<b>Upcoming programs</b><span>Karnataka & Sadhguru Sannidhi — dates, venues, fees, registration links</span><i>${(CENTRES.length&&viewCentre()?up.filter(p=>pMatches(p,viewCentre())).length+" here · ":"")}${up.length} in Karnataka · ${openN} open${PDATA.updated?" · updated "+new Date(PDATA.updated).getDate()+" "+MON[new Date(PDATA.updated).getMonth()]:""}</i></button>`
+    :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}">${icon(c.icon||c.id)}<b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id&&k.own!==false).length} answers</i></button>`;
   app.innerHTML=`
-  <section><p class="label">At a glance</p><div class="glance">${g.map(([k,v])=>`<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div></section>
+  ${pend?`<div class="alert"><span>${pend} call${pend>1?"s":""} waiting to be logged</span><button type="button" data-cat="pending">Log ${pend>1?"them":"it"}</button></div>`:""}
+  ${CENTRES.length?`<div class="sel"><span>${mine?`<b>${esc(mine.name)}</b>`:"No centre set"}</span>${canPickCentre()?`<button type="button" data-pickcentre>Change ▾</button>`:""}</div>`:""}
+  <section><p class="label">${mine?esc(mine.name)+" — at a glance":"At a glance"}</p><div class="glance">${g.map(([k,v])=>`<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div></section>
   <section><p class="label">Topics</p><div class="cats">${CATS.map(tile).join("")}</div></section>
   ${recent.length?`<section><p class="label">Recently opened</p><div class="recent">${recent.map(r=>`<button type="button" class="chip" data-goto="${r.id}">${esc(r.q)}</button>`).join("")}</div></section>`:""}
   <p class="foot hint">Tip: on Android Chrome, tap ⋮ → “Add to Home screen” to keep this one tap away. Items marked <b>Check</b> need confirming with the team.</p>`;
 }
 function renderCat(id,openId){
-  if(id==="pgm"){renderPrograms();return}
+  if(id==="pgm"){pf.centre=(viewCentre()||{}).code||"ALL";pf.open=false;renderPrograms();return}
+  if(id==="pending"){renderPending();loadPending();return}
+  if(id==="rep"){renderReports();if(signedIn()&&!repBusy)loadReport();return}
   const c=CATS.find(x=>x.id===id);if(!c){renderHome();return}
   const items=KB.filter(k=>k.cat===id);
   app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>${esc(c.name)}</h2></div>
@@ -822,7 +907,7 @@ function renderSearch(q){
 function route(){
   const q=input.value.trim();clearBtn.hidden=!q;
   if(q){renderSearch(q);return}
-  const m=location.hash.match(/^#c\/(\w+)(?:\/(\w+))?/);
+  const m=location.hash.match(/^#c\/([\w-]+)(?:\/([\w-]+))?/);
   if(m)renderCat(m[1],m[2]);else renderHome();
 }
 function remember(id){let r=store.get("ssb-recent",[]).filter(x=>x!==id);r.unshift(id);store.set("ssb-recent",r.slice(0,6))}
@@ -845,71 +930,307 @@ app.addEventListener("click",e=>{
     const tpl=item.querySelector("template");if(tpl&&open){item.insertAdjacentHTML("beforeend",tpl.innerHTML);tpl.remove()}
     if(open){const it=KB.find(k=>k.id===b.dataset.toggle);if(it){remember(it.id);noteTopic(it.cat,it.id,it.q)}else if(b.dataset.toggle[0]==="p"){const p=pUpcoming().find(x=>"p"+x.id===b.dataset.toggle);noteTopic("pgm","",p?pName(p)+" "+pDate(p):"Program")}}return;
   }
-  if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.area=v;renderPrograms();return}
+  if(b.hasAttribute("data-pickcentre")){pickCentre();return}
+  if(b.dataset.setview){VIEW=b.dataset.setview;store.set("ssb-view",VIEW);buildContent();route();window.scrollTo(0,0);return}
+  if(b.dataset.logcall){const c=PEND.find(x=>x.sid===b.dataset.logcall);if(c){detected={sid:c.sid,caller:c.caller,at:c.at};openLog(true)}return}
+  if(b.dataset.range){repRange=b.dataset.range;loadReport();return}
+  if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
+  if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();loadReport()});return}
+  if(b.hasAttribute("data-signout")){signOut();return}
+  if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.centre=v;renderPrograms();return}
   if(b.dataset.pcopy){const p=pUpcoming().find(x=>x.id===b.dataset.pcopy);if(p)copy(pText(p),"Program details copied");return}
   if(b.dataset.plink){const[id,i]=b.dataset.plink.split(":");const p=pUpcoming().find(x=>x.id===id);if(!p)return;const l=(p.url&&!p.closed)?[p.url,pPage(p)]:[pPage(p)];copy(l[+i],"Link copied");return}
+  if(b.dataset.share){const it=KB.find(k=>k.id===b.dataset.share);if(it)openShare("item",it);return}
+  if(b.dataset.pshare){const p=pUpcoming().find(x=>x.id===b.dataset.pshare);if(p)openShare("program",p);return}
   if(b.dataset.copy){const[id,i]=b.dataset.copy.split(":");const a=KB.find(k=>k.id===id).acts[+i];copy(a.v,"Copied "+a.l);return}
   if(b.dataset.copyall){const it=KB.find(k=>k.id===b.dataset.copyall);copy(it.copy||itemText(it),it.copy?"SMS text copied":"Answer copied");return}
 });
 let deb;input.addEventListener("input",()=>{clearTimeout(deb);deb=setTimeout(()=>{route();window.scrollTo(0,0)},120)});
 clearBtn.addEventListener("click",()=>{input.value="";route();input.focus()});
 window.addEventListener("hashchange",route);
-route();
 loadPrograms();
+
+
+/* ============ CENTRES & ANSWERS FROM THE SHEET ============ */
+let CONTENT=null, CENTRES=[], FAQ={}, VIEW="";
+const GRPICON=[[/time|timing|visit/i,"visit"],[/reach|travel|direction|getting/i,"travel"],[/ritual|offering|puja|pooja/i,"rituals"],[/program/i,"programs"],[/inner engineering|refund|online/i,"ie"],[/volunt|seva/i,"vol"],[/shop|life/i,"shop"],[/contact|centre|center/i,"contacts"],[/iyc|coimbatore/i,"iyc"],[/agent/i,"agent"]];
+const slug=s=>norm(s).replace(/ /g,"-").slice(0,28)||"other";
+function grpIcon(name){for(const[re,k]of GRPICON)if(re.test(name))return k;return "contacts"}
+function centreByCode(c){return CENTRES.find(x=>x.code===String(c||"").toUpperCase())}
+function myCentre(){const s=signedIn();if(!s||!s.user)return CENTRES[0]||null;
+  const t=String(s.user.centre||"").trim();
+  return CENTRES.find(x=>x.code===t.toUpperCase())||CENTRES.find(x=>norm(x.name)===norm(t))||null}
+function viewCentre(){return centreByCode(VIEW)||myCentre()||CENTRES[0]||null}
+function canPickCentre(){const s=signedIn();return !!s&&(s.user.role==="admin"||s.user.role==="supervisor"||!myCentre())}
+function normRow(it,code,own){
+  const tb=it.table&&it.table.length>1?{head:it.table[0],rows:it.table.slice(1)}:null;
+  return {id:it.id,cat:slug(it.group),grp:it.group,centre:code,own:own,q:it.q,say:it.say,body:it.body,table:tb,
+          acts:(it.acts||[]).map(a=>({t:a.t==="tel"||a.t==="mail"||a.t==="sms"?a.t:"url",l:a.l,v:a.v})),
+          copy:it.copy||"",flag:it.flag||"",k:(it.k||"")+" "+it.group}}
+function buildContent(){
+  if(!CONTENT||!CONTENT.centres||!CONTENT.centres.length){CATS=BASE_CATS;KB=BASE_KB;GLANCE=GLANCE_BASE;reindex();return}
+  CENTRES=CONTENT.centres;FAQ=CONTENT.faqs||{};
+  const mine=viewCentre(),code=mine?mine.code:"";
+  const items=[];
+  (FAQ[code]||[]).forEach(it=>items.push(normRow(it,code,true)));
+  (FAQ.ALL||[]).forEach(it=>items.push(normRow(it,"ALL",true)));
+  Object.keys(FAQ).forEach(c=>{if(c===code||c==="ALL")return;(FAQ[c]||[]).forEach(it=>items.push(normRow(it,c,false)))});
+  KB=items;
+  const seen=new Map();
+  items.filter(x=>x.own).forEach(x=>{const k=x.cat;if(!seen.has(k))seen.set(k,{id:k,name:x.grp,hint:"",n:0,icon:grpIcon(x.grp)});seen.get(k).n++});
+  CATS=[{id:"pgm",name:"Upcoming programs",hint:"",pgm:true},...seen.values(),{id:"rep",name:"Reports",hint:"Calls, missed, follow-ups — daily & monthly",rep:true}];
+  GLANCE=(mine&&mine.glance&&mine.glance.length)?mine.glance.map(g=>[g[0],g[1]||""]):GLANCE_BASE;
+  if(mine&&mine.phone)GLANCE=GLANCE.concat([["Centre line",fmtNum(mine.phone)]]);
+  reindex()}
+async function loadContent(){const s=signedIn();if(!s||!LOG_URL)return;
+  try{const r=await fetch(`${LOG_URL}?action=content&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});
+    const j=await r.json();
+    if(j&&j.ok&&j.centres){CONTENT=j;store.set("ssb-content",j);buildContent();route()}}
+  catch(e){}}
+function bootContent(){const c=store.get("ssb-content",null);
+  if(c&&c.centres){CONTENT=c;VIEW=store.get("ssb-view","")||"";buildContent()}}
+
+
+function pickCentre(){
+  const list=CENTRES.map(c=>`<button type="button" class="rchip" data-setview="${esc(c.code)}" aria-pressed="${(viewCentre()||{}).code===c.code}">${esc(c.name)}</button>`).join("");
+  app.insertAdjacentHTML("afterbegin",`<div class="card" id="cpick"><p class="label">Show which centre?</p><div class="rchips">${list}</div></div>`);
+  const el=$("#cpick");el.scrollIntoView({block:"start"})}
+
+/* ============ PENDING CALLS ============ */
+let PEND=[];
+function pendCount(){return PEND.length}
+async function loadPending(){const s=signedIn();if(!s||!LOG_URL)return;
+  try{const r=await fetch(`${LOG_URL}?action=pending&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});
+    const j=await r.json();
+    if(j&&j.ok){const next=j.calls||[],changed=JSON.stringify(next)!==JSON.stringify(PEND);
+      if(changed){PEND=next;store.set("ssb-pending",PEND);qBadge();route()}}}
+  catch(e){}}
+function renderPending(){
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Calls to log</h2></div>
+  ${PEND.length?`<div class="card"><div class="clist">${PEND.map(c=>{const t=new Date(c.at);
+    return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"Unknown"))}</b><small>${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}${c.status?" · "+esc(c.status):""}</small></div><button type="button" class="act" data-logcall="${esc(c.sid)}">Log</button></div>`}).join("")}</div></div>`
+   :`<div class="empty">Nothing waiting. Every call is logged.</div>`}
+  <p class="foot">Calls appear here from Exotel. A reminder arrives after each call and repeats until it's logged.</p>`}
+
+
+/* ============ PUSH NOTIFICATIONS (OneSignal) ============ */
+const PUSH_APP_ID="";
+function initPush(){
+  if(!PUSH_APP_ID||!("serviceWorker" in navigator))return;
+  if(window.__pushInit)return;window.__pushInit=true;
+  const sc=document.createElement("script");
+  sc.src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js";sc.defer=true;
+  document.head.appendChild(sc);
+  window.OneSignalDeferred=window.OneSignalDeferred||[];
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try{await OneSignal.init({appId:PUSH_APP_ID});pushIdentify()}catch(e){}})}
+function pushIdentify(){const s=signedIn();if(!s||!window.OneSignalDeferred)return;
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try{await OneSignal.login(String(s.user.mobile));
+      if(OneSignal.Notifications&&!OneSignal.Notifications.permission)await OneSignal.Notifications.requestPermission()}catch(e){}})}
+function pushLogout(){if(!window.OneSignalDeferred)return;
+  window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.logout()}catch(e){}})}
+
+/* ============ SIGN-IN & REPORTS ============ */
+const DAYN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function session(){return store.get("ssb-session",null)}
+function signedIn(){const s=session();return s&&s.token?s:null}
+let afterSignIn=null;
+function openSignIn(next){afterSignIn=next||null;$("#si-err").hidden=true;$("#si-pin").value="";
+  const s=session();if(s&&s.user)$("#si-mob").value=s.user.mobile||"";
+  const d=$("#signdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
+function closeSignIn(){const d=$("#signdlg");if(d.close)d.close();else d.removeAttribute("open")}
+function signOut(){store.set("ssb-session",null);pushLogout();PEND=[];store.set("ssb-pending",[]);qBadge();toast("Signed out");route()}
+$("#signdlg").addEventListener("click",e=>{const b=e.target.closest("button");
+  if(e.target.id==="signdlg"){closeSignIn();return}
+  if(b&&b.hasAttribute("data-sclose"))closeSignIn()});
+$("#signform").addEventListener("submit",async e=>{e.preventDefault();
+  const err=$("#si-err"),go=$("#si-go"),mob=$("#si-mob").value.replace(/\D/g,""),pin=$("#si-pin").value.trim();
+  if(mob.length<10||!pin){err.textContent="Enter your mobile number and PIN.";err.hidden=false;return}
+  if(!LOG_URL){err.textContent="The call log isn't connected yet.";err.hidden=false;return}
+  go.disabled=true;go.textContent="Signing in…";
+  try{const r=await fetch(`${LOG_URL}?action=login&mobile=${encodeURIComponent(mob)}&pin=${encodeURIComponent(pin)}`,{cache:"no-store"});
+    const j=await r.json();
+    if(j&&j.ok){store.set("ssb-session",{token:j.token,user:j.user});closeSignIn();toast("Signed in as "+j.user.name);
+      loadContent();loadPending();initPush();pushIdentify();
+      const n=afterSignIn;afterSignIn=null;if(n)n();else route()}
+    else{err.textContent=(j&&j.error)||"Could not sign in.";err.hidden=false}}
+  catch(e){err.textContent="No internet — try again when you're online.";err.hidden=false}
+  go.disabled=false;go.textContent="Sign in"});
+
+let repRange="today",repMine=false,repData=null,repBusy=false;
+const RANGES=[["today","Today"],["yesterday","Yesterday"],["7d","Last 7 days"],["month","This month"],["lastmonth","Last month"]];
+async function loadReport(){const s=signedIn();if(!s||!LOG_URL)return;repBusy=true;renderReports();
+  try{const r=await fetch(`${LOG_URL}?action=report&token=${encodeURIComponent(s.token)}&range=${repRange}${repMine?"&mine=1":""}`,{cache:"no-store"});
+    const j=await r.json();
+    if(j&&j.ok)repData=j;else{repData=null;if(j&&/sign in/i.test(j.error||"")){store.set("ssb-session",null)}}}
+  catch(e){repData=null}
+  repBusy=false;renderReports()}
+function bars(hours){
+  const from=6,to=22,slice=hours.slice(from,to+1),max=Math.max(1,...slice.map(h=>h.received));
+  const col=h=>{const ok=Math.max(0,h.received-h.missed),hm=h.missed;
+    return `<div class="col" title="${h.h}:00 — ${h.received} call${h.received===1?"":"s"}${hm?", "+hm+" missed":""}">${hm?`<div class="b2" style="height:${hm/max*100}%"></div>`:""}${ok?`<div class="b1" style="height:${ok/max*100}%"></div>`:""}</div>`};
+  const lab=h=>{const x=h.h%12||12;return h.h%3===0?`${x}${h.h<12?"a":"p"}`:""};
+  return `<div class="legend"><span><i style="background:var(--bar)"></i>Answered</span><span><i style="background:var(--warn-bar)"></i>Missed</span></div>
+   <div class="chart" role="img" aria-label="Calls by hour">${slice.map(col).join("")}</div>
+   <div class="xaxis">${slice.map(h=>`<span>${lab(h)}</span>`).join("")}</div>`}
+function rank(list,total){if(!list.length)return `<p class="foot">Nothing yet.</p>`;
+  const max=Math.max(1,...list.map(x=>x.count));
+  return `<div class="rank">${list.slice(0,10).map(x=>`<div class="r"><span>${esc(x.name)}</span><b>${x.count}</b><span class="bar"><i style="width:${x.count/max*100}%"></i></span></div>`).join("")}</div>`}
+function callRow(c,extra){const t=c.at?new Date(c.at):null;
+  return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"—"))}</b><small>${t?`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`:""}${extra?" · "+esc(extra):""}</small></div>${c.caller?`<a href="tel:${esc(String(c.caller).replace(/\D/g,""))}">Call</a>`:""}</div>`}
+function renderReports(){
+  const s=signedIn();
+  if(!s){app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
+    <div class="empty">Sign in to see call reports.<br><br><button type="button" class="save" style="position:static;margin:0;border-radius:12px;padding:12px 18px" data-signin>Sign in</button></div>`;return}
+  const u=(repData&&repData.user)||s.user,k=repData?repData.kpi:null;
+  const roleLine=u.role==="admin"?"All centres":u.role==="supervisor"?("Centre: "+(u.centre||"—")):"Your own calls";
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
+  <div class="whoami"><span>${esc(u.name)} · ${esc(roleLine)}</span><button type="button" data-signout>Sign out</button></div>
+  <div class="filters">${RANGES.map(([k2,l])=>`<button type="button" class="fchip" data-range="${k2}" aria-pressed="${repRange===k2}">${l}</button>`).join("")}${u.role!=="agent"?`<button type="button" class="fchip" data-repmine aria-pressed="${repMine}">My calls only</button>`:""}</div>
+  ${repBusy?`<div class="empty">Loading…</div>`:!repData?`<div class="empty">Couldn't load reports. Check your internet and try again.</div>`:`
+  <div class="kpis">
+    <div class="kpi"><b>${k.received}</b><span>Calls received</span></div>
+    <div class="kpi good"><b>${k.answered}</b><span>Answered</span></div>
+    <div class="kpi bad"><b>${k.missed}</b><span>Missed</span></div>
+    <div class="kpi"><b>${k.logged}</b><span>Logged in app</span></div>
+    ${k.spam?`<div class="kpi"><b>${k.spam}</b><span>Spam / wrong number</span></div>`:""}
+    ${k.followups?`<div class="kpi"><b>${k.followups}</b><span>Follow-ups</span></div>`:""}
+  </div>
+  <div class="card"><h3>Calls by hour</h3>${bars(repData.hours)}</div>
+  ${repData.days.length>1?`<div class="card"><h3>Day by day</h3><div class="clist">${repData.days.slice(-31).reverse().map(d=>{const dt=new Date(d.d+"T00:00:00");return `<div class="crow"><div><b>${DAYN[dt.getDay()]} ${dt.getDate()} ${MON[dt.getMonth()]}</b><small>${d.logged} logged</small></div><div style="text-align:right"><b>${d.received}</b><small>${d.missed} missed</small></div></div>`}).join("")}</div></div>`:""}
+  <div class="card"><h3>Reason mentions <span class="cbadge">a call can have more than one</span></h3>${rank(repData.reasons)}</div>
+  ${repData.agents.length?`<div class="card"><h3>By agent</h3>${rank(repData.agents)}</div>`:""}
+  ${repData.centres.length>1?`<div class="card"><h3>By centre / line</h3>${rank(repData.centres)}</div>`:""}
+  ${repData.numbersVisible===false?`<div class="card"><h3>Missed calls</h3><p class="foot">${repData.kpi.missed} missed in this period. Caller numbers aren't shown for supervisors — ask the admin for the ring-back list.</p></div>`:`<div class="card"><h3>Missed calls to ring back (${repData.missedList.length})</h3>${repData.missedList.length?`<div class="clist">${repData.missedList.map(c=>callRow(c)).join("")}</div>`:`<p class="foot">None — every call was answered.</p>`}</div>`}
+  <div class="card"><h3>Open follow-ups (${repData.followList.length})</h3>${repData.followList.length?`<div class="clist">${repData.followList.map(c=>callRow(c,[c.reason,c.note,c.agent].filter(Boolean).join(" · "))).join("")}</div>`:`<p class="foot">No follow-ups pending.</p>`}</div>
+  <p class="foot">Missed calls come from Exotel; logged calls come from the app. Numbers update as calls come in.</p>`}`}
+
+
+/* ============ SHARE WITH THE CALLER ============ */
+let shareTarget=null;
+function shareNumber(){if(detected&&detected.caller)return digits10(detected.caller);
+  const p=PEND[0];return p&&p.caller?digits10(p.caller):""}
+function digits10(v){const d=String(v||"").replace(/\D/g,"");return d.length>10?d.slice(-10):d}
+function shareTextFor(kind,data){
+  const c=viewCentre(),sign=`\n— Isha Yoga support${c?", "+c.name.replace(/,.*$/,""):""}${c&&c.phone?"\n"+fmtNum(c.phone):""}`;
+  if(kind==="item"){const it=data,lines=["Namaskaram 🙏","As discussed, here are the details:","",it.q];
+    if(it.say)lines.push(it.say);
+    (it.acts||[]).filter(a=>a.t==="url").forEach(a=>lines.push(a.l+": "+a.v));
+    (it.acts||[]).filter(a=>a.t==="tel").forEach(a=>lines.push(a.l+": "+fmtNum(a.v)));
+    return lines.join("\n")+sign}
+  const p=data;
+  return ["Namaskaram 🙏","Here are the program details:","",pName(p),`${pDate(p)} · ${pTime(p)}`,pWhere(p),pFee(p)?"Fee "+pFee(p):"",
+    p.closed?"Registration is closed for this batch.":("Register: "+(p.url||pPage(p)))].filter(Boolean).join("\n")+sign}
+function openShare(kind,data){shareTarget={text:shareTextFor(kind,data),to:shareNumber()};renderShare()}
+function renderShare(){const t=shareTarget;if(!t)return;
+  $("#sh-to").innerHTML=t.to?`<div class="sel"><span>To <b>${esc(fmtNum(t.to))}</b></span><button type="button" data-shedit>Change</button></div>`
+    :`<div class="numrow"><input id="sh-num" type="tel" inputmode="tel" placeholder="Caller's number" aria-label="Caller's number"><button type="button" class="setnum" data-shset>Use</button></div>`;
+  $("#sh-text").textContent=t.text;
+  const link=t.to?`https://wa.me/91${t.to}?text=${encodeURIComponent(t.text)}`:`https://wa.me/?text=${encodeURIComponent(t.text)}`;
+  $("#sh-wa").href=link;
+  $("#sh-sms").href=(t.to?`sms:${t.to}`:"sms:")+`?&body=${encodeURIComponent(t.text)}`;
+  const d=$("#shdlg");if(!d.open){if(d.showModal)d.showModal();else d.setAttribute("open","")}}
+function closeShare(){const d=$("#shdlg");if(d.close)d.close();else d.removeAttribute("open")}
+
 /* ============ LOG CALL (sends to the Google Sheet) ============ */
 const LOG_URL="https://script.google.com/macros/s/AKfycbzmu0H1y6451cZc7zqA3JlrUdHWlMa-3I-DIy8nXBVG2u9kVuwdiGOGDCwnFWTjwHih/exec";
-const REASONS=["Visit & timings","Directions / travel","Rituals & offerings","Program dates & registration","Program info (SSB)","Inner Engineering / online","Refund / cancellation","Volunteering","Isha Life shop","Donation","Centre contact","Isha Yoga Center (IYC)","Complaint / feedback","Other"];
+const REASONS=["Visit & timings","Directions / travel","Rituals & offerings","Program dates & registration","Program info","Inner Engineering / online","Refund / cancellation","Volunteering","Isha Life shop","Donation","Centre contact","Isha Yoga Center (IYC)","Complaint / feedback","Spam / wrong number","Other"];
+const SPAM="Spam / wrong number";
 const LINES=["SSB – General","SSBP – Programs","SSBWE – Weekend","JN – Programs","JN – Isha Shoppe","Outside Bangalore","Other"];
 const OUTCOMES=["Answered","Needs follow-up"];
 const CAT2REASON={visit:"Visit & timings",travel:"Directions / travel",rituals:"Rituals & offerings",pgm:"Program dates & registration",programs:"Program info (SSB)",ie:"Inner Engineering / online",vol:"Volunteering",shop:"Isha Life shop",contacts:"Centre contact",iyc:"Isha Yoga Center (IYC)"};
 const ID2REASON={refund:"Refund / cancellation",rereg:"Refund / cancellation",donate:"Donation",mahakshetra:"Donation",pgmreg:"Program dates & registration"};
 let lastTopic=null; // {reason, label, at}
 function noteTopic(cat,id,label){const r=ID2REASON[id]||CAT2REASON[cat];if(r)lastTopic={reason:r,label:label||"",at:Date.now()}}
-const lg={reason:"",outcome:"Answered",editWho:false};
+
+/* ---- caller number from Exotel (via the sheet) ---- */
+let detected=null;
+function myNum(){const s=signedIn();return s&&s.user?s.user.mobile:""}
+function renderMine(){const n=myNum();
+  $("#lg-mine").innerHTML=n?`<div class="who det" id="lg-detbox"><span id="lg-det">Checking your last call…</span></div>`:""}
+function showDetected(){const el=$("#lg-det");if(!el||!detected)return;
+  el.innerHTML=`Call from <b>${esc(fmtNum(detected.caller))}</b> · ${t12(new Date(detected.at))}`;
+  const c=$("#lg-caller");if(c&&!c.value)c.value=fmtNum(detected.caller)}
+async function detectCall(){detected=null;const n=myNum();if(!n||!LOG_URL)return;
+  const sn=signedIn();if(!sn)return;
+  try{const r=await fetch(LOG_URL+"?lookup=1&token="+encodeURIComponent(sn.token),{cache:"no-store"});const j=await r.json();
+    const el=$("#lg-det");if(!el)return;
+    if(j&&j.call){detected=j.call;el.innerHTML=`Call from <b>${esc(fmtNum(j.call.caller))}</b> · ${t12(new Date(j.call.at))}`;
+      const c=$("#lg-caller");if(c&&!c.value)c.value=fmtNum(j.call.caller)}
+    else{el.textContent="No recent call found for your number"}}
+  catch(e){const el=$("#lg-det");if(el)el.textContent="Couldn't check recent calls"}}
+const lg={reasons:[],outcome:"Answered",centre:""};
 function me(){return store.get("ssb-agent",{name:"",line:""})}
 function qGet(){return store.get("ssb-logq",[])}
 function qSet(q){store.set("ssb-logq",q);qBadge()}
-function qBadge(){const n=qGet().length,el=$("#qn");el.hidden=!n;el.textContent=n}
+function qBadge(){const n=qGet().length+PEND.length,el=$("#qn");el.hidden=!n;el.textContent=n}
 function renderWho(){const a=me(),box=$("#lg-who");
   if(a.name&&a.line&&!lg.editWho){box.innerHTML=`<div class="who"><span><b>${esc(a.name)}</b> · ${esc(a.line)}</span><button type="button" data-editwho>Change</button></div>`;return}
   box.innerHTML=`<div class="row2"><input id="lg-name" type="text" autocomplete="name" placeholder="Your name" value="${esc(a.name)}" aria-label="Your name"><select id="lg-line" aria-label="Your line"><option value="">Your line…</option>${LINES.map(l=>`<option${l===a.line?" selected":""}>${esc(l)}</option>`).join("")}</select></div>`}
+
+function renderCentreLine(){const el=$("#lg-centre");if(!el)return;
+  if(!canPickCentre()||!CENTRES.length){el.hidden=true;return}
+  el.hidden=false;
+  el.innerHTML=`<div class="sel"><span>Centre: <b>${esc((centreByCode(lg.centre)||{}).name||"—")}</b></span><button type="button" data-lgcentre>Change</button></div>`}
 function renderReasons(){const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
-  $("#lg-reasons").innerHTML=REASONS.map(r=>`<button type="button" class="rchip" data-reason="${esc(r)}" aria-pressed="${r===lg.reason}">${r===sug?'<span class="sg">Suggested</span>':""}${esc(r)}</button>`).join("");
-  $("#lg-fu").hidden=lg.outcome!=="Needs follow-up";
+  $("#lg-reasons").innerHTML=REASONS.map(r=>`<button type="button" class="rchip${r===SPAM?" spam":""}" data-reason="${esc(r)}" aria-pressed="${lg.reasons.indexOf(r)>=0}">${r===sug&&!lg.reasons.length?'<span class="sg">Suggested</span>':""}${esc(r)}</button>`).join("");
+  const isFu=lg.outcome==="Needs follow-up";
+  $("#lg-fu").hidden=!isFu;
+  $("#lg-noteopt").hidden=isFu; $("#lg-notereq").hidden=!isFu;
+  $("#lg-note").placeholder=isFu?"e.g. wants callback about Shoonya dates":"Anything worth recording";
   $("#lg-outcome").innerHTML=OUTCOMES.map(o=>`<button type="button" data-outcome="${o}" aria-pressed="${o===lg.outcome}">${o==="Needs follow-up"?"Follow-up":o}</button>`).join("")}
 function waText(en){const t=new Date(en.time),head="🔁 *Follow-up needed*";
   return [head,"Reason: "+en.reason,en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
 function showSent(en){const txt=waText(en);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
-function openLog(){$("#logform").hidden=false;$("#lg-sent").hidden=true;const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
-  lg.reason=sug;lg.outcome="Answered";lg.editWho=false;$("#lg-caller").value="";$("#lg-note").value="";$("#lg-caller").classList.remove("bad");$("#lg-note").classList.remove("bad");$("#lg-err").hidden=true;
-  renderReasons();const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
+function openLog(fromPending){$("#logform").hidden=false;$("#lg-sent").hidden=true;const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
+  lg.reasons=sug?[sug]:[];lg.outcome="Answered";lg.centre=(viewCentre()||{}).code||"";$("#lg-caller").value="";$("#lg-note").value="";$("#lg-caller").classList.remove("bad");$("#lg-note").classList.remove("bad");$("#lg-err").hidden=true;
+  renderMine();renderReasons();renderCentreLine();if(!fromPending)detectCall();else showDetected();const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
 function closeLog(){const d=$("#logdlg");if(d.close)d.close();else d.removeAttribute("open")}
 let sending=false;
 async function flushLog(){if(!LOG_URL||sending)return;const q=qGet();if(!q.length)return;sending=true;
   try{await fetch(LOG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({items:q})});
     const sent=new Set(q.map(x=>x.id));qSet(qGet().filter(x=>!sent.has(x.id)))}catch(e){}
   sending=false}
-$("#logbtn").addEventListener("click",openLog);
+$("#logbtn").addEventListener("click",()=>{if(!signedIn()&&LOG_URL){openSignIn(openLog);return}openLog()});
 $("#wa-send").addEventListener("click",()=>setTimeout(closeLog,400));
+$("#shdlg").addEventListener("click",e=>{const b=e.target.closest("button");
+  if(e.target.id==="shdlg"){closeShare();return}
+  if(!b)return;
+  if(b.hasAttribute("data-shclose")){closeShare();return}
+  if(b.hasAttribute("data-shedit")){shareTarget.to="";renderShare();return}
+  if(b.hasAttribute("data-shset")){const v=digits10($("#sh-num").value);if(v.length>=10){shareTarget.to=v;renderShare()}return}});
+$("#sh-wa").addEventListener("click",()=>setTimeout(closeShare,400));
 $("#logdlg").addEventListener("click",e=>{
   const b=e.target.closest("button");if(e.target.id==="logdlg"){closeLog();return}if(!b)return;
   if(b.hasAttribute("data-close")){closeLog();return}
   if(b.hasAttribute("data-editwho")){lg.editWho=true;renderWho();return}
-  if(b.dataset.reason){lg.reason=b.dataset.reason;renderReasons();return}
+  if(b.hasAttribute("data-lgcentre")){const i=CENTRES.findIndex(c=>c.code===lg.centre);lg.centre=CENTRES[(i+1)%CENTRES.length].code;renderCentreLine();return}
+  if(b.dataset.reason){const r=b.dataset.reason,i=lg.reasons.indexOf(r);
+    if(i>=0)lg.reasons.splice(i,1);
+    else if(r===SPAM)lg.reasons=[SPAM];
+    else {lg.reasons=lg.reasons.filter(x=>x!==SPAM);lg.reasons.push(r)}
+    if(lg.reasons.length===1&&lg.reasons[0]===SPAM)lg.outcome="Answered";
+    renderReasons();return}
   if(b.dataset.outcome){lg.outcome=b.dataset.outcome;renderReasons();return}});
 $("#logform").addEventListener("submit",e=>{e.preventDefault();
   const err=$("#lg-err"),a={name:"",line:""};
   const fu=lg.outcome==="Needs follow-up",cEl=$("#lg-caller"),nEl=$("#lg-note"),digits=cEl.value.replace(/\D/g,"");
   cEl.classList.toggle("bad",fu&&digits.length<10);nEl.classList.toggle("bad",fu&&!nEl.value.trim());
-  const miss=!lg.reason?"Please choose a reason.":fu&&digits.length<10?"Please enter the caller's number (at least 10 digits).":fu&&!nEl.value.trim()?"Please add a short note.":"";
+  const spamOnly=lg.reasons.length===1&&lg.reasons[0]===SPAM;
+  const miss=!lg.reasons.length?"Please choose at least one reason.":(fu&&!spamOnly&&digits.length<10)?"Please enter the caller's number (at least 10 digits).":(fu&&!spamOnly&&!nEl.value.trim())?"Please add a short note.":"";
   if(miss){err.textContent=miss;err.hidden=false;(digits.length<10?cEl:nEl).focus();return}
-  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reason:lg.reason,outcome:lg.outcome,caller:lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"",note:lg.outcome==="Needs follow-up"?$("#lg-note").value.trim():"",topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
+  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reasons:lg.reasons.slice(),centre:lg.centre,outcome:lg.outcome,caller:(lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"")||(detected?fmtNum(detected.caller):""),callSid:detected?detected.sid:"",token:(signedIn()||{}).token||"",note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
   qSet(qGet().concat(entry));lastTopic=null;
   if(entry.outcome!=="Answered")showSent(entry);else closeLog();
-  if(LOG_URL&&navigator.onLine){toast("Call logged");flushLog()}else toast(LOG_URL?"Saved on phone — will send when online":"Saved on this phone (sheet not connected yet)")});
+  if(detected){PEND=PEND.filter(x=>x.sid!==detected.sid);store.set("ssb-pending",PEND);qBadge()}
+  if(LOG_URL&&navigator.onLine){toast("Call logged");flushLog();setTimeout(loadPending,1500)}else toast(LOG_URL?"Saved on phone — will send when online":"Saved on this phone (sheet not connected yet)")});
 window.addEventListener("online",flushLog);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)flushLog()});
-qBadge();flushLog();
+PEND=store.get("ssb-pending",[]);bootContent();route();qBadge();flushLog();
+if(signedIn()){loadContent();loadPending();initPush()}
+setInterval(()=>{if(!document.hidden&&signedIn()){loadPending()}},120000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&signedIn()){loadPending();loadContent()}});
 
 if("serviceWorker" in navigator&&location.protocol==="https:"){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
