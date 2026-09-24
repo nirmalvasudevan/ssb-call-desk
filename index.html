@@ -2,6 +2,26 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+/* The Call Desk moved to Cloudflare Pages. On the old GitHub address, show a short
+   note, clear the old offline copy, and forward to the new address. */
+(function(){
+  if(!/github\.io$/i.test(location.hostname))return;
+  var to=/*NEW_HOME*/"https://ssb-call-desk.pages.dev/";
+  window.__MOVED=to;
+  try{if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.unregister()})})}catch(e){}
+  try{if(window.caches)caches.keys().then(function(k){k.forEach(function(n){caches.delete(n)})})}catch(e){}
+  var show=function(){var host=to.replace(/^https?:\/\//,"").replace(/\/$/,"");
+    document.body.innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#13236B;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center">'+
+      '<div style="max-width:420px"><p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin:0 0 10px">SSB Call Desk</p>'+
+      '<h1 style="font-size:26px;margin:0 0 12px;line-height:1.25">The Call Desk has a new address</h1>'+
+      '<p style="font-size:20px;font-weight:700;margin:0 0 18px;word-break:break-all">'+host+'</p>'+
+      '<p style="font-size:16px;line-height:1.5;opacity:.9;margin:0 0 22px">Opening it now. Sign in again with your mobile number and PIN, then add it to your home screen: in Chrome tap <b>&#8942;</b> then <b>Add to Home screen</b>. You can delete the old icon.</p>'+
+      '<a href="'+to+'" style="display:inline-block;background:#C25F0C;color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:12px;font-size:17px">Open the new Call Desk</a></div></div>'};
+  if(document.body)show();else document.addEventListener("DOMContentLoaded",show);
+  setTimeout(function(){location.replace(to)},5000);
+})();
+</script>
 <title>SSB Call Desk</title>
 <meta name="theme-color" content="#13236B">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -240,6 +260,12 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .crow small{display:block;color:var(--muted);font-size:13px}
 .crow a{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:7px 14px;font-size:14px}
 .cswitch{gap:8px}
+.rctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;align-items:end}
+.rsel{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rsel span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rsel select,.rdate{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:inherit;min-height:44px}
+.rdate{grid-column:1/-1}
+.rnote{margin:0;font-size:13.5px;color:var(--warn);background:var(--warn-bg);border-radius:10px;padding:8px 11px}
 .seg button{font-size:14px;padding:11px 4px}
 .addrep{align-self:flex-start;border:1px dashed var(--line);background:var(--surface);color:var(--link);border-radius:12px;padding:10px 14px;font:inherit;font-weight:600;cursor:pointer}
 .upcard select,.upcard input[type=file]{width:100%;margin-bottom:10px;font:inherit;font-size:14px;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:inherit}
@@ -401,6 +427,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 </dialog>
 
 <script>
+if(window.__MOVED)throw new Error("The Call Desk has moved to "+window.__MOVED);
 /* ============ KNOWLEDGE BASE ============
    Each entry: id, cat, q (question), say (short answer to read out),
    body (details; lines starting "- " become bullets), acts (tap actions),
@@ -1088,7 +1115,7 @@ app.addEventListener("click",e=>{
   if(b.dataset.logcall){const c=PEND.find(x=>x.sid===b.dataset.logcall);if(c){detected={sid:c.sid,caller:c.caller,at:c.at};openLog(true)}return}
   if(b.dataset.range){repRange=b.dataset.range;loadReport();return}
   if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
-  if(b.dataset.reptab){repTab=b.dataset.reptab;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
+  if(b.dataset.reptab){repTab=b.dataset.reptab;dayOlder=false;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
   if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
   if(b.dataset.repdate){repDate=b.dataset.repdate;cbTeam="all";loadDaily();return}
   if(b.dataset.cbteam){cbTeam=b.dataset.cbteam;renderReports();return}
@@ -1263,7 +1290,7 @@ function repLoad(){const s=signedIn();if(!s)return;
   else if(repTab==="log"&&!repBusy)loadReport()}
 
 async function loadDaily(){dayBusy=true;renderReports();
-  const j=await repAsk(`action=daily&date=${encodeURIComponent(repDate)}&scope=${encodeURIComponent(repScope||"all")}`);
+  const j=await repAsk(`action=daily&date=${encodeURIComponent(repDate||yesterdayYmd())}&scope=${encodeURIComponent(repScope||"all")}`);
   if(j&&j.ok){dayData=j;if(j.day)repDate=j.day.date}else{dayData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
   dayBusy=false;renderReports()}
 async function loadMonthly(){monBusy=true;renderReports();
@@ -1306,10 +1333,40 @@ function failCard(msg){const m=String(msg).replace(/^Error:\s*/,"");
 function notConnected(){return `<div class="empty">The Exotel reports aren't linked yet.<br><br>An admin needs to add <b>SUPABASE_URL</b> and <b>SUPABASE_KEY</b> in the call-log script's settings. Until then, <b>App log</b> still works.</div>`}
 
 /* ---- team boxes: one per Exotel group, grouped under their centre (JN = Program queries + Isha Life) ---- */
+/* ---- report controls: dropdowns for centre, day and month ---- */
+let dayChosen=false,dayOlder=false;
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function yesterdayYmd(){const d=new Date();d.setDate(d.getDate()-1);return ymd(d)}
+function dayLong(k){const t=new Date(k+"T00:00:00");return `${DAYN[t.getDay()]} ${t.getDate()} ${MON[t.getMonth()]}`}
+function centreRank(code){const i=(CENTRES||[]).findIndex(c=>c.code===code);return i<0?90:i}
+function scopeSelect(list){if(!list||!list.length)return "";
+  const L=list.slice().sort((a,b)=>centreRank(a)-centreRank(b));
+  return `<label class="rsel"><span>Centre</span><select id="repcentre"><option value=""${!repScope?" selected":""}>All centres</option>${L.map(c=>`<option value="${esc(c)}"${repScope===c?" selected":""}>${esc(centreLabel(c))}</option>`).join("")}</select></label>`}
+function dateSelect(days,cur){
+  const have=new Set(days||[]),today=ymd(new Date()),opts=[];
+  if(have.has(today))opts.push(`<option value="${today}"${today===cur?" selected":""}>${dayLong(today)} (today)</option>`);
+  for(let i=1;i<=7;i++){const d=new Date();d.setDate(d.getDate()-i);const k=ymd(d),ok=have.has(k);
+    opts.push(`<option value="${k}"${k===cur?" selected":""}${ok?"":" disabled"}>${dayLong(k)}${i===1?" (yesterday)":""}${ok?"":" — not uploaded"}</option>`)}
+  if(cur&&opts.join("").indexOf(`value="${cur}"`)<0)opts.push(`<option value="${cur}" selected>${dayLong(cur)}</option>`);
+  opts.push(`<option value="__older">Older date…</option>`);
+  const pick=dayOlder?`<input type="date" id="repdatepick" class="rdate" value="${esc(cur||"")}" min="${esc((days||[]).slice(-1)[0]||"")}" max="${esc((days||[])[0]||"")}" aria-label="Pick an older date">`:"";
+  return `<label class="rsel"><span>Day</span><select id="repday">${opts.join("")}</select></label>${pick}`}
+function monthSelect(id,months,cur){if(!months||!months.length)return "";
+  return `<label class="rsel"><span>Month</span><select id="${id}">${months.slice(0,24).map(m=>`<option value="${m}"${m===cur?" selected":""}>${monthLabel(m)}</option>`).join("")}</select></label>`}
+function ctlRow(){const parts=[...arguments].filter(Boolean);return parts.length?`<div class="rctl">${parts.join("")}</div>`:""}
+document.addEventListener("change",e=>{const t=e.target;if(!t||!t.id)return;
+  if(t.id==="repcentre"){repScope=t.value;renderReports();repLoad();return}
+  if(t.id==="repday"){if(t.value==="__older"){dayOlder=true;renderReports();const p=$("#repdatepick");if(p&&p.showPicker)try{p.showPicker()}catch(_){};return}
+    dayOlder=false;dayChosen=true;repDate=t.value;cbTeam="all";loadDaily();return}
+  if(t.id==="repdatepick"){if(t.value){dayChosen=true;repDate=t.value;cbTeam="all";loadDaily()}return}
+  if(t.id==="repmonth"){repMonth=t.value;loadMonthly();return}
+  if(t.id==="agmonth"){agMonth=t.value;loadAgents();return}});
+
 function teamBoxes(groups){
   if(!groups||!groups.length)return "";
   const by={};groups.forEach(g=>{const c=g.centre||"Other";(by[c]=by[c]||[]).push(g)});
-  const cs=Object.keys(by);
+  Object.keys(by).forEach(c=>by[c].sort((a,b)=>(String(a.code).toUpperCase()===c?0:1)-(String(b.code).toUpperCase()===c?0:1)));
+  const cs=Object.keys(by).sort((a,b)=>centreRank(a)-centreRank(b)||a.localeCompare(b));
   return `<div class="card"><h3>By team</h3>${cs.map(c=>`${cs.length>1||by[c].length>1?`<p class="tgh">${esc(centreLabel(c))}</p>`:""}<div class="tboxes">${by[c].map(teamBox).join("")}</div>`).join("")}</div>`}
 function teamBox(g){const low=g.reached&&g.rate<85;
   return `<div class="tbox"><b class="tn">${esc(g.name)}</b>
@@ -1335,7 +1392,8 @@ function callbackSection(d){
   if(!d.detail)return `<div class="card"><h3>Missed callers to call back</h3><p class="foot">Phone numbers are kept for the latest 60 days; this day shows totals only.</p></div>`;
   const L=d.callbacks||[],O=d.outOfHours||[];
   const teams={};L.forEach(f=>{(teams[f.team]=teams[f.team]||{name:f.name,rows:[]}).rows.push(f)});
-  const keys=Object.keys(teams);
+  const own=k=>{const c=teams[k].rows[0].centre;return c&&String(k).toUpperCase()===c?0:1};   // a centre's main group first: JN before JN Isha Life
+  const keys=Object.keys(teams).sort((a,b)=>centreRank(teams[a].rows[0].centre)-centreRank(teams[b].rows[0].centre)||own(a)-own(b)||teams[a].name.localeCompare(teams[b].name));
   if(cbTeam!=="all"&&!teams[cbTeam])cbTeam="all";
   const K=d.cbSkip||{},sk=[];
   if(K.sameDay)sk.push(K.sameDay+" who got through later that day");
@@ -1371,11 +1429,12 @@ function dailyBody(){
   const days=dayData.days||[];
   if(!days.length)return `<div class="empty">No days uploaded yet. Add an Exotel report on the dashboard and it will show up here.</div>`;
   const d=dayData.day;
-  const chips=`<div class="filters">${days.slice(0,10).map(x=>`<button type="button" class="fchip" data-repdate="${x}" aria-pressed="${repDate===x}">${dayLabel(x)}</button>`).join("")}</div>`;
-  const older=days.length>10?`<p class="dstamp">Older days: <input type="date" id="repdatepick" value="${esc(repDate)}" min="${esc(days[days.length-1])}" max="${esc(days[0])}"></p>`:"";
-  if(!d)return chips+older+`<div class="empty">Nothing for that day.</div>`;
+  const ctl=ctlRow(scopeSelect(dayData.scopes),dateSelect(days,d?d.date:repDate));
+  const yday=yesterdayYmd();
+  const lag=d&&!dayChosen&&d.date!==yday?`<p class="rnote">Yesterday isn't uploaded yet — showing <b>${esc(dayLong(d.date))}</b>, the latest day on the dashboard.</p>`:"";
+  if(!d)return ctl+`<div class="empty">Nothing for that day.</div>`;
   const reached=d.answered+d.missed;
-  return `${chips}${older}
+  return `${ctl}${lag}
   <div class="kpis">
     <div class="kpi"><b>${d.total}</b><span>Calls in</span></div>
     <div class="kpi good"><b>${d.answered}</b><span>Answered</span></div>
@@ -1398,7 +1457,7 @@ function monthlyBody(){
   const months=monData.months||[];
   if(!months.length)return `<div class="empty">No monthly report yet. An admin adds it once a month on the dashboard.</div>`;
   const m=monData.month;
-  const chips=`<div class="filters">${months.slice(0,12).map(x=>`<button type="button" class="fchip" data-repmonth="${x}" aria-pressed="${repMonth===x}">${monthLabel(x)}</button>`).join("")}</div>`;
+  const chips=ctlRow(scopeSelect(monData.scopes),monthSelect("repmonth",months,repMonth));
   if(!m||!m.hasCalls)return chips+`<div class="empty">Nothing for that month.</div>`;
   const s=m.stats,reached=s.c+s.m;
   const dmax=Math.max(1,...m.days.map(x=>x.calls));
@@ -1455,10 +1514,8 @@ function renderReports(){
     <button type="button" data-reptab="agents" aria-pressed="${repTab==="agents"}">Agents</button>
     <button type="button" data-reptab="log" aria-pressed="${repTab==="log"}">App log</button>
   </div>`:""}
-  ${repTab!=="log"?scopeChips(scopes):""}
   ${repTab==="daily"?dailyBody():repTab==="monthly"?monthlyBody():repTab==="agents"?agentsBody():logBody(u)}`;
-  const pick=$("#repdatepick");
-  if(pick)pick.addEventListener("change",()=>{if(pick.value){repDate=pick.value;loadDaily()}})}
+}
 
 
 /* ============ AGENTS: the monthly Exotel agent report ============ */
@@ -1503,7 +1560,7 @@ function agentsBody(){
   const months=agData.months||[],up=agentUploadHTML();
   if(!months.length)return up+`<div class="empty">No agent report yet.${agData.canUpload?" Add one above.":" An admin adds it once a month."}</div>`;
   const m=agData.month,t=m?m.totals:null;
-  const chips=`<div class="filters">${months.slice(0,12).map(x=>`<button type="button" class="fchip" data-agmonth="${x}" aria-pressed="${agMonth===x}">${monthLabel(x)}</button>`).join("")}</div>`;
+  const chips=ctlRow(scopeSelect(agData.scopes),monthSelect("agmonth",months,agMonth));
   if(!m||!m.groups.length)return up+chips+`<div class="empty">No volunteers for this centre in that month.</div>`;
   return `${up}${chips}
   <div class="kpis">
@@ -1512,7 +1569,7 @@ function agentsBody(){
     <div class="kpi bad"><b>${t.missed}</b><span>Missed</span></div>
     <div class="kpi"><b>${t.on}%</b><span>Average device on</span></div>
   </div>
-  ${m.groups.map(g=>`<div class="card"><h3>${esc(g.code==="_none"?g.name:centreLabel(g.code))} <span class="cbadge">${g.agents.length}</span></h3><div class="agl">${g.agents.map(agentCard).join("")}</div>${g.code==="_none"?'<p class="foot" style="margin:8px 0 0">Add these names to the Users tab with their centre, or put them in an Exotel group, so supervisors see them.</p>':""}</div>`).join("")}
+  ${m.groups.slice().sort((a,b)=>(a.code==="_none")-(b.code==="_none")||centreRank(a.code)-centreRank(b.code)).map(g=>`<div class="card"><h3>${esc(g.code==="_none"?g.name:centreLabel(g.code))} <span class="cbadge">${g.agents.length}</span></h3><div class="agl">${g.agents.map(agentCard).join("")}</div>${g.code==="_none"?'<p class="foot" style="margin:8px 0 0">Add these names to the Users tab with their centre, or put them in an Exotel group, so supervisors see them.</p>':""}</div>`).join("")}
   <p class="foot">From the Exotel agent report. Missed turns amber at a fifth of calls; device-on below 50%.</p>`}
 
 /* ============ SHARE WITH THE CALLER ============ */
