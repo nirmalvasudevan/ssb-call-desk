@@ -7,7 +7,7 @@
    note, clear the old offline copy, and forward to the new address. */
 (function(){
   if(!/github\.io$/i.test(location.hostname))return;
-  var to=/*NEW_HOME*/"https://ssb-call-desk.pages.dev/";
+  var to="https://ishaivr.pages.dev/";
   window.__MOVED=to;
   try{if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.unregister()})})}catch(e){}
   try{if(window.caches)caches.keys().then(function(k){k.forEach(function(n){caches.delete(n)})})}catch(e){}
