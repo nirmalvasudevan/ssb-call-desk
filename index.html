@@ -87,7 +87,9 @@ button{font:inherit;color:inherit}
 .chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 .head{display:flex;align-items:center;gap:10px}
-.back{border:0;background:var(--sunk);border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:600;font-size:15px}
+.back{display:inline-flex;align-items:center;gap:6px;border:0;background:var(--saffron-btn);color:#fff;border-radius:12px;padding:9px 14px 9px 10px;min-height:42px;cursor:pointer;font-weight:700;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.back svg{flex:none}
+.back:focus-visible{outline:3px solid var(--link);outline-offset:2px}
 .head h2{font-family:var(--font-display);font-size:20px;margin:0;line-height:1.25;text-wrap:balance}
 .meta{font-size:14px;color:var(--muted);margin:-12px 0 0}
 
@@ -189,6 +191,12 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .rchips{display:flex;flex-wrap:wrap;gap:6px}
 .rchip{border:1px solid var(--line);background:var(--ground);border-radius:10px;padding:7px 11px;font-size:14.5px;cursor:pointer;text-align:left}
 .rchip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.subp{margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.subp.miss{border-color:var(--warn);background:var(--warn-bg)}
+.subl{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:7px}
+.subp.miss .subl{color:var(--warn)}
+.rchip.hs::after{content:" ▾";opacity:.6}
+.rchip.sub{font-size:14px;padding:6px 10px}
 .rchip .sg{display:block;font-size:11px;font-weight:600;color:var(--saffron);letter-spacing:.04em;text-transform:uppercase}
 .rchip[aria-pressed="true"] .sg{color:#FFC98F}
 .seg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
@@ -225,12 +233,47 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .rank .bar{grid-column:1/-1;height:8px;border-radius:999px;background:var(--sunk);overflow:hidden}
 .rank .bar i{display:block;height:100%;background:var(--bar);border-radius:999px}
 .rank b{font-variant-numeric:tabular-nums}
+.rsub{grid-column:1/-1;font-size:12.5px;color:var(--muted);margin-top:-3px}
 .clist{display:flex;flex-direction:column;gap:0}
 .crow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
 .crow:last-child{border-bottom:0}
 .crow small{display:block;color:var(--muted);font-size:13px}
 .crow a{flex:none;background:var(--ok-bg);color:var(--ok);text-decoration:none;font-weight:600;border-radius:999px;padding:7px 14px;font-size:14px}
 .cswitch{gap:8px}
+.seg button{font-size:14px;padding:11px 4px}
+.addrep{align-self:flex-start;border:1px dashed var(--line);background:var(--surface);color:var(--link);border-radius:12px;padding:10px 14px;font:inherit;font-weight:600;cursor:pointer}
+.upcard select,.upcard input[type=file]{width:100%;margin-bottom:10px;font:inherit;font-size:14px;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:inherit}
+.uprow{display:flex;gap:8px}
+.upgo{flex:1;border:0;background:var(--navy);color:var(--navy-ink);border-radius:12px;padding:12px;font:inherit;font-weight:700;cursor:pointer}
+.upgo[disabled]{opacity:.6}
+.upx{border:1px solid var(--line);background:var(--surface);color:inherit;border-radius:12px;padding:12px 16px;font:inherit;cursor:pointer}
+.okmsg{color:var(--ok);font-size:14px}
+.agl{display:flex;flex-direction:column}
+.agc{padding:9px 0;border-bottom:1px solid var(--line)}
+.agc:last-child{border-bottom:0}
+.agn{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.agn b{font-size:14.5px}
+.ags{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12.5px;color:var(--muted);margin-top:2px}
+.ags b{color:var(--ink);font-variant-numeric:tabular-nums}
+.ags .hi b{color:var(--warn)}
+.gr.gact{align-items:center}
+.tlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0}
+.trow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.trow:last-child{border-bottom:0}
+.tname{flex:1 1 0;min-width:0;font-size:14px;line-height:1.3;overflow-wrap:anywhere}
+.tval{flex:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;margin-left:auto}
+.tnum{color:var(--ink);font-weight:600;text-decoration:none;font-variant-numeric:tabular-nums;font-size:14.5px;letter-spacing:-.1px}
+.tlink{color:var(--link);font-weight:600;text-decoration:none;font-size:14.5px}
+.tbtns{display:inline-flex;gap:5px}
+.tb{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--link);cursor:pointer;padding:0}
+.tb.wa{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.tcards{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.tcard{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.tct{font-size:15px}
+.tcr{display:grid;grid-template-columns:86px 1fr;align-items:center;gap:8px;font-size:14px}
+.tcl{color:var(--muted);font-size:12.5px}
+.tcv{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.tcv .tval{margin-left:0}
 .shsug{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;width:100%;margin-top:8px;text-align:left;border:1px dashed var(--line);background:var(--sunk);color:inherit;border-radius:12px;padding:9px 12px;font:inherit;cursor:pointer}
 .shsug span{grid-column:1;font-size:12.5px;color:var(--muted)}
 .shsug b{grid-column:1;font-size:16px;font-variant-numeric:tabular-nums}
@@ -336,7 +379,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
     <div id="lg-mine"></div>
     <div id="lg-centre" hidden></div>
     <p class="lbl">Reason</p>
-    <div class="rchips" id="lg-reasons"></div>
+    <div id="lg-reasons"></div>
     <p class="lbl">Outcome</p>
     <div class="seg" id="lg-outcome"></div>
     <div class="fu" id="lg-fu" hidden>
@@ -752,7 +795,7 @@ const BASE_KB=[
  k:"faq doc document sheet reference source website"}
 ];
 
-let CATS=BASE_CATS, KB=BASE_KB, GLANCE_BASE=[["Open","6 AM – 8 PM daily"],["Naga Arati","6:20 AM · 12:20 · 6:20 PM"],["Divya Darshanam","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Main line","080-4710 3311"]];
+let CATS=BASE_CATS, KB=BASE_KB, GLANCE_BASE=[["Timings","6 AM – 8:30 PM daily"],["Naga Arati","6:20 AM · 12:20 · 6:20 PM"],["Adiyogi Divya Darshan","7:20 PM"],["Free yoga","11:30 AM – 6 PM"],["Isha Life shop","9 AM – 7:30 PM"],["Centre line","08047103311","phone"],["Map","https://maps.app.goo.gl/PyhPXEQc4mTpoTJf8","map"]];
 let GLANCE=GLANCE_BASE;
 
 /* ============ APP ============ */
@@ -821,14 +864,41 @@ function itemText(it){
   (it.acts||[]).forEach(a=>t+="\n"+a.l+": "+(a.t==="tel"||a.t==="sms"?fmtNum(a.v):a.v));
   return t;
 }
+const BACK_IC='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
 const chev='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
+/* ---- answer tables: phone numbers and links get Copy + Share; tables with them become rows or cards ---- */
+const PHONE_RE=/^\+?\d[\d\s-]{7,}\d$/;
+const URL_RE=/^(https?:\/\/|www\.|maps\.app\.goo\.gl\/|goo\.gl\/)\S+$/i;
+function cellText(c){return String(c==null?"":c).replace(/<br\s*\/?>/gi," / ").replace(/<[^>]+>/g,"").trim()}
+function phonesIn(c){const t=cellText(c);if(!t)return null;const parts=t.split(/\s*\/\s*/);return parts.every(x=>PHONE_RE.test(x))?parts:null}
+function linkIn(c){const t=cellText(c);return URL_RE.test(t)?(/^https?:/i.test(t)?t:"https://"+t):null}
+const IC_COPY='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+const IC_SHARE='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v14"/></svg>';
+function tbtns(copyVal,shareMsg,what){
+  return `<span class="tbtns"><button type="button" class="tb" data-tcopy="${esc(copyVal)}" data-what="${esc(what)}" aria-label="Copy ${esc(what)}" title="Copy">${IC_COPY}</button><button type="button" class="tb wa" data-tshare="${esc(shareMsg)}" aria-label="Share ${esc(what)}" title="Share">${IC_SHARE}</button></span>`}
+function valueHTML(c,title,label){
+  const ph=phonesIn(c);
+  if(ph)return ph.map(n=>`<span class="tval"><a class="tnum" href="tel:${esc(n.replace(/\D/g,""))}">${esc(n)}</a>${tbtns(n,`${title}\n${label}: ${n}`,"number")}</span>`).join("");
+  const ln=linkIn(c);
+  if(ln){const isMap=/map/i.test(label)||/maps\.|goo\.gl/i.test(ln);
+    return `<span class="tval"><a class="tlink" href="${esc(ln)}" target="_blank" rel="noopener">${isMap?"Open map":"Open link"}</a>${tbtns(ln,`${title}${isMap?" — location":""}:\n${ln}`,isMap?"map link":"link")}</span>`}
+  return `<span class="tplain">${esc(cellText(c))||"—"}</span>`}
+function tableHTML(tb){
+  const head=tb.head||[],rows=tb.rows||[];
+  const rich=rows.some(r=>r.slice(1).some(c=>phonesIn(c)||linkIn(c)));
+  if(!rich)return `<div class="tbl"><table${tb.nw?' class="nw"':""}><thead><tr>${head.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  if(head.length===2)   // a name and a number: one line each
+    return `<div class="tlist">${rows.map(r=>`<div class="trow"><span class="tname">${esc(cellText(r[0]))}</span>${valueHTML(r[1],cellText(r[0]),head[1]||"Phone")}</div>`).join("")}</div>`;
+  return `<div class="tcards">${rows.map(r=>{const title=cellText(r[0]);
+    return `<div class="tcard"><b class="tct">${esc(title)}</b>${r.slice(1).map((c,i)=>`<div class="tcr"><span class="tcl">${esc(head[i+1]||"")}</span><span class="tcv">${valueHTML(c,title,head[i+1]||"")}</span></div>`).join("")}</div>`}).join("")}</div>`}
 
 function itemHTML(it,opts={}){
   const toks=opts.toks;
   let a='<div class="a">';
   if(it.say)a+=`<div class="say"><small>Tell the caller</small>${esc(it.say)}</div>`;
   if(it.flag)a+=`<div class="flag"><b>Check:</b> ${esc(it.flag)}</div>`;
-  if(it.table)a+=`<div class="tbl"><table${it.table.nw?' class="nw"':""}><thead><tr>${it.table.head.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}</tr></thead><tbody>${it.table.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  if(it.table)a+=tableHTML(it.table);
   if(it.body)a+=`<div class="body">${renderBody(it.body)}</div>`;
   if(it.acts&&it.acts.length)a+=`<div class="acts">${it.acts.map((x,i)=>`<div class="act"><a href="${esc(actHref(x))}" ${x.t==="url"?'target="_blank" rel="noopener"':""}><b>${esc(x.l)}</b><span>${esc(actShow(x))}</span></a><button type="button" data-copy="${esc(it.id)}:${i}" aria-label="Copy ${esc(x.l)}">Copy</button></div>`).join("")}</div>`;
   a+=`<div class="acts2"><button type="button" class="copyall" data-copyall="${esc(it.id)}">${it.copy?"Copy SMS text":"Copy answer"}</button><button type="button" class="copyall share" data-share="${esc(it.id)}">Share on WhatsApp</button></div></div>`;
@@ -896,7 +966,7 @@ function renderPrograms(){
   let groups="",cur="";
   for(const p of list){const a=pd(p.start),m=MONL[a.getMonth()]+" "+a.getFullYear();if(m!==cur){if(cur)groups+="</div>";groups+=`<p class="month">${m}</p><div class="list">`;cur=m}groups+=progHTML(p)}
   if(cur)groups+="</div>";
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Upcoming programs</h2></div>
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>Upcoming programs</h2></div>
   ${pStamp()}
   <div class="filters">${centreChips}${chip("centre","ALL","All Karnataka")}${chip("centre","OUT","Outside Bengaluru")}${chip("open","1","Open only")}</div>
   ${list.length?groups:`<div class="empty">No programs match these filters.</div>`}
@@ -929,10 +999,18 @@ function centreSwitch(){
     return `<div class="rchips cswitch">${L.map(c=>`<button type="button" class="rchip" data-setview="${esc(c.code)}" aria-pressed="${!!mine&&mine.code===c.code}">${esc(c.name.replace(/,.*$/,""))}</button>`).join("")}</div>`;
   return `<div class="sel"><span>${mine?`<b>${esc(mine.name)}</b>`:"No centre set"}</span>${canPickCentre()?`<button type="button" data-pickcentre>Change \u25BE</button>`:""}</div>`;
 }
+function glanceRow([k,v,kind]){
+  const who=(viewCentre()||{}).name||"Sadhguru Sannidhi";
+  if(kind==="phone"){const n=fmtNum(v);return `<div class="gr gact"><span>${esc(k)}</span><span class="tval"><a class="tnum" href="tel:${esc(String(v).replace(/\D/g,""))}">${esc(n)}</a>${tbtns(n,`${who}\nPhone: ${n}`,"number")}</span></div>`}
+  if(kind==="map")return `<div class="gr gact"><span>${esc(k)}</span><span class="tval"><a class="tlink" href="${esc(v)}" target="_blank" rel="noopener">Open map</a>${tbtns(v,`${who} — location:\n${v}`,"map link")}</span></div>`;
+  return `<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`}
 function renderHome(){
   const recent=store.get("ssb-recent",[]).map(id=>KB.find(k=>k.id===id)).filter(Boolean);
   const up=pUpcoming(),openN=up.filter(p=>!p.closed).length,nextSSB=up.find(p=>p.ssb&&!p.closed);
-  const g=GLANCE.slice();if(nextSSB)g.splice(5,0,["Next at SSB",pName(nextSSB).replace(/\s*\(English\)/,"")+", "+pDate(nextSSB)]);
+  const g=GLANCE.slice(),here=viewCentre();
+  const nextHere=here?up.find(p=>!p.closed&&pMatches(p,here)):null,nx=nextHere||nextSSB;
+  if(nx){const row=[`Next at ${nextHere&&here?here.code:"SSB"}`,pName(nx).replace(/\s*\(English\)/,"")+", "+pDate(nx)];
+    const at=g.findIndex(r=>r[2]==="phone");g.splice(at<0?g.length:at,0,row)}
   const mine=viewCentre();
   const pend=pendCount();
   const tile=c=>c.rep?`<button type="button" class="cat" data-cat="rep">${icon("rep")}<b>Reports</b><span>${esc(c.hint)}</span><i>${signedIn()?(signedIn().user.role==="admin"?"all centres":signedIn().user.role==="supervisor"?"your centre":"your calls"):"sign in"}</i></button>`
@@ -941,7 +1019,7 @@ function renderHome(){
   app.innerHTML=`
   ${pend?`<div class="alert"><span>${pend} call${pend>1?"s":""} waiting to be logged</span><button type="button" data-cat="pending">Log ${pend>1?"them":"it"}</button></div>`:""}
   ${centreSwitch()}
-  <section><p class="label">${mine?esc(mine.name)+" — at a glance":"At a glance"}</p><div class="glance">${g.map(([k,v])=>`<div class="gr"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div></section>
+  <section><p class="label">${mine?esc(mine.name)+" — at a glance":"At a glance"}</p><div class="glance">${g.map(glanceRow).join("")}</div></section>
   <section><p class="label">Topics</p><div class="cats">${CATS.map(tile).join("")}</div></section>
   ${recent.length?`<section><p class="label">Recently opened</p><div class="recent">${recent.map(r=>`<button type="button" class="chip" data-goto="${r.id}">${esc(r.q)}</button>`).join("")}</div></section>`:""}
   <p class="foot hint">Tip: on Android Chrome, tap ⋮ → “Add to Home screen” to keep this one tap away. Items marked <b>Check</b> need confirming with the team.</p>`;
@@ -952,7 +1030,7 @@ function renderCat(id,openId){
   if(id==="rep"){renderReports();repLoad();return}
   const c=CATS.find(x=>x.id===id);if(!c){renderHome();return}
   const items=KB.filter(k=>k.cat===id);
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>${esc(c.name)}</h2></div>
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>${esc(c.name)}</h2></div>
   <div class="list">${items.map(it=>itemHTML(it,{open:it.id===openId})).join("")}</div>`;
   if(openId){const el=document.getElementById("it-"+openId);if(el)el.scrollIntoView({block:"start"});}
 }
@@ -963,7 +1041,7 @@ function renderSearch(q){
   const progBlock=pr.length?`<p class="subhead">Upcoming programs (${pr.length})</p><div class="list">${pr.map(p=>progHTML(p,t,false)).join("")}</div>`:"";
   const ansBlock=res.length?`${pr.length?`<p class="subhead">Answers</p>`:""}${loose?`<p class="meta" style="margin:0">No answer matched every word — closest matches:</p>`:""}<div class="list">${res.map((it,i)=>itemHTML(it,{showCat:true,toks:t,open:total===1})).join("")}</div>`:"";
   const programFirst=pr.length&&(loose||!res.length||/program|ie|inner|yoga|shoonya|bhava|samyama|kriya|asana|angamardana|janani|pooja/.test(t.join(" ")));
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>${total?`${total} result${total>1?"s":""}`:"No results"}</h2></div>
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>${total?`${total} result${total>1?"s":""}`:"No results"}</h2></div>
   ${total?(programFirst?progBlock+ansBlock:ansBlock+progBlock):
   `<div class="empty">Nothing found for “${esc(q)}”. Try one simple word — e.g. <b>bus</b>, <b>refund</b>, <b>seva</b>, <b>shop</b> — or check the <a href="https://tinyurl.com/SSBFAQ" target="_blank" rel="noopener">FAQ doc</a>.</div>`}`;
 }
@@ -1016,11 +1094,17 @@ app.addEventListener("click",e=>{
   if(b.dataset.cbteam){cbTeam=b.dataset.cbteam;renderReports();return}
   if(b.dataset.cbcopy){const t=cbCopyText(b.dataset.cbcopy);if(t)copy(t,"Copied — paste it into WhatsApp");return}
   if(b.dataset.repmonth){repMonth=b.dataset.repmonth;loadMonthly();return}
+  if(b.dataset.agmonth){agMonth=b.dataset.agmonth;loadAgents();return}
+  if(b.hasAttribute("data-agup")){agUp.open=true;agUp.msg="";renderReports();return}
+  if(b.hasAttribute("data-agupx")){agUp={open:false,busy:false,msg:"",err:false};renderReports();return}
+  if(b.hasAttribute("data-agsend")){sendAgentReport();return}
   if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();repLoad()});return}
   if(b.hasAttribute("data-signout")){signOut();return}
   if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.centre=v;renderPrograms();return}
   if(b.dataset.pcopy){const p=pUpcoming().find(x=>x.id===b.dataset.pcopy);if(p)copy(pText(p),"Program details copied");return}
   if(b.dataset.plink){const[id,i]=b.dataset.plink.split(":");const p=pUpcoming().find(x=>x.id===id);if(!p)return;const l=(p.url&&!p.closed)?[p.url,pPage(p)]:[pPage(p)];copy(l[+i],"Link copied");return}
+  if(b.dataset.tcopy!==undefined){copy(b.dataset.tcopy,(b.dataset.what==="number"?"Number":b.dataset.what==="map link"?"Map link":"Link")+" copied");return}
+  if(b.dataset.tshare!==undefined){openShare("text",b.dataset.tshare);return}
   if(b.dataset.share){const it=KB.find(k=>k.id===b.dataset.share);if(it)openShare("item",it);return}
   if(b.dataset.pshare){const p=pUpcoming().find(x=>x.id===b.dataset.pshare);if(p)openShare("program",p);return}
   if(b.dataset.copy){const[id,i]=b.dataset.copy.split(":");const a=KB.find(k=>k.id===id).acts[+i];copy(a.v,"Copied "+a.l);return}
@@ -1071,9 +1155,21 @@ function buildContent(){
   const seen=new Map();
   items.filter(x=>x.own).forEach(x=>{const k=x.cat;if(!seen.has(k))seen.set(k,{id:k,name:x.grp,hint:"",n:0,icon:grpIcon(x.grp)});seen.get(k).n++});
   CATS=[{id:"pgm",name:"Upcoming programs",hint:"",pgm:true},...seen.values(),{id:"rep",name:"Reports",hint:"Calls, missed, follow-ups — daily & monthly",rep:true}];
-  GLANCE=(mine&&mine.glance&&mine.glance.length)?mine.glance.map(g=>[g[0],g[1]||""]):GLANCE_BASE;
-  if(mine&&mine.phone)GLANCE=GLANCE.concat([["Centre line",fmtNum(mine.phone)]]);
+  GLANCE=mine?glanceFor(mine):GLANCE_BASE;
   reindex()}
+/* one box per centre: Timings, its own lines, then (added on screen) next program, one number, map */
+function glanceFor(c){
+  const dg=v=>String(v||"").replace(/\D/g,"").slice(-10),ph=dg(c.phone);
+  const lines=(c.glance||[]).filter(g=>g[0]&&!/^(centre|center|main)\s*line$|^phone$|^open$|^timings?$/i.test(g[0].trim())&&!(ph&&dg(g[1])===ph))
+    .map(g=>[g[0],g[1]||""]);
+  const openLine=(c.glance||[]).find(g=>/^(open|timings?)$/i.test(String(g[0]).trim()));
+  const t=c.timings||(openLine?openLine[1]:"");
+  const out=[];
+  if(t)out.push(["Timings",t]);
+  out.push(...lines);
+  if(c.phone)out.push(["Centre line",c.phone,"phone"]);
+  if(c.map)out.push(["Map",c.map,"map"]);
+  return out}
 async function loadContent(){const s=signedIn();if(!s||!LOG_URL)return;
   try{const r=await fetch(`${LOG_URL}?action=content&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});
     const j=await r.json();
@@ -1098,7 +1194,7 @@ async function loadPending(){const s=signedIn();if(!s||!LOG_URL)return;
       if(changed){PEND=next;store.set("ssb-pending",PEND);qBadge();route()}}}
   catch(e){}}
 function renderPending(){
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Calls to log</h2></div>
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>Calls to log</h2></div>
   ${PEND.length?`<div class="card"><div class="clist">${PEND.map(c=>{const t=new Date(c.at);
     return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"Unknown"))}</b><small>${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}${c.status?" · "+esc(c.status):""}</small></div><button type="button" class="act" data-logcall="${esc(c.sid)}">Log</button></div>`}).join("")}</div></div>`
    :`<div class="empty">Nothing waiting. Every call is logged.</div>`}
@@ -1163,6 +1259,7 @@ function repLoad(){const s=signedIn();if(!s)return;
   if(s.user&&s.user.role==="agent")repTab="log";
   if(repTab==="daily"&&!dayBusy)loadDaily();
   else if(repTab==="monthly"&&!monBusy)loadMonthly();
+  else if(repTab==="agents"&&!agBusy)loadAgents();
   else if(repTab==="log"&&!repBusy)loadReport()}
 
 async function loadDaily(){dayBusy=true;renderReports();
@@ -1188,7 +1285,7 @@ function bars(hours){
    <div class="xaxis">${slice.map(h=>`<span>${lab(h)}</span>`).join("")}</div>`}
 function rank(list,total){if(!list.length)return `<p class="foot">Nothing yet.</p>`;
   const max=Math.max(1,...list.map(x=>x.count));
-  return `<div class="rank">${list.slice(0,10).map(x=>`<div class="r"><span>${esc(x.name)}</span><b>${x.count}</b><span class="bar"><i style="width:${x.count/max*100}%"></i></span></div>`).join("")}</div>`}
+  return `<div class="rank">${list.slice(0,12).map(x=>`<div class="r"><span>${esc(x.name)}</span><b>${x.count}</b><span class="bar"><i style="width:${x.count/max*100}%"></i></span>${x.subs&&x.subs.length?`<small class="rsub">${x.subs.map(s=>esc(s.name)+" "+s.count).join(" · ")}</small>`:""}</div>`).join("")}</div>`}
 function callRow(c,extra){const t=c.at?new Date(c.at):null;
   return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"—"))}</b><small>${t?`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`:""}${extra?" · "+esc(extra):""}</small></div>${c.caller?`<a href="tel:${esc(String(c.caller).replace(/\D/g,""))}">Call</a>`:""}</div>`}
 
@@ -1219,7 +1316,7 @@ function teamBox(g){const low=g.reached&&g.rate<85;
     <div class="tr"><span class="tv" style="color:${g.reached?(low?"var(--warn)":"var(--ok)"):"var(--muted)"}">${g.reached?g.rate+"%":"—"}</span><span class="tl">answered</span></div>
     <div class="track"><i class="${low?"low":""}" style="width:${g.reached?Math.min(100,g.rate):0}%"></i></div>
     <div class="tstats"><span><b>${g.answered}</b> answered</span><span class="${g.missed?"hi":""}"><b>${g.missed}</b> missed</span><span><b>${g.hangups}</b> hung up in menu</span></div></div>`}
-function centreLabel(code){const c=(typeof centreByCode==="function")&&centreByCode(code);return c?c.name.replace(/,.*$/,"")+" ("+code+")":code}
+function centreLabel(code){const c=(typeof centreByCode==="function")&&centreByCode(code);if(!c)return code;const n=c.name.replace(/,.*$/,"");return n.indexOf(code)>=0?n:n+" ("+code+")"}
 
 /* ---- callers to ring back, the same list and rules as the Call Desk Daily dashboard ---- */
 let cbTeam="all";
@@ -1318,10 +1415,7 @@ function monthlyBody(){
   ${s.lost?`<div class="kpis"><div class="kpi bad"><b>${s.lost}</b><span>Never got through all month</span></div><div class="kpi bad"><b>${s.lost3}</b><span>Tried 3 times or more</span></div></div>`:""}
   <div class="card"><h3>Day by day</h3><div class="legend"><span><i style="background:var(--bar)"></i>Answered</span><span><i style="background:var(--warn-bar)"></i>Missed</span></div>${dbars}</div>
   <div class="card"><h3>Calls by hour</h3>${bars(m.hours)}</div>
-  ${m.agents.length?`<div class="card"><h3>Volunteers (${m.agents.length})</h3><table class="gt"><thead><tr><th>Name</th><th>Calls</th><th>Missed</th><th>On</th></tr></thead><tbody>
-    ${m.agents.map(a=>`<tr><td>${esc(a.name)}<small>${a.mins||0} min${a.aht?` · ${a.aht} min average`:""}</small></td><td>${a.inc||0}</td><td class="${(a.inc&&a.miss/a.inc>=.2)?"hi":""}">${a.miss||0}</td><td>${a.on||0}%</td></tr>`).join("")}
-  </tbody></table></div>`:""}
-  <p class="foot">From the monthly Exotel reports an admin uploads. Full detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
+  <p class="foot">From the monthly Exotel reports an admin uploads. Volunteer figures are under <b>Agents</b>. Full detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
 
 function logBody(u){
   if(repBusy&&!repData)return `<div class="empty">Loading…</div>`;
@@ -1345,26 +1439,81 @@ function logBody(u){
 
 function renderReports(){
   const s=signedIn();
-  if(!s){app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
+  if(!s){app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>Reports</h2></div>
     <div class="empty">Sign in to see call reports.<br><br><button type="button" class="save" style="position:static;margin:0;border-radius:12px;padding:12px 18px" data-signin>Sign in</button></div>`;return}
   const u=(repData&&repData.user)||s.user;
   const full=u.role!=="agent";
   if(!full)repTab="log";
   const roleLine=repTab==="log"?(u.role==="admin"?"All centres":u.role==="supervisor"?("Centre: "+(u.centre||"—")):"Your own calls")
     :(u.role==="admin"?(repScope?("Centre: "+repScope):"All centres"):("Centre: "+(u.centre||"—")));
-  const scopes=(repTab==="daily"?(dayData&&dayData.scopes):repTab==="monthly"?(monData&&monData.scopes):null)||[];
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>← Topics</button><h2>Reports</h2></div>
+  const scopes=(repTab==="daily"?(dayData&&dayData.scopes):repTab==="monthly"?(monData&&monData.scopes):repTab==="agents"?(agData&&agData.scopes):null)||[];
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>Reports</h2></div>
   <div class="whoami"><span>${esc(u.name)} · ${esc(roleLine)}</span><button type="button" data-signout>Sign out</button></div>
   ${full?`<div class="seg">
     <button type="button" data-reptab="daily" aria-pressed="${repTab==="daily"}">Daily</button>
     <button type="button" data-reptab="monthly" aria-pressed="${repTab==="monthly"}">Monthly</button>
+    <button type="button" data-reptab="agents" aria-pressed="${repTab==="agents"}">Agents</button>
     <button type="button" data-reptab="log" aria-pressed="${repTab==="log"}">App log</button>
   </div>`:""}
   ${repTab!=="log"?scopeChips(scopes):""}
-  ${repTab==="daily"?dailyBody():repTab==="monthly"?monthlyBody():logBody(u)}`;
+  ${repTab==="daily"?dailyBody():repTab==="monthly"?monthlyBody():repTab==="agents"?agentsBody():logBody(u)}`;
   const pick=$("#repdatepick");
   if(pick)pick.addEventListener("change",()=>{if(pick.value){repDate=pick.value;loadDaily()}})}
 
+
+/* ============ AGENTS: the monthly Exotel agent report ============ */
+let agData=null,agBusy=false,agMonth="",agUp={open:false,busy:false,msg:"",err:false};
+async function loadAgents(){agBusy=true;renderReports();
+  const j=await repAsk(`action=agents&month=${encodeURIComponent(agMonth)}&scope=${encodeURIComponent(repScope||"all")}`);
+  if(j&&j.ok){agData=j;if(j.month)agMonth=j.month.month}else{agData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
+  agBusy=false;renderReports()}
+function lastMonths(n){const out=[],d=new Date();d.setDate(1);for(let i=0;i<n;i++){d.setMonth(d.getMonth()-1);out.push(d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"))}return out}
+function agentUploadHTML(){
+  if(!agData||!agData.canUpload)return "";
+  if(!agUp.open)return `<button type="button" class="addrep" data-agup>+ Add agent report</button>`;
+  const ms=lastMonths(12);
+  return `<div class="card upcard"><h3>Add the agent report</h3>
+    <p class="foot" style="margin:0 0 10px">The Exotel agent report CSV for one month. It replaces that month's agent figures here and on the dashboard.</p>
+    <label class="lbl" for="agup-month">Month</label>
+    <select id="agup-month">${ms.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join("")}</select>
+    <label class="lbl" for="agup-file">File</label>
+    <input id="agup-file" type="file" accept=".csv,text/csv">
+    ${agUp.msg?`<p class="${agUp.err?"err":"okmsg"}">${esc(agUp.msg)}</p>`:""}
+    <div class="uprow"><button type="button" class="upgo" data-agsend ${agUp.busy?"disabled":""}>${agUp.busy?"Saving…":"Upload"}</button><button type="button" class="upx" data-agupx>Cancel</button></div></div>`}
+async function sendAgentReport(){
+  const f=$("#agup-file"),m=$("#agup-month").value,s=signedIn();
+  if(!f||!f.files||!f.files[0]){agUp.msg="Choose the CSV file first.";agUp.err=true;renderReports();return}
+  agUp.busy=true;agUp.msg="";renderReports();
+  try{const text=await f.files[0].text();
+    const r=await fetch(LOG_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"agents_upload",token:s.token,month:m,csv:text})});
+    const j=await r.json();
+    if(j&&j.ok){agUp={open:false,busy:false,msg:"",err:false};agMonth=j.month;toast(`Saved ${monthLabel(j.month)} — ${j.volunteers} volunteers`);loadAgents();return}
+    agUp.msg=(j&&j.error)||"That didn't save. Try again.";agUp.err=true}
+  catch(e){agUp.msg="Couldn't reach the sheet. Check your internet and try again.";agUp.err=true}
+  agUp.busy=false;renderReports()}
+function agentCard(a){const low=a.inc&&a.miss/a.inc>=.2,off=a.on!=null&&a.on<50;
+  return `<div class="agc"><div class="agn"><b>${esc(a.name)}</b>${a.viaSheet?'<span class="cbadge">placed by Users tab</span>':""}</div>
+    <div class="ags"><span><b>${a.inc||0}</b> calls</span><span class="${low?"hi":""}"><b>${a.miss||0}</b> missed</span><span><b>${a.mins||0}</b> min</span><span><b>${a.aht||0}</b> min avg</span><span class="${off?"hi":""}"><b>${a.on||0}%</b> device on</span></div></div>`}
+function agentsBody(){
+  if(agBusy&&!agData)return `<div class="empty">Loading…</div>`;
+  if(agData&&agData.failed)return failCard(agData.failed);
+  if(!agData)return `<div class="empty">Couldn't reach the server. Check your internet and try again.</div>`;
+  if(agData.notset)return notConnected();
+  if(agData.blocked)return `<div class="empty">Volunteer figures are for supervisors and admins.</div>`;
+  const months=agData.months||[],up=agentUploadHTML();
+  if(!months.length)return up+`<div class="empty">No agent report yet.${agData.canUpload?" Add one above.":" An admin adds it once a month."}</div>`;
+  const m=agData.month,t=m?m.totals:null;
+  const chips=`<div class="filters">${months.slice(0,12).map(x=>`<button type="button" class="fchip" data-agmonth="${x}" aria-pressed="${agMonth===x}">${monthLabel(x)}</button>`).join("")}</div>`;
+  if(!m||!m.groups.length)return up+chips+`<div class="empty">No volunteers for this centre in that month.</div>`;
+  return `${up}${chips}
+  <div class="kpis">
+    <div class="kpi"><b>${t.active}</b><span>Took calls${t.volunteers>t.active?` (of ${t.volunteers})`:""}</span></div>
+    <div class="kpi good"><b>${t.calls}</b><span>Calls handled</span></div>
+    <div class="kpi bad"><b>${t.missed}</b><span>Missed</span></div>
+    <div class="kpi"><b>${t.on}%</b><span>Average device on</span></div>
+  </div>
+  ${m.groups.map(g=>`<div class="card"><h3>${esc(g.code==="_none"?g.name:centreLabel(g.code))} <span class="cbadge">${g.agents.length}</span></h3><div class="agl">${g.agents.map(agentCard).join("")}</div>${g.code==="_none"?'<p class="foot" style="margin:8px 0 0">Add these names to the Users tab with their centre, or put them in an Exotel group, so supervisors see them.</p>':""}</div>`).join("")}
+  <p class="foot">From the Exotel agent report. Missed turns amber at a fifth of calls; device-on below 50%.</p>`}
 
 /* ============ SHARE WITH THE CALLER ============ */
 let shareTarget=null;
@@ -1381,6 +1530,7 @@ function agoText(at){const m=Math.max(0,Math.round((Date.now()-new Date(at).getT
 function digits10(v){const d=String(v||"").replace(/\D/g,"");return d.length>10?d.slice(-10):d}
 function shareTextFor(kind,data){
   const c=viewCentre(),sign=`\n— Isha Yoga support${c?", "+c.name.replace(/,.*$/,""):""}${c&&c.phone?"\n"+fmtNum(c.phone):""}`;
+  if(kind==="text")return "Namaskaram 🙏\n"+data+sign;
   if(kind==="item"){const it=data,lines=["Namaskaram 🙏","As discussed, here are the details:","",it.q];
     if(it.say)lines.push(it.say);
     (it.acts||[]).filter(a=>a.t==="url").forEach(a=>lines.push(a.l+": "+a.v));
@@ -1403,14 +1553,42 @@ function closeShare(){const d=$("#shdlg");if(d.close)d.close();else d.removeAttr
 
 /* ============ LOG CALL (sends to the Google Sheet) ============ */
 const LOG_URL="https://script.google.com/macros/s/AKfycbzmu0H1y6451cZc7zqA3JlrUdHWlMa-3I-DIy8nXBVG2u9kVuwdiGOGDCwnFWTjwHih/exec";
-const REASONS=["Visit & timings","Directions / travel","Rituals & offerings","Program dates & registration","Program info","Inner Engineering / online","Refund / cancellation","Volunteering","Isha Life shop","Donation","Centre contact","Isha Yoga Center (IYC)","Complaint / feedback","Spam / wrong number","Other"];
-const SPAM="Spam / wrong number";
 const LINES=["SSB – General","SSBP – Programs","SSBWE – Weekend","JN – Programs","JN – Isha Shoppe","Outside Bangalore","Other"];
 const OUTCOMES=["Answered","Needs follow-up"];
-const CAT2REASON={visit:"Visit & timings",travel:"Directions / travel",rituals:"Rituals & offerings",pgm:"Program dates & registration",programs:"Program info (SSB)",ie:"Inner Engineering / online",vol:"Volunteering",shop:"Isha Life shop",contacts:"Centre contact",iyc:"Isha Yoga Center (IYC)"};
-const ID2REASON={refund:"Refund / cancellation",rereg:"Refund / cancellation",donate:"Donation",mahakshetra:"Donation",pgmreg:"Program dates & registration"};
-let lastTopic=null; // {reason, label, at}
-function noteTopic(cat,id,label){const r=ID2REASON[id]||CAT2REASON[cat];if(r)lastTopic={reason:r,label:label||"",at:Date.now()}}
+/* Reason → sub-reasons. The live list comes from the Reasons tab in the sheet; these are the
+   same lists, used until the sheet answers (or if it's offline). SSB's list also serves GCS (MKN). */
+const R_SSB=[["Inner Engineering",["Online","In person"]],["Advance Program",["Bhava Spandana","Shoonya","Others"]],
+  ["Hatha Yoga",["Yogasanas","Surya Kriya","Angamardana","Bhuta Shuddhi","Others"]],
+  ["Rituals & Offerings",["Sarpa Seva","Benne Seva","Yoga Sandhya","Klesha Nashana Kriya"]],
+  ["Ashram queries",["Visit / timings","Directions / travel","Restaurant","Wheelchair","Guest Care"]],
+  ["Isha Shop",[]],["Other",["Spam","Missing Person","Lost & found","Feedback","Others"]],
+  ["Volunteering",["Registration","Confirmation","Inquiry"]],["MKN",["Registration","Refund","Inquiry"]],["IYC",[]]];
+const R_CENTRES=[["Inner Engineering",[]],["Hatha Yoga",["Yogasanas","Surya Kriya","Angamardana","Bhuta Shuddhi","Others"]],
+  ["Isha Shop",[]],["Centre Details",[]],["Volunteering",[]],["Ashram related",["SSB","IYC"]],
+  ["Advance Program",["Bhava Spandana","Shoonya","Others"]],["Other",["Spam","Missing Person","Lost & found","Feedback","Others"]]];
+const DEFAULT_REASONS={SSB:R_SSB,GCS:R_SSB,CENTRES:R_CENTRES};
+function reasonSet(code){
+  const live=CONTENT&&CONTENT.reasons&&Object.keys(CONTENT.reasons).length?CONTENT.reasons:null;
+  const pick=src=>{const k=String(code||"").toUpperCase();return src[k]||src.CENTRES||null};
+  const got=live?pick(live):null;
+  return (got&&got.length?got:pick(DEFAULT_REASONS)).map(r=>Array.isArray(r)?{name:r[0],subs:r[1]||[]}:{name:r.name,subs:r.subs||[]})}
+/* A suggestion from the answer the volunteer just opened: only offered when that reason is in their list */
+const SUGGEST=[[/inner engineering|\bie\b|\bieo\b|shambhavi/i,"Inner Engineering"],[/bhava spandana|shoonya|samyama|advance/i,"Advance Program"],
+  [/hatha|yogasana|surya kriya|angamardana|bhuta shuddhi/i,"Hatha Yoga"],[/mahakshetra|\bmkn\b|nirmanam/i,"MKN"],
+  [/sarpa|benne|yoga sandhya|klesha|ritual|offering|arpan|naga/i,"Rituals & Offerings"],[/isha life|shop|shoppe/i,"Isha Shop"],
+  [/volunteer|\bseva\b/i,"Volunteering"],[/\biyc\b|coimbatore|isha yoga cent/i,"IYC"],[/lost|missing/i,"Other"],
+  [/visit|timing|hours|reach|direction|travel|bus|restaurant|food|wheel ?chair|guest|stay|accommodation|darshan|arati|photo|dress/i,"Ashram queries"],
+  [/centre|center|class|address|contact/i,"Centre Details"]];
+let lastTopic=null; // {text, label, at}
+function noteTopic(cat,id,label){const it=KB.find(k=>k.id===id);
+  lastTopic={text:[label,it&&it.grp,it&&it.q,cat].filter(Boolean).join(" "),label:label||"",at:Date.now()}}
+function suggestedReason(){if(!lastTopic||Date.now()-lastTopic.at>20*60e3)return "";
+  const names=reasonSet(lg.centre).map(r=>r.name);
+  for(const [re,r] of SUGGEST){if(re.test(lastTopic.text)){
+    if(names.indexOf(r)>=0)return r;
+    if(r==="Ashram queries"&&names.indexOf("Ashram related")>=0)return "Ashram related";
+    if(r==="IYC"&&names.indexOf("Ashram related")>=0)return "Ashram related"}}
+  return ""}
 
 /* ---- caller number from Exotel (via the sheet) ---- */
 let detected=null;
@@ -1428,7 +1606,7 @@ async function detectCall(){detected=null;const n=myNum();if(!n||!LOG_URL)return
       const c=$("#lg-caller");if(c&&!c.value)c.value=fmtNum(j.call.caller)}
     else{el.textContent="No recent call found for your number"}}
   catch(e){const el=$("#lg-det");if(el)el.textContent="Couldn't check recent calls"}}
-const lg={reasons:[],outcome:"Answered",centre:""};
+const lg={pick:{},outcome:"Answered",centre:"",tried:false};
 function me(){return store.get("ssb-agent",{name:"",line:""})}
 function qGet(){return store.get("ssb-logq",[])}
 function qSet(q){store.set("ssb-logq",q);qBadge()}
@@ -1442,18 +1620,27 @@ function renderCentreLine(){const el=$("#lg-centre");if(!el)return;
   if(!canPickCentre()||!CENTRES.length){el.hidden=true;return}
   el.hidden=false;
   el.innerHTML=`<div class="sel"><span>Centre: <b>${esc((centreByCode(lg.centre)||{}).name||"—")}</b></span><button type="button" data-lgcentre>Change</button></div>`}
-function renderReasons(){const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
-  $("#lg-reasons").innerHTML=REASONS.map(r=>`<button type="button" class="rchip${r===SPAM?" spam":""}" data-reason="${esc(r)}" aria-pressed="${lg.reasons.indexOf(r)>=0}">${r===sug&&!lg.reasons.length?'<span class="sg">Suggested</span>':""}${esc(r)}</button>`).join("");
+function lgReasons(){   // what gets saved: "Reason > Sub" for each pick, in list order
+  const out=[];reasonSet(lg.centre).forEach(r=>{const p=lg.pick[r.name];if(!p)return;
+    if(r.subs.length)p.forEach(x=>out.push(r.name+" > "+x));else out.push(r.name)});return out}
+function lgSpamOnly(){const k=Object.keys(lg.pick);return k.length===1&&k[0]==="Other"&&lg.pick.Other.length===1&&lg.pick.Other[0]==="Spam"}
+function renderReasons(){const set=reasonSet(lg.centre),sug=suggestedReason();
+  const none=!Object.keys(lg.pick).length;
+  let h=`<div class="rchips">${set.map(r=>`<button type="button" class="rchip${r.subs.length?" hs":""}" data-reason="${esc(r.name)}" aria-pressed="${!!lg.pick[r.name]}">${r.name===sug&&none?'<span class="sg">Suggested</span>':""}${esc(r.name)}</button>`).join("")}</div>`;
+  set.filter(r=>r.subs.length&&lg.pick[r.name]).forEach(r=>{const miss=lg.tried&&!lg.pick[r.name].length;
+    h+=`<div class="subp${miss?" miss":""}"><span class="subl">${esc(r.name)} — pick ${miss?"at least one":"one or more"}</span><div class="rchips">${r.subs.map(x=>`<button type="button" class="rchip sub${r.name==="Other"&&x==="Spam"?" spam":""}" data-sub="${esc(r.name)}|${esc(x)}" aria-pressed="${lg.pick[r.name].indexOf(x)>=0}">${esc(x)}</button>`).join("")}</div></div>`});
+  $("#lg-reasons").innerHTML=h;
   const isFu=lg.outcome==="Needs follow-up";
   $("#lg-fu").hidden=!isFu;
   $("#lg-noteopt").hidden=isFu; $("#lg-notereq").hidden=!isFu;
   $("#lg-note").placeholder=isFu?"e.g. wants callback about Shoonya dates":"Anything worth recording";
   $("#lg-outcome").innerHTML=OUTCOMES.map(o=>`<button type="button" data-outcome="${o}" aria-pressed="${o===lg.outcome}">${o==="Needs follow-up"?"Follow-up":o}</button>`).join("")}
 function waText(en){const t=new Date(en.time),head="🔁 *Follow-up needed*";
-  return [head,"Reason: "+en.reason,en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
+  return [head,"Reason: "+(en.reasons||[]).join(", "),en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
 function showSent(en){const txt=waText(en);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
-function openLog(fromPending){$("#logform").hidden=false;$("#lg-sent").hidden=true;const sug=lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.reason:"";
-  lg.reasons=sug?[sug]:[];lg.outcome="Answered";lg.centre=(viewCentre()||{}).code||"";$("#lg-caller").value="";$("#lg-note").value="";$("#lg-caller").classList.remove("bad");$("#lg-note").classList.remove("bad");$("#lg-err").hidden=true;
+function openLog(fromPending){$("#logform").hidden=false;$("#lg-sent").hidden=true;
+  lg.pick={};lg.tried=false;lg.outcome="Answered";lg.centre=(viewCentre()||{}).code||"";
+  {const sg=suggestedReason();if(sg){const r=reasonSet(lg.centre).find(x=>x.name===sg);if(r)lg.pick[sg]=[]}}$("#lg-caller").value="";$("#lg-note").value="";$("#lg-caller").classList.remove("bad");$("#lg-note").classList.remove("bad");$("#lg-err").hidden=true;
   renderMine();renderReasons();renderCentreLine();if(!fromPending)detectCall();else showDetected();const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
 function closeLog(){const d=$("#logdlg");if(d.close)d.close();else d.removeAttribute("open")}
 let sending=false;
@@ -1475,22 +1662,25 @@ $("#logdlg").addEventListener("click",e=>{
   const b=e.target.closest("button");if(e.target.id==="logdlg"){closeLog();return}if(!b)return;
   if(b.hasAttribute("data-close")){closeLog();return}
   if(b.hasAttribute("data-editwho")){lg.editWho=true;renderWho();return}
-  if(b.hasAttribute("data-lgcentre")){const L=pickList();if(L.length){const i=L.findIndex(c=>c.code===lg.centre);lg.centre=L[(i+1)%L.length].code}renderCentreLine();return}
-  if(b.dataset.reason){const r=b.dataset.reason,i=lg.reasons.indexOf(r);
-    if(i>=0)lg.reasons.splice(i,1);
-    else if(r===SPAM)lg.reasons=[SPAM];
-    else {lg.reasons=lg.reasons.filter(x=>x!==SPAM);lg.reasons.push(r)}
-    if(lg.reasons.length===1&&lg.reasons[0]===SPAM)lg.outcome="Answered";
+  if(b.hasAttribute("data-lgcentre")){const L=pickList();if(L.length){const i=L.findIndex(c=>c.code===lg.centre);lg.centre=L[(i+1)%L.length].code}
+    const names=reasonSet(lg.centre).map(r=>r.name);Object.keys(lg.pick).forEach(k=>{if(names.indexOf(k)<0)delete lg.pick[k]});   // a different centre can have a different list
+    renderCentreLine();renderReasons();return}
+  if(b.dataset.reason){const r=b.dataset.reason;if(lg.pick[r])delete lg.pick[r];else lg.pick[r]=[];renderReasons();return}
+  if(b.dataset.sub){const [r,x]=b.dataset.sub.split("|"),a=lg.pick[r]||(lg.pick[r]=[]),i=a.indexOf(x);
+    if(i>=0)a.splice(i,1);else a.push(x);
+    if(lgSpamOnly())lg.outcome="Answered";
     renderReasons();return}
   if(b.dataset.outcome){lg.outcome=b.dataset.outcome;renderReasons();return}});
 $("#logform").addEventListener("submit",e=>{e.preventDefault();
   const err=$("#lg-err"),a={name:"",line:""};
   const fu=lg.outcome==="Needs follow-up",cEl=$("#lg-caller"),nEl=$("#lg-note"),digits=cEl.value.replace(/\D/g,"");
   cEl.classList.toggle("bad",fu&&digits.length<10);nEl.classList.toggle("bad",fu&&!nEl.value.trim());
-  const spamOnly=lg.reasons.length===1&&lg.reasons[0]===SPAM;
-  const miss=!lg.reasons.length?"Please choose at least one reason.":(fu&&!spamOnly&&digits.length<10)?"Please enter the caller's number (at least 10 digits).":(fu&&!spamOnly&&!nEl.value.trim())?"Please add a short note.":"";
-  if(miss){err.textContent=miss;err.hidden=false;(digits.length<10?cEl:nEl).focus();return}
-  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reasons:lg.reasons.slice(),centre:lg.centre,outcome:lg.outcome,caller:(lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"")||(detected?fmtNum(detected.caller):""),callSid:detected?detected.sid:"",token:(signedIn()||{}).token||"",note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
+  const spamOnly=lgSpamOnly(),set=reasonSet(lg.centre);
+  const needSub=set.find(r=>r.subs.length&&lg.pick[r.name]&&!lg.pick[r.name].length);
+  lg.tried=true;
+  const miss=!Object.keys(lg.pick).length?"Please choose at least one reason.":needSub?`Please pick what it was about under ${needSub.name}.`:(fu&&!spamOnly&&digits.length<10)?"Please enter the caller's number (at least 10 digits).":(fu&&!spamOnly&&!nEl.value.trim())?"Please add a short note.":"";
+  if(miss){err.textContent=miss;err.hidden=false;if(needSub||!Object.keys(lg.pick).length)renderReasons();else (digits.length<10?cEl:nEl).focus();return}
+  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reasons:lgReasons(),centre:lg.centre,outcome:lg.outcome,caller:(lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"")||(detected?fmtNum(detected.caller):""),callSid:detected?detected.sid:"",token:(signedIn()||{}).token||"",note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
   qSet(qGet().concat(entry));lastTopic=null;
   if(entry.outcome!=="Answered")showSent(entry);else closeLog();
   if(detected){PEND=PEND.filter(x=>x.sid!==detected.sid);store.set("ssb-pending",PEND);qBadge()}
