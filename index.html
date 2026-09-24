@@ -13,7 +13,7 @@
   try{if(window.caches)caches.keys().then(function(k){k.forEach(function(n){caches.delete(n)})})}catch(e){}
   var show=function(){var host=to.replace(/^https?:\/\//,"").replace(/\/$/,"");
     document.body.innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#13236B;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center">'+
-      '<div style="max-width:420px"><p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin:0 0 10px">SSB Call Desk</p>'+
+      '<div style="max-width:420px"><p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin:0 0 10px">Isha Call Desk</p>'+
       '<h1 style="font-size:26px;margin:0 0 12px;line-height:1.25">The Call Desk has a new address</h1>'+
       '<p style="font-size:20px;font-weight:700;margin:0 0 18px;word-break:break-all">'+host+'</p>'+
       '<p style="font-size:16px;line-height:1.5;opacity:.9;margin:0 0 22px">Opening it now. Sign in again with your mobile number and PIN, then add it to your home screen: in Chrome tap <b>&#8942;</b> then <b>Add to Home screen</b>. You can delete the old icon.</p>'+
@@ -22,11 +22,11 @@
   setTimeout(function(){location.replace(to)},5000);
 })();
 </script>
-<title>SSB Call Desk</title>
+<title>Isha Call Desk</title>
 <meta name="theme-color" content="#13236B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="SSB Desk">
+<meta name="apple-mobile-web-app-title" content="Isha Call Desk">
 <link rel="manifest" href="manifest.webmanifest?v=4">
 <link rel="icon" href="icon-v4-192.png">
 <link rel="apple-touch-icon" href="icon-v4-192.png">
@@ -37,7 +37,7 @@
 :root{
   --ground:#F3F4F9; --surface:#FFFFFF; --sunk:#EAECF4; --ink:#141B33; --muted:#5A6280; --line:#DDE1EC;
   --navy:#13236B; --navy-ink:#FFFFFF; --link:#1E3AA8; --saffron:#C9660E; --saffron-soft:#FCEBD9;
-  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6; --icon:#1E3AA8; --saffron-btn:#C25F0C; --bar:#2C4BB8; --warn-bar:#D9731C;
+  --warn:#8A5200; --warn-bg:#FFF4DB; --warn-line:#F0D08A; --hl:#FFE7A8; --ok:#1C6B3A; --ok-bg:#DFF3E6; --icon:#1E3AA8; --saffron-btn:#C25F0C; --bar:#2C4BB8; --warn-bar:#D9731C; --mp-l:33%;
   --font-body:"Hind",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --font-display:"Martel",Georgia,"Times New Roman",serif;
 }
@@ -45,13 +45,13 @@
   :root:not([data-theme="light"]){
     --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
     --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A;
+    --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A; --mp-l:66%;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0D1120; --surface:#161B2E; --sunk:#1D2339; --ink:#E8EBF5; --muted:#9BA3C0; --line:#2A3152;
   --navy:#22347F; --navy-ink:#FFFFFF; --link:#9DB0FF; --saffron:#F2A055; --saffron-soft:#3A2715;
-  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A;
+  --warn:#F5C977; --warn-bg:#2E2512; --warn-line:#5C4A1E; --hl:#5A4A12; --ok:#7FD69F; --ok-bg:#15301F; --icon:#AFC0FF; --saffron-btn:#C8660F; --bar:#7C93FF; --warn-bar:#E8A15A; --mp-l:66%;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -282,6 +282,10 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .ags{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12.5px;color:var(--muted);margin-top:2px}
 .ags b{color:var(--ink);font-variant-numeric:tabular-nums}
 .ags .hi b{color:var(--warn)}
+.ags .mp{border-radius:999px;padding:0 8px;background:hsl(var(--h) 75% 50% / .15);color:hsl(var(--h) 80% var(--mp-l))}
+.ags .mp b{color:inherit}
+.ags .mp.none{background:var(--sunk);color:var(--muted)}
+.agc.idle .agn b{color:var(--muted)}
 .gr.gact{align-items:center}
 .tlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0}
 .trow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line)}
@@ -345,6 +349,16 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .cbhead h3{margin:0}
 .cbcopy{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--link);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
 .cbgrid{display:flex;flex-direction:column;gap:12px}
+.plist{display:flex;flex-direction:column}
+.pl{border-bottom:1px solid var(--line)}
+.pl:last-child{border-bottom:0}
+.pl summary{display:flex;align-items:center;gap:10px;padding:10px 0;cursor:pointer;list-style:none}
+.pl summary::-webkit-details-marker{display:none}
+.pl summary::after{content:"▾";color:var(--muted);font-size:12px}
+.pl[open] summary::after{content:"▴"}
+.pl .pn{flex:1;min-width:0;font-weight:600}
+.pl summary b{font-variant-numeric:tabular-nums;color:var(--warn);background:var(--warn-bg);border-radius:999px;padding:1px 10px}
+.pl .clist{padding:0 0 8px}
 .cb{border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .cbh{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--sunk)}
 .cbh b{flex:1;min-width:0;font-size:14px}
@@ -362,8 +376,7 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 <header class="top">
   <div class="top-inner">
     <div class="brand">
-      <img class="logo" src="logo-v3.jpg" alt=""><div class="bt"><h1>SSB Call Desk</h1><p class="sub">Sadhguru Sannidhi Bengaluru</p></div>
-      <a class="call" href="tel:08047103311" aria-label="Call main line 080-4710 3311"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="cn">080-4710 3311</span><span class="cs">Call</span></a>
+      <img class="logo" src="logo-v3.jpg" alt=""><div class="bt"><h1>Isha Call Desk</h1><p class="sub">Karnataka</p></div>
     </div>
   </div>
 </header>
@@ -1119,12 +1132,10 @@ app.addEventListener("click",e=>{
   if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
   if(b.dataset.repdate){repDate=b.dataset.repdate;cbTeam="all";loadDaily();return}
   if(b.dataset.cbteam){cbTeam=b.dataset.cbteam;renderReports();return}
+  if(b.hasAttribute("data-livecopy")){copy(liveCopyText(),"Copied — paste it into WhatsApp");return}
   if(b.dataset.cbcopy){const t=cbCopyText(b.dataset.cbcopy);if(t)copy(t,"Copied — paste it into WhatsApp");return}
   if(b.dataset.repmonth){repMonth=b.dataset.repmonth;loadMonthly();return}
   if(b.dataset.agmonth){agMonth=b.dataset.agmonth;loadAgents();return}
-  if(b.hasAttribute("data-agup")){agUp.open=true;agUp.msg="";renderReports();return}
-  if(b.hasAttribute("data-agupx")){agUp={open:false,busy:false,msg:"",err:false};renderReports();return}
-  if(b.hasAttribute("data-agsend")){sendAgentReport();return}
   if(b.hasAttribute("data-signin")){openSignIn(()=>{renderReports();repLoad()});return}
   if(b.hasAttribute("data-signout")){signOut();return}
   if(b.dataset.pf){const[k,v]=b.dataset.pf.split(":");if(k==="open")pf.open=!pf.open;else pf.centre=v;renderPrograms();return}
@@ -1484,7 +1495,8 @@ function logBody(u){
   <div class="kpis">
     <div class="kpi"><b>${k.received}</b><span>Calls to this app</span></div>
     <div class="kpi"><b>${k.logged}</b><span>Logged</span></div>
-    <div class="kpi bad"><b>${k.missed}</b><span>Missed</span></div>
+    <div class="kpi bad"><b>${k.missed}</b><span>${u.role==="agent"?"Missed":"To call back"}</span></div>
+    ${u.role!=="agent"&&k.pending?`<div class="kpi bad"><b>${k.pending}</b><span>Logs pending</span></div>`:""}
     ${k.spam?`<div class="kpi"><b>${k.spam}</b><span>Spam / wrong number</span></div>`:""}
     ${k.followups?`<div class="kpi"><b>${k.followups}</b><span>Follow-ups</span></div>`:""}
   </div>
@@ -1492,9 +1504,25 @@ function logBody(u){
   ${repData.agents.length?`<div class="card"><h3>By agent</h3>${rank(repData.agents)}</div>`:""}
   ${repData.centres.length>1?`<div class="card"><h3>By centre / line</h3>${rank(repData.centres)}</div>`:""}
   <div class="card"><h3>Calls by hour</h3>${bars(repData.hours)}</div>
-  ${repData.missedVisible===false?"":`<div class="card"><h3>Missed calls to ring back (${repData.missedList.length})</h3>${repData.missedList.length?`<div class="clist">${repData.missedList.map(c=>callRow(c)).join("")}</div>`:`<p class="foot">None — every call was answered.</p>`}</div>`}
-  <div class="card"><h3>Open follow-ups (${repData.followList.length})</h3>${repData.followList.length?`<div class="clist">${repData.followList.map(c=>callRow(c,[c.reason,c.note,c.agent].filter(Boolean).join(" · "))).join("")}</div>`:`<p class="foot">No follow-ups pending.</p>`}</div>
+  ${repData.missedVisible===false?"":liveMissedCard()}
+  ${repData.missedVisible===false||!repData.pendingLogs?"":pendingLogsCard()}
   <p class="foot">${u.role==="agent"?"Your own calls, as you logged them. Calls nobody answered are chased by your supervisor.":"What agents logged in the app, plus the calls Exotel sent to their phones. The Daily and Monthly tabs are the full Exotel picture."}</p>`}
+
+function liveTitle(){return repRange==="today"?"Missed today – still to call back":"Missed – still to call back"}
+function liveMissedCard(){const L=repData.missedList||[],K=repData.missedSkip||{},sk=[];
+  if(K.later)sk.push(K.later+" who got through later");
+  if(K.ooh)sk.push(K.ooh+" outside 9am–9pm");
+  const meta=c=>[c.attempts>1?"tried "+c.attempts+"x":"",c.agent?"rang "+c.agent:""].filter(Boolean).join(" · ");
+  return `<div class="card"><div class="cbhead"><h3>${liveTitle()} (live) <span class="cbadge">${L.length}</span></h3>${L.length?`<button type="button" class="cbcopy" data-livecopy>Copy list</button>`:""}</div>
+    <p class="foot" style="margin:0 0 10px">Calls that rang a volunteer and weren't answered, one row per caller.${sk.length?" Left off: "+esc(sk.join(" · "))+".":""} The full list, with menu hang-ups, is on the Daily tab after the Exotel upload.</p>
+    ${L.length?`<div class="clist">${L.map(c=>callRow(c,meta(c))).join("")}</div>`:`<p class="foot">Nobody to call back.</p>`}</div>`}
+function liveCopyText(){const L=repData.missedList||[];
+  return liveTitle()+" — "+(repData.range?repData.range.label:"")+"\n"+L.map(c=>{const t=new Date(c.at);return tenDigits(c.caller)+"  (last "+t12(t)+(c.attempts>1?", tried "+c.attempts+"x":"")+")"}).join("\n")}
+function pendingLogsCard(){const P=repData.pendingLogs||[],total=P.reduce((t,p)=>t+p.count,0);
+  return `<div class="card"><h3>Logs pending <span class="cbadge">${total}</span></h3>
+    <p class="foot" style="margin:0 0 10px">Calls a volunteer answered but hasn't logged in the app yet. Tap a name to see the calls.</p>
+    ${P.length?`<div class="plist">${P.map(p=>`<details class="pl"><summary><span class="pn">${esc(p.known?p.name:fmtNum(p.mobile))}${p.known?"":' <span class="cbadge">Not in the Users sheet</span>'}</span><b>${p.count}</b></summary>
+      <div class="clist">${p.calls.map(c=>callRow(c)).join("")}${p.count>p.calls.length?`<p class="foot">…and ${p.count-p.calls.length} more</p>`:""}</div></details>`).join("")}</div>`:`<p class="foot">Every answered call is logged.</p>`}</div>`}
 
 function renderReports(){
   const s=signedIn();
@@ -1519,46 +1547,29 @@ function renderReports(){
 
 
 /* ============ AGENTS: the monthly Exotel agent report ============ */
-let agData=null,agBusy=false,agMonth="",agUp={open:false,busy:false,msg:"",err:false};
+let agData=null,agBusy=false,agMonth="";
 async function loadAgents(){agBusy=true;renderReports();
   const j=await repAsk(`action=agents&month=${encodeURIComponent(agMonth)}&scope=${encodeURIComponent(repScope||"all")}`);
   if(j&&j.ok){agData=j;if(j.month)agMonth=j.month.month}else{agData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
   agBusy=false;renderReports()}
 function lastMonths(n){const out=[],d=new Date();d.setDate(1);for(let i=0;i<n;i++){d.setMonth(d.getMonth()-1);out.push(d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"))}return out}
-function agentUploadHTML(){
-  if(!agData||!agData.canUpload)return "";
-  if(!agUp.open)return `<button type="button" class="addrep" data-agup>+ Add agent report</button>`;
-  const ms=lastMonths(12);
-  return `<div class="card upcard"><h3>Add the agent report</h3>
-    <p class="foot" style="margin:0 0 10px">The Exotel agent report CSV for one month. It replaces that month's agent figures here and on the dashboard.</p>
-    <label class="lbl" for="agup-month">Month</label>
-    <select id="agup-month">${ms.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join("")}</select>
-    <label class="lbl" for="agup-file">File</label>
-    <input id="agup-file" type="file" accept=".csv,text/csv">
-    ${agUp.msg?`<p class="${agUp.err?"err":"okmsg"}">${esc(agUp.msg)}</p>`:""}
-    <div class="uprow"><button type="button" class="upgo" data-agsend ${agUp.busy?"disabled":""}>${agUp.busy?"Saving…":"Upload"}</button><button type="button" class="upx" data-agupx>Cancel</button></div></div>`}
-async function sendAgentReport(){
-  const f=$("#agup-file"),m=$("#agup-month").value,s=signedIn();
-  if(!f||!f.files||!f.files[0]){agUp.msg="Choose the CSV file first.";agUp.err=true;renderReports();return}
-  agUp.busy=true;agUp.msg="";renderReports();
-  try{const text=await f.files[0].text();
-    const r=await fetch(LOG_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"agents_upload",token:s.token,month:m,csv:text})});
-    const j=await r.json();
-    if(j&&j.ok){agUp={open:false,busy:false,msg:"",err:false};agMonth=j.month;toast(`Saved ${monthLabel(j.month)} — ${j.volunteers} volunteers`);loadAgents();return}
-    agUp.msg=(j&&j.error)||"That didn't save. Try again.";agUp.err=true}
-  catch(e){agUp.msg="Couldn't reach the sheet. Check your internet and try again.";agUp.err=true}
-  agUp.busy=false;renderReports()}
-function agentCard(a){const low=a.inc&&a.miss/a.inc>=.2,off=a.on!=null&&a.on<50;
-  return `<div class="agc"><div class="agn"><b>${esc(a.name)}</b>${a.viaSheet?'<span class="cbadge">placed by Users tab</span>':""}</div>
-    <div class="ags"><span><b>${a.inc||0}</b> calls</span><span class="${low?"hi":""}"><b>${a.miss||0}</b> missed</span><span><b>${a.mins||0}</b> min</span><span><b>${a.aht||0}</b> min avg</span><span class="${off?"hi":""}"><b>${a.on||0}%</b> device on</span></div></div>`}
+/* Missed % = missed / (answered + missed). Green at 0%, amber near 30%, red from 60% up. */
+function missPct(a){const t=(a.inc||0)+(a.miss||0);return t?Math.round((a.miss||0)/t*100):null}
+function missHue(p){return Math.round(130*(1-Math.min(p,60)/60))}
+function agentOrder(x,y){const a=missPct(x),b=missPct(y);
+  if(a==null||b==null)return (a==null)-(b==null)||String(x.name).localeCompare(String(y.name));
+  return a-b||(y.inc||0)-(x.inc||0)}
+function agentCard(a){const p=missPct(a);
+  return `<div class="agc${p==null?" idle":""}"><div class="agn"><b>${esc(a.name)}</b>${a.viaSheet?'<span class="cbadge">placed by Users tab</span>':""}</div>
+    <div class="ags"><span><b>${a.inc||0}</b> calls</span><span><b>${a.miss||0}</b> missed</span><span><b>${a.mins||0}</b> min</span><span><b>${a.aht||0}</b> min avg</span>${p==null?'<span class="mp none">No calls</span>':`<span class="mp" style="--h:${missHue(p)}"><b>${p}%</b> missed</span>`}</div></div>`}
 function agentsBody(){
   if(agBusy&&!agData)return `<div class="empty">Loading…</div>`;
   if(agData&&agData.failed)return failCard(agData.failed);
   if(!agData)return `<div class="empty">Couldn't reach the server. Check your internet and try again.</div>`;
   if(agData.notset)return notConnected();
   if(agData.blocked)return `<div class="empty">Volunteer figures are for supervisors and admins.</div>`;
-  const months=agData.months||[],up=agentUploadHTML();
-  if(!months.length)return up+`<div class="empty">No agent report yet.${agData.canUpload?" Add one above.":" An admin adds it once a month."}</div>`;
+  const months=agData.months||[],up="";
+  if(!months.length)return up+`<div class="empty">No agent report yet. An admin adds it once a month on the dashboard.</div>`;
   const m=agData.month,t=m?m.totals:null;
   const chips=ctlRow(scopeSelect(agData.scopes),monthSelect("agmonth",months,agMonth));
   if(!m||!m.groups.length)return up+chips+`<div class="empty">No volunteers for this centre in that month.</div>`;
@@ -1567,10 +1578,10 @@ function agentsBody(){
     <div class="kpi"><b>${t.active}</b><span>Took calls${t.volunteers>t.active?` (of ${t.volunteers})`:""}</span></div>
     <div class="kpi good"><b>${t.calls}</b><span>Calls handled</span></div>
     <div class="kpi bad"><b>${t.missed}</b><span>Missed</span></div>
-    <div class="kpi"><b>${t.on}%</b><span>Average device on</span></div>
+    <div class="kpi"><b>${(t.calls+t.missed)?Math.round(t.missed/(t.calls+t.missed)*100):0}%</b><span>Missed</span></div>
   </div>
-  ${m.groups.slice().sort((a,b)=>(a.code==="_none")-(b.code==="_none")||centreRank(a.code)-centreRank(b.code)).map(g=>`<div class="card"><h3>${esc(g.code==="_none"?g.name:centreLabel(g.code))} <span class="cbadge">${g.agents.length}</span></h3><div class="agl">${g.agents.map(agentCard).join("")}</div>${g.code==="_none"?'<p class="foot" style="margin:8px 0 0">Add these names to the Users tab with their centre, or put them in an Exotel group, so supervisors see them.</p>':""}</div>`).join("")}
-  <p class="foot">From the Exotel agent report. Missed turns amber at a fifth of calls; device-on below 50%.</p>`}
+  ${m.groups.slice().sort((a,b)=>(a.code==="_none")-(b.code==="_none")||centreRank(a.code)-centreRank(b.code)).map(g=>`<div class="card"><h3>${esc(g.code==="_none"?g.name:centreLabel(g.code))} <span class="cbadge">${g.agents.length}</span></h3><div class="agl">${g.agents.slice().sort(agentOrder).map(agentCard).join("")}</div>${g.code==="_none"?'<p class="foot" style="margin:8px 0 0">Add these names to the Users tab with their centre, or put them in an Exotel group, so supervisors see them.</p>':""}</div>`).join("")}
+  <p class="foot">From the Exotel agent report. Missed % is missed ÷ (answered + missed): green is low, red is high. Lowest at the top. The report is added on the <a href="${DASHBOARD}" target="_blank" rel="noopener">dashboard</a>.</p>`}
 
 /* ============ SHARE WITH THE CALLER ============ */
 let shareTarget=null;

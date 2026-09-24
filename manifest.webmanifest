@@ -1,6 +1,6 @@
 {
-  "name": "SSB Call Desk",
-  "short_name": "SSB Desk",
+  "name": "Isha Call Desk",
+  "short_name": "Isha Call Desk",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
