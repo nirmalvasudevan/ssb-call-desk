@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-24T01:32:45.491Z",
+ "updated": "2026-09-25T01:40:31.079Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -37,6 +37,58 @@
    "fee": "3000",
    "url": "https://online.sadhguru.org/event-register?event=22195-eye-care-yoga-shanmukhi-mudra-english-marathahalli-26-27-sept-2026-22195",
    "lang": "english"
+  },
+  {
+   "id": "1205429",
+   "name": "Devi Divya Pooja - Jayanagar",
+   "start": "2026-09-26 11:00:00",
+   "end": "2026-09-26 12:00:00",
+   "time": "11:00AM - 12:00PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22460-devi-divya-pooja-jayanagar-26-sep-2026-22460",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205430",
+   "name": "Devi Divya Pooja - Vijayanagar",
+   "start": "2026-09-26 11:00:00",
+   "end": "2026-09-26 12:00:00",
+   "time": "11:00AM - 12:00PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Vijayanagar, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22462-devi-divya-pooja-vijayanagar-26-sep-2026-22462",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205431",
+   "name": "Devi Divya Pooja - Peenya",
+   "start": "2026-09-26 19:00:00",
+   "end": "2026-09-26 20:00:00",
+   "time": "7:00PM - 8:00PM",
+   "venue": "Swa Dharma Spandana",
+   "area": "Peenya, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22464-devi-divya-pooja-peenya-26-sep-2026-22464",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205432",
+   "name": "Devi Divya Pooja - Malleshwaram",
+   "start": "2026-09-26 19:00:00",
+   "end": "2026-09-26 20:00:00",
+   "time": "7:00PM - 8:00PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22463-devi-divya-pooja-malleshwaram-26-sep-2026-22463",
+   "lang": "english",
+   "free": true
   },
   {
    "id": "1205304",
@@ -111,6 +163,18 @@
    "fee": "7000",
    "url": "https://online.sadhguru.org/event-register?event=22059-isha-janani-program-english-marathahalli-2-7-oct-online-23-25-oct-in-person-2026-22059",
    "lang": "english"
+  },
+  {
+   "id": "1205411",
+   "name": "Surya Kriya, Sadhguru Sannidhi Bengaluru, Oct 3-4, 2026",
+   "start": "2026-10-03 15:30:00",
+   "end": "2026-10-04 18:15:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "2500",
+   "url": "https://online.sadhguru.org/event-register?event=22449-surya-kriya-sadhguru-sannidhi-bengaluru-oct-3-4-2026-22449",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1205081",
@@ -355,6 +419,18 @@
    "lang": "english"
   },
   {
+   "id": "1205413",
+   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Oct 24 - 25, 2026",
+   "start": "2026-10-24 07:30:00",
+   "end": "2026-10-25 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=22450-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-24-25-2026-22450",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1205126",
    "name": "Bhuta Shuddhi",
    "start": "2026-10-24 15:00:00",
@@ -389,6 +465,18 @@
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22203-angamardana-english-hsr-layout-25-29-oct-2026-22203",
    "lang": "english"
+  },
+  {
+   "id": "1205419",
+   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Oct 25, 2026",
+   "start": "2026-10-25 08:00:00",
+   "end": "2026-10-25 09:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1500",
+   "url": "https://online.sadhguru.org/event-register?event=22451-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-oct-25-2026-22451",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1205137",
@@ -522,6 +610,18 @@
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22205-surya-kriya-english-hsr-layout-30-oct-02-nov-2026-22205",
    "lang": "english"
+  },
+  {
+   "id": "1205420",
+   "name": "Yogasanas Beginner (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Oct 31-Nov 1, 2026",
+   "start": "2026-10-31 07:30:00",
+   "end": "2026-11-01 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=22452-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-31-nov-1-2026-22452",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1204207",
