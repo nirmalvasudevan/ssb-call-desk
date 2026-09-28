@@ -1,57 +1,7 @@
 {
- "updated": "2026-09-27T01:36:56.205Z",
+ "updated": "2026-09-28T01:48:53.224Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205447",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-09-27 07:30:00",
-   "end": "2026-09-27 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22491-shambhavi-practice-correction-session-malleshwaram-sep-27-2026-22491",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205304",
-   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Sep 27, 2026",
-   "start": "2026-09-27 08:00:00",
-   "end": "2026-09-27 09:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "1500",
-   "url": "https://online.sadhguru.org/event-register?event=22353-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-sep-27-2026-22353",
-   "lang": "english",
-   "ssb": true
-  },
-  {
-   "id": "1205443",
-   "name": "Devi Divya Pooja - Udupi",
-   "start": "2026-09-27 09:30:00",
-   "end": "2026-09-27 10:30:00",
-   "time": "9:30AM - 10:30AM",
-   "venue": "Ambalapadi Shri Janardhana and Mahakali Temple",
-   "area": "Udupi",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22480-devi-divya-pooja-udupi-27-sep-2026-22480",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1204910",
-   "name": "Bhuta Shuddhi",
-   "start": "2026-09-27 17:00:00",
-   "end": "2026-09-27 18:30:00",
-   "time": "5:00PM - 6:30PM",
-   "venue": "Mahajana Alumni Association Hall",
-   "area": "Mysuru, Mysuru",
-   "fee": "3800",
-   "url": "https://online.sadhguru.org/event-register?event=22054-bhuta-shuddhi-english-mysuru-27-sep-2026-22054",
-   "lang": "english"
-  },
   {
    "id": "1204911",
    "name": "Yogasanas",
@@ -62,7 +12,8 @@
    "area": "Marathahalli, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22023-yogasanas-english-marathahalli-28-sep-02-oct-2026-22023",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205151",
@@ -88,7 +39,8 @@
    "area": "Jayanagar, Bengaluru",
    "fee": "7000",
    "url": "https://online.sadhguru.org/event-register?event=22036-isha-janani-program-english-jayanagar-2-7-oct-online-9-11-oct-in-person-22036",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1204928",
