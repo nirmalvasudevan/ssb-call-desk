@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30T02:13:34.957Z",
+ "updated": "2026-10-01T02:15:43.345Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -171,6 +171,19 @@
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22289-surya-kriya-weekend-english-marathahalli-17-18-oct-2026-22289",
    "lang": "english"
+  },
+  {
+   "id": "1205584",
+   "name": "Devi Divya Pooja - Electronic City",
+   "start": "2026-10-18 17:00:00",
+   "end": "2026-10-18 19:00:00",
+   "time": "5:00PM - 7:00PM",
+   "venue": "Incture Technologies Headquarters",
+   "area": "Electronic City, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22603-devi-divya-pooja-electronic-city-18-oct-2026-22603",
+   "lang": "english",
+   "free": true
   },
   {
    "id": "1205123",
