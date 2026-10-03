@@ -1,31 +1,7 @@
 {
- "updated": "2026-10-02T02:22:42.602Z",
+ "updated": "2026-10-03T02:09:29.561Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204912",
-   "name": "Janani - Online (Oct 2-7), In person (Oct 9-11)",
-   "start": "2026-10-02 17:00:00",
-   "end": "2026-10-11 14:00:00",
-   "time": "5:00PM - 2:00PM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "7000",
-   "url": "https://online.sadhguru.org/event-register?event=22036-isha-janani-program-english-jayanagar-2-7-oct-online-9-11-oct-in-person-22036",
-   "lang": "english"
-  },
-  {
-   "id": "1204928",
-   "name": "Janani - Online (Oct 2-7), In person (Oct 23-25)",
-   "start": "2026-10-02 17:00:00",
-   "end": "2026-10-25 14:00:00",
-   "time": "5:00PM - 2:00PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "7000",
-   "url": "https://online.sadhguru.org/event-register?event=22059-isha-janani-program-english-marathahalli-2-7-oct-online-23-25-oct-in-person-2026-22059",
-   "lang": "english"
-  },
   {
    "id": "1205411",
    "name": "Surya Kriya, Sadhguru Sannidhi Bengaluru, Oct 3-4, 2026",
@@ -111,6 +87,19 @@
    "lang": "english"
   },
   {
+   "id": "1205670",
+   "name": "Devi Divya Pooja - Chandapura",
+   "start": "2026-10-10 16:00:00",
+   "end": "2026-10-10 17:00:00",
+   "time": "4:00PM - 5:00PM",
+   "venue": "Little Millennium Preschool",
+   "area": "Chandapura, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22691-devi-divya-pooja-chandapura-10-oct-2026-22691",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205488",
    "name": "Devi Divya Pooja - Singasandra",
    "start": "2026-10-11 16:00:00",
@@ -134,6 +123,19 @@
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22177-angamardana-english-marathahalli-12-16-oct-2026-22177",
    "lang": "english"
+  },
+  {
+   "id": "1205669",
+   "name": "Devi Divya Pooja - Chandapura",
+   "start": "2026-10-13 11:00:00",
+   "end": "2026-10-13 12:00:00",
+   "time": "11:00AM - 12:00PM",
+   "venue": "Global Edifice Celesta",
+   "area": "Chandapura, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22692-devi-divya-pooja-chandapura-13-oct-2026-22692",
+   "lang": "english",
+   "free": true
   },
   {
    "id": "1205019",
