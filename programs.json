@@ -1,19 +1,7 @@
 {
- "updated": "2026-10-03T02:09:29.561Z",
+ "updated": "2026-10-04T02:47:17.176Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205411",
-   "name": "Surya Kriya, Sadhguru Sannidhi Bengaluru, Oct 3-4, 2026",
-   "start": "2026-10-03 15:30:00",
-   "end": "2026-10-04 18:15:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "2500",
-   "url": "https://online.sadhguru.org/event-register?event=22449-surya-kriya-sadhguru-sannidhi-bengaluru-oct-3-4-2026-22449",
-   "lang": "english",
-   "ssb": true
-  },
   {
    "id": "1205081",
    "name": "Bhuta Shuddhi",
@@ -24,7 +12,8 @@
    "area": "Marathahalli, Bengaluru",
    "fee": "3800",
    "url": "https://online.sadhguru.org/event-register?event=22176-bhuta-shuddhi-english-marathahalli-4-oct-2026-22176",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1204913",
@@ -134,6 +123,19 @@
    "area": "Chandapura, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22692-devi-divya-pooja-chandapura-13-oct-2026-22692",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205683",
+   "name": "Devi Divya Pooja - Vijayanagar",
+   "start": "2026-10-13 18:30:00",
+   "end": "2026-10-13 20:30:00",
+   "time": "6:30PM - 8:30PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Vijayanagar, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22698-devi-divya-pooja-vijayanagar-13-oct-2026-22698",
    "lang": "english",
    "free": true
   },
