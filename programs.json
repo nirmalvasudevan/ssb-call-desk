@@ -1,20 +1,7 @@
 {
- "updated": "2026-10-04T02:47:17.176Z",
+ "updated": "2026-10-05T02:11:11.027Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205081",
-   "name": "Bhuta Shuddhi",
-   "start": "2026-10-04 17:00:00",
-   "end": "2026-10-04 19:00:00",
-   "time": "5:00PM - 7:00PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "3800",
-   "url": "https://online.sadhguru.org/event-register?event=22176-bhuta-shuddhi-english-marathahalli-4-oct-2026-22176",
-   "lang": "english",
-   "closed": true
-  },
   {
    "id": "1204913",
    "name": "Inner Engineering 7 Days",
@@ -284,7 +271,8 @@
    "area": "Vijayanagar, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22012-guru-pooja-english-vijayanagar-23-25-oct-2026-22012",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205247",
