@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-05T02:11:11.027Z",
+ "updated": "2026-10-06T03:10:38.129Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -89,6 +89,32 @@
    "free": true
   },
   {
+   "id": "1205776",
+   "name": "Devi Divya Pooja - Jakkur",
+   "start": "2026-10-11 18:00:00",
+   "end": "2026-10-11 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Sobha Moonstone",
+   "area": "Dasarahalli, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22781-devi-divya-pooja-jakkur-11-oct-2026-22781",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205777",
+   "name": "Devi Divya Pooja -Vidyaranyapura",
+   "start": "2026-10-12 18:00:00",
+   "end": "2026-10-12 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Shikha Dubey",
+   "area": "Vidyaranyapura, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22782-devi-divya-pooja-vidyaranyapura-12-oct-2026-22782",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205116",
    "name": "Angamardana",
    "start": "2026-10-12 18:30:00",
@@ -148,7 +174,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21442-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-15-18-2026-21442",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
