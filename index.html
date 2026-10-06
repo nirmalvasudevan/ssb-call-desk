@@ -349,6 +349,36 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .cbhead h3{margin:0}
 .cbcopy{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--link);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
 .cbgrid{display:flex;flex-direction:column;gap:12px}
+.okstrip{background:var(--ok-bg);border:1px solid var(--ok);color:var(--ok);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14.5px;font-weight:600;margin-top:8px}
+.okstrip button{border:0;background:var(--ok);color:var(--surface);border-radius:9px;padding:7px 12px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.mk-row{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.mk-row:last-child{border-bottom:0}
+.mk-main{flex:1;min-width:0}
+.mk-top{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.mk-pill{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px}
+.mk-ans{background:var(--ok-bg);color:var(--ok)}
+.mk-fu{background:var(--warn-bg);color:var(--warn)}
+.mk-who{font-weight:700;font-size:15.5px;margin-top:3px;overflow-wrap:anywhere}
+.mk-who span{font-weight:500;color:var(--muted)}
+.mk-why{font-size:14px;margin-top:2px}
+.mk-note{font-size:13.5px;color:var(--muted);margin-top:2px}
+.mk-edit{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--link);font-weight:700;border-radius:999px;padding:7px 14px;font-size:14px;font-family:inherit;cursor:pointer}
+.mk-lock{flex:none;color:var(--muted);font-size:13px;font-weight:600;padding:8px 2px}
+.mk-days{display:flex;gap:6px;overflow-x:auto;margin:2px 0 10px;padding-bottom:2px}
+.mk-days .chip{flex:none;max-width:none;overflow:visible}
+.mk-days .chip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.lv-h{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 8px}
+.lv-dot{width:9px;height:9px;border-radius:50%;background:#D93A2B;box-shadow:0 0 0 4px rgba(217,58,43,.18)}
+.lv{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:inherit;border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;cursor:pointer}
+.lv.new{border-color:#D93A2B}
+.lv div{flex:1}
+.lv b{display:block;font-size:17px}
+.lv small{color:var(--muted);font-size:13px}
+.lv i{font-style:normal;color:var(--link);font-weight:700}
+.lv-tip{font-size:13px;color:var(--muted);margin:0 0 10px}
+.aimg{margin:10px 0}
+.aimg img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+.aimg .acts2 a{text-align:center;text-decoration:none;color:inherit;display:flex;align-items:center;justify-content:center}
 .plist{display:flex;flex-direction:column}
 .pl{border-bottom:1px solid var(--line)}
 .pl:last-child{border-bottom:0}
@@ -422,6 +452,8 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
     <p class="lbl">Outcome</p>
     <div class="seg" id="lg-outcome"></div>
     <div class="fu" id="lg-fu" hidden>
+    <label class="lbl" for="lg-cname">Caller name <span class="req" aria-hidden="true">*</span></label>
+    <input id="lg-cname" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Ramesh">
     <label class="lbl" for="lg-caller">Caller number <span class="req" aria-hidden="true">*</span></label>
     <input id="lg-caller" required aria-required="true" type="tel" inputmode="tel" autocomplete="off" placeholder="e.g. 98450 12345">
     </div>
@@ -508,7 +540,7 @@ const BASE_KB=[
  body:"By public transport: take a bus to Chikkaballapur, then a bus towards Kethanahalli and get down at \"Isha Junction Bus Stop\" (about 2.5 km from Sadhguru Sannidhi) and walk. Or take an auto from Chikkaballapur directly to Sadhguru Sannidhi.\nCabs can also be booked online.",
  acts:[U("Isha Junction – map","https://goo.gl/maps/xnENZqiwn2aLB5Vb8")],
  k:"reach directions route how to come car bike auto taxi cab road map isha junction kethanahalli"},
-{id:"ksrtc",cat:"travel",q:"KSRTC bus timings: Majestic ⇄ Sadhguru Sannidhi",
+{id:"ksrtc",cat:"travel",img:"ksrtc-bus-timings.jpg",q:"KSRTC bus timings: Majestic ⇄ Sadhguru Sannidhi",
  say:"Four direct KSRTC buses each way, about 2 hours.",
  table:{nw:1,head:["Majestic → SSB","SSB → Majestic"],rows:[
   ["7:00 AM → 9:00 AM","9:15 AM → 11:15 AM"],
@@ -880,6 +912,9 @@ function hl(text,toks){
   return h.replace(re,"<mark>$1</mark>");
 }
 function fmtNum(v){const d=v.replace(/\D/g,"");if(/^91\d{10}$/.test(d))return"+91 "+d.slice(2,7)+" "+d.slice(7);if(/^0\d{10}$/.test(d))return d.slice(0,3)+"-"+d.slice(3,7)+" "+d.slice(7);if(/^\d{10}$/.test(d))return d.slice(0,5)+" "+d.slice(5);return v}
+/* callers: the full number with its country code. 09845012345 / 9845012345 → +91 98450 12345; 00971… → +971… */
+function callerDigits(v){let d=String(v||"").replace(/\D/g,"");if(d.startsWith("00"))d=d.slice(2);else if(d.length===11&&d[0]==="0")d="91"+d.slice(1);else if(d.length===10)d="91"+d;return d}
+function callerNum(v){const d=callerDigits(v);if(!d)return String(v||"");return /^91\d{10}$/.test(d)?"+91 "+d.slice(2,7)+" "+d.slice(7):"+"+d}
 function actHref(a){
   if(a.t==="tel")return"tel:"+a.v.replace(/\s/g,"");
   if(a.t==="sms")return"sms:"+a.v;
@@ -937,6 +972,7 @@ function itemHTML(it,opts={}){
   const toks=opts.toks;
   let a='<div class="a">';
   if(it.say)a+=`<div class="say"><small>Tell the caller</small>${esc(it.say)}</div>`;
+  if(it.img)a+=`<figure class="aimg"><img src="${esc(it.img)}" alt="${esc(it.q)}" loading="lazy"><div class="acts2"><button type="button" class="copyall share" data-imgshare="${esc(it.id)}">Share image</button><a class="copyall" href="${esc(it.img)}" download>Save image</a></div></figure>`;
   if(it.flag)a+=`<div class="flag"><b>Check:</b> ${esc(it.flag)}</div>`;
   if(it.table)a+=tableHTML(it.table);
   if(it.body)a+=`<div class="body">${renderBody(it.body)}</div>`;
@@ -1057,7 +1093,8 @@ function renderHome(){
     :c.pgm?`<button type="button" class="cat pgm" data-cat="pgm">${icon("pgm")}<b>Upcoming programs</b><span>Karnataka & Sadhguru Sannidhi — dates, venues, fees, registration links</span><i>${(CENTRES.length&&viewCentre()?up.filter(p=>pMatches(p,viewCentre())).length+" here · ":"")}${up.length} in Karnataka · ${openN} open${PDATA.updated?" · updated "+new Date(PDATA.updated).getDate()+" "+MON[new Date(PDATA.updated).getMonth()]:""}</i></button>`
     :`<button type="button" class="cat${c.agent?" agent":""}" data-cat="${c.id}">${icon(c.icon||c.id)}<b>${esc(c.name)}</b><span>${esc(c.hint)}</span><i>${KB.filter(k=>k.cat===c.id&&k.own!==false).length} answers</i></button>`;
   app.innerHTML=`
-  ${pend?`<div class="alert"><span>${pend} call${pend>1?"s":""} waiting to be logged</span><button type="button" data-cat="pending">Log ${pend>1?"them":"it"}</button></div>`:""}
+  ${pend?`<div class="alert"><span>${pend} call${pend>1?"s":""} waiting to be logged</span><button type="button" data-cat="pending" data-pendtab="todo">Log ${pend>1?"them":"it"}</button></div>`:""}
+  ${loggedTodayCount()?`<div class="okstrip"><span>Logged today: ${loggedTodayCount()}</span><button type="button" data-mylog>See them</button></div>`:""}
   ${centreSwitch()}
   <section><p class="label">${mine?esc(mine.name)+" — at a glance":"At a glance"}</p><div class="glance">${g.map(glanceRow).join("")}</div></section>
   <section><p class="label">Topics</p><div class="cats">${CATS.map(tile).join("")}</div></section>
@@ -1066,7 +1103,7 @@ function renderHome(){
 }
 function renderCat(id,openId){
   if(id==="pgm"){pf.centre=(viewCentre()||{}).code||"ALL";pf.open=false;renderPrograms();return}
-  if(id==="pending"){renderPending();loadPending();return}
+  if(id==="pending"){renderPending();loadPending();if(pendTab==="done")loadMyLog(mylogDay);return}
   if(id==="rep"){renderReports();repLoad();return}
   const c=CATS.find(x=>x.id===id);if(!c){renderHome();return}
   const items=KB.filter(k=>k.cat===id);
@@ -1114,6 +1151,7 @@ async function copy(text,msg){
 
 app.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.cat==="pending"&&b.dataset.pendtab)pendTab=b.dataset.pendtab;
   if(b.dataset.cat){const c=CATS.find(x=>x.id===b.dataset.cat);noteTopic(b.dataset.cat,"",c&&c.name);location.hash="#c/"+b.dataset.cat;window.scrollTo(0,0);return}
   if(b.hasAttribute("data-home")){input.value="";if(location.hash)location.hash="";else route();window.scrollTo(0,0);return}
   if(b.dataset.goto){const it=KB.find(k=>k.id===b.dataset.goto);remember(it.id);location.hash="#c/"+it.cat+"/"+it.id;return}
@@ -1126,6 +1164,11 @@ app.addEventListener("click",e=>{
   if(b.hasAttribute("data-pickcentre")){pickCentre();return}
   if(b.dataset.setview){VIEW=b.dataset.setview;store.set("ssb-view",VIEW);buildContent();route();window.scrollTo(0,0);return}
   if(b.dataset.logcall){const c=PEND.find(x=>x.sid===b.dataset.logcall);if(c){detected={sid:c.sid,caller:c.caller,at:c.at};openLog(true)}return}
+  if(b.dataset.pendtab){pendTab=b.dataset.pendtab;renderPending();if(pendTab==="done")loadMyLog(mylogDay);return}
+  if(b.dataset.myday){loadMyLog(b.dataset.myday);MYLOG=MYLOG?Object.assign({},MYLOG,{day:b.dataset.myday,calls:[]}):MYLOG;renderPending();return}
+  if(b.dataset.editlog){const e=editEntry(b.dataset.editlog);if(e&&e.editable)openLog(false,e);return}
+  if(b.hasAttribute("data-mylog")){pendTab="done";location.hash="#c/pending";return}
+  if(b.dataset.imgshare){shareImage(b.dataset.imgshare);return}
   if(b.dataset.range){repRange=b.dataset.range;loadReport();return}
   if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
   if(b.dataset.reptab){repTab=b.dataset.reptab;dayOlder=false;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
@@ -1180,7 +1223,16 @@ function normRow(it,code,own){
   const tb=it.table&&it.table.length>1?{head:it.table[0],rows:it.table.slice(1)}:null;
   return {id:it.id,cat:slug(it.group),grp:it.group,centre:code,own:own,q:it.q,say:it.say,body:it.body,table:tb,
           acts:(it.acts||[]).map(a=>({t:a.t==="tel"||a.t==="mail"||a.t==="sms"?a.t:"url",l:a.l,v:a.v})),
-          copy:it.copy||"",flag:it.flag||"",k:(it.k||"")+" "+it.group}}
+          copy:it.copy||"",flag:it.flag||"",img:safeImg(it.img),k:(it.k||"")+" "+it.group}}
+/* an answer's picture: a file next to the app (ksrtc-bus-timings.jpg) or a full https link */
+function safeImg(v){v=String(v||"").trim();return /^[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(v)||/^https:\/\/\S+$/i.test(v)?v:""}
+async function shareImage(id){const it=KB.find(k=>k.id===id);if(!it||!it.img)return;
+  try{const res=await fetch(it.img);const blob=await res.blob();
+    const name=(it.img.split("/").pop()||"image.jpg").replace(/\?.*$/,"");
+    const file=new File([blob],name,{type:blob.type||"image/jpeg"});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:it.q});return}
+  }catch(e){if(e&&e.name==="AbortError")return}
+  window.open(it.img,"_blank","noopener");toast("Long-press the picture to share or save it")}
 function buildContent(){
   if(!CONTENT||!CONTENT.centres||!CONTENT.centres.length){CATS=BASE_CATS;KB=BASE_KB;GLANCE=GLANCE_BASE;reindex();return}
   CENTRES=CONTENT.centres;FAQ=CONTENT.faqs||{};
@@ -1229,14 +1281,18 @@ async function loadPending(){const s=signedIn();if(!s||!LOG_URL)return;
   try{const r=await fetch(`${LOG_URL}?action=pending&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});
     const j=await r.json();
     if(j&&j.ok){const next=j.calls||[],changed=JSON.stringify(next)!==JSON.stringify(PEND);
-      if(changed){PEND=next;store.set("ssb-pending",PEND);qBadge();route()}}}
+      const lt=+(j.loggedToday||0),ltc=lt!==LOGGED_TODAY;LOGGED_TODAY=lt;
+      if(changed){PEND=next;store.set("ssb-pending",PEND);qBadge()}
+      if((changed||ltc)&&!document.querySelector("dialog[open]")){const h=curHash();if(h==="c/pending")renderPending();else if(!h)route()}}}
   catch(e){}}
 function renderPending(){
-  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>Calls to log</h2></div>
-  ${PEND.length?`<div class="card"><div class="clist">${PEND.map(c=>{const t=new Date(c.at);
-    return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"Unknown"))}</b><small>${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}${c.status?" · "+esc(c.status):""}</small></div><button type="button" class="act" data-logcall="${esc(c.sid)}">Log</button></div>`}).join("")}</div></div>`
+  const n=loggedTodayCount();
+  app.innerHTML=`<div class="head"><button type="button" class="back" data-home>${BACK_IC}Topics</button><h2>My calls</h2></div>
+  <div class="seg" style="margin-bottom:12px"><button type="button" data-pendtab="todo" aria-pressed="${pendTab==="todo"}">To log · ${PEND.length}</button><button type="button" data-pendtab="done" aria-pressed="${pendTab==="done"}">Logged${n?" · "+n:""}</button></div>
+  ${pendTab==="done"?myLogBody():`${PEND.length?`<div class="card"><div class="clist">${PEND.map(c=>{const t=new Date(c.at);
+    return `<div class="crow"><div><b>${esc(c.caller?callerNum(c.caller):"Unknown")}</b><small>${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}${c.status?" · "+esc(c.status):""}</small></div><button type="button" class="act" data-logcall="${esc(c.sid)}">Log</button></div>`}).join("")}</div></div>`
    :`<div class="empty">Nothing waiting. Every call is logged.</div>`}
-  <p class="foot">Calls appear here from Exotel. A reminder arrives after each call and repeats until it's logged.</p>`}
+  <p class="foot">Calls appear here from Exotel. A reminder arrives after each call and repeats until it's logged.</p>`}`}
 
 
 /* ============ PUSH NOTIFICATIONS (OneSignal) ============ */
@@ -1325,7 +1381,7 @@ function rank(list,total){if(!list.length)return `<p class="foot">Nothing yet.</
   const max=Math.max(1,...list.map(x=>x.count));
   return `<div class="rank">${list.slice(0,12).map(x=>`<div class="r"><span>${esc(x.name)}</span><b>${x.count}</b><span class="bar"><i style="width:${x.count/max*100}%"></i></span>${x.subs&&x.subs.length?`<small class="rsub">${x.subs.map(s=>esc(s.name)+" "+s.count).join(" · ")}</small>`:""}</div>`).join("")}</div>`}
 function callRow(c,extra){const t=c.at?new Date(c.at):null;
-  return `<div class="crow"><div><b>${esc(fmtNum(c.caller||"—"))}</b><small>${t?`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`:""}${extra?" · "+esc(extra):""}</small></div>${c.caller?`<a href="tel:${esc(String(c.caller).replace(/\D/g,""))}">Call</a>`:""}</div>`}
+  return `<div class="crow"><div><b>${esc(c.caller?callerNum(c.caller):"—")}</b><small>${t?`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`:""}${extra?" · "+esc(extra):""}</small></div>${c.caller?`<a href="tel:+${esc(callerDigits(c.caller))}">Call</a>`:""}</div>`}
 
 function rateCard(pct,answered,reached){
   const low=pct<85;
@@ -1397,8 +1453,8 @@ function cbMeta(f){const m=["last "+f.last],why=[];
   if(f.opt)m.push("option "+f.opt);
   if(f.agent)m.push("rang "+f.agent);
   return m.join(" · ")}
-function cbRow(f){const d=tenDigits(f.num);
-  return `<li><div><a class="tel" href="tel:${esc(d)}">${esc(d.length===10?d.slice(0,5)+" "+d.slice(5):f.num)}</a><small>${esc(cbMeta(f))}</small></div><a class="callnow" href="tel:${esc(d)}">Call</a></li>`}
+function cbRow(f){const d=callerDigits(f.num);
+  return `<li><div><a class="tel" href="tel:+${esc(d)}">${esc(callerNum(f.num))}</a><small>${esc(cbMeta(f))}</small></div><a class="callnow" href="tel:+${esc(d)}">Call</a></li>`}
 function callbackSection(d){
   if(!d.detail)return `<div class="card"><h3>Missed callers to call back</h3><p class="foot">Phone numbers are kept for the latest 60 days; this day shows totals only.</p></div>`;
   const L=d.callbacks||[],O=d.outOfHours||[];
@@ -1424,9 +1480,9 @@ function callbackSection(d){
   return h}
 function cbCopyText(which){const d=dayData&&dayData.day;if(!d)return "";
   const when=dayLabel(d.date)+" ("+d.date+")";
-  if(which==="_ooh")return "Out-of-hours callers to call back — "+when+"\n"+(d.outOfHours||[]).map(o=>o.num+"  (called "+o.first+")").join("\n");
+  if(which==="_ooh")return "Out-of-hours callers to call back — "+when+"\n"+(d.outOfHours||[]).map(o=>callerNum(o.num)+"  (called "+o.first+")").join("\n");
   const rows=(d.callbacks||[]).filter(f=>which==="all"||f.team===which);
-  const line=f=>f.num+"  (last "+f.last+(f.attempts>1?", tried "+f.attempts+"x":"")+")";
+  const line=f=>callerNum(f.num)+"  (last "+f.last+(f.attempts>1?", tried "+f.attempts+"x":"")+")";
   if(which!=="all")return "Callbacks — "+rows[0].name+" — "+when+"\n"+rows.map(line).join("\n");
   const by={};rows.forEach(f=>{(by[f.name]=by[f.name]||[]).push(f)});
   return "Callbacks — "+when+"\n"+Object.keys(by).map(n=>"\n"+n+"\n"+by[n].map(line).join("\n")).join("\n")}
@@ -1517,7 +1573,7 @@ function liveMissedCard(){const L=repData.missedList||[],K=repData.missedSkip||{
     <p class="foot" style="margin:0 0 10px">Calls that rang a volunteer and weren't answered, one row per caller.${sk.length?" Left off: "+esc(sk.join(" · "))+".":""} The full list, with menu hang-ups, is on the Daily tab after the Exotel upload.</p>
     ${L.length?`<div class="clist">${L.map(c=>callRow(c,meta(c))).join("")}</div>`:`<p class="foot">Nobody to call back.</p>`}</div>`}
 function liveCopyText(){const L=repData.missedList||[];
-  return liveTitle()+" — "+(repData.range?repData.range.label:"")+"\n"+L.map(c=>{const t=new Date(c.at);return tenDigits(c.caller)+"  (last "+t12(t)+(c.attempts>1?", tried "+c.attempts+"x":"")+")"}).join("\n")}
+  return liveTitle()+" — "+(repData.range?repData.range.label:"")+"\n"+L.map(c=>{const t=new Date(c.at);return callerNum(c.caller)+"  (last "+t12(t)+(c.attempts>1?", tried "+c.attempts+"x":"")+")"}).join("\n")}
 function pendingLogsCard(){const P=repData.pendingLogs||[],total=P.reduce((t,p)=>t+p.count,0);
   return `<div class="card"><h3>Logs pending <span class="cbadge">${total}</span></h3>
     <p class="foot" style="margin:0 0 10px">Calls a volunteer answered but hasn't logged in the app yet. Tap a name to see the calls.</p>
@@ -1593,12 +1649,13 @@ function shareSuggest(){const c=[];
   (PEND||[]).forEach(p=>{if(p&&p.caller)c.push({caller:p.caller,at:p.at})});
   const fresh=c.filter(x=>x.at&&Date.now()-new Date(x.at).getTime()<30*60e3)
     .sort((a,b)=>new Date(b.at)-new Date(a.at))[0];
-  return fresh?{to:digits10(fresh.caller),at:fresh.at}:null}
+  return fresh?{to:callerDigits(fresh.caller),at:fresh.at}:null}
 function agoText(at){const m=Math.max(0,Math.round((Date.now()-new Date(at).getTime())/60e3));return m<1?"just now":m===1?"1 min ago":m+" min ago"}
 function digits10(v){const d=String(v||"").replace(/\D/g,"");return d.length>10?d.slice(-10):d}
 function shareTextFor(kind,data){
   const c=viewCentre(),sign=`\n— Isha Yoga support${c?", "+c.name.replace(/,.*$/,""):""}${c&&c.phone?"\n"+fmtNum(c.phone):""}`;
   if(kind==="text")return "Namaskaram 🙏\n"+data+sign;
+  if(kind==="item"&&data.copy&&data.img)return data.copy;     // a ready-made message that goes with a poster: send it exactly
   if(kind==="item"){const it=data,lines=["Namaskaram 🙏","As discussed, here are the details:","",it.q];
     if(it.say)lines.push(it.say);
     (it.acts||[]).filter(a=>a.t==="url").forEach(a=>lines.push(a.l+": "+a.v));
@@ -1607,15 +1664,20 @@ function shareTextFor(kind,data){
   const p=data;
   return ["Namaskaram 🙏","Here are the program details:","",pName(p),`${pDate(p)} · ${pTime(p)}`,pWhere(p),pFee(p)?"Fee "+pFee(p):"",
     p.closed?"Registration is closed for this batch.":("Register: "+(p.url||pPage(p)))].filter(Boolean).join("\n")+sign}
-function openShare(kind,data){shareTarget={text:shareTextFor(kind,data),to:"",suggest:shareSuggest()};renderShare()}
+function openShare(kind,data){shareTarget={text:shareTextFor(kind,data),to:"",suggest:shareSuggest(),live:[]};renderShare();loadLive();
+  clearInterval(window.__liveT);window.__liveT=setInterval(()=>{if(!$("#shdlg").open){clearInterval(window.__liveT);return}loadLive()},10000)}
+async function loadLive(){const s=signedIn();if(!s||!LOG_URL||!shareTarget)return;
+  try{const r=await fetch(`${LOG_URL}?action=live&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});const j=await r.json();
+    if(j&&j.ok&&shareTarget){const before=JSON.stringify(shareTarget.live);shareTarget.live=j.calls||[];if(JSON.stringify(shareTarget.live)!==before&&!shareTarget.to)renderShare()}}catch(e){}}
 function renderShare(){const t=shareTarget;if(!t)return;
-  $("#sh-to").innerHTML=t.to?`<div class="sel"><span>To <b>${esc(fmtNum(t.to))}</b></span><button type="button" data-shedit>Change</button></div>`
-    :`<div class="numrow"><input id="sh-num" type="tel" inputmode="tel" placeholder="Caller's number" aria-label="Caller's number"><button type="button" class="setnum" data-shset>Use</button></div>
-      ${t.suggest?`<button type="button" class="shsug" data-shuse><span>Your last call · ended ${esc(agoText(t.suggest.at))}</span><b>${esc(fmtNum(t.suggest.to))}</b><i>Use</i></button>`:""}`;
+  $("#sh-to").innerHTML=t.to?`<div class="sel"><span>To <b>${esc(callerNum(t.to))}</b></span><button type="button" data-shedit>Change</button></div>`
+    :`${(t.live||[]).length?`<div class="lv-h"><span class="lv-dot"></span>Calls coming in right now</div>${t.live.map((c,i)=>`<button type="button" class="lv${i===0?" new":""}" data-shlive="${i}"><div><b>${esc(callerNum(c.caller))}</b><small>Came in ${esc(agoText(c.at))}</small></div><i>Use</i></button>`).join("")}${t.live.length>1?`<p class="lv-tip">${t.live.length} calls are coming in. Pick the one that rang your phone, or ask the caller for the last two digits.</p>`:""}`:""}
+      <div class="numrow"><input id="sh-num" type="tel" inputmode="tel" placeholder="${(t.live||[]).length?"Or type the caller's number":"Caller's number"}" aria-label="Caller's number"><button type="button" class="setnum" data-shset>Use</button></div>
+      ${t.suggest?`<button type="button" class="shsug" data-shuse><span>Your last call · ended ${esc(agoText(t.suggest.at))}</span><b>${esc(callerNum(t.suggest.to))}</b><i>Use</i></button>`:""}`;
   $("#sh-text").textContent=t.text;
-  const link=t.to?`https://wa.me/91${t.to}?text=${encodeURIComponent(t.text)}`:`https://wa.me/?text=${encodeURIComponent(t.text)}`;
+  const link=t.to?`https://wa.me/${t.to}?text=${encodeURIComponent(t.text)}`:`https://wa.me/?text=${encodeURIComponent(t.text)}`;
   $("#sh-wa").href=link;
-  $("#sh-sms").href=(t.to?`sms:${t.to}`:"sms:")+`?&body=${encodeURIComponent(t.text)}`;
+  $("#sh-sms").href=(t.to?`sms:+${t.to}`:"sms:")+`?&body=${encodeURIComponent(t.text)}`;
   const d=$("#shdlg");if(!d.open){if(d.showModal)d.showModal();else d.setAttribute("open","")}}
 function closeShare(){const d=$("#shdlg");if(d.close)d.close();else d.removeAttribute("open")}
 
@@ -1624,17 +1686,17 @@ const LOG_URL="https://script.google.com/macros/s/AKfycbzmu0H1y6451cZc7zqA3JlrUd
 const LINES=["SSB – General","SSBP – Programs","SSBWE – Weekend","JN – Programs","JN – Isha Shoppe","Outside Bangalore","Other"];
 const OUTCOMES=["Answered","Needs follow-up"];
 /* Reason → sub-reasons. The live list comes from the Reasons tab in the sheet; these are the
-   same lists, used until the sheet answers (or if it's offline). SSB's list also serves GCS (MKN). */
+   same lists, used until the sheet answers (or if it's offline). */
 const R_SSB=[["Inner Engineering",["Online","In person"]],["Advance Program",["Bhava Spandana","Shoonya","Others"]],
   ["Hatha Yoga",["Yogasanas","Surya Kriya","Angamardana","Bhuta Shuddhi","Others"]],
   ["Rituals & Offerings",["Sarpa Seva","Benne Seva","Yoga Sandhya","Klesha Nashana Kriya"]],
   ["Ashram queries",["Visit / timings","Directions / travel","Restaurant","Wheelchair","Guest Care"]],
   ["Isha Shop",[]],["Other",["Spam","Missing Person","Lost & found","Feedback","Others"]],
-  ["Volunteering",["Registration","Confirmation","Inquiry"]],["MKN",["Registration","Refund","Inquiry"]],["IYC",[]]];
+  ["Volunteering",["Registration","Confirmation","Inquiry"]],["MKN",["Registration","Refund","Inquiry"]],["IYC",["Programs","Volunteering","Stay","Rituals"]]];
 const R_CENTRES=[["Inner Engineering",[]],["Hatha Yoga",["Yogasanas","Surya Kriya","Angamardana","Bhuta Shuddhi","Others"]],
   ["Isha Shop",[]],["Centre Details",[]],["Volunteering",[]],["Ashram related",["SSB","IYC"]],
   ["Advance Program",["Bhava Spandana","Shoonya","Others"]],["Other",["Spam","Missing Person","Lost & found","Feedback","Others"]]];
-const DEFAULT_REASONS={SSB:R_SSB,GCS:R_SSB,CENTRES:R_CENTRES};
+const DEFAULT_REASONS={SSB:R_SSB,CENTRES:R_CENTRES};
 function reasonSet(code){
   const live=CONTENT&&CONTENT.reasons&&Object.keys(CONTENT.reasons).length?CONTENT.reasons:null;
   const pick=src=>{const k=String(code||"").toUpperCase();return src[k]||src.CENTRES||null};
@@ -1664,14 +1726,14 @@ function myNum(){const s=signedIn();return s&&s.user?s.user.mobile:""}
 function renderMine(){const n=myNum();
   $("#lg-mine").innerHTML=n?`<div class="who det" id="lg-detbox"><span id="lg-det">Checking your last call…</span></div>`:""}
 function showDetected(){const el=$("#lg-det");if(!el||!detected)return;
-  el.innerHTML=`Call from <b>${esc(fmtNum(detected.caller))}</b> · ${t12(new Date(detected.at))}`;
-  const c=$("#lg-caller");if(c&&!c.value)c.value=fmtNum(detected.caller)}
+  el.innerHTML=`Call from <b>${esc(callerNum(detected.caller))}</b> · ${t12(new Date(detected.at))}`;
+  const c=$("#lg-caller");if(c&&!c.value)c.value=callerNum(detected.caller)}
 async function detectCall(){detected=null;const n=myNum();if(!n||!LOG_URL)return;
   const sn=signedIn();if(!sn)return;
   try{const r=await fetch(LOG_URL+"?lookup=1&token="+encodeURIComponent(sn.token),{cache:"no-store"});const j=await r.json();
     const el=$("#lg-det");if(!el)return;
-    if(j&&j.call){detected=j.call;el.innerHTML=`Call from <b>${esc(fmtNum(j.call.caller))}</b> · ${t12(new Date(j.call.at))}`;
-      const c=$("#lg-caller");if(c&&!c.value)c.value=fmtNum(j.call.caller)}
+    if(j&&j.call){detected=j.call;el.innerHTML=`Call from <b>${esc(callerNum(j.call.caller))}</b> · ${t12(new Date(j.call.at))}`;
+      const c=$("#lg-caller");if(c&&!c.value)c.value=callerNum(j.call.caller)}
     else{el.textContent="No recent call found for your number"}}
   catch(e){const el=$("#lg-det");if(el)el.textContent="Couldn't check recent calls"}}
 const lg={pick:{},outcome:"Answered",centre:"",tried:false};
@@ -1703,14 +1765,73 @@ function renderReasons(){const set=reasonSet(lg.centre),sug=suggestedReason();
   $("#lg-noteopt").hidden=isFu; $("#lg-notereq").hidden=!isFu;
   $("#lg-note").placeholder=isFu?"e.g. wants callback about Shoonya dates":"Anything worth recording";
   $("#lg-outcome").innerHTML=OUTCOMES.map(o=>`<button type="button" data-outcome="${o}" aria-pressed="${o===lg.outcome}">${o==="Needs follow-up"?"Follow-up":o}</button>`).join("")}
-function waText(en){const t=new Date(en.time),head="🔁 *Follow-up needed*";
-  return [head,"Reason: "+(en.reasons||[]).join(", "),en.caller?"Caller: "+en.caller:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
-function showSent(en){const txt=waText(en);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
-function openLog(fromPending){$("#logform").hidden=false;$("#lg-sent").hidden=true;
-  lg.pick={};lg.tried=false;lg.outcome="Answered";lg.centre=(viewCentre()||{}).code||"";
-  {const sg=suggestedReason();if(sg){const r=reasonSet(lg.centre).find(x=>x.name===sg);if(r)lg.pick[sg]=[]}}$("#lg-caller").value="";$("#lg-note").value="";$("#lg-caller").classList.remove("bad");$("#lg-note").classList.remove("bad");$("#lg-err").hidden=true;
-  renderMine();renderReasons();renderCentreLine();if(!fromPending)detectCall();else showDetected();const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
+function waText(en,updated){const t=new Date(en.time),head=updated?"🔁 *Follow-up updated*":"🔁 *Follow-up needed*";
+  const who=[en.callerName,en.caller].filter(Boolean).join(", ");
+  return [head,"Reason: "+(en.reasons||[]).join(", "),who?"Caller: "+who:"Caller: (number not noted)",en.note?"Note: "+en.note:"",en.topic?"Asked about: "+en.topic:"",`${t.getDate()} ${MON[t.getMonth()]}, ${t12(t)}`].filter(Boolean).join("\n")}
+function showSent(en,updated){const txt=waText(en,updated);$("#wa-preview").textContent=txt;$("#wa-send").href="https://wa.me/?text="+encodeURIComponent(txt);$("#logform").hidden=true;$("#lg-sent").hidden=false}
+function openLog(fromPending,edit){$("#logform").hidden=false;$("#lg-sent").hidden=true;
+  lg.pick={};lg.tried=false;lg.outcome="Answered";lg.centre=(viewCentre()||{}).code||"";lg.editing=edit||null;
+  $("#lg-title").textContent=edit?"Edit this call":"Log this call";$("#logform .save").textContent=edit?"Save changes":"Save call";
+  ["#lg-caller","#lg-note","#lg-cname"].forEach(s=>{$(s).value="";$(s).classList.remove("bad")});$("#lg-err").hidden=true;
+  if(edit){
+    lg.outcome=edit.outcome==="Needs follow-up"?"Needs follow-up":"Answered";if(edit.centre)lg.centre=edit.centre;
+    (edit.reasons||[]).forEach(x=>{const [r,sub]=String(x).split(">").map(y=>y.trim());const a=lg.pick[r]||(lg.pick[r]=[]);if(sub&&a.indexOf(sub)<0)a.push(sub)});
+    $("#lg-caller").value=edit.caller?callerNum(edit.caller):"";$("#lg-cname").value=edit.name||edit.callerName||"";$("#lg-note").value=edit.note||"";
+    const t=new Date(edit.at||edit.time);
+    $("#lg-mine").innerHTML=`<div class="who det"><span>Your <b>${t12(t)}</b> call · you can change it until <b>11:59 PM tonight</b></span></div>`;
+  }else{
+    const sg=suggestedReason();if(sg){const r=reasonSet(lg.centre).find(x=>x.name===sg);if(r)lg.pick[sg]=[]}
+    renderMine();
+  }
+  renderReasons();renderCentreLine();if(!edit){if(!fromPending)detectCall();else showDetected()}const d=$("#logdlg");if(d.showModal)d.showModal();else d.setAttribute("open","")}
 function closeLog(){const d=$("#logdlg");if(d.close)d.close();else d.removeAttribute("open")}
+/* ---- My calls: what this volunteer logged; today's calls can be changed until midnight ---- */
+let MYLOG=null,mylogDay="",mylogBusy=false,pendTab="todo",LOGGED_TODAY=0;
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+/* calls logged on this phone today, shown straight away until the sheet has them */
+function mineLocal(){const today=ymd(new Date());return store.get("ssb-mine",[]).filter(e=>ymd(new Date(e.time))===today)}
+function mineAdd(e){store.set("ssb-mine",mineLocal().concat([e]).slice(-80))}
+function toEntry(e){return {id:e.id,at:e.time,centre:e.centre,reasons:e.reasons||[],outcome:e.outcome,caller:e.caller,name:e.callerName||"",note:e.note,editable:true,local:true}}
+async function loadMyLog(day){const s=signedIn();if(!s||!LOG_URL)return;mylogBusy=true;
+  try{const r=await fetch(`${LOG_URL}?action=mylog&day=${encodeURIComponent(day||"")}&token=${encodeURIComponent(s.token)}`,{cache:"no-store"});
+    const j=await r.json();if(j&&j.ok){MYLOG=j;mylogDay=j.day}}catch(e){}
+  mylogBusy=false;if(pendTab==="done"&&curHash()==="c/pending")renderPending()}
+function curHash(){return location.hash.replace(/^#/,"")}
+function myCalls(){if(!MYLOG)return mineLocal().map(toEntry).reverse();
+  const list=(MYLOG.calls||[]).slice();
+  if(MYLOG.day===MYLOG.today){const have=new Set(list.map(x=>x.id));mineLocal().forEach(e=>{if(!have.has(e.id))list.unshift(toEntry(e))})}
+  return list.sort((a,b)=>String(b.at).localeCompare(String(a.at)))}
+function loggedTodayCount(){const have=new Set();let n=LOGGED_TODAY;
+  if(MYLOG&&MYLOG.day===MYLOG.today)(MYLOG.calls||[]).forEach(x=>have.add(x.id));
+  return Math.max(n,(MYLOG&&MYLOG.day===MYLOG.today?(MYLOG.calls||[]).length:0)+mineLocal().filter(e=>!have.has(e.id)).length)}
+function myRow(c){const t=new Date(c.at),fu=c.outcome==="Needs follow-up";
+  return `<div class="mk-row"><div class="mk-main"><div class="mk-top"><span>${t12(t)}</span><span class="mk-pill ${fu?"mk-fu":"mk-ans"}">${fu?"Follow-up":"Answered"}</span>${c.local?'<span>· sending…</span>':""}${c.edited?'<span>· edited</span>':""}</div>
+    <div class="mk-who">${c.name?esc(c.name)+(c.caller?' <span>· '+esc(callerNum(c.caller))+'</span>':""):esc(c.caller?callerNum(c.caller):"Number not noted")}</div>
+    <div class="mk-why">${esc((c.reasons||[]).join(", ").replace(/ > /g," › "))||"—"}</div>${c.note?`<div class="mk-note">${esc(c.note)}</div>`:""}</div>
+    ${c.editable?`<button type="button" class="mk-edit" data-editlog="${esc(c.id)}">Edit</button>`:'<span class="mk-lock">🔒 Locked</span>'}</div>`}
+function myLogBody(){
+  const days=(MYLOG&&MYLOG.days)||[{day:ymd(new Date()),count:mineLocal().length}],today=(MYLOG&&MYLOG.today)||ymd(new Date()),cur=(MYLOG&&MYLOG.day)||today;
+  const lbl=d=>{if(d===today)return"Today";const y=new Date();y.setDate(y.getDate()-1);if(d===ymd(y))return"Yesterday";const x=new Date(d+"T12:00:00");return x.toLocaleDateString("en-IN",{weekday:"short"})+" "+x.getDate()};
+  const list=myCalls();
+  return `<div class="mk-days">${days.map(d=>`<button type="button" class="chip" data-myday="${d.day}" aria-pressed="${d.day===cur}">${lbl(d.day)}${d.count?" · "+d.count:""}</button>`).join("")}</div>
+    ${list.length?`<div class="card"><div class="clist">${list.map(myRow).join("")}</div></div>`:`<div class="empty">${mylogBusy?"Loading…":"No calls logged "+(cur===today?"today yet":"that day")+"."}</div>`}
+    <p class="foot">${cur===today?"You can edit today’s calls until 11:59 PM. After that they lock.":"Calls from earlier days can’t be changed. Ask your supervisor if something is wrong."}</p>`}
+function editEntry(id){return myCalls().find(x=>String(x.id)===String(id))}
+async function saveEdit(){const e=lg.editing,s=signedIn(),err=$("#lg-err");
+  const fu=lg.outcome==="Needs follow-up";
+  const fields={reasons:lgReasons(),outcome:lg.outcome,centre:lg.centre,caller:$("#lg-caller").value.trim(),callerName:fu?$("#lg-cname").value.trim():"",note:$("#lg-note").value.trim()};
+  const en={time:e.at||new Date().toISOString(),reasons:fields.reasons,caller:fields.caller,callerName:fields.callerName,note:fields.note};
+  const q=qGet(),qi=q.findIndex(x=>x.id===e.id);
+  const local=()=>{store.set("ssb-mine",store.get("ssb-mine",[]).map(x=>x.id===e.id?Object.assign({},x,fields):x))};
+  if(qi>=0){q[qi]=Object.assign({},q[qi],fields);qSet(q);local();toast("Changes saved");done();return}
+  const btn=$("#logform .save");btn.disabled=true;btn.textContent="Saving…";
+  try{const r=await fetch(LOG_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"edit",token:s.token,id:e.id,fields:fields})});
+    const j=await r.json();
+    if(j&&j.ok){local();toast("Changes saved");done();loadMyLog(mylogDay)}
+    else{err.textContent=(j&&j.error)||"That didn't save. Try again.";err.hidden=false}}
+  catch(x){err.textContent="Couldn't reach the sheet. Check your internet and try again.";err.hidden=false}
+  btn.disabled=false;btn.textContent="Save changes";
+  function done(){lg.editing=null;if(fu)showSent(en,true);else closeLog();if(curHash()==="c/pending")renderPending()}}
 let sending=false;
 async function flushLog(){if(!LOG_URL||sending)return;const q=qGet();if(!q.length)return;sending=true;
   try{await fetch(LOG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({items:q})});
@@ -1724,7 +1845,8 @@ $("#shdlg").addEventListener("click",e=>{const b=e.target.closest("button");
   if(b.hasAttribute("data-shclose")){closeShare();return}
   if(b.hasAttribute("data-shedit")){shareTarget.to="";renderShare();return}
   if(b.hasAttribute("data-shuse")){if(shareTarget.suggest){shareTarget.to=shareTarget.suggest.to;renderShare()}return}
-  if(b.hasAttribute("data-shset")){const v=digits10($("#sh-num").value);if(v.length>=10){shareTarget.to=v;renderShare()}return}});
+  if(b.hasAttribute("data-shset")){const raw=$("#sh-num").value.replace(/\D/g,"");if(raw.length>=10){shareTarget.to=callerDigits(raw);renderShare()}return}
+  if(b.dataset.shlive!==undefined){const c=(shareTarget.live||[])[+b.dataset.shlive];if(c){shareTarget.to=callerDigits(c.caller);renderShare()}return}});
 $("#sh-wa").addEventListener("click",()=>setTimeout(closeShare,400));
 $("#logdlg").addEventListener("click",e=>{
   const b=e.target.closest("button");if(e.target.id==="logdlg"){closeLog();return}if(!b)return;
@@ -1741,15 +1863,16 @@ $("#logdlg").addEventListener("click",e=>{
   if(b.dataset.outcome){lg.outcome=b.dataset.outcome;renderReasons();return}});
 $("#logform").addEventListener("submit",e=>{e.preventDefault();
   const err=$("#lg-err"),a={name:"",line:""};
-  const fu=lg.outcome==="Needs follow-up",cEl=$("#lg-caller"),nEl=$("#lg-note"),digits=cEl.value.replace(/\D/g,"");
-  cEl.classList.toggle("bad",fu&&digits.length<10);nEl.classList.toggle("bad",fu&&!nEl.value.trim());
+  const fu=lg.outcome==="Needs follow-up",cEl=$("#lg-caller"),nEl=$("#lg-note"),mEl=$("#lg-cname"),digits=cEl.value.replace(/\D/g,"");
+  cEl.classList.toggle("bad",fu&&digits.length<10);nEl.classList.toggle("bad",fu&&!nEl.value.trim());mEl.classList.toggle("bad",fu&&!mEl.value.trim());
   const spamOnly=lgSpamOnly(),set=reasonSet(lg.centre);
   const needSub=set.find(r=>r.subs.length&&lg.pick[r.name]&&!lg.pick[r.name].length);
   lg.tried=true;
-  const miss=!Object.keys(lg.pick).length?"Please choose at least one reason.":needSub?`Please pick what it was about under ${needSub.name}.`:(fu&&!spamOnly&&digits.length<10)?"Please enter the caller's number (at least 10 digits).":(fu&&!spamOnly&&!nEl.value.trim())?"Please add a short note.":"";
-  if(miss){err.textContent=miss;err.hidden=false;if(needSub||!Object.keys(lg.pick).length)renderReasons();else (digits.length<10?cEl:nEl).focus();return}
-  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reasons:lgReasons(),centre:lg.centre,outcome:lg.outcome,caller:(lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"")||(detected?fmtNum(detected.caller):""),callSid:detected?detected.sid:"",token:(signedIn()||{}).token||"",note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
-  qSet(qGet().concat(entry));lastTopic=null;
+  const miss=!Object.keys(lg.pick).length?"Please choose at least one reason.":needSub?`Please pick what it was about under ${needSub.name}.`:(fu&&!spamOnly&&!mEl.value.trim())?"Please add the caller's name.":(fu&&!spamOnly&&digits.length<10)?"Please enter the caller's number (at least 10 digits).":(fu&&!spamOnly&&!nEl.value.trim())?"Please add a short note.":"";
+  if(miss){err.textContent=miss;err.hidden=false;if(needSub||!Object.keys(lg.pick).length)renderReasons();else (!mEl.value.trim()&&fu?mEl:digits.length<10?cEl:nEl).focus();return}
+  if(lg.editing){saveEdit();return}
+  const entry={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),time:new Date().toISOString(),agent:a.name,line:a.line,reasons:lgReasons(),centre:lg.centre,outcome:lg.outcome,caller:(lg.outcome==="Needs follow-up"?$("#lg-caller").value.trim():"")||(detected?callerNum(detected.caller):""),callerName:lg.outcome==="Needs follow-up"?$("#lg-cname").value.trim():"",callSid:detected?detected.sid:"",token:(signedIn()||{}).token||"",note:$("#lg-note").value.trim(),topic:lastTopic&&Date.now()-lastTopic.at<20*60e3?lastTopic.label:""};
+  qSet(qGet().concat(entry));lastTopic=null;mineAdd(entry);
   if(entry.outcome!=="Answered")showSent(entry);else closeLog();
   if(detected){PEND=PEND.filter(x=>x.sid!==detected.sid);store.set("ssb-pending",PEND);qBadge()}
   if(LOG_URL&&navigator.onLine){toast("Call logged");flushLog();setTimeout(loadPending,1500)}else toast(LOG_URL?"Saved on phone — will send when online":"Saved on this phone (sheet not connected yet)")});
