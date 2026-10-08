@@ -1,19 +1,7 @@
 {
- "updated": "2026-10-07T02:32:56.784Z",
+ "updated": "2026-10-08T02:47:53.937Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204913",
-   "name": "Inner Engineering 7 Days",
-   "start": "2026-10-07 06:00:00",
-   "end": "2026-10-13 21:00:00",
-   "time": "6:00AM - 9:00PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "3500",
-   "url": "https://online.sadhguru.org/event-register?event=22034-inner-engineering-7-days-kannada-malleshwaram-07-13-oct-2026-22034",
-   "lang": "kannada"
-  },
   {
    "id": "1204914",
    "name": "Inner Engineering 4 days",
@@ -89,6 +77,32 @@
    "free": true
   },
   {
+   "id": "1205856",
+   "name": "Devi Divya Pooja - Banaswadi",
+   "start": "2026-10-11 16:00:00",
+   "end": "2026-10-11 18:00:00",
+   "time": "4:00PM - 6:00PM",
+   "venue": "Madhu Ravindran",
+   "area": "Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22831-devi-divya-pooja-banaswadi-11-oct-2026-22831",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205857",
+   "name": "Devi Divya Pooja - Budigere Cross",
+   "start": "2026-10-11 17:00:00",
+   "end": "2026-10-11 18:30:00",
+   "time": "5:00PM - 6:30PM",
+   "venue": "Ganga Hall",
+   "area": "Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22832-devi-divya-pooja-budigere-cross-11-oct-2026-22832",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205776",
    "name": "Devi Divya Pooja - Jakkur",
    "start": "2026-10-11 18:00:00",
@@ -98,6 +112,19 @@
    "area": "Dasarahalli, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22781-devi-divya-pooja-jakkur-11-oct-2026-22781",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205855",
+   "name": "Devi Divya Pooja",
+   "start": "2026-10-11 18:00:00",
+   "end": "2026-10-19 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Isha Place Mysuru",
+   "area": "Mysuru, Mysuru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22828-devi-divya-pooja-mysuru-11-19-oct-2026-22828",
    "lang": "english",
    "free": true
   },
@@ -200,6 +227,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21442-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-15-18-2026-21442",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -239,6 +267,19 @@
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22289-surya-kriya-weekend-english-marathahalli-17-18-oct-2026-22289",
    "lang": "english"
+  },
+  {
+   "id": "1205865",
+   "name": "Devi Divya Pooja - Kanakapura Road",
+   "start": "2026-10-17 17:00:00",
+   "end": "2026-10-19 18:00:00",
+   "time": "5:00PM - 6:00PM",
+   "venue": "Sadhguru Yogasthala Kanakapura Road",
+   "area": "Kanakapura Road, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22823-devi-divya-pooja-kanakapura-road-17-19-oct-2026-22823",
+   "lang": "english",
+   "free": true
   },
   {
    "id": "1205830",
@@ -339,7 +380,8 @@
    "area": "HSR Layout, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22202-yogasanas-english-hsr-layout-20-24-oct-2026-22202",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205827",
@@ -364,7 +406,8 @@
    "area": "Jayanagar, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22052-yogasanas-english-jayanagar-21-25-oct-2026-22052",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1204916",
@@ -646,6 +689,30 @@
    "ssb": true
   },
   {
+   "id": "1205858",
+   "name": "Jala Neti",
+   "start": "2026-11-01 15:00:00",
+   "end": "2026-11-01 16:00:00",
+   "time": "3:00PM - 4:00PM",
+   "venue": "Green Valley English High School",
+   "area": "Bannerghatta Road, Bengaluru",
+   "fee": "2200",
+   "url": "https://online.sadhguru.org/event-register?event=22816-jala-neti-english-bannerghatta-road-1-nov-2026-22816",
+   "lang": "english"
+  },
+  {
+   "id": "1205859",
+   "name": "Surya Kriya Weekend - Mysuru",
+   "start": "2026-11-07 07:00:00",
+   "end": "2026-11-08 19:30:00",
+   "time": "7:00AM - 7:30PM",
+   "venue": "Isha Place Mysuru",
+   "area": "Mysuru",
+   "fee": "2400",
+   "url": "https://online.sadhguru.org/event-register?event=22815-surya-kriya-weekend-english-mysuru-7-8-nov-2026-22815",
+   "lang": "english"
+  },
+  {
    "id": "1204207",
    "name": "Inner Engineering 4 Days",
    "start": "2026-11-12 06:00:00",
@@ -655,6 +722,42 @@
    "area": "Marathahalli, Bengaluru",
    "fee": "5000",
    "url": "https://online.sadhguru.org/event-register?event=21496-inner-engineering-4-days-english-marathahalli-12-15-nov-2026-21496",
+   "lang": "english"
+  },
+  {
+   "id": "1205850",
+   "name": "Inner Engineering 4 days - Malleshwaram",
+   "start": "2026-11-12 06:00:00",
+   "end": "2026-11-15 18:30:00",
+   "time": "6:00AM - 6:30PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram, Bengaluru",
+   "fee": "5000",
+   "url": "https://online.sadhguru.org/event-register?event=22807-inner-engineering-4-days-english-malleshwaram-12-15-nov-2026-22807",
+   "lang": "english"
+  },
+  {
+   "id": "1205861",
+   "name": "Angamardana - Mysuru",
+   "start": "2026-11-18 06:30:00",
+   "end": "2026-11-22 08:45:00",
+   "time": "6:30AM - 8:45AM",
+   "venue": "Isha Place Mysuru",
+   "area": "Mysuru",
+   "fee": "3600",
+   "url": "https://online.sadhguru.org/event-register?event=22808-angamardana-english-mysuru-18-22-nov-2026-22808",
+   "lang": "english"
+  },
+  {
+   "id": "1205862",
+   "name": "Jala Neti - Mysuru",
+   "start": "2026-11-22 17:00:00",
+   "end": "2026-11-22 18:00:00",
+   "time": "5:00PM - 6:00PM",
+   "venue": "Isha Place Mysuru",
+   "area": "Mysuru",
+   "fee": "1900",
+   "url": "https://online.sadhguru.org/event-register?event=22814-jala-neti-english-mysuru-22-nov-2026-22814",
    "lang": "english"
   }
  ]
