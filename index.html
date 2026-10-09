@@ -157,6 +157,7 @@ mark{background:var(--hl);color:inherit;border-radius:3px;padding:0 1px}
 .cat.pgm span{color:inherit;opacity:.82}
 .cat.pgm i{color:#FFC98F}
 .filters{display:flex;gap:8px;overflow-x:auto;margin-inline:-16px;padding:2px 16px;scrollbar-width:none}
+.card .filters.mc{margin:0 0 10px;padding:2px 0}
 .filters::-webkit-scrollbar{display:none}
 .fchip{flex:none;white-space:nowrap;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
 .fchip[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
@@ -784,14 +785,14 @@ const BASE_KB=[
 {id:"centres",cat:"contacts",q:"Karnataka centre contact numbers",
  say:"Find the caller's area below and share that centre's number.",
  table:{head:["Centre / area","Phone"],rows:[
-  ["Jayanagar IP","8095633111"],["Chikkaballapura","8095643111"],["Whitefield & Marathahalli","8095853111"],["Vijayanagar","8095763111"],["Bannerghatta Road","8095473111"],["Hebbal","8095173111"],["Malleswaram","8095413111"],["Electronic City","8095963111"],["Koramangala","8095683111"],["Banaswadi","8095693111"],["Indiranagar","8095653111"],
+  ["Jayanagar IP","8095633111"],["Chikkaballapura","8095643111"],["Whitefield & Marathahalli","8095853111"],["Vijayanagar","8095763111"],["Bannerghatta Road","8095473111"],["Hebbal","8095173111"],["Malleswaram","8095413111"],["Electronic City","8095963111"],["Koramangala","8095683111"],["Banaswadi","8095693111"],["Indiranagar","8095653111"],["Kanakapura Road","8095353111"],
   ["Chikkaballapura, Bangalore Rural, Ramanagara, Tumakuru, Kolar","8095623111"],
   ["Mysuru, Mandya, Kodagu, Chamarajanagar","8095943111"],
   ["Mangaluru, Manipal, Shivamogga, Chitradurga, Uttara Kannada","8095813111"],
   ["Hubballi, Belagavi, Davanagere, Kalaburagi, Ballari, Bidar, Yadagiri, Raichur, Koppal, Bagalkot, Haveri, Vijayapura, Vijayanagara, Gadag","8095723111"],
   ["Hassan, Chikkamagaluru","8095753111"]].map(r=>[r[0],`<a href="tel:${r[1]}">${r[1].replace(/(\d{5})(\d{5})/,"$1 $2")}</a>`])},
  acts:[U("All Bangalore centres – addresses","https://isha.sadhguru.org/in/en/center/yoga-classes-bangalore#viewallcenters"),U("Local centres (all)","https://isha.sadhguru.org/in/en/center/local-center")],
- k:"centre center local contact number phone jayanagar whitefield marathahalli vijayanagar bannerghatta hebbal malleswaram electronic city koramangala banaswadi indiranagar mysore mysuru mangalore mangaluru hubli hubballi belgaum belagavi hassan tumkur kolar district"},
+ k:"centre center local contact number phone kanakapura jayanagar whitefield marathahalli vijayanagar bannerghatta hebbal malleswaram electronic city koramangala banaswadi indiranagar mysore mysuru mangalore mangaluru hubli hubballi belgaum belagavi hassan tumkur kolar district"},
 {id:"whatsapp",cat:"contacts",q:"Centre WhatsApp community groups",
  say:"Share Isha.co/regionconnect — the caller picks their centre's group.",
  acts:[U("Region connect","https://isha.co/regionconnect")],
@@ -1170,6 +1171,8 @@ app.addEventListener("click",e=>{
   if(b.hasAttribute("data-mylog")){pendTab="done";location.hash="#c/pending";return}
   if(b.dataset.imgshare){shareImage(b.dataset.imgshare);return}
   if(b.dataset.range){repRange=b.dataset.range;loadReport();return}
+  if(b.dataset.misscentre!==undefined){repMissCentre=b.dataset.misscentre;loadReport();return}
+  if(b.dataset.pendcentre!==undefined){repPendCentre=b.dataset.pendcentre;loadReport();return}
   if(b.hasAttribute("data-repmine")){repMine=!repMine;loadReport();return}
   if(b.dataset.reptab){repTab=b.dataset.reptab;dayOlder=false;store.set("ssb-reptab",repTab);renderReports();repLoad();window.scrollTo(0,0);return}
   if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
@@ -1341,7 +1344,7 @@ $("#signform").addEventListener("submit",async e=>{e.preventDefault();
   go.disabled=false;go.textContent="Sign in"});
 
 let repTab=store.get("ssb-reptab","daily"),repScope="",repDate="",repMonth="";
-let repRange="today",repMine=false,repData=null,repBusy=false;
+let repRange="today",repMine=false,repData=null,repBusy=false,repMissCentre="",repPendCentre="";
 let dayData=null,dayBusy=false,monData=null,monBusy=false;
 const RANGES=[["today","Today"],["yesterday","Yesterday"],["7d","Last 7 days"],["month","This month"],["lastmonth","Last month"]];
 const DASHBOARD="https://ishakarnataka.pages.dev";
@@ -1365,7 +1368,7 @@ async function loadMonthly(){monBusy=true;renderReports();
   if(j&&j.ok){monData=j;if(j.month)repMonth=j.month.month}else{monData=(j&&j.error)?{failed:j.error}:null;repBounce(j)}
   monBusy=false;renderReports()}
 async function loadReport(){const s=signedIn();if(!s||!LOG_URL)return;repBusy=true;renderReports();
-  const j=await repAsk(`action=report&range=${repRange}${repMine?"&mine=1":""}`);
+  const j=await repAsk(`action=report&range=${repRange}${repMine?"&mine=1":""}${repMissCentre?"&centre="+encodeURIComponent(repMissCentre):""}${repPendCentre?"&pcentre="+encodeURIComponent(repPendCentre):""}`);
   if(j&&j.ok)repData=j;else{repData=null;repBounce(j)}
   repBusy=false;renderReports()}
 
@@ -1556,27 +1559,32 @@ function logBody(u){
     ${k.spam?`<div class="kpi"><b>${k.spam}</b><span>Spam / wrong number</span></div>`:""}
     ${k.followups?`<div class="kpi"><b>${k.followups}</b><span>Follow-ups</span></div>`:""}
   </div>
+  ${repData.missedVisible===false?"":liveMissedCard()}
+  ${repData.missedVisible===false||!repData.pendingLogs?"":pendingLogsCard()}
   <div class="card"><h3>Why people called <span class="cbadge">a call can have more than one</span></h3>${rank(repData.reasons)}</div>
   ${repData.agents.length?`<div class="card"><h3>By agent</h3>${rank(repData.agents)}</div>`:""}
   ${repData.centres.length>1?`<div class="card"><h3>By centre / line</h3>${rank(repData.centres)}</div>`:""}
   <div class="card"><h3>Calls by hour</h3>${bars(repData.hours)}</div>
-  ${repData.missedVisible===false?"":liveMissedCard()}
-  ${repData.missedVisible===false||!repData.pendingLogs?"":pendingLogsCard()}
   <p class="foot">${u.role==="agent"?"Your own calls, as you logged them. Calls nobody answered are chased by your supervisor.":"What agents logged in the app, plus the calls Exotel sent to their phones. The Daily and Monthly tabs are the full Exotel picture."}</p>`}
 
 function liveTitle(){return repRange==="today"?"Missed today – still to call back":"Missed – still to call back"}
+function centreChips(C,pick,attr){if(!(C.length>1||pick))return "";
+  return `<div class="filters mc">${[`<button type="button" class="fchip" data-${attr}="" aria-pressed="${!pick}">All centres</button>`].concat(C.map(x=>`<button type="button" class="fchip" data-${attr}="${esc(x.code)}" aria-pressed="${pick===x.code}" title="${esc(x.name)}">${esc(x.code==="—"?"Not known":x.code)} · ${x.count}</button>`)).join("")}</div>`}
 function liveMissedCard(){const L=repData.missedList||[],K=repData.missedSkip||{},sk=[];
   if(K.later)sk.push(K.later+" who got through later");
   if(K.ooh)sk.push(K.ooh+" outside 9am–9pm");
-  const meta=c=>[c.attempts>1?"tried "+c.attempts+"x":"",c.agent?"rang "+c.agent:""].filter(Boolean).join(" · ");
+  const C=repData.missedCentres||[],pick=repData.missedCentre||"",tot=C.reduce((t,x)=>t+x.count,0);
+  const showC=!pick&&C.length>1;
+  const meta=c=>[showC&&c.centre?c.centre:"",c.attempts>1?"tried "+c.attempts+"x":"",c.agent?"rang "+c.agent:""].filter(Boolean).join(" · ");
+  const chips=centreChips(C,pick,"misscentre");
   return `<div class="card"><div class="cbhead"><h3>${liveTitle()} (live) <span class="cbadge">${L.length}</span></h3>${L.length?`<button type="button" class="cbcopy" data-livecopy>Copy list</button>`:""}</div>
-    <p class="foot" style="margin:0 0 10px">Calls that rang a volunteer and weren't answered, one row per caller.${sk.length?" Left off: "+esc(sk.join(" · "))+".":""} The full list, with menu hang-ups, is on the Daily tab after the Exotel upload.</p>
+    ${chips}<p class="foot" style="margin:0 0 10px">Calls that rang a volunteer and weren't answered, one row per caller.${sk.length?" Left off: "+esc(sk.join(" · "))+".":""} The full list, with menu hang-ups, is on the Daily tab after the Exotel upload.</p>
     ${L.length?`<div class="clist">${L.map(c=>callRow(c,meta(c))).join("")}</div>`:`<p class="foot">Nobody to call back.</p>`}</div>`}
-function liveCopyText(){const L=repData.missedList||[];
-  return liveTitle()+" — "+(repData.range?repData.range.label:"")+"\n"+L.map(c=>{const t=new Date(c.at);return callerNum(c.caller)+"  (last "+t12(t)+(c.attempts>1?", tried "+c.attempts+"x":"")+")"}).join("\n")}
+function liveCopyText(){const L=repData.missedList||[],pk=repData.missedCentre;
+  return liveTitle()+(pk?" · "+pk:"")+" — "+(repData.range?repData.range.label:"")+"\n"+L.map(c=>{const t=new Date(c.at);return callerNum(c.caller)+"  (last "+t12(t)+(c.attempts>1?", tried "+c.attempts+"x":"")+")"}).join("\n")}
 function pendingLogsCard(){const P=repData.pendingLogs||[],total=P.reduce((t,p)=>t+p.count,0);
   return `<div class="card"><h3>Logs pending <span class="cbadge">${total}</span></h3>
-    <p class="foot" style="margin:0 0 10px">Calls a volunteer answered but hasn't logged in the app yet. Tap a name to see the calls.</p>
+    ${centreChips(repData.pendCentres||[],repData.pendCentre||"","pendcentre")}<p class="foot" style="margin:0 0 10px">Calls a volunteer answered but hasn't logged in the app yet. Tap a name to see the calls.</p>
     ${P.length?`<div class="plist">${P.map(p=>`<details class="pl"><summary><span class="pn">${esc(p.known?p.name:fmtNum(p.mobile))}${p.known?"":' <span class="cbadge">Not in the Users sheet</span>'}</span><b>${p.count}</b></summary>
       <div class="clist">${p.calls.map(c=>callRow(c)).join("")}${p.count>p.calls.length?`<p class="foot">…and ${p.count-p.calls.length} more</p>`:""}</div></details>`).join("")}</div>`:`<p class="foot">Every answered call is logged.</p>`}</div>`}
 
