@@ -1,57 +1,7 @@
 {
- "updated": "2026-10-10T02:29:46.193Z",
+ "updated": "2026-10-11T02:01:30.009Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205082",
-   "name": "Yogasanas",
-   "start": "2026-10-10 06:00:00",
-   "end": "2026-10-14 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Amruthavarshini Yoga Studio",
-   "area": "Kanakapura Road, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22178-yogasanas-english-kanakapura-road-10-14-october-2026-22178",
-   "lang": "english",
-   "closed": true
-  },
-  {
-   "id": "1205067",
-   "name": "Yogasanas Sadhana",
-   "start": "2026-10-10 06:00:00",
-   "end": "2026-10-10 09:45:00",
-   "time": "6:00AM - 9:45AM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "750",
-   "url": "https://online.sadhguru.org/event-register?event=22168-yogasanas-sadhana-english-jayanagar-10-oct-2026-22168",
-   "lang": "english"
-  },
-  {
-   "id": "1205232",
-   "name": "Surya Kriya Weekend",
-   "start": "2026-10-10 07:00:00",
-   "end": "2026-10-11 19:30:00",
-   "time": "7:00AM - 7:30PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=22291-surya-kriya-weekend-english-vijayanagar-10-11-oct-2026-22291",
-   "lang": "english"
-  },
-  {
-   "id": "1205670",
-   "name": "Devi Divya Pooja - Chandapura",
-   "start": "2026-10-10 16:00:00",
-   "end": "2026-10-10 17:00:00",
-   "time": "4:00PM - 5:00PM",
-   "venue": "Little Millennium Preschool",
-   "area": "Chandapura, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22691-devi-divya-pooja-chandapura-10-oct-2026-22691",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205488",
    "name": "Devi Divya Pooja - Singasandra",
@@ -118,6 +68,19 @@
    "free": true
   },
   {
+   "id": "1205947",
+   "name": "Devi Divya Pooja",
+   "start": "2026-10-11 19:00:00",
+   "end": "2026-10-11 20:00:00",
+   "time": "7:00PM - 8:00PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Marathahalli, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22891-devi-divya-pooja-marathahalli-11-oct-2026-22891",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205777",
    "name": "Devi Divya Pooja -Vidyaranyapura",
    "start": "2026-10-12 18:00:00",
@@ -128,6 +91,7 @@
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22782-devi-divya-pooja-vidyaranyapura-12-oct-2026-22782",
    "lang": "english",
+   "closed": true,
    "free": true
   },
   {
@@ -166,6 +130,19 @@
    "area": "Vijayanagar, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22698-devi-divya-pooja-vijayanagar-13-oct-2026-22698",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205948",
+   "name": "Devi Divya Pooja - Whitefield",
+   "start": "2026-10-13 18:30:00",
+   "end": "2026-10-13 19:30:00",
+   "time": "6:30PM - 7:30PM",
+   "venue": "Brigade Woods Club House",
+   "area": "Brigade Woods, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22892-devi-divya-pooja-whitefield-13-oct-2026-22892",
    "lang": "english",
    "free": true
   },
@@ -246,6 +223,19 @@
    "lang": "english"
   },
   {
+   "id": "1205949",
+   "name": "Devi Divya Pooja",
+   "start": "2026-10-17 12:30:00",
+   "end": "2026-10-18 13:30:00",
+   "time": "12:30PM - 1:30PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Marathahalli, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22893-devi-divya-pooja-marathahalli-17-18-oct-2026-22893",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205865",
    "name": "Devi Divya Pooja - Kanakapura Road",
    "start": "2026-10-17 17:00:00",
@@ -294,6 +284,19 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22839-devi-divya-pooja-malleshwaram-17-oct-2026-22839",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205962",
+   "name": "Devi Divya Pooja - Indiranagar",
+   "start": "2026-10-17 18:00:00",
+   "end": "2026-10-18 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Samskruthi Living Ladies PG",
+   "area": "Samskruthi Living Ladies PG, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22907-devi-divya-pooja-indiranagar-17-18-oct-2026-22907",
    "lang": "english",
    "free": true
   },
@@ -372,6 +375,19 @@
    "area": "Suvarna Nagar, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22840-devi-divya-pooja-nagasandra-18-oct-2026-22840",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205955",
+   "name": "Devi Divya Pooja - Hebbal",
+   "start": "2026-10-18 18:00:00",
+   "end": "2026-10-18 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Alumni Association Hall",
+   "area": "Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22902-devi-divya-pooja-hebbal-18-oct-2026-22902",
    "lang": "english",
    "free": true
   },
@@ -762,7 +778,7 @@
    "start": "2026-11-01 15:00:00",
    "end": "2026-11-01 16:00:00",
    "time": "3:00PM - 4:00PM",
-   "venue": "Green Valley English High School",
+   "venue": "L&T South City, Old Club House, Party Hall",
    "area": "Bannerghatta Road, Bengaluru",
    "fee": "2200",
    "url": "https://online.sadhguru.org/event-register?event=22816-jala-neti-english-bannerghatta-road-1-nov-2026-22816",
@@ -774,7 +790,7 @@
    "start": "2026-11-01 16:15:00",
    "end": "2026-11-01 19:45:00",
    "time": "4:15PM - 7:45PM",
-   "venue": "L&T South City",
+   "venue": "L&T South City, Old Club House, Party Hall",
    "area": "Bannerghatta Road, Bengaluru",
    "fee": "750",
    "url": "https://online.sadhguru.org/event-register?event=22813-yogasanas-review-english-bannerghatta-road-1-nov-2026-22813",
@@ -842,11 +858,23 @@
    "lang": "english"
   },
   {
-   "id": "1205920",
-   "name": "Inner Engineering 4 Days - Indiranagar",
+   "id": "1205951",
+   "name": "Inner Engineering 4 Days",
    "start": "2026-11-12 06:00:00",
    "end": "2026-11-15 18:30:00",
    "time": "6:00AM - 6:30PM",
+   "venue": "Loyola Industrial Training Institute",
+   "area": "Bannerghatta Road, Bengaluru",
+   "fee": "5000",
+   "url": "https://online.sadhguru.org/event-register?event=22896-inner-engineering-4-days-english-bannerghatta-road-12-15-nov-2026-22896",
+   "lang": "english"
+  },
+  {
+   "id": "1205920",
+   "name": "Inner Engineering 4 Days - Indiranagar",
+   "start": "2026-11-12 18:00:00",
+   "end": "2026-11-15 18:30:00",
+   "time": "6:00PM - 6:30PM",
    "venue": "SMSG Jain Degree College",
    "area": "Indiranagar, Bengaluru",
    "fee": "5000",
@@ -916,13 +944,25 @@
   {
    "id": "1205918",
    "name": "Yogasanas - Malleshwaram",
-   "start": "2026-11-23 06:00:00",
-   "end": "2026-11-27 09:00:00",
-   "time": "6:00AM - 9:00AM",
+   "start": "2026-11-23 18:00:00",
+   "end": "2026-11-27 21:00:00",
+   "time": "6:00PM - 9:00PM",
    "venue": "Isha Place Malleswaram",
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
+   "lang": "english"
+  },
+  {
+   "id": "1205960",
+   "name": "Angamardana",
+   "start": "2026-12-14 06:30:00",
+   "end": "2026-12-18 08:45:00",
+   "time": "6:30AM - 8:45AM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Marathahalli, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=22897-angamardana-english-marathahalli-14-18-dec-2026-22897",
    "lang": "english"
   }
  ]
