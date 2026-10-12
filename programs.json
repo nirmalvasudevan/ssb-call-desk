@@ -1,85 +1,7 @@
 {
- "updated": "2026-10-11T02:01:30.009Z",
+ "updated": "2026-10-12T02:32:14.380Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205488",
-   "name": "Devi Divya Pooja - Singasandra",
-   "start": "2026-10-11 16:00:00",
-   "end": "2026-10-11 17:00:00",
-   "time": "4:00PM - 5:00PM",
-   "venue": "Purva Westend Multipurpose Hall",
-   "area": "Singasandra, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22467-devi-divya-pooja-singasandra-11-oct-2026-22467",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205856",
-   "name": "Devi Divya Pooja - Banaswadi",
-   "start": "2026-10-11 16:00:00",
-   "end": "2026-10-11 18:00:00",
-   "time": "4:00PM - 6:00PM",
-   "venue": "Madhu Ravindran",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22831-devi-divya-pooja-banaswadi-11-oct-2026-22831",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205857",
-   "name": "Devi Divya Pooja - Budigere Cross",
-   "start": "2026-10-11 17:00:00",
-   "end": "2026-10-11 18:30:00",
-   "time": "5:00PM - 6:30PM",
-   "venue": "Ganga Hall",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22832-devi-divya-pooja-budigere-cross-11-oct-2026-22832",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205776",
-   "name": "Devi Divya Pooja - Jakkur",
-   "start": "2026-10-11 18:00:00",
-   "end": "2026-10-11 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Sobha Moonstone",
-   "area": "Dasarahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22781-devi-divya-pooja-jakkur-11-oct-2026-22781",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205855",
-   "name": "Devi Divya Pooja",
-   "start": "2026-10-11 18:00:00",
-   "end": "2026-10-19 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Isha Place Mysuru",
-   "area": "Mysuru, Mysuru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22828-devi-divya-pooja-mysuru-11-19-oct-2026-22828",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205947",
-   "name": "Devi Divya Pooja",
-   "start": "2026-10-11 19:00:00",
-   "end": "2026-10-11 20:00:00",
-   "time": "7:00PM - 8:00PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22891-devi-divya-pooja-marathahalli-11-oct-2026-22891",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205777",
    "name": "Devi Divya Pooja -Vidyaranyapura",
@@ -92,6 +14,19 @@
    "url": "https://online.sadhguru.org/event-register?event=22782-devi-divya-pooja-vidyaranyapura-12-oct-2026-22782",
    "lang": "english",
    "closed": true,
+   "free": true
+  },
+  {
+   "id": "1205966",
+   "name": "Devi Divya Pooja - Marathahalli",
+   "start": "2026-10-12 19:00:00",
+   "end": "2026-10-16 20:00:00",
+   "time": "7:00PM - 8:00PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22911-devi-divya-pooja-marathahalli-12-16-oct-2026-22911",
+   "lang": "english",
    "free": true
   },
   {
@@ -143,6 +78,19 @@
    "area": "Brigade Woods, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22892-devi-divya-pooja-whitefield-13-oct-2026-22892",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205968",
+   "name": "Devi Divya Pooja - Banaswadi",
+   "start": "2026-10-14 17:00:00",
+   "end": "2026-10-14 19:00:00",
+   "time": "5:00PM - 7:00PM",
+   "venue": "Shwetha B",
+   "area": "Ramamurthy Nagar, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22909-devi-divya-pooja-banaswadi-14-oct-2026-22909",
    "lang": "english",
    "free": true
   },
@@ -425,6 +373,19 @@
    "area": "Avalahalli, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22794-devi-divya-pooja-yelahanka-19-oct-2026-22794",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1205971",
+   "name": "Devi Divya Pooja - Marathahalli",
+   "start": "2026-10-19 19:00:00",
+   "end": "2026-10-19 20:00:00",
+   "time": "7:00PM - 8:00PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22912-devi-divya-pooja-marathahalli-19-oct-2026-22912",
    "lang": "english",
    "free": true
   },
@@ -797,6 +758,18 @@
    "lang": "english"
   },
   {
+   "id": "1205972",
+   "name": "Bhuta Shuddhi - Marathahalli",
+   "start": "2026-11-01 17:00:00",
+   "end": "2026-11-01 19:00:00",
+   "time": "5:00PM - 7:00PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=22913-bhuta-shuddhi-english-marathahalli-1-nov-2026-22913",
+   "lang": "english"
+  },
+  {
    "id": "1205876",
    "name": "Shambhavi Practice Correction Session",
    "start": "2026-11-02 07:30:00",
@@ -808,6 +781,18 @@
    "url": "https://online.sadhguru.org/event-register?event=22844-shambhavi-practice-correction-session-jayanagar-nov-2-2026-22844",
    "lang": "english",
    "free": true
+  },
+  {
+   "id": "1205973",
+   "name": "Surya Kriya - Marathahalli",
+   "start": "2026-11-02 18:30:00",
+   "end": "2026-11-05 20:30:00",
+   "time": "6:30PM - 8:30PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=22914-surya-kriya-english-marathahalli-2-5-nov-2026-22914",
+   "lang": "english"
   },
   {
    "id": "1205904",
@@ -859,7 +844,7 @@
   },
   {
    "id": "1205951",
-   "name": "Inner Engineering 4 Days",
+   "name": "Inner Engineering 4 Days - Bannerghatta Road",
    "start": "2026-11-12 06:00:00",
    "end": "2026-11-15 18:30:00",
    "time": "6:00AM - 6:30PM",
