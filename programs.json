@@ -1,34 +1,7 @@
 {
- "updated": "2026-10-12T02:32:14.380Z",
+ "updated": "2026-10-13T03:41:55.056Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205777",
-   "name": "Devi Divya Pooja -Vidyaranyapura",
-   "start": "2026-10-12 18:00:00",
-   "end": "2026-10-12 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Shikha Dubey",
-   "area": "Vidyaranyapura, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22782-devi-divya-pooja-vidyaranyapura-12-oct-2026-22782",
-   "lang": "english",
-   "closed": true,
-   "free": true
-  },
-  {
-   "id": "1205966",
-   "name": "Devi Divya Pooja - Marathahalli",
-   "start": "2026-10-12 19:00:00",
-   "end": "2026-10-16 20:00:00",
-   "time": "7:00PM - 8:00PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22911-devi-divya-pooja-marathahalli-12-16-oct-2026-22911",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205669",
    "name": "Devi Divya Pooja - Chandapura",
@@ -403,19 +376,6 @@
    "closed": true
   },
   {
-   "id": "1205827",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-20 18:00:00",
-   "end": "2026-10-20 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Party Hall - Manito Commanders Marvel",
-   "area": "Duo Marvel Layout, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22795-devi-divya-pooja-yelahanka-20-oct-2026-22795",
-   "lang": "english",
-   "free": true
-  },
-  {
    "id": "1205905",
    "name": "Devi Divya Pooja - Vijayanagar",
    "start": "2026-10-20 19:00:00",
@@ -440,6 +400,19 @@
    "url": "https://online.sadhguru.org/event-register?event=22052-yogasanas-english-jayanagar-21-25-oct-2026-22052",
    "lang": "english",
    "closed": true
+  },
+  {
+   "id": "1205827",
+   "name": "Devi Divya Pooja - Yelahanka",
+   "start": "2026-10-21 18:00:00",
+   "end": "2026-10-21 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Party Hall - Manito Commanders Marvel",
+   "area": "Duo Marvel Layout, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=22795-devi-divya-pooja-yelahanka-21-oct-2026-22795",
+   "lang": "english",
+   "free": true
   },
   {
    "id": "1204916",
@@ -764,7 +737,7 @@
    "end": "2026-11-01 19:00:00",
    "time": "5:00PM - 7:00PM",
    "venue": "Isha Place Marathahalli",
-   "area": "Bengaluru",
+   "area": "Marathahalli, Bengaluru",
    "fee": "3800",
    "url": "https://online.sadhguru.org/event-register?event=22913-bhuta-shuddhi-english-marathahalli-1-nov-2026-22913",
    "lang": "english"
@@ -789,7 +762,7 @@
    "end": "2026-11-05 20:30:00",
    "time": "6:30PM - 8:30PM",
    "venue": "Isha Place Marathahalli",
-   "area": "Bengaluru",
+   "area": "Marathahalli, Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22914-surya-kriya-english-marathahalli-2-5-nov-2026-22914",
    "lang": "english"
@@ -817,6 +790,18 @@
    "fee": "2400",
    "url": "https://online.sadhguru.org/event-register?event=22815-surya-kriya-weekend-english-mysuru-7-8-nov-2026-22815",
    "lang": "english"
+  },
+  {
+   "id": "1205982",
+   "name": "Inner Engineering 7 days - Vijayapura",
+   "start": "2026-11-11 06:00:00",
+   "end": "2026-11-17 21:00:00",
+   "time": "6:00AM - 9:00PM",
+   "venue": "Buddha Vihar",
+   "area": "Vijayapura",
+   "fee": "2500",
+   "url": "https://online.sadhguru.org/event-register?event=22915-inner-engineering-7-days-kannada-vijayapura-11-17-nov-2026-22915",
+   "lang": "kannada"
   },
   {
    "id": "1204207",
@@ -867,6 +852,18 @@
    "lang": "english"
   },
   {
+   "id": "1205974",
+   "name": "Guru Pooja - Udupi",
+   "start": "2026-11-13 08:00:00",
+   "end": "2026-11-15 19:00:00",
+   "time": "8:00AM - 7:00PM",
+   "venue": "Shivapady Sri Umamaheshwara Temple",
+   "area": "Udupi",
+   "fee": "2500",
+   "url": "https://online.sadhguru.org/event-register?event=22895-guru-pooja-english-udupi-13-15-nov-2026-22895",
+   "lang": "english"
+  },
+  {
    "id": "1205915",
    "name": "Angamardana - Kanakapura Road",
    "start": "2026-11-14 07:00:00",
@@ -891,6 +888,18 @@
    "lang": "english"
   },
   {
+   "id": "1205983",
+   "name": "Bhuta Shuddhi - Jayanagar",
+   "start": "2026-11-15 18:00:00",
+   "end": "2026-11-15 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar, Bengaluru",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=22916-bhuta-shuddhi-english-jayanagar-15-nov-2026-22916",
+   "lang": "english"
+  },
+  {
    "id": "1205861",
    "name": "Angamardana - Mysuru",
    "start": "2026-11-18 06:30:00",
@@ -909,7 +918,7 @@
    "end": "2026-11-22 19:30:00",
    "time": "7:00AM - 7:30PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Bengaluru",
+   "area": "Malleshwaram, Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22870-surya-kriya-weekend-english-malleshwaram-21-22-nov-2026-22870",
    "lang": "english"
