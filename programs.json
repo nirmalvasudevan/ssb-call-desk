@@ -1,59 +1,7 @@
 {
- "updated": "2026-10-13T03:41:55.056Z",
+ "updated": "2026-10-14T02:01:34.179Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205669",
-   "name": "Devi Divya Pooja - Chandapura",
-   "start": "2026-10-13 11:00:00",
-   "end": "2026-10-13 12:00:00",
-   "time": "11:00AM - 12:00PM",
-   "venue": "Global Edifice Celesta",
-   "area": "Chandapura, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22692-devi-divya-pooja-chandapura-13-oct-2026-22692",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205821",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-13 18:00:00",
-   "end": "2026-10-13 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Neetu Rajpurohit",
-   "area": "Nagenahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22784-devi-divya-pooja-yelahanka-13-oct-2026-22784",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205683",
-   "name": "Devi Divya Pooja - Vijayanagar",
-   "start": "2026-10-13 18:30:00",
-   "end": "2026-10-13 20:30:00",
-   "time": "6:30PM - 8:30PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22698-devi-divya-pooja-vijayanagar-13-oct-2026-22698",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205948",
-   "name": "Devi Divya Pooja - Whitefield",
-   "start": "2026-10-13 18:30:00",
-   "end": "2026-10-13 19:30:00",
-   "time": "6:30PM - 7:30PM",
-   "venue": "Brigade Woods Club House",
-   "area": "Brigade Woods, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22892-devi-divya-pooja-whitefield-13-oct-2026-22892",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205968",
    "name": "Devi Divya Pooja - Banaswadi",
@@ -102,7 +50,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21442-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-15-18-2026-21442",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -912,6 +859,18 @@
    "lang": "english"
   },
   {
+   "id": "1206007",
+   "name": "Surya Kriya",
+   "start": "2026-11-19 10:30:00",
+   "end": "2026-11-22 12:30:00",
+   "time": "10:30AM - 12:30PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar, Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=22917-surya-kriya-english-jayanagar-19-22-nov-2026-22917",
+   "lang": "english"
+  },
+  {
    "id": "1205916",
    "name": "Surya Kriya Weekend - Malleshwaram",
    "start": "2026-11-21 07:00:00",
@@ -936,6 +895,18 @@
    "lang": "english"
   },
   {
+   "id": "1206008",
+   "name": "Yogasanas",
+   "start": "2026-11-23 06:00:00",
+   "end": "2026-11-27 09:00:00",
+   "time": "6:00AM - 9:00AM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Marathahalli, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=22918-yogasanas-english-marathahalli-23-27-nov-2026-22918",
+   "lang": "english"
+  },
+  {
    "id": "1205918",
    "name": "Yogasanas - Malleshwaram",
    "start": "2026-11-23 18:00:00",
@@ -945,6 +916,18 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
+   "lang": "english"
+  },
+  {
+   "id": "1206009",
+   "name": "Angamardana - Jayanagar",
+   "start": "2026-11-28 06:00:00",
+   "end": "2026-11-29 20:45:00",
+   "time": "6:00AM - 8:45PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=22919-angamardana-english-jayanagar-28-29-nov-2026-22919",
    "lang": "english"
   },
   {
