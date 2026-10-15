@@ -1,33 +1,7 @@
 {
- "updated": "2026-10-14T02:01:34.179Z",
+ "updated": "2026-10-15T01:37:00.116Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205968",
-   "name": "Devi Divya Pooja - Banaswadi",
-   "start": "2026-10-14 17:00:00",
-   "end": "2026-10-14 19:00:00",
-   "time": "5:00PM - 7:00PM",
-   "venue": "Shwetha B",
-   "area": "Ramamurthy Nagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22909-devi-divya-pooja-banaswadi-14-oct-2026-22909",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205822",
-   "name": "Devi Divya Pooja - Vidyaranyapura",
-   "start": "2026-10-14 18:00:00",
-   "end": "2026-10-14 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Suchitra Sholapurkar",
-   "area": "Doddabommasandra, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22785-devi-divya-pooja-vidyaranyapura-14-oct-2026-22785",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205019",
    "name": "Inner Engineering 4 days",
@@ -651,6 +625,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22452-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-31-nov-1-2026-22452",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -737,6 +712,18 @@
    "fee": "2400",
    "url": "https://online.sadhguru.org/event-register?event=22815-surya-kriya-weekend-english-mysuru-7-8-nov-2026-22815",
    "lang": "english"
+  },
+  {
+   "id": "1205849",
+   "name": "Inner Engineering 7 days - Vijayanagar",
+   "start": "2026-11-11 06:00:00",
+   "end": "2026-11-17 21:00:00",
+   "time": "6:00AM - 9:00PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Vijayanagar, Bengaluru",
+   "fee": "3500",
+   "url": "https://online.sadhguru.org/event-register?event=22805-inner-engineering-7-days-kannada-vijayanagar-11-17-nov-2026-22805",
+   "lang": "kannada"
   },
   {
    "id": "1205982",
@@ -931,6 +918,30 @@
    "lang": "english"
   },
   {
+   "id": "1206016",
+   "name": "Yogasanas - Marathahalli",
+   "start": "2026-12-07 06:00:00",
+   "end": "2026-12-11 09:00:00",
+   "time": "6:00AM - 9:00AM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=22972-yogasanas-english-marathahalli-7-11-dec-2026-22972",
+   "lang": "english"
+  },
+  {
+   "id": "1206017",
+   "name": "Bhuta Shuddhi - Marathahalli",
+   "start": "2026-12-13 08:00:00",
+   "end": "2026-12-13 10:00:00",
+   "time": "8:00AM - 10:00AM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=22975-bhuta-shuddhi-english-marathahalli-13-dec-2026-22975",
+   "lang": "english"
+  },
+  {
    "id": "1205960",
    "name": "Angamardana",
    "start": "2026-12-14 06:30:00",
@@ -940,6 +951,18 @@
    "area": "Marathahalli, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22897-angamardana-english-marathahalli-14-18-dec-2026-22897",
+   "lang": "english"
+  },
+  {
+   "id": "1206018",
+   "name": "Surya Kriya Weekend - Marathahalli",
+   "start": "2026-12-19 07:00:00",
+   "end": "2026-12-20 19:30:00",
+   "time": "7:00AM - 7:30PM",
+   "venue": "Isha Place Marathahalli",
+   "area": "Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=22973-surya-kriya-weekend-english-marathahalli-19-20-dec-2026-22973",
    "lang": "english"
   }
  ]
