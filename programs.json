@@ -1,44 +1,7 @@
 {
- "updated": "2026-10-15T01:37:00.116Z",
+ "updated": "2026-10-16T01:32:27.490Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205019",
-   "name": "Inner Engineering 4 days",
-   "start": "2026-10-15 06:00:00",
-   "end": "2026-10-18 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22109-inner-engineering-4-days-english-vijayanagar-15-18-oct-2026-22109",
-   "lang": "english"
-  },
-  {
-   "id": "1204058",
-   "name": "Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 15 - 18, 2026",
-   "start": "2026-10-15 10:00:00",
-   "end": "2026-10-18 18:00:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=21442-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-15-18-2026-21442",
-   "lang": "english",
-   "ssb": true
-  },
-  {
-   "id": "1205823",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-15 18:00:00",
-   "end": "2026-10-15 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Haryashva Bhat",
-   "area": "Yelahanka New Town, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22787-devi-divya-pooja-yelahanka-15-oct-2026-22787",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205824",
    "name": "Devi Divya Pooja - Jakkur",
