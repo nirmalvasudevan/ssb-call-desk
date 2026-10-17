@@ -1,20 +1,7 @@
 {
- "updated": "2026-10-16T01:32:27.490Z",
+ "updated": "2026-10-17T01:23:21.624Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205824",
-   "name": "Devi Divya Pooja - Jakkur",
-   "start": "2026-10-16 18:00:00",
-   "end": "2026-10-16 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Jyoti  Allur",
-   "area": "Sampigehalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22788-devi-divya-pooja-jakkur-16-oct-2026-22788",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205233",
    "name": "Surya Kriya Weekend",
@@ -382,6 +369,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22450-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-24-25-2026-22450",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -734,18 +722,6 @@
    "area": "Bannerghatta Road, Bengaluru",
    "fee": "5000",
    "url": "https://online.sadhguru.org/event-register?event=22896-inner-engineering-4-days-english-bannerghatta-road-12-15-nov-2026-22896",
-   "lang": "english"
-  },
-  {
-   "id": "1205920",
-   "name": "Inner Engineering 4 Days - Indiranagar",
-   "start": "2026-11-12 18:00:00",
-   "end": "2026-11-15 18:30:00",
-   "time": "6:00PM - 6:30PM",
-   "venue": "SMSG Jain Degree College",
-   "area": "Indiranagar, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22845-inner-engineering-4-days-english-indiranagar-12-15-nov-2026-22845",
    "lang": "english"
   },
   {
