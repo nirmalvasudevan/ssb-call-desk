@@ -1,123 +1,7 @@
 {
- "updated": "2026-10-17T01:23:21.624Z",
+ "updated": "2026-10-18T01:18:00.169Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205233",
-   "name": "Surya Kriya Weekend",
-   "start": "2026-10-17 07:00:00",
-   "end": "2026-10-18 19:30:00",
-   "time": "7:00AM - 7:30PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=22289-surya-kriya-weekend-english-marathahalli-17-18-oct-2026-22289",
-   "lang": "english"
-  },
-  {
-   "id": "1205949",
-   "name": "Devi Divya Pooja",
-   "start": "2026-10-17 12:30:00",
-   "end": "2026-10-18 13:30:00",
-   "time": "12:30PM - 1:30PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22893-devi-divya-pooja-marathahalli-17-18-oct-2026-22893",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205865",
-   "name": "Devi Divya Pooja - Kanakapura Road",
-   "start": "2026-10-17 17:00:00",
-   "end": "2026-10-19 18:00:00",
-   "time": "5:00PM - 6:00PM",
-   "venue": "Sadhguru Yogasthala Kanakapura Road",
-   "area": "Kanakapura Road, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22823-devi-divya-pooja-kanakapura-road-17-19-oct-2026-22823",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205830",
-   "name": "Devi Divya Pooja - Hennur",
-   "start": "2026-10-17 18:00:00",
-   "end": "2026-10-17 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Deepak Sharma",
-   "area": "Dodda Gubbi, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22790-devi-divya-pooja-hennur-17-oct-2026-22790",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205831",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-17 18:00:00",
-   "end": "2026-10-17 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Vanashree Singh",
-   "area": "Tharabanahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22792-devi-divya-pooja-yelahanka-17-oct-2026-22792",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205875",
-   "name": "Devi Divya Pooja - Malleshwaram",
-   "start": "2026-10-17 18:00:00",
-   "end": "2026-10-17 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22839-devi-divya-pooja-malleshwaram-17-oct-2026-22839",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205962",
-   "name": "Devi Divya Pooja - Indiranagar",
-   "start": "2026-10-17 18:00:00",
-   "end": "2026-10-18 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Samskruthi Living Ladies PG",
-   "area": "Samskruthi Living Ladies PG, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22907-devi-divya-pooja-indiranagar-17-18-oct-2026-22907",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205892",
-   "name": "Devi Divya Pooja - Sarjapur Road",
-   "start": "2026-10-17 18:30:00",
-   "end": "2026-10-17 20:30:00",
-   "time": "6:30PM - 8:30PM",
-   "venue": "Floretz Acadamy Montessori School",
-   "area": "Sarjapur Road, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22858-devi-divya-pooja-sarjapur-road-17-oct-2026-22858",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205893",
-   "name": "Devi Divya Pooja - HSR Layout",
-   "start": "2026-10-17 18:30:00",
-   "end": "2026-10-17 20:30:00",
-   "time": "6:30PM - 8:30PM",
-   "venue": "Lawrence High School",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22855-devi-divya-pooja-hsr-layout-17-oct-2026-22855",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205877",
    "name": "Shambhavi Practice Session",
@@ -180,6 +64,19 @@
    "area": "Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22902-devi-divya-pooja-hebbal-18-oct-2026-22902",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1206068",
+   "name": "Devi Divya Pooja - Vijayapura",
+   "start": "2026-10-18 18:00:00",
+   "end": "2026-10-18 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Texiri Solutions",
+   "area": "Vijayapura",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=23048-devi-divya-pooja-vijayapura-18-oct-2026-23048",
    "lang": "english",
    "free": true
   },
@@ -319,7 +216,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21443-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-22-25-2026-21443",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -722,6 +618,18 @@
    "area": "Bannerghatta Road, Bengaluru",
    "fee": "5000",
    "url": "https://online.sadhguru.org/event-register?event=22896-inner-engineering-4-days-english-bannerghatta-road-12-15-nov-2026-22896",
+   "lang": "english"
+  },
+  {
+   "id": "1205920",
+   "name": "Inner Engineering 4 Days - Indiranagar",
+   "start": "2026-11-12 18:00:00",
+   "end": "2026-11-15 18:30:00",
+   "time": "6:00PM - 6:30PM",
+   "venue": "SMSG Jain Degree College",
+   "area": "Indiranagar, Bengaluru",
+   "fee": "5000",
+   "url": "https://online.sadhguru.org/event-register?event=22845-inner-engineering-4-days-english-indiranagar-12-15-nov-2026-22845",
    "lang": "english"
   },
   {
