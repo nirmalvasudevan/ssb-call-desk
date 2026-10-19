@@ -1,85 +1,7 @@
 {
- "updated": "2026-10-18T01:18:00.169Z",
+ "updated": "2026-10-19T01:27:25.230Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205877",
-   "name": "Shambhavi Practice Session",
-   "start": "2026-10-18 07:30:00",
-   "end": "2026-10-18 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22843-shambhavi-practice-correction-session-malleshwaram-oct-18-2026-22843",
-   "lang": "kannada",
-   "free": true
-  },
-  {
-   "id": "1205584",
-   "name": "Devi Divya Pooja - Electronic City",
-   "start": "2026-10-18 17:00:00",
-   "end": "2026-10-18 19:00:00",
-   "time": "5:00PM - 7:00PM",
-   "venue": "Incture Technologies Headquarters",
-   "area": "Electronic City, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22603-devi-divya-pooja-electronic-city-18-oct-2026-22603",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205825",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-18 18:00:00",
-   "end": "2026-10-18 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Hema Sharma",
-   "area": "Avalahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22793-devi-divya-pooja-yelahanka-18-oct-2026-22793",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205878",
-   "name": "Devi Divya Pooja - Nagasandra",
-   "start": "2026-10-18 18:00:00",
-   "end": "2026-10-18 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Swa Dharma Spandana",
-   "area": "Suvarna Nagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22840-devi-divya-pooja-nagasandra-18-oct-2026-22840",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205955",
-   "name": "Devi Divya Pooja - Hebbal",
-   "start": "2026-10-18 18:00:00",
-   "end": "2026-10-18 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Alumni Association Hall",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22902-devi-divya-pooja-hebbal-18-oct-2026-22902",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1206068",
-   "name": "Devi Divya Pooja - Vijayapura",
-   "start": "2026-10-18 18:00:00",
-   "end": "2026-10-18 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Texiri Solutions",
-   "area": "Vijayapura",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23048-devi-divya-pooja-vijayapura-18-oct-2026-23048",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205123",
    "name": "Yogasanas",
@@ -114,6 +36,19 @@
    "area": "Avalahalli, Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=22794-devi-divya-pooja-yelahanka-19-oct-2026-22794",
+   "lang": "english",
+   "free": true
+  },
+  {
+   "id": "1206106",
+   "name": "Devi Divya Pooja - Belagavi",
+   "start": "2026-10-19 18:00:00",
+   "end": "2026-10-19 20:00:00",
+   "time": "6:00PM - 8:00PM",
+   "venue": "Jyotirlinga Plaza",
+   "area": "Belagavi, Belagavi",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=23089-devi-divya-pooja-belagavi-19-oct-2026-23089",
    "lang": "english",
    "free": true
   },
@@ -170,6 +105,19 @@
    "closed": true
   },
   {
+   "id": "1206107",
+   "name": "Devi Divya Pooja - Shorapur",
+   "start": "2026-10-21 16:00:00",
+   "end": "2026-10-21 18:00:00",
+   "time": "4:00PM - 6:00PM",
+   "venue": "House no 22, near Kotturu Basaveshwara Kaman",
+   "area": "Shorapur, Yadgir District",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=23090-devi-divya-pooja-shorapur-21-oct-2026-23090",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1205827",
    "name": "Devi Divya Pooja - Yelahanka",
    "start": "2026-10-21 18:00:00",
@@ -216,6 +164,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21443-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-22-25-2026-21443",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -265,7 +214,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22450-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-24-25-2026-22450",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -472,7 +420,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22452-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-31-nov-1-2026-22452",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
