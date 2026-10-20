@@ -1,70 +1,7 @@
 {
- "updated": "2026-10-19T01:27:25.230Z",
+ "updated": "2026-10-20T01:57:25.862Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205123",
-   "name": "Yogasanas",
-   "start": "2026-10-19 06:00:00",
-   "end": "2026-10-23 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22190-yogasanas-english-malleshwaram-19-23-oct-2026-22190",
-   "lang": "english"
-  },
-  {
-   "id": "1205185",
-   "name": "Hatha Yoga for Children",
-   "start": "2026-10-19 17:30:00",
-   "end": "2026-10-23 19:30:00",
-   "time": "5:30PM - 7:30PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "3000",
-   "url": "https://online.sadhguru.org/event-register?event=22245-hatha-yoga-for-children-english-malleshwaram-19-23-oct-2026-22245",
-   "lang": "english"
-  },
-  {
-   "id": "1205826",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-19 18:00:00",
-   "end": "2026-10-19 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Swapnil Satyambada",
-   "area": "Avalahalli, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22794-devi-divya-pooja-yelahanka-19-oct-2026-22794",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1206106",
-   "name": "Devi Divya Pooja - Belagavi",
-   "start": "2026-10-19 18:00:00",
-   "end": "2026-10-19 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Jyotirlinga Plaza",
-   "area": "Belagavi, Belagavi",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23089-devi-divya-pooja-belagavi-19-oct-2026-23089",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205971",
-   "name": "Devi Divya Pooja - Marathahalli",
-   "start": "2026-10-19 19:00:00",
-   "end": "2026-10-19 20:00:00",
-   "time": "7:00PM - 8:00PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22912-devi-divya-pooja-marathahalli-19-oct-2026-22912",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1205135",
    "name": "Yogasanas",
@@ -214,6 +151,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22450-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-24-25-2026-22450",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
