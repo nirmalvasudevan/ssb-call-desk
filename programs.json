@@ -1,33 +1,7 @@
 {
- "updated": "2026-10-20T01:57:25.862Z",
+ "updated": "2026-10-21T01:46:28.001Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205135",
-   "name": "Yogasanas",
-   "start": "2026-10-20 06:00:00",
-   "end": "2026-10-24 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "HSR Studio",
-   "area": "HSR Layout, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22202-yogasanas-english-hsr-layout-20-24-oct-2026-22202",
-   "lang": "english",
-   "closed": true
-  },
-  {
-   "id": "1205905",
-   "name": "Devi Divya Pooja - Vijayanagar",
-   "start": "2026-10-20 19:00:00",
-   "end": "2026-10-20 20:00:00",
-   "time": "7:00PM - 8:00PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22878-devi-divya-pooja-vijayanagar-20-oct-2026-22878",
-   "lang": "english",
-   "free": true
-  },
   {
    "id": "1204915",
    "name": "Yogasanas",
@@ -635,6 +609,18 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
+   "lang": "english"
+  },
+  {
+   "id": "1206123",
+   "name": "Inner Engineering 4 days - Kanakapura Road",
+   "start": "2026-11-26 06:00:00",
+   "end": "2026-11-29 18:30:00",
+   "time": "6:00AM - 6:30PM",
+   "venue": "Sadhguru Yogasthala Kanakapura Road",
+   "area": "Bengaluru",
+   "fee": "5000",
+   "url": "https://online.sadhguru.org/event-register?event=23078-inner-engineering-4-days-english-kanakapura-road-26-29-nov-2026-23078",
    "lang": "english"
   },
   {
