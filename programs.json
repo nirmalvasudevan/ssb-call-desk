@@ -1,58 +1,7 @@
 {
- "updated": "2026-10-21T01:46:28.001Z",
+ "updated": "2026-10-22T01:40:08.529Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204915",
-   "name": "Yogasanas",
-   "start": "2026-10-21 06:00:00",
-   "end": "2026-10-25 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22052-yogasanas-english-jayanagar-21-25-oct-2026-22052",
-   "lang": "english",
-   "closed": true
-  },
-  {
-   "id": "1206107",
-   "name": "Devi Divya Pooja - Shorapur",
-   "start": "2026-10-21 16:00:00",
-   "end": "2026-10-21 18:00:00",
-   "time": "4:00PM - 6:00PM",
-   "venue": "House no 22, near Kotturu Basaveshwara Kaman",
-   "area": "Shorapur, Yadgir District",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23090-devi-divya-pooja-shorapur-21-oct-2026-23090",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205827",
-   "name": "Devi Divya Pooja - Yelahanka",
-   "start": "2026-10-21 18:00:00",
-   "end": "2026-10-21 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Party Hall - Manito Commanders Marvel",
-   "area": "Duo Marvel Layout, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22795-devi-divya-pooja-yelahanka-21-oct-2026-22795",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1204916",
-   "name": "Angamardana",
-   "start": "2026-10-21 18:30:00",
-   "end": "2026-10-25 20:45:00",
-   "time": "6:30PM - 8:45PM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22056-angamardana-english-jayanagar-21-25-oct-2026-22056",
-   "lang": "english"
-  },
   {
    "id": "1204210",
    "name": "Inner Engineering 4 Days",
@@ -97,7 +46,7 @@
    "start": "2026-10-23 17:00:00",
    "end": "2026-10-25 20:30:00",
    "time": "5:00PM - 8:30PM",
-   "venue": "Gnana Jyothi International School",
+   "venue": "National Public School NPS OMR",
    "area": "Budigere Cross, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22296-yogasanas-english-budigere-cross-23-25-oct-2026-22296",
@@ -550,6 +499,19 @@
    "fee": "3600",
    "url": "https://online.sadhguru.org/event-register?event=22808-angamardana-english-mysuru-18-22-nov-2026-22808",
    "lang": "english"
+  },
+  {
+   "id": "1206202",
+   "name": "Janani - Online (Nov 18-24), In person (Nov 27-29)",
+   "start": "2026-11-18 17:00:00",
+   "end": "2026-11-29 20:00:00",
+   "time": "5:00PM - 8:00PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Vijayanagar, Bengaluru",
+   "fee": "7000",
+   "url": "https://online.sadhguru.org/event-register?event=23137-isha-janani-program-english-vijayanagar-18-24-nov-online-27-29-nov-in-person-2026-23137",
+   "lang": "english",
+   "gender": "ladies"
   },
   {
    "id": "1206007",
