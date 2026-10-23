@@ -1,32 +1,7 @@
 {
- "updated": "2026-10-22T01:40:08.529Z",
+ "updated": "2026-10-23T01:42:29.575Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204210",
-   "name": "Inner Engineering 4 Days",
-   "start": "2026-10-22 06:00:00",
-   "end": "2026-10-25 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Isha Place Mysuru",
-   "area": "Mysuru, Mysuru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=21497-inner-engineering-4-days-english-mysuru-22-25-oct-2026-21497",
-   "lang": "english"
-  },
-  {
-   "id": "1204059",
-   "name": "Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 22 - 25, 2026",
-   "start": "2026-10-22 10:00:00",
-   "end": "2026-10-25 18:00:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=21443-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-22-25-2026-21443",
-   "lang": "english",
-   "closed": true,
-   "ssb": true
-  },
   {
    "id": "1204850",
    "name": "Guru Pooja",
@@ -281,6 +256,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22452-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-31-nov-1-2026-22452",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -571,18 +547,6 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
-   "lang": "english"
-  },
-  {
-   "id": "1206123",
-   "name": "Inner Engineering 4 days - Kanakapura Road",
-   "start": "2026-11-26 06:00:00",
-   "end": "2026-11-29 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Sadhguru Yogasthala Kanakapura Road",
-   "area": "Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=23078-inner-engineering-4-days-english-kanakapura-road-26-29-nov-2026-23078",
    "lang": "english"
   },
   {
