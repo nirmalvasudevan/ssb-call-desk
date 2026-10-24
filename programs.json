@@ -1,31 +1,19 @@
 {
- "updated": "2026-10-23T01:42:29.575Z",
+ "updated": "2026-10-24T01:45:11.507Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
-   "id": "1204850",
-   "name": "Guru Pooja",
-   "start": "2026-10-23 08:00:00",
-   "end": "2026-10-25 19:00:00",
-   "time": "8:00AM - 7:00PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22012-guru-pooja-english-vijayanagar-23-25-oct-2026-22012",
+   "id": "1206236",
+   "name": "Shambhavi & Yogasanas Practice Session",
+   "start": "2026-10-24 05:30:00",
+   "end": "2026-10-25 08:00:00",
+   "time": "5:30AM - 8:00AM",
+   "venue": "Samskruthi Living Ladies PG",
+   "area": "Indiranagar, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=23191-yogasanas-shambhavi-practice-correction-session-indiranagar-oct-24-25-2026-23191",
    "lang": "english",
-   "closed": true
-  },
-  {
-   "id": "1205247",
-   "name": "Yogasanas",
-   "start": "2026-10-23 17:00:00",
-   "end": "2026-10-25 20:30:00",
-   "time": "5:00PM - 8:30PM",
-   "venue": "National Public School NPS OMR",
-   "area": "Budigere Cross, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22296-yogasanas-english-budigere-cross-23-25-oct-2026-22296",
-   "lang": "english"
+   "free": true
   },
   {
    "id": "1205125",
@@ -330,7 +318,8 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22867-angamardana-english-malleshwaram-2-6-nov-2026-22867",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205859",
@@ -429,6 +418,18 @@
    "lang": "english"
   },
   {
+   "id": "1206244",
+   "name": "Yogasanas",
+   "start": "2026-11-14 06:00:00",
+   "end": "2026-11-18 09:00:00",
+   "time": "6:00AM - 9:00AM",
+   "venue": "HSR Studio",
+   "area": "HSR Layout, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=23184-yogasanas-english-hsr-layout-14-18-nov-2026-23184",
+   "lang": "english"
+  },
+  {
    "id": "1205915",
    "name": "Angamardana - Kanakapura Road",
    "start": "2026-11-14 07:00:00",
@@ -490,6 +491,18 @@
    "gender": "ladies"
   },
   {
+   "id": "1206246",
+   "name": "Surya Kriya",
+   "start": "2026-11-19 06:30:00",
+   "end": "2026-11-22 08:30:00",
+   "time": "6:30AM - 8:30AM",
+   "venue": "HSR Studio",
+   "area": "HSR Layout, Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=23189-surya-kriya-english-hsr-layout-19-nov-22-nov-2026-23189",
+   "lang": "english"
+  },
+  {
    "id": "1206007",
    "name": "Surya Kriya",
    "start": "2026-11-19 10:30:00",
@@ -538,6 +551,18 @@
    "lang": "english"
   },
   {
+   "id": "1206271",
+   "name": "Angamardana",
+   "start": "2026-11-23 06:30:00",
+   "end": "2026-11-27 08:45:00",
+   "time": "6:30AM - 8:45AM",
+   "venue": "HSR Studio",
+   "area": "HSR Layout, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=23190-angamardana-english-hsr-layout-23-27-nov-2026-23190",
+   "lang": "english"
+  },
+  {
    "id": "1205918",
    "name": "Yogasanas - Malleshwaram",
    "start": "2026-11-23 18:00:00",
@@ -548,6 +573,18 @@
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
    "lang": "english"
+  },
+  {
+   "id": "1206272",
+   "name": "Inner Engineering 4 days - Kanakapura Road",
+   "start": "2026-11-26 06:00:00",
+   "end": "2026-11-29 18:30:00",
+   "time": "6:00AM - 6:30PM",
+   "venue": "Sadhguru Yogasthala Kanakapura Road",
+   "area": "Bengaluru",
+   "fee": "3500",
+   "url": "https://online.sadhguru.org/event-register?event=23164-inner-engineering-4-days-kannada-kanakapura-road-26-29-nov-2026-23164",
+   "lang": "kannada"
   },
   {
    "id": "1206009",
