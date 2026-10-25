@@ -1,69 +1,7 @@
 {
- "updated": "2026-10-24T01:45:11.507Z",
+ "updated": "2026-10-25T01:22:10.314Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206236",
-   "name": "Shambhavi & Yogasanas Practice Session",
-   "start": "2026-10-24 05:30:00",
-   "end": "2026-10-25 08:00:00",
-   "time": "5:30AM - 8:00AM",
-   "venue": "Samskruthi Living Ladies PG",
-   "area": "Indiranagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23191-yogasanas-shambhavi-practice-correction-session-indiranagar-oct-24-25-2026-23191",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205125",
-   "name": "Surya Kriya Weekend",
-   "start": "2026-10-24 07:00:00",
-   "end": "2026-10-25 19:30:00",
-   "time": "7:00AM - 7:30PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=22201-surya-kriya-weekend-english-malleshwaram-24-25-oct-2026-22201",
-   "lang": "english"
-  },
-  {
-   "id": "1205413",
-   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Oct 24 - 25, 2026",
-   "start": "2026-10-24 07:30:00",
-   "end": "2026-10-25 18:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=22450-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-24-25-2026-22450",
-   "lang": "english",
-   "closed": true,
-   "ssb": true
-  },
-  {
-   "id": "1205126",
-   "name": "Bhuta Shuddhi",
-   "start": "2026-10-24 15:00:00",
-   "end": "2026-10-24 17:00:00",
-   "time": "3:00PM - 5:00PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "3800",
-   "url": "https://online.sadhguru.org/event-register?event=22191-bhuta-shuddhi-english-malleshwaram-24-oct-2026-22191",
-   "lang": "english"
-  },
-  {
-   "id": "1205127",
-   "name": "Shanmukhi Mudra",
-   "start": "2026-10-24 17:30:00",
-   "end": "2026-10-24 19:00:00",
-   "time": "5:30PM - 7:00PM",
-   "venue": "Amruthavarshini Yoga Studio",
-   "area": "Kanakapura Road, Bengaluru",
-   "fee": "1200",
-   "url": "https://online.sadhguru.org/event-register?event=22198-shanmukhi-mudra-english-kanakapura-road-24-oct-2026-22198",
-   "lang": "english"
-  },
   {
    "id": "1205136",
    "name": "Angamardana",
