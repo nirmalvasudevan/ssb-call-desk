@@ -1,43 +1,7 @@
 {
- "updated": "2026-10-26T01:26:09.282Z",
+ "updated": "2026-10-27T02:13:37.043Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205241",
-   "name": "Yogasanas",
-   "start": "2026-10-26 06:00:00",
-   "end": "2026-10-30 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22290-yogasanas-english-marathahalli-26-30-oct-2026-22290",
-   "lang": "english"
-  },
-  {
-   "id": "1205242",
-   "name": "Yogasanas",
-   "start": "2026-10-26 06:00:00",
-   "end": "2026-10-30 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22292-yogasanas-english-vijayanagar-26-30-oct-2026-22292",
-   "lang": "english"
-  },
-  {
-   "id": "1205243",
-   "name": "Angamardana",
-   "start": "2026-10-26 18:30:00",
-   "end": "2026-10-30 20:45:00",
-   "time": "6:30PM - 8:45PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22293-angamardana-english-vijayanagar-26-30-oct-2026-22293",
-   "lang": "english"
-  },
   {
    "id": "1205028",
    "name": "Inner Engineering 7 days",
@@ -207,8 +171,7 @@
    "area": "Malleshwaram, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22867-angamardana-english-malleshwaram-2-6-nov-2026-22867",
-   "lang": "english",
-   "closed": true
+   "lang": "english"
   },
   {
    "id": "1205859",
