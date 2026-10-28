@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T02:13:37.043Z",
+ "updated": "2026-10-28T02:28:53.753Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -72,7 +72,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=21466-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-29-nov-1-2026-21466",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -97,7 +96,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=22452-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-oct-31-nov-1-2026-22452",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -115,9 +113,9 @@
   {
    "id": "1205919",
    "name": "Yogasanas Review - Bannerghatta Road",
-   "start": "2026-11-01 16:15:00",
-   "end": "2026-11-01 19:45:00",
-   "time": "4:15PM - 7:45PM",
+   "start": "2026-11-01 16:30:00",
+   "end": "2026-11-01 20:00:00",
+   "time": "4:30PM - 8:00PM",
    "venue": "L&T South City, Old Club House, Party Hall",
    "area": "Bannerghatta Road, Bengaluru",
    "fee": "750",
@@ -294,6 +292,18 @@
    "lang": "english"
   },
   {
+   "id": "1206380",
+   "name": "Yogasanas Beginner (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Nov 14-15, 2026",
+   "start": "2026-11-14 07:30:00",
+   "end": "2026-11-15 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23282-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-nov-14-15-2026-23282",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1206346",
    "name": "Angamardana Sadhana",
    "start": "2026-11-15 06:00:00",
@@ -345,8 +355,8 @@
    "id": "1206202",
    "name": "Janani - Online (Nov 18-24), In person (Nov 27-29)",
    "start": "2026-11-18 17:00:00",
-   "end": "2026-11-29 20:00:00",
-   "time": "5:00PM - 8:00PM",
+   "end": "2026-11-29 14:30:00",
+   "time": "5:00PM - 2:30PM",
    "venue": "Isha Place Vijayanagar",
    "area": "Vijayanagar, Bengaluru",
    "fee": "7000",
@@ -389,6 +399,18 @@
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22870-surya-kriya-weekend-english-malleshwaram-21-22-nov-2026-22870",
    "lang": "english"
+  },
+  {
+   "id": "1206394",
+   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Nov 21 - 22, 2026",
+   "start": "2026-11-21 07:30:00",
+   "end": "2026-11-22 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23283-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-nov-21-22-2026-23283",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1205862",
