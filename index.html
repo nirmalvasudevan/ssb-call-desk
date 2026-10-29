@@ -402,6 +402,32 @@ dialog.logdlg::backdrop{background:rgba(8,12,30,.55)}
 .dstamp{font-size:13px;color:var(--muted);margin:0;display:flex;align-items:center;gap:8px}
 .dstamp input{border:1px solid var(--line);background:var(--surface);color:inherit;border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* conversations (from the recordings) */
+.cvh{margin:22px 0 2px}
+.cv{display:flex;flex-direction:column;gap:12px}
+.cv .mp{display:inline-block;border-radius:999px;padding:0 8px;background:hsl(var(--h) 75% 50% / .15);color:hsl(var(--h) 80% var(--mp-l));font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cv .mp b{color:inherit;font-weight:600}
+.cvkey{display:flex;flex-wrap:wrap;gap:5px 6px;align-items:center;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.cvkey .mp{font-size:11.5px;font-weight:500}
+.cvso ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+.cvn{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.cvn b{color:var(--ink)}
+.cvlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cvc+.cvc{border-top:1px solid var(--line)}
+.cvc summary{list-style:none;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;cursor:pointer}
+.cvc summary::-webkit-details-marker{display:none}
+.cvc[open] summary{background:var(--sunk)}
+.cvc.miss summary{background:var(--warn-bg)}
+.cvt{font-variant-numeric:tabular-nums;font-size:13.5px;color:var(--muted)}
+.cvm{min-width:0}
+.cvm b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cvm small{display:block;font-size:12.5px;color:var(--muted);line-height:1.35}
+.cvd{padding:6px 12px 14px;font-size:14px;display:flex;flex-direction:column;gap:8px;background:var(--sunk)}
+.cvd p{margin:0}
+.cvd small{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cvtr{white-space:pre-wrap;font-size:14px;line-height:1.6;max-height:300px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.linkbtn{border:0;background:none;padding:0;color:var(--icon);text-decoration:underline;font:inherit;cursor:pointer}
 </style>
 
 <header class="top">
@@ -1178,6 +1204,8 @@ app.addEventListener("click",e=>{
   if(b.hasAttribute("data-repscope")){repScope=b.dataset.repscope;renderReports();repLoad();return}
   if(b.dataset.repdate){repDate=b.dataset.repdate;cbTeam="all";loadDaily();return}
   if(b.dataset.cbteam){cbTeam=b.dataset.cbteam;renderReports();return}
+  if(b.dataset.cvf){cvF=b.dataset.cvf;renderReports();return}
+  if(b.hasAttribute("data-cvretry")){if(repTab==="daily"&&dayData&&dayData.day)cvLoad("d",dayData.day.date,true);else if(repTab==="monthly")cvLoad("m",(monData&&monData.month&&monData.month.month)||repMonth||cvMonth(),true);renderReports();return}
   if(b.hasAttribute("data-livecopy")){copy(liveCopyText(),"Copied — paste it into WhatsApp");return}
   if(b.dataset.cbcopy){const t=cbCopyText(b.dataset.cbcopy);if(t)copy(t,"Copied — paste it into WhatsApp");return}
   if(b.dataset.repmonth){repMonth=b.dataset.repmonth;loadMonthly();return}
@@ -1315,6 +1343,138 @@ function pushIdentify(){const s=signedIn();if(!s||!window.OneSignalDeferred)retu
       if(OneSignal.Notifications&&!OneSignal.Notifications.permission)await OneSignal.Notifications.requestPermission()}catch(e){}})}
 function pushLogout(){if(!window.OneSignalDeferred)return;
   window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.logout()}catch(e){}})}
+
+/* ============ CONVERSATIONS: talk time, volunteer tags and AI tags from the recordings ============
+   The same "Conversations" report as the Call Desk Daily dashboard. It comes from the
+   "Isha Call Desk – All Calls" sheet, which checks this app's sign-in itself and only gives
+   supervisors their own centres. Agents don't see it, the same as the other Exotel reports. */
+const CONV_URL="https://script.google.com/macros/s/AKfycbxtlN95CqjMN5wt9ushncNSgeTFZzwXr7JCiPPCuq1gmyrGVAK7b5m7LyquRZAGpzrFCQ/exec";
+const CV={};let cvF="all";
+function cvKey(kind,k){return kind+"|"+k+"|"+(repScope||"")}
+function cvLoad(kind,k,force){const s=signedIn();if(!s||!k)return;const key=cvKey(kind,k),cur=CV[key];
+  if(cur&&!force&&(cur.busy||(cur.data&&Date.now()-cur.at<5*60e3)||(cur.err&&Date.now()-cur.at<60e3)))return;
+  CV[key]={busy:true,data:cur&&cur.data};
+  fetch(CONV_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(Object.assign({action:kind==="m"?"month":"report",apptoken:s.token,scope:repScope||""},kind==="m"?{month:k}:{date:k}))})
+    .then(r=>r.json()).then(j=>{if(!j||!j.ok)throw new Error((j&&j.error)||"No answer");CV[key]={data:j,at:Date.now()}})
+    .catch(e=>{CV[key]={err:String(e.message||e),at:Date.now(),data:cur&&cur.data}})
+    .then(()=>{if(location.hash.indexOf("rep")>=0||$("#cvwrap"))renderReports()})}
+
+const cvAns=c=>c.status==="completed"&&c.talk>0;
+const cvSplit=s=>String(s||"").split(/\s*,\s*/).map(x=>x.trim()).filter(Boolean);
+const cvTop=r=>r.split(">")[0].trim();
+const cvSub=r=>{const i=r.indexOf(">");return i<0?"":r.slice(i+1).trim()};
+const cvPend=c=>/^(pending|retry|waiting)/.test(c.ai||"");
+function mmss(s){s=Math.round(s||0);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+function cvDur(s){s=Math.round(s||0);if(s>=3600)return Math.floor(s/3600)+"h "+Math.round(s%3600/60)+"m";if(s>=60)return Math.floor(s/60)+"m"+(s%60?" "+s%60+"s":"");return s+"s"}
+/* green = shortest, yellow = the average call, orange to red = longest */
+function cvHeat(v,lo,hi,mid){let h=60;
+  if(hi>lo){if(!(mid>lo&&mid<hi))mid=(lo+hi)/2;h=v<=mid?120-60*(v-lo)/(mid-lo):60-60*(v-mid)/(hi-mid);h=Math.max(0,Math.min(120,h))}
+  return `<span class="mp" style="--h:${Math.round(h)}"><b>${mmss(v)}</b></span>`}
+function cvKeyLine(t){return `<div class="cvkey"><span>${esc(t)}</span><span class="mp" style="--h:120">shortest</span><span class="mp" style="--h:60">average</span><span class="mp" style="--h:30">longer</span><span class="mp" style="--h:0">longest</span></div>`}
+
+function cvModel(j){const known={};
+  ["SSB","CENTRES"].forEach(k=>((j.reasons||{})[k]||[]).forEach(r=>{if(!known[r[0]])known[r[0]]=r[1]||[]}));
+  const calls=j.calls||[],ans=calls.filter(cvAns),M={calls,ans,missed:calls.filter(c=>c.status==="missed-call")};
+  M.talk=ans.reduce((a,c)=>a+c.talk,0);M.avg=ans.length?M.talk/ans.length:0;
+  const ts=ans.map(c=>c.talk).sort((a,b)=>a-b);M.median=ts.length?(ts.length%2?ts[(ts.length-1)/2]:(ts[ts.length/2-1]+ts[ts.length/2])/2):0;
+  const w=ans.map(c=>c.dur-c.talk).filter(x=>x>=0);M.wait=w.length?w.reduce((a,x)=>a+x,0)/w.length:0;
+  M.rec=ans.filter(c=>c.rec);M.done=M.rec.filter(c=>c.ai==="done");M.pend=M.rec.filter(cvPend);
+  M.logged=ans.filter(c=>c.vMatch);M.unlogged=ans.filter(c=>!c.vMatch);M.follow=ans.filter(c=>/follow/i.test(c.vOutcome));
+  M.short=ans.filter(c=>c.talk<30);M.spam=M.done.filter(c=>/Spam/.test(c.aiReasons));
+  M.both=[];M.agree=[];M.differ=[];
+  ans.forEach(c=>{const v={},a={};cvSplit(c.vReasons).forEach(r=>{if(known[cvTop(r)])v[cvTop(r)]=1});cvSplit(c.aiReasons).forEach(r=>{a[cvTop(r)]=1});
+    c._v=v;c._a=a;c._d=false;if(!Object.keys(v).length||c.ai!=="done"||!Object.keys(a).length)return;
+    M.both.push(c);if(Object.keys(v).some(k=>a[k]))M.agree.push(c);else{M.differ.push(c);c._d=true}});
+  const R={};const bump=(t,s,who,c,seen)=>{if(seen[t+">"+s])return;seen[t+">"+s]=1;
+    const x=R[t]=R[t]||{name:t,ai:0,v:0,talk:0,subs:{}};if(!seen[t]){seen[t]=1;x[who]++;if(who==="ai")x.talk+=c.talk}
+    if(s){const y=x.subs[s]=x.subs[s]||{ai:0,v:0};y[who]++}};
+  ans.forEach(c=>{const sa={},sv={};cvSplit(c.aiReasons).forEach(r=>bump(cvTop(r),cvSub(r),"ai",c,sa));
+    cvSplit(c.vReasons).forEach(r=>{if(known[cvTop(r)])bump(cvTop(r),cvSub(r),"v",c,sv)})});
+  M.reasons=Object.values(R).sort((a,b)=>b.ai-a.ai||b.v-a.v||a.name.localeCompare(b.name));
+  const A={};calls.forEach(c=>{if(!c.agent&&!c.agentNum)return;const k=c.agent||c.agentNum,x=A[k]=A[k]||{name:c.agent||c.agentNum,ans:0,missed:0,talk:0,logged:0,topics:{}};
+    if(cvAns(c)){x.ans++;x.talk+=c.talk;if(c.vMatch)x.logged++;cvSplit(c.aiReasons||c.vReasons).forEach(r=>{x.topics[cvTop(r)]=(x.topics[cvTop(r)]||0)+1})}
+    else if(c.status==="missed-call")x.missed++});
+  M.agents=Object.values(A).sort((a,b)=>b.talk-a.talk||b.ans-a.ans||b.missed-a.missed);
+  return M}
+
+function cvKpis(M){const n=M.ans.length,ag=M.both.length?Math.round(100*M.agree.length/M.both.length):null;
+  return `<div class="kpis">
+    <div class="kpi"><b>${n}</b><span>Answered calls</span></div>
+    <div class="kpi"><b>${cvDur(M.talk)}</b><span>Total talk time</span></div>
+    <div class="kpi"><b>${mmss(M.avg)}</b><span>Average call · half under ${mmss(M.median)}</span></div>
+    <div class="kpi"><b>${mmss(M.wait)}</b><span>Average wait to be answered</span></div>
+    <div class="kpi${n&&M.logged.length/n<.6?" bad":""}"><b>${M.logged.length}/${n}</b><span>Logged in this app</span></div>
+    <div class="kpi"><b>${M.done.length}/${M.rec.length}</b><span>Recordings read by AI${M.pend.length?" · "+M.pend.length+" still reading":""}</span></div>
+    <div class="kpi"><b>${ag==null?"—":ag+"%"}</b><span>AI agrees with volunteer${M.both.length?" ("+M.agree.length+" of "+M.both.length+")":""}</span></div>
+    <div class="kpi"><b>${M.short.length}</b><span>Answered calls under 30s</span></div></div>`}
+function cvStandOut(items,title){return items.length?`<div class="card cvso"><h3>${esc(title)}</h3><ul>${items.map(t=>`<li>${t}</li>`).join("")}</ul></div>`:""}
+function cvReasons(M){if(!M.reasons.length)return `<div class="card"><h3>Why people called</h3><p class="foot">No reasons yet — the AI hasn't read these recordings and nobody logged them.</p></div>`;
+  const max=Math.max(1,...M.reasons.map(r=>Math.max(r.ai,r.v))),av=M.reasons.filter(r=>r.ai).map(r=>r.talk/r.ai),lo=Math.min(...av),hi=Math.max(...av);
+  return `<div class="card"><h3>Why people called <span class="cbadge">AI from the recording · volunteer</span></h3><div class="rank">${M.reasons.map(r=>`<div class="r"><span>${esc(r.name)}</span><span class="cvn"><b>${r.ai}</b> · ${r.v}${r.ai?" "+cvHeat(r.talk/r.ai,lo,hi,M.avg):""}</span><span class="bar"><i style="width:${r.ai/max*100}%"></i></span>${Object.keys(r.subs).length?`<small class="rsub">${Object.keys(r.subs).map(s=>esc(s)+" "+r.subs[s].ai+(r.subs[s].v?" · "+r.subs[s].v:"")).join(" · ")}</small>`:""}</div>`).join("")}</div>
+  <p class="foot" style="margin:10px 0 0">First number: what the AI heard. Second: what volunteers logged. The coloured time is the average call for that reason.</p></div>`}
+function cvAgents(M,note){if(!M.agents.length)return "";
+  const av=M.agents.filter(a=>a.ans).map(a=>a.talk/a.ans),lo=Math.min(...av),hi=Math.max(...av);
+  return `<div class="card"><h3>By agent <span class="cbadge">most talk time first</span></h3>${cvKeyLine("Average call — yellow is the average of "+mmss(M.avg)+":")}
+    <div class="aglist">${M.agents.map(a=>{const tp=Object.keys(a.topics).sort((x,y)=>a.topics[y]-a.topics[x]).slice(0,2).join(", ");
+      return `<div class="agc${a.ans?"":" idle"}"><div class="agn"><b>${esc(a.name)}</b></div><div class="ags">
+        ${a.ans?`${cvHeat(a.talk/a.ans,lo,hi,M.avg).replace('<b>','<b>avg ')}`:""}
+        <span><b>${a.ans}</b> answered</span>${a.missed?`<span class="hi"><b>${a.missed}</b> missed</span>`:""}
+        ${a.ans?`<span><b>${cvDur(a.talk)}</b> talk</span><span>logged <b>${a.logged}/${a.ans}</b></span>`:""}${tp?`<span>${esc(tp)}</span>`:""}</div></div>`}).join("")}</div>
+    ${note?`<p class="foot" style="margin:10px 0 0">${esc(note)}</p>`:""}</div>`}
+function cvStateCard(st,what){if(st&&st.err)return `<div class="card"><h3>Conversations</h3><p class="foot">Couldn't load ${what}: ${esc(st.err)}</p><button type="button" class="copyall" data-cvretry>Try again</button></div>`;
+  return `<div class="card"><h3>Conversations</h3><p class="foot">Loading ${what} from the calls sheet…</p></div>`}
+
+/* Daily tab */
+function cvMonth(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")}
+function cvDayHtml(date){const s=signedIn();if(!s||!date)return "";
+  const key=cvKey("d",date),st=CV[key];cvLoad("d",date);
+  let h=`<div id="cvwrap" class="cv"><p class="tgh cvh">Conversations</p>`;
+  if(!st||!st.data)return h+cvStateCard(st,"the day's conversations")+`</div>`;
+  const M=cvModel(st.data);
+  if(!M.calls.length)return h+`<div class="empty">No conversations for this day yet. They appear after the day's CSV is added on the dashboard; transcripts and AI reasons follow within the hour.</div></div>`;
+  const n=M.ans.length,items=[];
+  if(M.pend.length)items.push(`The AI is still reading ${M.pend.length} recording${M.pend.length>1?"s":""}.`);
+  if(n&&M.unlogged.length){const by={};M.unlogged.forEach(c=>{const k=c.agent||"Unknown";by[k]=(by[k]||0)+1});
+    items.push(`<b>${M.unlogged.length} of ${n}</b> answered calls weren't logged in this app — most by ${esc(Object.keys(by).sort((a,b)=>by[b]-by[a]).slice(0,3).map(k=>k+" ("+by[k]+")").join(", "))}.`)}
+  if(M.differ.length)items.push(`<b>${M.differ.length}</b> call${M.differ.length>1?"s":""} where the volunteer's reason and the AI's don't match.`);
+  if(M.follow.length)items.push(`<b>${M.follow.length}</b> marked <b>Needs follow-up</b>.`);
+  if(M.reasons[0]&&M.reasons[0].ai)items.push(`Most asked about: <b>${esc(M.reasons[0].name)}</b> (${M.reasons[0].ai} calls).`);
+  h+=cvStandOut(items,"What stands out")+cvKpis(M)+cvReasons(M)+cvAgents(M,"Missed = Exotel rang this agent and nobody picked up.");
+  /* every call */
+  const cnt={all:M.ans.length+M.missed.length,unlogged:M.unlogged.length,differ:M.differ.length,follow:M.follow.length};
+  if(!cnt[cvF]&&cvF!=="all")cvF="all";
+  const list=M.calls.filter(c=>cvF==="all"?(cvAns(c)||c.status==="missed-call"):cvF==="unlogged"?cvAns(c)&&!c.vMatch:cvF==="differ"?c._d:cvAns(c)&&/follow/i.test(c.vOutcome));
+  const tl=M.ans.map(c=>c.talk),lo=Math.min(...tl),hi=Math.max(...tl);
+  h+=`<div class="card"><h3>Every call</h3>${cvKeyLine("Talk time — yellow is the day's average of "+mmss(M.avg)+":")}
+    <div class="filters" style="margin:10px 0">${[["all","All"],["unlogged","Not logged"],["differ","AI and volunteer differ"],["follow","Follow-up"]].map(x=>`<button type="button" class="fchip" data-cvf="${x[0]}" aria-pressed="${cvF===x[0]}">${x[1]} · ${cnt[x[0]]}</button>`).join("")}</div>
+    <div class="cvlist">${list.map(c=>{const a=cvAns(c);
+      const ai=!a?"":c.ai==="done"?(c.aiReasons||"unclear"):cvPend(c)?"AI reading…":c.rec?"":"no recording";
+      return `<details class="cvc${a?"":" miss"}"><summary><span class="cvt">${esc(c.t.slice(0,5))}</span><span class="cvm"><b>${esc(c.agent||"—")}</b><small>${a?esc(ai):"Missed"}${a&&!c.vMatch?' <span class="pill no">not logged</span>':""}${c._d?' <span class="pill no">differs</span>':""}</small></span>${a?cvHeat(c.talk,lo,hi,M.avg):""}</summary>
+        <div class="cvd">${c.from?`<p><a class="tel" href="tel:+${esc(callerDigits(c.from))}">${esc(callerNum(c.from))}</a>${c.vName?" · "+esc(c.vName):""}${a?" · wait "+mmss(Math.max(0,c.dur-c.talk)):""}${c.disc?" · ended by "+(/callee/i.test(c.disc)?"agent":/caller/i.test(c.disc)?"caller":esc(c.disc)):""}</p>`:""}
+        ${a?`<p><small>Volunteer logged</small>${c.vMatch?esc(c.vReasons||"(no reason)")+(c.vOutcome?" · "+esc(c.vOutcome):""):"Not logged in the app"}</p>`:""}
+        ${c.aiSummary?`<p><small>AI summary</small>${esc(c.aiSummary)}</p>`:""}${c.vNote?`<p><small>Volunteer note</small>${esc(c.vNote)}</p>`:""}
+        ${c.tr?`<p><small>Transcript (machine-made, may have mistakes)</small></p><div class="cvtr">${esc(c.tr)}</div>`:""}</div></details>`}).join("")||`<p class="foot">No calls match.</p>`}</div></div>`;
+  return h+`<p class="foot">From the call recordings. The volunteer's reason is kept as logged; the AI's reason is separate. <button type="button" class="linkbtn" data-cvretry>Refresh</button></p></div>`}
+
+/* Monthly tab */
+function cvMonHtml(month){const s=signedIn();if(!s||!month)return "";
+  const key=cvKey("m",month),st=CV[key];cvLoad("m",month);
+  let h=`<div id="cvwrap" class="cv"><p class="tgh cvh">Conversations this month</p>`;
+  if(!st||!st.data)return h+cvStateCard(st,"the month's conversations")+`</div>`;
+  const M=cvModel(st.data);
+  if(!M.calls.length)return h+`<div class="empty">No daily uploads for ${esc(monthLabel(month))} yet. Every day's CSV added on the dashboard is collected here.</div></div>`;
+  const by={};M.calls.forEach(c=>{(by[c.date]=by[c.date]||[]).push(c)});const days=Object.keys(by).sort();
+  const items=[],talky=M.agents.filter(a=>a.ans>=3).sort((a,b)=>b.talk/b.ans-a.talk/a.ans);
+  if(talky.length>1)items.push(`Longest average calls: <b>${esc(talky[0].name)}</b> (${mmss(talky[0].talk/talky[0].ans)} over ${talky[0].ans} calls) against ${mmss(M.avg)} for everyone.`);
+  if(M.agents[0]&&M.agents[0].talk)items.push(`Most talk time: <b>${esc(M.agents[0].name)}</b> — ${cvDur(M.agents[0].talk)} across ${M.agents[0].ans} calls.`);
+  if(M.ans.length)items.push(`<b>${M.unlogged.length} of ${M.ans.length}</b> answered calls weren't logged in this app.`);
+  if(M.reasons[0]&&M.reasons[0].ai)items.push(`Most asked about: <b>${esc(M.reasons[0].name)}</b> (${M.reasons[0].ai} calls).`);
+  h+=cvStandOut(items,"This month")+`<p class="foot" style="margin:0">Added up from ${days.length} daily upload${days.length>1?"s":""}.</p>`+cvKpis(M)+cvReasons(M)+cvAgents(M,"");
+  const rows=days.map(d=>({d,M:cvModel({calls:by[d],reasons:st.data.reasons})})),av=rows.filter(r=>r.M.ans.length).map(r=>r.M.avg),lo=Math.min(...av),hi=Math.max(...av);
+  h+=`<div class="card"><h3>Day by day</h3><div class="aglist">${rows.map(r=>{const m=r.M,n=m.ans.length,top=m.reasons.find(x=>x.ai);
+    return `<div class="agc"><div class="agn"><b>${esc(dayLong(r.d))}</b></div><div class="ags">${n?cvHeat(m.avg,lo,hi,M.avg).replace('<b>','<b>avg '):""}<span><b>${n}</b> answered</span>${m.missed.length?`<span class="hi"><b>${m.missed.length}</b> missed</span>`:""}${n?`<span><b>${cvDur(m.talk)}</b> talk</span><span>logged <b>${m.logged.length}/${n}</b></span>`:""}${top?`<span>${esc(top.name)} ${top.ai}</span>`:""}</div></div>`}).join("")}</div></div>`;
+  return h+`<p class="foot">From the call recordings of every day uploaded this month. <button type="button" class="linkbtn" data-cvretry>Refresh</button></p></div>`}
 
 /* ============ SIGN-IN & REPORTS ============ */
 const DAYN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -1516,6 +1676,7 @@ function dailyBody(){
   ${callbackSection(d)}
   <div class="card"><h3>Calls by hour</h3>${bars(d.hours)}</div>
   ${d.loose?`<div class="card"><h3>Not attached to a team</h3><p class="foot">${d.loose} call${d.loose===1?"":"s"} on shared numbers where the caller chose nothing, or came in outside working hours.</p></div>`:""}
+  ${cvDayHtml(d.date)}
   <p class="foot">Same figures and the same call-back rules as the Call Desk Daily dashboard, from the Exotel report an admin uploads. Uploads and call-by-call detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
 
 function monthlyBody(){
@@ -1525,10 +1686,10 @@ function monthlyBody(){
   if(monData.notset)return notConnected();
   if(monData.blocked)return `<div class="empty">These are the centre-wide Exotel figures — supervisors and admins only. Your own calls are under <b>App log</b>.</div>`;
   const months=monData.months||[];
-  if(!months.length)return `<div class="empty">No monthly report yet. An admin adds it once a month on the dashboard.</div>`;
+  if(!months.length)return `<div class="empty">No monthly Exotel report yet. An admin adds it once a month on the dashboard.</div>`+cvMonHtml(cvMonth());
   const m=monData.month;
   const chips=ctlRow(scopeSelect(monData.scopes),monthSelect("repmonth",months,repMonth));
-  if(!m||!m.hasCalls)return chips+`<div class="empty">Nothing for that month.</div>`;
+  if(!m||!m.hasCalls)return chips+`<div class="empty">No monthly Exotel report for that month yet.</div>`+cvMonHtml(repMonth||cvMonth());
   const s=m.stats,reached=s.c+s.m;
   const dmax=Math.max(1,...m.days.map(x=>x.calls));
   const dbars=`<div class="mbars" role="img" aria-label="Calls each day">${m.days.map(x=>`<div class="mc" title="${x.d} — ${x.calls} calls, ${x.missed} missed"><em style="height:${x.missed/dmax*100}%"></em><i style="height:${Math.max(0,x.calls-x.missed)/dmax*100}%"></i></div>`).join("")}</div>
@@ -1544,6 +1705,7 @@ function monthlyBody(){
   ${s.lost?`<div class="kpis"><div class="kpi bad"><b>${s.lost}</b><span>Never got through all month</span></div><div class="kpi bad"><b>${s.lost3}</b><span>Tried 3 times or more</span></div></div>`:""}
   <div class="card"><h3>Day by day</h3><div class="legend"><span><i style="background:var(--bar)"></i>Answered</span><span><i style="background:var(--warn-bar)"></i>Missed</span></div>${dbars}</div>
   <div class="card"><h3>Calls by hour</h3>${bars(m.hours)}</div>
+  ${cvMonHtml(m.month)}
   <p class="foot">From the monthly Exotel reports an admin uploads. Volunteer figures are under <b>Agents</b>. Full detail: <a href="${DASHBOARD}" target="_blank" rel="noopener">${DASHBOARD.replace("https://","")}</a></p>`}
 
 function logBody(u){
