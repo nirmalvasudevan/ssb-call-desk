@@ -1,67 +1,7 @@
 {
- "updated": "2026-10-29T02:35:32.618Z",
+ "updated": "2026-10-30T02:45:02.872Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204206",
-   "name": "Inner Engineering 4 Days",
-   "start": "2026-10-29 06:00:00",
-   "end": "2026-11-01 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Alumni Association Hall",
-   "area": "Hebbal, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=21498-inner-engineering-4-days-english-hebbal-29-oct-1-nov-2026-21498",
-   "lang": "english"
-  },
-  {
-   "id": "1204652",
-   "name": "Inner Engineering 4 Days",
-   "start": "2026-10-29 06:00:00",
-   "end": "2026-11-01 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Amruthavarshini Yoga Studio",
-   "area": "Kanakapura Road, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=21801-inner-engineering-4-days-english-kanakapura-road-29-oct-1-nov-2026-21801",
-   "lang": "english"
-  },
-  {
-   "id": "1204851",
-   "name": "Inner Engineering 4 days",
-   "start": "2026-10-29 06:00:00",
-   "end": "2026-11-01 18:00:00",
-   "time": "6:00AM - 6:00PM",
-   "venue": "Incture Technologies Bengaluru",
-   "area": "Electronic City, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22011-inner-engineering-4-days-english-electronic-city-29-oct-01-nov-2026-22011",
-   "lang": "english"
-  },
-  {
-   "id": "1205154",
-   "name": "Inner Engineering 4 Days",
-   "start": "2026-10-29 06:00:00",
-   "end": "2026-11-01 18:00:00",
-   "time": "6:00AM - 6:00PM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22230-inner-engineering-4-days-english-jayanagar-29-oct-1-nov-2026-22230",
-   "lang": "english"
-  },
-  {
-   "id": "1204087",
-   "name": "Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Oct 29 - Nov 1, 2026",
-   "start": "2026-10-29 10:00:00",
-   "end": "2026-11-01 18:00:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=21466-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-oct-29-nov-1-2026-21466",
-   "lang": "english",
-   "ssb": true
-  },
   {
    "id": "1205155",
    "name": "Surya Kriya",
@@ -72,7 +12,8 @@
    "area": "HSR Layout, Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22205-surya-kriya-english-hsr-layout-30-oct-02-nov-2026-22205",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205420",
