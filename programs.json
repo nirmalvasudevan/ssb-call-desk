@@ -1,44 +1,7 @@
 {
- "updated": "2026-11-02T02:39:03.551Z",
+ "updated": "2026-11-03T03:58:05.559Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205876",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-11-02 07:30:00",
-   "end": "2026-11-02 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=22844-shambhavi-practice-correction-session-jayanagar-nov-2-2026-22844",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1205973",
-   "name": "Surya Kriya - Marathahalli",
-   "start": "2026-11-02 18:30:00",
-   "end": "2026-11-05 20:30:00",
-   "time": "6:30PM - 8:30PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=22914-surya-kriya-english-marathahalli-2-5-nov-2026-22914",
-   "lang": "english"
-  },
-  {
-   "id": "1205904",
-   "name": "Angamardana - Malleshwaram",
-   "start": "2026-11-02 18:30:00",
-   "end": "2026-11-06 20:45:00",
-   "time": "6:30PM - 8:45PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22867-angamardana-english-malleshwaram-2-6-nov-2026-22867",
-   "lang": "english"
-  },
   {
    "id": "1205859",
    "name": "Surya Kriya Weekend - Mysuru",
@@ -388,6 +351,19 @@
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
    "ssb": true
+  },
+  {
+   "id": "1205028",
+   "name": "Inner Engineering 7 days",
+   "start": "2026-11-28 06:00:00",
+   "end": "2026-12-03 21:00:00",
+   "time": "6:00AM - 9:00PM",
+   "venue": "Mother Theresa B.Ed College",
+   "area": "Kalaburagi, Kalaburagi",
+   "fee": "2500",
+   "url": "https://online.sadhguru.org/event-register?event=22113-inner-engineering-7-days-kannada-kalaburagi-28-oct-to-03-nov-2026-22113",
+   "lang": "kannada",
+   "closed": true
   },
   {
    "id": "1206009",
