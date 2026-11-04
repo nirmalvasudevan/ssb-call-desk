@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T03:58:05.559Z",
+ "updated": "2026-11-04T03:04:30.501Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -350,6 +350,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
