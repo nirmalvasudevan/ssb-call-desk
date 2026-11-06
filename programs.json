@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T03:35:22.498Z",
+ "updated": "2026-11-06T03:30:11.288Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -147,6 +147,18 @@
    "lang": "english"
   },
   {
+   "id": "1206632",
+   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Nov 15, 2026",
+   "start": "2026-11-15 08:00:00",
+   "end": "2026-11-15 09:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1500",
+   "url": "https://online.sadhguru.org/event-register?event=23535-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-nov-15-2026-23535",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1205917",
    "name": "Bhuta Shuddhi - Kanakapura Road",
    "start": "2026-11-15 11:00:00",
@@ -281,6 +293,18 @@
    "lang": "english"
   },
   {
+   "id": "1206633",
+   "name": "Yogasanas Review, Sadhguru Sannidhi Bengaluru - Nov 22, 2026",
+   "start": "2026-11-22 07:30:00",
+   "end": "2026-11-22 10:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1000",
+   "url": "https://online.sadhguru.org/event-register?event=23536-yogasanas-review-sadhguru-sannidhi-bengaluru-nov-22-2026-23536",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1205862",
    "name": "Jala Neti - Mysuru",
    "start": "2026-11-22 17:00:00",
@@ -377,6 +401,30 @@
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22919-angamardana-english-jayanagar-28-29-nov-2026-22919",
    "lang": "english"
+  },
+  {
+   "id": "1206626",
+   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Nov 28 - 29, 2026",
+   "start": "2026-11-28 07:30:00",
+   "end": "2026-11-29 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23534-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-nov-28-29-2026-23534",
+   "lang": "english",
+   "ssb": true
+  },
+  {
+   "id": "1206634",
+   "name": "Surya Kriya Review, Sadhguru Sannidhi Bengaluru - Nov 29, 2026",
+   "start": "2026-11-29 07:30:00",
+   "end": "2026-11-29 10:00:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1000",
+   "url": "https://online.sadhguru.org/event-register?event=23537-surya-kriya-review-sadhguru-sannidhi-bengaluru-nov-29-2026-23537",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1206016",
