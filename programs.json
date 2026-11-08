@@ -1,20 +1,7 @@
 {
- "updated": "2026-11-07T02:57:51.043Z",
+ "updated": "2026-11-08T02:36:28.244Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205859",
-   "name": "Surya Kriya Weekend - Mysuru",
-   "start": "2026-11-07 07:00:00",
-   "end": "2026-11-08 19:30:00",
-   "time": "7:00AM - 7:30PM",
-   "venue": "Isha Place Mysuru",
-   "area": "Mysuru",
-   "fee": "2400",
-   "url": "https://online.sadhguru.org/event-register?event=22815-surya-kriya-weekend-english-mysuru-7-8-nov-2026-22815",
-   "lang": "english",
-   "closed": true
-  },
   {
    "id": "1205849",
    "name": "Inner Engineering 7 days - Vijayanagar",
@@ -430,7 +417,7 @@
   },
   {
    "id": "1206645",
-   "name": "Shambhavi Practice Session",
+   "name": "Shambhavi Practice Correction Session",
    "start": "2026-11-29 07:30:00",
    "end": "2026-11-29 09:00:00",
    "time": "7:30AM - 9:00AM",
