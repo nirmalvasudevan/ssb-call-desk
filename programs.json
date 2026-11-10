@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T02:49:50.244Z",
+ "updated": "2026-11-10T04:42:11.555Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -96,7 +96,8 @@
    "area": "HSR Layout, Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23184-yogasanas-english-hsr-layout-14-18-nov-2026-23184",
-   "lang": "english"
+   "lang": "english",
+   "closed": true
   },
   {
    "id": "1205915",
@@ -437,6 +438,18 @@
    "area": "Sadhguru Sannidhi, Bengaluru",
    "fee": "1000",
    "url": "https://online.sadhguru.org/event-register?event=23537-surya-kriya-review-sadhguru-sannidhi-bengaluru-nov-29-2026-23537",
+   "lang": "english",
+   "ssb": true
+  },
+  {
+   "id": "1206682",
+   "name": "Yogasanas Beginner (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Dec 5-6, 2026",
+   "start": "2026-12-05 07:30:00",
+   "end": "2026-12-06 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23570-yogasanas-beginner-2-days-residential-program-sadhguru-sannidhi-bengaluru-dec-5-6-2026-23570",
    "lang": "english",
    "ssb": true
   },
