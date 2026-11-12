@@ -1,31 +1,7 @@
 {
- "updated": "2026-11-11T02:53:15.228Z",
+ "updated": "2026-11-12T03:57:57.376Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1205849",
-   "name": "Inner Engineering 7 days - Vijayanagar",
-   "start": "2026-11-11 06:00:00",
-   "end": "2026-11-17 21:00:00",
-   "time": "6:00AM - 9:00PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
-   "fee": "3500",
-   "url": "https://online.sadhguru.org/event-register?event=22805-inner-engineering-7-days-kannada-vijayanagar-11-17-nov-2026-22805",
-   "lang": "kannada"
-  },
-  {
-   "id": "1205982",
-   "name": "Inner Engineering 7 days - Vijayapura",
-   "start": "2026-11-11 06:00:00",
-   "end": "2026-11-17 21:00:00",
-   "time": "6:00AM - 9:00PM",
-   "venue": "Buddha Vihar",
-   "area": "Vijayapura",
-   "fee": "2500",
-   "url": "https://online.sadhguru.org/event-register?event=22915-inner-engineering-7-days-kannada-vijayapura-11-17-nov-2026-22915",
-   "lang": "kannada"
-  },
   {
    "id": "1204207",
    "name": "Inner Engineering 4 Days",
@@ -270,6 +246,19 @@
    "ssb": true
   },
   {
+   "id": "1206724",
+   "name": "Shambhavi Practice Correction Session",
+   "start": "2026-11-21 07:30:00",
+   "end": "2026-11-21 09:00:00",
+   "time": "7:30AM - 9:00AM",
+   "venue": "Anura Academy of Performing Arts",
+   "area": "Yelahanka, Bengaluru",
+   "fee": "",
+   "url": "https://online.sadhguru.org/event-register?event=23603-shambhavi-practice-correction-session-yelahanka-nov-21-2026-23603",
+   "lang": "english",
+   "free": true
+  },
+  {
    "id": "1206470",
    "name": "Yogasanas",
    "start": "2026-11-21 18:00:00",
@@ -389,7 +378,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -467,6 +455,18 @@
    "ssb": true
   },
   {
+   "id": "1206717",
+   "name": "Angamardana Review, Sadhguru Sannidhi Bengaluru - Dec 5 , 2026",
+   "start": "2026-12-05 07:30:00",
+   "end": "2026-12-05 10:45:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1000",
+   "url": "https://online.sadhguru.org/event-register?event=23615-angamardana-review-sadhguru-sannidhi-bengaluru-dec-5-2026-23615",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1206016",
    "name": "Yogasanas - Marathahalli",
    "start": "2026-12-07 06:00:00",
@@ -479,6 +479,30 @@
    "lang": "english"
   },
   {
+   "id": "1206720",
+   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Dec 12 - 13, 2026",
+   "start": "2026-12-12 07:30:00",
+   "end": "2026-12-13 18:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23617-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-dec-12-13-2026-23617",
+   "lang": "english",
+   "ssb": true
+  },
+  {
+   "id": "1206721",
+   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Dec 13, 2026",
+   "start": "2026-12-13 07:30:00",
+   "end": "2026-12-13 09:00:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1500",
+   "url": "https://online.sadhguru.org/event-register?event=23622-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-dec-13-2026-23622",
+   "lang": "english",
+   "ssb": true
+  },
+  {
    "id": "1206017",
    "name": "Bhuta Shuddhi - Marathahalli",
    "start": "2026-12-13 08:00:00",
@@ -489,6 +513,18 @@
    "fee": "3800",
    "url": "https://online.sadhguru.org/event-register?event=22975-bhuta-shuddhi-english-marathahalli-13-dec-2026-22975",
    "lang": "english"
+  },
+  {
+   "id": "1206723",
+   "name": "Jala Neti, Sadhguru Sannidhi Bengaluru - Dec 13, 2026",
+   "start": "2026-12-13 09:30:00",
+   "end": "2026-12-13 10:30:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "1500",
+   "url": "https://online.sadhguru.org/event-register?event=23624-jala-neti-sadhguru-sannidhi-bengaluru-dec-13-2026-23624",
+   "lang": "english",
+   "ssb": true
   },
   {
    "id": "1205960",
@@ -524,6 +560,18 @@
    "area": "Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22973-surya-kriya-weekend-english-marathahalli-19-20-dec-2026-22973",
+   "lang": "english"
+  },
+  {
+   "id": "1206734",
+   "name": "Hatha Yoga for Children",
+   "start": "2026-12-23 18:30:00",
+   "end": "2026-12-27 20:30:00",
+   "time": "6:30PM - 8:30PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar, Bengaluru",
+   "fee": "3000",
+   "url": "https://online.sadhguru.org/event-register?event=23569-hatha-yoga-for-children-jayanagar-english-23-27-dec-2026-23569",
    "lang": "english"
   },
   {
