@@ -1,55 +1,7 @@
 {
- "updated": "2026-11-12T03:57:57.376Z",
+ "updated": "2026-11-13T03:29:15.371Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1204207",
-   "name": "Inner Engineering 4 Days",
-   "start": "2026-11-12 06:00:00",
-   "end": "2026-11-15 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=21496-inner-engineering-4-days-english-marathahalli-12-15-nov-2026-21496",
-   "lang": "english"
-  },
-  {
-   "id": "1205850",
-   "name": "Inner Engineering 4 days - Malleshwaram",
-   "start": "2026-11-12 06:00:00",
-   "end": "2026-11-15 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22807-inner-engineering-4-days-english-malleshwaram-12-15-nov-2026-22807",
-   "lang": "english"
-  },
-  {
-   "id": "1205951",
-   "name": "Inner Engineering 4 Days - Bannerghatta Road",
-   "start": "2026-11-12 06:00:00",
-   "end": "2026-11-15 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Loyola Industrial Training Institute",
-   "area": "Bannerghatta Road, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22896-inner-engineering-4-days-english-bannerghatta-road-12-15-nov-2026-22896",
-   "lang": "english"
-  },
-  {
-   "id": "1205920",
-   "name": "Inner Engineering 4 Days - Indiranagar",
-   "start": "2026-11-12 18:00:00",
-   "end": "2026-11-15 18:30:00",
-   "time": "6:00PM - 6:30PM",
-   "venue": "SMSG Jain Degree College",
-   "area": "Indiranagar, Bengaluru",
-   "fee": "5000",
-   "url": "https://online.sadhguru.org/event-register?event=22845-inner-engineering-4-days-english-indiranagar-12-15-nov-2026-22845",
-   "lang": "english"
-  },
   {
    "id": "1205974",
    "name": "Guru Pooja - Udupi",
@@ -378,6 +330,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -479,6 +432,30 @@
    "lang": "english"
   },
   {
+   "id": "1206759",
+   "name": "Surya Kriya",
+   "start": "2026-12-12 06:30:00",
+   "end": "2026-12-15 08:30:00",
+   "time": "6:30AM - 8:30AM",
+   "venue": "Sadhguru Yogasthala Kanakapura Road",
+   "area": "Kanakapura Road, Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=23635-surya-kriya-english-kanakapura-road-12-15-dec-2026-23635",
+   "lang": "english"
+  },
+  {
+   "id": "1206760",
+   "name": "Angamardana",
+   "start": "2026-12-12 06:30:00",
+   "end": "2026-12-13 21:00:00",
+   "time": "6:30AM - 9:00PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram, Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=23640-angamardana-english-malleshwaram-12-13-dec-2026-23640",
+   "lang": "english"
+  },
+  {
    "id": "1206720",
    "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Dec 12 - 13, 2026",
    "start": "2026-12-12 07:30:00",
@@ -563,6 +540,30 @@
    "lang": "english"
   },
   {
+   "id": "1206763",
+   "name": "Surya Kriya Weekend",
+   "start": "2026-12-19 07:00:00",
+   "end": "2026-12-20 19:30:00",
+   "time": "7:00AM - 7:30PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram, Bengaluru",
+   "fee": "3300",
+   "url": "https://online.sadhguru.org/event-register?event=23639-surya-kriya-weekend-english-malleshwaram-19-20-dec-2026-23639",
+   "lang": "english"
+  },
+  {
+   "id": "1206765",
+   "name": "Bhuta Shuddhi",
+   "start": "2026-12-20 15:00:00",
+   "end": "2026-12-20 17:00:00",
+   "time": "3:00PM - 5:00PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram, Bengaluru",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=23638-bhuta-shuddhi-english-malleshwaram-20-dec-2026-23638",
+   "lang": "english"
+  },
+  {
    "id": "1206734",
    "name": "Hatha Yoga for Children",
    "start": "2026-12-23 18:30:00",
@@ -585,6 +586,18 @@
    "fee": "5000",
    "url": "https://online.sadhguru.org/event-register?event=23543-inner-engineering-4-days-english-malleshwaram-24-27-dec-2026-23543",
    "lang": "english"
+  },
+  {
+   "id": "1206757",
+   "name": "Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Dec 24 - 27, 2026",
+   "start": "2026-12-24 10:00:00",
+   "end": "2026-12-27 18:00:00",
+   "venue": "Sadhguru Sannidhi",
+   "area": "Sadhguru Sannidhi, Bengaluru",
+   "fee": "5500",
+   "url": "https://online.sadhguru.org/event-register?event=23657-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-dec-24-27-2026-23657",
+   "lang": "english",
+   "ssb": true
   }
  ]
 }
