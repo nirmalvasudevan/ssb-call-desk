@@ -1,55 +1,7 @@
 {
- "updated": "2026-11-15T02:54:32.613Z",
+ "updated": "2026-11-16T02:54:14.651Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206346",
-   "name": "Angamardana Sadhana",
-   "start": "2026-11-15 06:00:00",
-   "end": "2026-11-15 09:30:00",
-   "time": "6:00AM - 9:30AM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "750",
-   "url": "https://online.sadhguru.org/event-register?event=23203-angamardana-sadhana-english-jayanagar-nov-15-2026-23203",
-   "lang": "english"
-  },
-  {
-   "id": "1206632",
-   "name": "Bhuta Shuddhi, Sadhguru Sannidhi Bengaluru - Nov 15, 2026",
-   "start": "2026-11-15 08:00:00",
-   "end": "2026-11-15 09:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "1500",
-   "url": "https://online.sadhguru.org/event-register?event=23535-bhuta-shuddhi-sadhguru-sannidhi-bengaluru-nov-15-2026-23535",
-   "lang": "english",
-   "ssb": true
-  },
-  {
-   "id": "1205917",
-   "name": "Bhuta Shuddhi - Kanakapura Road",
-   "start": "2026-11-15 11:00:00",
-   "end": "2026-11-15 13:00:00",
-   "time": "11:00AM - 1:00PM",
-   "venue": "Amruthavarshini Yoga Studio",
-   "area": "Kanakapura Road, Bengaluru",
-   "fee": "3800",
-   "url": "https://online.sadhguru.org/event-register?event=22812-bhuta-shuddhi-english-kanakapura-road-15-nov-2026-22812",
-   "lang": "english"
-  },
-  {
-   "id": "1205983",
-   "name": "Bhuta Shuddhi - Jayanagar",
-   "start": "2026-11-15 18:00:00",
-   "end": "2026-11-15 20:00:00",
-   "time": "6:00PM - 8:00PM",
-   "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
-   "fee": "3800",
-   "url": "https://online.sadhguru.org/event-register?event=22916-bhuta-shuddhi-english-jayanagar-15-nov-2026-22916",
-   "lang": "english"
-  },
   {
    "id": "1205861",
    "name": "Angamardana - Mysuru",
@@ -69,7 +21,7 @@
    "end": "2026-11-29 14:30:00",
    "time": "5:00PM - 2:30PM",
    "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
+   "area": "Vijayanagar Bengaluru",
    "fee": "7000",
    "url": "https://online.sadhguru.org/event-register?event=23137-isha-janani-program-english-vijayanagar-18-24-nov-online-27-29-nov-in-person-2026-23137",
    "lang": "english",
@@ -82,7 +34,7 @@
    "end": "2026-11-22 08:30:00",
    "time": "6:30AM - 8:30AM",
    "venue": "HSR Studio",
-   "area": "HSR Layout, Bengaluru",
+   "area": "HSR Layout Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=23189-surya-kriya-english-hsr-layout-19-nov-22-nov-2026-23189",
    "lang": "english"
@@ -94,7 +46,7 @@
    "end": "2026-11-22 12:30:00",
    "time": "10:30AM - 12:30PM",
    "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
+   "area": "Jayanagar Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22917-surya-kriya-english-jayanagar-19-22-nov-2026-22917",
    "lang": "english"
@@ -106,7 +58,7 @@
    "end": "2026-11-24 08:30:00",
    "time": "6:30AM - 8:30AM",
    "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
+   "area": "Vijayanagar Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=23362-surya-kriya-english-vijayanagar-21-24-nov-2026-23362",
    "lang": "english"
@@ -118,7 +70,7 @@
    "end": "2026-11-22 19:30:00",
    "time": "7:00AM - 7:30PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=22870-surya-kriya-weekend-english-malleshwaram-21-22-nov-2026-22870",
    "lang": "english"
@@ -155,7 +107,7 @@
    "end": "2026-11-21 09:00:00",
    "time": "7:30AM - 9:00AM",
    "venue": "Anura Academy of Performing Arts",
-   "area": "Yelahanka, Bengaluru",
+   "area": "Yelahanka Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=23603-shambhavi-practice-correction-session-yelahanka-nov-21-2026-23603",
    "lang": "english",
@@ -168,7 +120,7 @@
    "end": "2026-11-25 21:00:00",
    "time": "6:00PM - 9:00PM",
    "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar, Bengaluru",
+   "area": "Vijayanagar Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23363-yogasanas-english-vijayanagar-21-25-nov-2026-23363",
    "lang": "english"
@@ -180,7 +132,7 @@
    "end": "2026-11-22 09:00:00",
    "time": "7:30AM - 9:00AM",
    "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
+   "area": "Marathahalli Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=23539-shambhavi-practice-correction-session-marathahalli-nov-22-2026-23539",
    "lang": "english",
@@ -193,7 +145,7 @@
    "end": "2026-11-22 09:00:00",
    "time": "7:30AM - 9:00AM",
    "venue": "Green Valley English High School",
-   "area": "Bannerghatta Road, Bengaluru",
+   "area": "Bannerghatta Road Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=23582-shambhavi-practice-correction-session-bannerghatta-road-nov-22-2026-23582",
    "lang": "english",
@@ -230,7 +182,7 @@
    "end": "2026-11-27 09:00:00",
    "time": "6:00AM - 9:00AM",
    "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
+   "area": "Marathahalli Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22918-yogasanas-english-marathahalli-23-27-nov-2026-22918",
    "lang": "english"
@@ -242,7 +194,7 @@
    "end": "2026-11-27 08:45:00",
    "time": "6:30AM - 8:45AM",
    "venue": "HSR Studio",
-   "area": "HSR Layout, Bengaluru",
+   "area": "HSR Layout Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23190-angamardana-english-hsr-layout-23-27-nov-2026-23190",
    "lang": "english"
@@ -254,7 +206,7 @@
    "end": "2026-11-27 21:00:00",
    "time": "6:00PM - 9:00PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
    "lang": "english"
@@ -281,7 +233,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
@@ -291,7 +242,7 @@
    "end": "2026-12-03 21:00:00",
    "time": "6:00AM - 9:00PM",
    "venue": "Mother Theresa B.Ed College",
-   "area": "Kalaburagi, Kalaburagi",
+   "area": "Kalaburagi Kalaburagi",
    "fee": "2500",
    "url": "https://online.sadhguru.org/event-register?event=22113-inner-engineering-7-days-kannada-kalaburagi-28-oct-to-03-nov-2026-22113",
    "lang": "kannada",
@@ -304,7 +255,7 @@
    "end": "2026-11-29 20:45:00",
    "time": "6:00AM - 8:45PM",
    "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
+   "area": "Jayanagar Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22919-angamardana-english-jayanagar-28-29-nov-2026-22919",
    "lang": "english"
@@ -328,7 +279,7 @@
    "end": "2026-11-29 09:00:00",
    "time": "7:30AM - 9:00AM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "",
    "url": "https://online.sadhguru.org/event-register?event=23540-shambhavi-practice-correction-session-malleshwaram-nov-29-2026-23540",
    "lang": "english",
@@ -377,7 +328,7 @@
    "end": "2026-12-06 21:00:00",
    "time": "6:30PM - 9:00PM",
    "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
+   "area": "Jayanagar Bengaluru",
    "fee": "1200",
    "url": "https://online.sadhguru.org/event-register?event=23637-shanmukhi-mudra-english-jayanagar-6-dec-2026-23637",
    "lang": "english"
@@ -413,7 +364,7 @@
    "end": "2026-12-15 08:30:00",
    "time": "6:30AM - 8:30AM",
    "venue": "Sadhguru Yogasthala Kanakapura Road",
-   "area": "Kanakapura Road, Bengaluru",
+   "area": "Kanakapura Road Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=23635-surya-kriya-english-kanakapura-road-12-15-dec-2026-23635",
    "lang": "english"
@@ -425,7 +376,7 @@
    "end": "2026-12-13 21:00:00",
    "time": "6:30AM - 9:00PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23640-angamardana-english-malleshwaram-12-13-dec-2026-23640",
    "lang": "english"
@@ -485,7 +436,7 @@
    "end": "2026-12-18 08:45:00",
    "time": "6:30AM - 8:45AM",
    "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
+   "area": "Marathahalli Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=22897-angamardana-english-marathahalli-14-18-dec-2026-22897",
    "lang": "english"
@@ -521,7 +472,7 @@
    "end": "2026-12-20 19:30:00",
    "time": "7:00AM - 7:30PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "3300",
    "url": "https://online.sadhguru.org/event-register?event=23639-surya-kriya-weekend-english-malleshwaram-19-20-dec-2026-23639",
    "lang": "english"
@@ -569,7 +520,7 @@
    "end": "2026-12-20 17:00:00",
    "time": "3:00PM - 5:00PM",
    "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram, Bengaluru",
+   "area": "Malleshwaram Bengaluru",
    "fee": "3800",
    "url": "https://online.sadhguru.org/event-register?event=23638-bhuta-shuddhi-english-malleshwaram-20-dec-2026-23638",
    "lang": "english"
@@ -581,7 +532,7 @@
    "end": "2026-12-27 20:30:00",
    "time": "6:30PM - 8:30PM",
    "venue": "Isha Place - Jayanagar",
-   "area": "Jayanagar, Bengaluru",
+   "area": "Jayanagar Bengaluru",
    "fee": "3000",
    "url": "https://online.sadhguru.org/event-register?event=23569-hatha-yoga-for-children-jayanagar-english-23-27-dec-2026-23569",
    "lang": "english"
@@ -641,7 +592,7 @@
    "end": "2027-01-10 19:00:00",
    "time": "8:00AM - 7:00PM",
    "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli, Bengaluru",
+   "area": "Marathahalli Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23629-guru-pooja-english-marathahalli-8-10-jan-2027-23629",
    "lang": "english"
