@@ -1,20 +1,7 @@
 {
- "updated": "2026-11-20T04:07:28.070Z",
+ "updated": "2026-11-21T04:07:10.370Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206791",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-11-20 07:00:00",
-   "end": "2026-11-20 08:30:00",
-   "time": "7:00AM - 8:30AM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23708-shambhavi-practice-correction-session-vijayanagar-nov-20-2026-23708",
-   "lang": "kannada",
-   "free": true
-  },
   {
    "id": "1206469",
    "name": "Surya Kriya",
@@ -197,6 +184,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
@@ -607,6 +595,18 @@
    "area": "Marathahalli Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23629-guru-pooja-english-marathahalli-8-10-jan-2027-23629",
+   "lang": "english"
+  },
+  {
+   "id": "1206952",
+   "name": "Guru Pooja",
+   "start": "2027-01-08 08:00:00",
+   "end": "2027-01-10 19:00:00",
+   "time": "8:00AM - 7:00PM",
+   "venue": "Isha Place - Jayanagar",
+   "area": "Jayanagar Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=23766-guru-pooja-english-jayanagar-8-10-jan-2027-23766",
    "lang": "english"
   }
  ]
