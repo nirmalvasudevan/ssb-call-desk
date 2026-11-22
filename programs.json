@@ -1,81 +1,7 @@
 {
- "updated": "2026-11-21T04:07:10.370Z",
+ "updated": "2026-11-22T03:19:12.849Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206469",
-   "name": "Surya Kriya",
-   "start": "2026-11-21 06:30:00",
-   "end": "2026-11-24 08:30:00",
-   "time": "6:30AM - 8:30AM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=23362-surya-kriya-english-vijayanagar-21-24-nov-2026-23362",
-   "lang": "english"
-  },
-  {
-   "id": "1205916",
-   "name": "Surya Kriya Weekend - Malleshwaram",
-   "start": "2026-11-21 07:00:00",
-   "end": "2026-11-22 19:30:00",
-   "time": "7:00AM - 7:30PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram Bengaluru",
-   "fee": "3300",
-   "url": "https://online.sadhguru.org/event-register?event=22870-surya-kriya-weekend-english-malleshwaram-21-22-nov-2026-22870",
-   "lang": "english"
-  },
-  {
-   "id": "1206394",
-   "name": "Angamardana (2 days Residential Program), Sadhguru Sannidhi Bengaluru, Nov 21 - 22, 2026",
-   "start": "2026-11-21 07:30:00",
-   "end": "2026-11-22 18:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=23283-angamardana-2-days-residential-program-sadhguru-sannidhi-bengaluru-nov-21-22-2026-23283",
-   "lang": "english",
-   "closed": true,
-   "ssb": true
-  },
-  {
-   "id": "1206554",
-   "name": "Surya Kriya & Surya Shakti (2 days Residential Program), Sadhguru Sannidhi Bengaluru - Nov 21 - 22, 2026",
-   "start": "2026-11-21 07:30:00",
-   "end": "2026-11-22 18:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=23466-surya-kriya-surya-shakti-2-days-residential-program-sadhguru-sannidhi-bengaluru-nov-21-22-2026-23466",
-   "lang": "english",
-   "ssb": true
-  },
-  {
-   "id": "1206724",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-11-21 07:30:00",
-   "end": "2026-11-21 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Anura Academy of Performing Arts",
-   "area": "Yelahanka Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23603-shambhavi-practice-correction-session-yelahanka-nov-21-2026-23603",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1206470",
-   "name": "Yogasanas",
-   "start": "2026-11-21 18:00:00",
-   "end": "2026-11-25 21:00:00",
-   "time": "6:00PM - 9:00PM",
-   "venue": "Isha Place Vijayanagar",
-   "area": "Vijayanagar Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=23363-yogasanas-english-vijayanagar-21-25-nov-2026-23363",
-   "lang": "english"
-  },
   {
    "id": "1206642",
    "name": "Shambhavi Practice Correction Session",
@@ -465,6 +391,18 @@
    "lang": "english"
   },
   {
+   "id": "1207000",
+   "name": "Angamardana - Vijayanagar",
+   "start": "2026-12-19 07:00:00",
+   "end": "2026-12-20 19:45:00",
+   "time": "7:00AM - 7:45PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Bengaluru",
+   "fee": "4000",
+   "url": "https://online.sadhguru.org/event-register?event=23799-angamardana-english-vijayanagar-19-20-dec-2026-23799",
+   "lang": "english"
+  },
+  {
    "id": "1206767",
    "name": "Yogasanas Advanced, Sadhguru Sannidhi Bengaluru - Dec 19, 2026",
    "start": "2026-12-19 07:30:00",
@@ -499,6 +437,18 @@
    "url": "https://online.sadhguru.org/event-register?event=23668-eye-care-sadhguru-sannidhi-bengaluru-dec-20-2026-23668",
    "lang": "english",
    "ssb": true
+  },
+  {
+   "id": "1207002",
+   "name": "Bhuta Shuddhi - Vijayanagar",
+   "start": "2026-12-20 13:00:00",
+   "end": "2026-12-20 15:00:00",
+   "time": "1:00PM - 3:00PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Bengaluru",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=23801-bhuta-shuddhi-english-vijayanagar-20-dec-2026-23801",
+   "lang": "english"
   },
   {
    "id": "1206771",
@@ -607,6 +557,18 @@
    "area": "Jayanagar Bengaluru",
    "fee": "4000",
    "url": "https://online.sadhguru.org/event-register?event=23766-guru-pooja-english-jayanagar-8-10-jan-2027-23766",
+   "lang": "english"
+  },
+  {
+   "id": "1207004",
+   "name": "Guru Pooja - Kalaburagi",
+   "start": "2027-01-08 08:00:00",
+   "end": "2027-01-10 19:00:00",
+   "time": "8:00AM - 7:00PM",
+   "venue": "S S Tegnoor PU & Degree College",
+   "area": "Kalaburagi",
+   "fee": "2500",
+   "url": "https://online.sadhguru.org/event-register?event=23803-guru-pooja-english-kalaburagi-8-10-jan-2027-23803",
    "lang": "english"
   }
  ]
