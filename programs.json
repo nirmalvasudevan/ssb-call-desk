@@ -1,57 +1,7 @@
 {
- "updated": "2026-11-22T03:19:12.849Z",
+ "updated": "2026-11-23T03:52:14.892Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206642",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-11-22 07:30:00",
-   "end": "2026-11-22 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23539-shambhavi-practice-correction-session-marathahalli-nov-22-2026-23539",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1206694",
-   "name": "Shambhavi Practice Correction Session",
-   "start": "2026-11-22 07:30:00",
-   "end": "2026-11-22 09:00:00",
-   "time": "7:30AM - 9:00AM",
-   "venue": "Green Valley English High School",
-   "area": "Bannerghatta Road Bengaluru",
-   "fee": "",
-   "url": "https://online.sadhguru.org/event-register?event=23582-shambhavi-practice-correction-session-bannerghatta-road-nov-22-2026-23582",
-   "lang": "english",
-   "free": true
-  },
-  {
-   "id": "1206633",
-   "name": "Yogasanas Review, Sadhguru Sannidhi Bengaluru - Nov 22, 2026",
-   "start": "2026-11-22 07:30:00",
-   "end": "2026-11-22 10:30:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "1000",
-   "url": "https://online.sadhguru.org/event-register?event=23536-yogasanas-review-sadhguru-sannidhi-bengaluru-nov-22-2026-23536",
-   "lang": "english",
-   "ssb": true
-  },
-  {
-   "id": "1205862",
-   "name": "Jala Neti - Mysuru",
-   "start": "2026-11-22 09:00:00",
-   "end": "2026-11-22 10:00:00",
-   "time": "9:00AM - 10:00AM",
-   "venue": "Isha Place Mysuru",
-   "area": "Mysuru",
-   "fee": "1900",
-   "url": "https://online.sadhguru.org/event-register?event=22814-jala-neti-english-mysuru-22-nov-2026-22814",
-   "lang": "english"
-  },
   {
    "id": "1206008",
    "name": "Yogasanas",
@@ -110,7 +60,6 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
-   "closed": true,
    "ssb": true
   },
   {
