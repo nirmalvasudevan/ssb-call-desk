@@ -1,43 +1,7 @@
 {
- "updated": "2026-11-23T03:52:14.892Z",
+ "updated": "2026-11-24T07:00:02.636Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206008",
-   "name": "Yogasanas",
-   "start": "2026-11-23 06:00:00",
-   "end": "2026-11-27 09:00:00",
-   "time": "6:00AM - 9:00AM",
-   "venue": "Isha Place Marathahalli",
-   "area": "Marathahalli Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22918-yogasanas-english-marathahalli-23-27-nov-2026-22918",
-   "lang": "english"
-  },
-  {
-   "id": "1206271",
-   "name": "Angamardana",
-   "start": "2026-11-23 06:30:00",
-   "end": "2026-11-27 08:45:00",
-   "time": "6:30AM - 8:45AM",
-   "venue": "HSR Studio",
-   "area": "HSR Layout Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=23190-angamardana-english-hsr-layout-23-27-nov-2026-23190",
-   "lang": "english"
-  },
-  {
-   "id": "1205918",
-   "name": "Yogasanas - Malleshwaram",
-   "start": "2026-11-23 18:00:00",
-   "end": "2026-11-27 21:00:00",
-   "time": "6:00PM - 9:00PM",
-   "venue": "Isha Place Malleswaram",
-   "area": "Malleshwaram Bengaluru",
-   "fee": "4000",
-   "url": "https://online.sadhguru.org/event-register?event=22871-yogasanas-english-malleshwaram-23-27-nov-2026-22871",
-   "lang": "english"
-  },
   {
    "id": "1206272",
    "name": "Inner Engineering 4 days - Kanakapura Road",
@@ -60,6 +24,7 @@
    "fee": "5500",
    "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
    "lang": "english",
+   "closed": true,
    "ssb": true
   },
   {
