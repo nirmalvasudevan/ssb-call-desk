@@ -1,31 +1,7 @@
 {
- "updated": "2026-11-26T05:15:36.086Z",
+ "updated": "2026-11-27T05:13:29.584Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
-  {
-   "id": "1206272",
-   "name": "Inner Engineering 4 days - Kanakapura Road",
-   "start": "2026-11-26 06:00:00",
-   "end": "2026-11-29 18:30:00",
-   "time": "6:00AM - 6:30PM",
-   "venue": "Sadhguru Yogasthala Kanakapura Road",
-   "area": "Bengaluru",
-   "fee": "3500",
-   "url": "https://online.sadhguru.org/event-register?event=23164-inner-engineering-4-days-kannada-kanakapura-road-26-29-nov-2026-23164",
-   "lang": "kannada"
-  },
-  {
-   "id": "1206360",
-   "name": "Shoonya Intensive Program (English), Sadhguru Sannidhi Bengaluru, Nov 26 - 29, 2026",
-   "start": "2026-11-26 10:00:00",
-   "end": "2026-11-29 18:00:00",
-   "venue": "Sadhguru Sannidhi",
-   "area": "Sadhguru Sannidhi, Bengaluru",
-   "fee": "5500",
-   "url": "https://online.sadhguru.org/event-register?event=23312-shoonya-intensive-program-english-sadhguru-sannidhi-bengaluru-nov-26-29-2026-23312",
-   "lang": "english",
-   "ssb": true
-  },
   {
    "id": "1206009",
    "name": "Angamardana - Jayanagar",
@@ -483,6 +459,30 @@
    "fee": "2500",
    "url": "https://online.sadhguru.org/event-register?event=23803-guru-pooja-english-kalaburagi-8-10-jan-2027-23803",
    "lang": "english"
+  },
+  {
+   "id": "1207214",
+   "name": "Inner Engineering 4 days",
+   "start": "2027-01-21 06:00:00",
+   "end": "2027-01-24 18:30:00",
+   "time": "6:00AM - 6:30PM",
+   "venue": "Isha Place Vijayanagar",
+   "area": "Vijayanagar Bengaluru",
+   "fee": "5000",
+   "url": "https://online.sadhguru.org/event-register?event=23963-inner-engineering-4-days-english-vijayanagar-21-24-jan-2027-23963",
+   "lang": "english"
+  },
+  {
+   "id": "1207204",
+   "name": "Inner Engineering 7  Days",
+   "start": "2027-01-27 06:00:00",
+   "end": "2027-02-02 21:00:00",
+   "time": "6:00AM - 9:00PM",
+   "venue": "Isha Place Malleswaram",
+   "area": "Malleshwaram Bengaluru",
+   "fee": "3500",
+   "url": "https://online.sadhguru.org/event-register?event=23967-inner-engineering-7-days-kannada-malleshwaram-27jan-02feb-2027-23967",
+   "lang": "kannada"
   }
  ]
 }
