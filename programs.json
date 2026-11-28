@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T05:13:29.584Z",
+ "updated": "2026-11-28T04:49:14.399Z",
  "source": "https://isha.sadhguru.org/in/en/program-finder",
  "programs": [
   {
@@ -423,6 +423,42 @@
    "url": "https://online.sadhguru.org/event-register?event=23672-bhastrika-kriya-sadhguru-sannidhi-bengaluru-dec-27-2026-23672",
    "lang": "english",
    "ssb": true
+  },
+  {
+   "id": "1207252",
+   "name": "Bhuta Shuddhi",
+   "start": "2027-01-03 15:00:00",
+   "end": "2027-01-03 17:00:00",
+   "time": "3:00PM - 5:00PM",
+   "venue": "Gujarat Bhavan",
+   "area": "Belagavi Belagavi",
+   "fee": "3800",
+   "url": "https://online.sadhguru.org/event-register?event=24001-bhuta-shuddhi-english-belagavi-3-jan-2027-24001",
+   "lang": "english"
+  },
+  {
+   "id": "1207253",
+   "name": "Angamardana",
+   "start": "2027-01-03 18:30:00",
+   "end": "2027-01-07 20:45:00",
+   "time": "6:30PM - 8:45PM",
+   "venue": "Gujarat Bhavan",
+   "area": "Belagavi Belagavi",
+   "fee": "3600",
+   "url": "https://online.sadhguru.org/event-register?event=24008-angamardana-english-belagavi-3-7-jan-2027-24008",
+   "lang": "english"
+  },
+  {
+   "id": "1207254",
+   "name": "Surya Kriya",
+   "start": "2027-01-04 06:30:00",
+   "end": "2027-01-07 08:30:00",
+   "time": "6:30AM - 8:30AM",
+   "venue": "Gujarat Bhavan",
+   "area": "Belagavi Belagavi",
+   "fee": "2400",
+   "url": "https://online.sadhguru.org/event-register?event=23997-surya-kriya-english-belagavi-4-7-jan-2027-23997",
+   "lang": "english"
   },
   {
    "id": "1206779",
